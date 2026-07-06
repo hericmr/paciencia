@@ -27,20 +27,21 @@ na raiz do repositório.
 
 **Purpose**: estrutura inicial do projeto e dados do baralho de estreia
 
-- [ ] T001 Criar estrutura de diretórios conforme `plan.md`: `src/engine/`,
+- [x] T001 Criar estrutura de diretórios conforme `plan.md`: `src/engine/`,
       `src/data/`, `src/progress/`, `src/ui/`, `src/styles/`, `tests/engine/`,
       `tests/progress/`
-- [ ] T002 [P] Criar `package.json` mínimo (`"type": "module"`, sem
+- [x] T002 [P] Criar `package.json` mínimo (`"type": "module"`, sem
       dependências) só para nomear o projeto e documentar `scripts.test`
       (`node --test tests/`)
-- [ ] T003 [P] Popular `src/data/cards.servico-social-estreia.json` com as 52
+- [x] T003 [P] Popular `src/data/cards.servico-social-estreia.json` com as 52
       cartas transcritas de `CONTEUDO_CARTAS.md`, cada uma com
       `status: "rascunho"` (conforme FR-010/FR-011 e o esquema em
       `contracts/ui-contract.md`)
-- [ ] T004 [P] Popular `src/data/principles.json` com os 11 princípios
+- [x] T004 [P] Popular `src/data/principles.json` com os 11 princípios
       transcritos de `CONTEUDO_CARTAS.md` (campos `order`, `summary`,
-      `fullText`)
-- [ ] T005 [P] Criar `index.html` base carregando `src/main.js` como módulo
+      `fullText`) — nota: texto integral (`fullText`) do princípio 11 tem
+      ressalva pendente de conferência final (ver T034)
+- [x] T005 [P] Criar `index.html` base carregando `src/main.js` como módulo
       ES e `src/styles/main.css`
 
 **Checkpoint**: dados e esqueleto do projeto prontos; nenhuma user story
@@ -54,14 +55,18 @@ depende de mais nada além disso para começar.
 
 **⚠️ CRITICAL**: nenhuma user story pode começar antes desta fase terminar
 
-- [ ] T006 Implementar carregamento de dados em `src/data/loader.js`
+- [x] T006 Implementar carregamento de dados em `src/data/loader.js`
       (`fetch` + parse de `cards.servico-social-estreia.json` e
       `principles.json`, validando contra o esquema de `contracts/ui-contract.md`)
-- [ ] T007 [P] Implementar `src/engine/deck.js`: construção do baralho de 52
+      — implementado e com validação (`validateDeck`/`validatePrinciples`);
+      ainda SEM teste automatizado dedicado (`loader.test.js` não existe)
+- [x] T007 [P] Implementar `src/engine/deck.js`: construção do baralho de 52
       cartas a partir dos dados carregados + embaralhamento (Fisher–Yates)
-- [ ] T008 [P] Implementar `src/progress/store.js`: leitura/escrita em
+- [x] T008 [P] Implementar `src/progress/store.js`: leitura/escrita em
       `localStorage` sob a chave `paciencia_ss.progress.v1`, com fallback em
-      memória se indisponível (Decisão 4 de `research.md`)
+      memória se indisponível (Decisão 4 de `research.md`) — implementado
+      com API `revealCard`/`isRevealed`/`incrementFoundationsCompleted`;
+      ainda SEM teste automatizado dedicado (ver T018/T028)
 
 **Checkpoint**: fundação pronta — as user stories podem começar.
 
@@ -79,30 +84,37 @@ derrota, sem nenhum texto educativo implementado (ver spec.md, US1).
 
 > Escrever estes testes PRIMEIRO; devem falhar antes da implementação.
 
-- [ ] T009 [P] [US1] `tests/engine/deck.test.js`: embaralhar produz 52 cartas
-      únicas, 13 por naipe, sem duplicatas
-- [ ] T010 [P] [US1] `tests/engine/rules.test.js`: valida movimentos
+- [x] T009 [P] [US1] `tests/engine/deck.test.js`: embaralhar produz 52 cartas
+      únicas, 13 por naipe, sem duplicatas — 5 testes, todos passando
+      (`node --test tests/`)
+- [x] T010 [P] [US1] `tests/engine/rules.test.js`: valida movimentos
       corretos/incorretos no tableau (alternância de cor, sequência
       descendente) e nas fundações (mesmo naipe, sequência ascendente A→K)
-- [ ] T011 [P] [US1] `tests/engine/win.test.js`: detecta vitória (4 fundações
-      completas) e estado sem-jogadas-possíveis
+      — 11 testes, todos passando
+- [x] T011 [P] [US1] `tests/engine/win.test.js`: detecta vitória (4 fundações
+      completas) e estado sem-jogadas-possíveis — 8 testes, todos passando
 
 ### Implementation for User Story 1
 
-- [ ] T012 [US1] Implementar `src/engine/rules.js` (validação de movimentos;
+- [x] T012 [US1] Implementar `src/engine/rules.js` (validação de movimentos;
       depende de T007)
-- [ ] T013 [US1] Implementar `src/engine/win.js` (detecção de
-      vitória/travamento; depende de T012)
+- [x] T013 [US1] Implementar `src/engine/win.js` (detecção de
+      vitória/travamento; depende de T012) — heurística documentada no
+      próprio arquivo: só considera "sem jogadas" quando monte E descarte
+      estão vazios (ver comentário em win.js)
 - [ ] T014 [US1] Implementar `src/ui/board.js`: renderização inicial do
-      tableau/monte/descarte/fundações e distribuição das cartas
+      tableau/monte/descarte/fundações e distribuição das cartas — **PRÓXIMO
+      PASSO, ainda não iniciado**
 - [ ] T015 [US1] Implementar interação de mover carta em `src/ui/board.js`
       (mouse drag-and-drop; toque é tratado em T032/FR-012) chamando
       `rules.js` para validar cada jogada
 - [ ] T016 [US1] Implementar `src/styles/main.css`: layout responsivo básico
-      do tableau (FR-013), sem quebra a partir de ~360px de largura
+      do tableau (FR-013), sem quebra a partir de ~360px de largura — arquivo
+      ainda não existe (referenciado por `index.html`, mas 404 até ser criado)
 - [ ] T017 [US1] Implementar `src/main.js`: botão "Nova partida", liga
       `deck.js` + `rules.js` + `win.js` + `board.js`, exibe tela de
-      vitória/derrota (FR-003)
+      vitória/derrota (FR-003) — arquivo ainda não existe (referenciado por
+      `index.html`, mas 404 até ser criado)
 
 **Checkpoint**: US1 completa e jogável de forma independente.
 
