@@ -3,14 +3,18 @@
 import { canMoveToFoundation, canMoveToTableau } from "./rules.js";
 
 /** @typedef {import("./deck.js").EngineCard} EngineCard */
-/** @typedef {Record<"teorico-metodologico"|"etico-politico"|"tecnico-operativo"|"historico-formativo", EngineCard[]>} Foundations */
+/** @typedef {Record<string, EngineCard[]>} Foundations */
 
 /**
+ * Vitória: cada fundação tem exatamente as cartas do seu tema. `themeSizes`
+ * vem de `computeThemeSizes` (deck.js) — não é mais um número fixo como 13,
+ * já que temas podem ter tamanhos diferentes (ver research.md, Decisão 7).
  * @param {Foundations} foundations
+ * @param {Record<string, number>} themeSizes
  * @returns {boolean}
  */
-export function checkWin(foundations) {
-  return Object.values(foundations).every((cards) => cards.length === 13);
+export function checkWin(foundations, themeSizes) {
+  return Object.keys(themeSizes).every((theme) => (foundations[theme]?.length ?? 0) === themeSizes[theme]);
 }
 
 /**

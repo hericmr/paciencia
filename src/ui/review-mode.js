@@ -1,15 +1,14 @@
 // @ts-check
 import { showRevealPopup } from "./reveal-popup.js";
+import { rankIndex } from "../engine/deck.js";
 
-const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
 const rankNames = {
   "A": "Ás", "2": "Dois", "3": "Três", "4": "Quatro", "5": "Cinco", "6": "Seis",
   "7": "Sete", "8": "Oito", "9": "Nove", "10": "Dez", "J": "Valete", "Q": "Dama", "K": "Rei"
 };
-const RANK_ORDER = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
-/** @type {string} */
-let activeTheme = "teorico-metodologico";
+/** @type {string|null} */
+let activeTheme = null;
 
 /**
  * Renderiza a tela de Modo Revisão.
@@ -21,6 +20,11 @@ let activeTheme = "teorico-metodologico";
  * @param {Record<string, { axis: string, shortLabel: string }>} themesMeta Metadados dos 4 temas
  */
 export function renderReviewMode(container, cardsData, principlesData, progressStore, onBack, themesMeta = {}) {
+  const themes = Object.keys(themesMeta);
+  if (!activeTheme || !themes.includes(activeTheme)) {
+    activeTheme = themes[0] ?? null;
+  }
+
   // Limpar container
   container.innerHTML = "";
 
@@ -40,7 +44,7 @@ export function renderReviewMode(container, cardsData, principlesData, progressS
   const tabsContainer = document.createElement("div");
   tabsContainer.className = "tabs";
 
-  THEMES.forEach((theme) => {
+  themes.forEach((theme) => {
     const tabBtn = document.createElement("button");
     tabBtn.className = `tab-btn theme-${theme} ${activeTheme === theme ? "active" : ""}`;
     tabBtn.type = "button";
@@ -58,10 +62,11 @@ export function renderReviewMode(container, cardsData, principlesData, progressS
   const gridContainer = document.createElement("div");
   gridContainer.className = "review-grid";
 
-  // Obter as cartas do tema ativo ordenadas por rank (A..K)
-  const themeCards = RANK_ORDER.map((rank) => {
-    return cardsData.find((c) => c.theme === activeTheme && c.rank === rank);
-  }).filter(Boolean);
+  // Obter as cartas do tema ativo, ordenadas pela posição do rank em A..K
+  // (cada tema pode usar só um subconjunto dos ranks, ver research.md, Decisão 7)
+  const themeCards = cardsData
+    .filter((c) => c.theme === activeTheme)
+    .sort((a, b) => rankIndex(a.rank) - rankIndex(b.rank));
 
   themeCards.forEach((cardData) => {
     const isRevealed = progressStore.isRevealed(cardData.id);

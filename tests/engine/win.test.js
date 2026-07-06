@@ -13,23 +13,44 @@ function emptyFoundations() {
   };
 }
 
-function fullFoundations() {
-  const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-  const build = (theme) => ranks.map((r) => card(r, theme));
-  return {
-    "teorico-metodologico": build("teorico-metodologico"),
-    "etico-politico": build("etico-politico"),
-    "tecnico-operativo": build("tecnico-operativo"),
-    "historico-formativo": build("historico-formativo"),
-  };
+function fullFoundations(themeSizes) {
+  const build = (theme, size) =>
+    Array.from({ length: size }, (_, i) => card(String(i + 1), theme));
+  const foundations = {};
+  for (const theme of Object.keys(themeSizes)) {
+    foundations[theme] = build(theme, themeSizes[theme]);
+  }
+  return foundations;
 }
 
+const UNIFORM_SIZES = {
+  "teorico-metodologico": 13,
+  "etico-politico": 13,
+  "tecnico-operativo": 13,
+  "historico-formativo": 13,
+};
+
 test("checkWin: false enquanto alguma fundação está incompleta", () => {
-  assert.equal(checkWin(emptyFoundations()), false);
+  assert.equal(checkWin(emptyFoundations(), UNIFORM_SIZES), false);
 });
 
-test("checkWin: true quando as 4 fundações têm 13 cartas", () => {
-  assert.equal(checkWin(fullFoundations()), true);
+test("checkWin: true quando cada fundação tem exatamente o tamanho do seu tema", () => {
+  assert.equal(checkWin(fullFoundations(UNIFORM_SIZES), UNIFORM_SIZES), true);
+});
+
+test("checkWin: funciona com temas de tamanhos diferentes (ex.: 'autores' com 12, outros com 10)", () => {
+  const mixedSizes = {
+    autores: 12,
+    "teorico-metodologico": 10,
+    "etico-politico": 10,
+    "tecnico-operativo": 10,
+    "historico-formativo": 10,
+  };
+  assert.equal(checkWin(fullFoundations(mixedSizes), mixedSizes), true);
+
+  const almostFull = fullFoundations(mixedSizes);
+  almostFull.autores.pop();
+  assert.equal(checkWin(almostFull, mixedSizes), false);
 });
 
 test("hasNoValidMoves: false se houver cartas no monte", () => {

@@ -1,21 +1,36 @@
 // @ts-check
 // Lógica pura de baralho: não depende de DOM, fetch, nem de título/texto das cartas
 // (apenas id/theme/rank), conforme contracts/ui-contract.md.
+//
+// A engine não assume mais um número fixo de temas nem de cartas por tema
+// (ver research.md, Decisão 7) — o tamanho de cada tema é sempre derivado
+// dos dados via computeThemeSizes.
 
-/** @typedef {{ id: string, theme: "teorico-metodologico"|"etico-politico"|"tecnico-operativo"|"historico-formativo", rank: string }} EngineCard */
+/** @typedef {{ id: string, theme: string, rank: string }} EngineCard */
 
 /**
- * Constrói o baralho de 52 cartas a partir dos dados de conteúdo, mantendo
- * apenas os campos estruturais que a engine precisa.
+ * Constrói o baralho a partir dos dados de conteúdo, mantendo apenas os
+ * campos estruturais que a engine precisa.
  * @param {{ theme: string, rank: string, id: string }[]} cardsData
  * @returns {EngineCard[]}
  */
 export function buildDeck(cardsData) {
-  return cardsData.map(({ id, theme, rank }) => ({
-    id,
-    theme: /** @type {EngineCard["theme"]} */ (theme),
-    rank,
-  }));
+  return cardsData.map(({ id, theme, rank }) => ({ id, theme, rank }));
+}
+
+/**
+ * Calcula quantas cartas cada tema tem no baralho carregado — usado para
+ * saber quando uma fundação está completa (não é mais um número fixo como 13).
+ * @param {EngineCard[]} deck
+ * @returns {Record<string, number>}
+ */
+export function computeThemeSizes(deck) {
+  /** @type {Record<string, number>} */
+  const sizes = {};
+  for (const card of deck) {
+    sizes[card.theme] = (sizes[card.theme] ?? 0) + 1;
+  }
+  return sizes;
 }
 
 /**

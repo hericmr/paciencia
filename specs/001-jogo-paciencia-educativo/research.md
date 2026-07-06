@@ -124,3 +124,41 @@ sugerindo naipe de baralho para quem lê o código, uma abstração enganosa);
 reintroduzir alguma ordem alternativa dentro do tema, ex. por sub-eixo ou
 dificuldade (rejeitado por ora — não foi pedido, e adicionaria complexidade
 sem necessidade comprovada, Princípio IV).
+
+## Decisão 7: Temas de tamanho livre; "Autores" vira um tema próprio
+
+**Decision**: a engine deixa de assumir "sempre 4 temas" e "sempre 13 cartas
+por tema". Cada tema pode ter um número diferente de cartas — o tamanho de
+cada fundação é calculado a partir dos dados carregados (`computeThemeSizes`
+em `deck.js`), não mais um `13` fixo no código. No deck de estreia isso
+libera a criação de um 5º tema, **Autores** (`theme: "autores"`), reunindo as
+12 pessoas que antes apareciam como J/Q/K espalhadas nos 4 temas conceituais.
+Os 4 temas conceituais (teórico-metodológico, ético-político,
+técnico-operativo, histórico-formativo) ficam só com as 10 cartas de
+conceito/marco (A–10) cada. Total permanece 52 (12 + 10×4), então o layout
+Klondike do tableau (7 colunas, 28 cartas distribuídas + 24 no monte) não
+precisa mudar — só o tamanho de cada fundação individual passa a variar.
+
+**Rationale**: feedback do mantenedor — misturar "pessoa" e "conceito" dentro
+do mesmo tema (ex.: José Paulo Netto convivendo com "Totalidade" no tema
+teórico-metodológico) não fazia sentido pedagógico; separar Autores como seu
+próprio grupo deixa a UI de cartas de autor/a (nome + foto) coerente e
+evita forçar a lógica de baralho tradicional (sempre 4 grupos iguais de 13)
+sobre um conteúdo que não é naturalmente simétrico. Isso também prepara o
+terreno para os decks de expansão já previstos (SUAS, Seguridade Social,
+ECA), que dificilmente terão exatamente 13 itens por eixo.
+
+**Consequência assumida**: `checkWin`/a UI não podem mais comparar
+`length === 13` — comparam contra o tamanho real de cada tema
+(`themeSizes[tema]`), calculado uma vez a partir do baralho carregado. Isso é
+uma generalização estritamente mais permissiva; nenhum comportamento de
+partidas com temas de 13 cartas muda.
+
+**Alternatives considered**: manter os 4 temas fixos e só destacar
+visualmente as cartas de autor dentro deles (rejeitado pela pergunta de
+esclarecimento ao mantenedor — a opção escolhida foi separar de fato);
+permitir número totalmente livre de temas e de cartas totais no deck (ex.:
+não precisar somar 52) — adiado: não há necessidade comprovada agora (o deck
+de estreia soma 52 exatamente), mas a generalização de `checkWin` já não
+depende de um total fixo, então isso fica mais barato de fazer depois se
+algum deck futuro precisar.

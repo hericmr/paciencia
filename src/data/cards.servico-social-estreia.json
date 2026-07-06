@@ -2,6 +2,10 @@
   "deckId": "servico-social-estreia",
   "deckName": "Serviço Social Brasileiro — Deck de Estreia",
   "themes": {
+    "autores": {
+      "axis": "Autores e autoras do Serviço Social",
+      "shortLabel": "Autores"
+    },
     "teorico-metodologico": {
       "axis": "Dimensão teórico-metodológica",
       "shortLabel": "Teórico-metodológica"
@@ -121,9 +125,9 @@
       "photoCredit": null
     },
     {
-      "id": "JS",
-      "theme": "teorico-metodologico",
-      "rank": "J",
+      "id": "AAU",
+      "theme": "autores",
+      "rank": "A",
       "title": "István Mészáros",
       "body": "Filósofo húngaro, discípulo de Lukács. Em \"Para Além do Capital\", analisa o sistema sociometabólico do capital e sua crise estrutural — referência para o debate sobre trabalho e emancipação.",
       "status": "rascunho",
@@ -131,9 +135,9 @@
       "photoCredit": null
     },
     {
-      "id": "QS",
-      "theme": "teorico-metodologico",
-      "rank": "Q",
+      "id": "2AU",
+      "theme": "autores",
+      "rank": "2",
       "title": "Marilda Villela Iamamoto",
       "body": "Autora de \"Relações Sociais e Serviço Social no Brasil\" (com Raul de Carvalho, 1982): inaugurou a leitura marxista da profissão como trabalho inserido na divisão sociotécnica do trabalho.",
       "status": "rascunho",
@@ -141,13 +145,13 @@
       "photoCredit": null
     },
     {
-      "id": "KS",
-      "theme": "teorico-metodologico",
-      "rank": "K",
+      "id": "3AU",
+      "theme": "autores",
+      "rank": "3",
       "title": "José Paulo Netto",
       "body": "Autor de \"Ditadura e Serviço Social\" e \"Capitalismo Monopolista e Serviço Social\". Sistematizou a renovação da profissão e a categoria projeto ético-político.",
       "status": "rascunho",
-      "photoUrl": "assets/authors/KS.jpg",
+      "photoUrl": "assets/authors/jose-paulo-netto.jpg",
       "photoCredit": "Foto: Núcleo de Estudos de Ontologia Marxiana, CC BY 3.0, via Wikimedia Commons"
     },
     {
@@ -251,9 +255,9 @@
       "photoCredit": null
     },
     {
-      "id": "JH",
-      "theme": "etico-politico",
-      "rank": "J",
+      "id": "4AU",
+      "theme": "autores",
+      "rank": "4",
       "title": "Ivanete Boschetti",
       "body": "Referência no estudo da seguridade social brasileira e da assistência social entre \"avaliação e garantia de direitos\". Coautora de \"Política Social: fundamentos e história\" com Behring.",
       "status": "rascunho",
@@ -261,9 +265,9 @@
       "photoCredit": null
     },
     {
-      "id": "QH",
-      "theme": "etico-politico",
-      "rank": "Q",
+      "id": "5AU",
+      "theme": "autores",
+      "rank": "5",
       "title": "Maria Lúcia Silva Barroco",
       "body": "Principal referência em ética no Serviço Social: \"Ética e Serviço Social — fundamentos ontológicos\" analisa a ética a partir da ontologia do ser social.",
       "status": "rascunho",
@@ -271,9 +275,9 @@
       "photoCredit": null
     },
     {
-      "id": "KH",
-      "theme": "etico-politico",
-      "rank": "K",
+      "id": "6AU",
+      "theme": "autores",
+      "rank": "6",
       "title": "Elaine Rossetti Behring",
       "body": "Autora de \"Brasil em Contra-Reforma\" e \"Política Social: fundamentos e história\". Analisa a política social na crise do capital e o desmonte de direitos.",
       "status": "rascunho",
@@ -381,9 +385,9 @@
       "photoCredit": null
     },
     {
-      "id": "JD",
-      "theme": "tecnico-operativo",
-      "rank": "J",
+      "id": "7AU",
+      "theme": "autores",
+      "rank": "7",
       "title": "Maria Lúcia Martinelli",
       "body": "Referência em pesquisa qualitativa e história oral no Serviço Social. Em \"Serviço Social: identidade e alienação\", analisa a identidade profissional na sua gênese conservadora.",
       "status": "rascunho",
@@ -391,9 +395,9 @@
       "photoCredit": null
     },
     {
-      "id": "QD",
-      "theme": "tecnico-operativo",
-      "rank": "Q",
+      "id": "8AU",
+      "theme": "autores",
+      "rank": "8",
       "title": "Yolanda Guerra",
       "body": "Autora de \"A Instrumentalidade do Serviço Social\": as respostas profissionais articulam as dimensões teórico-metodológica, ético-política e técnico-operativa.",
       "status": "rascunho",
@@ -401,13 +405,13 @@
       "photoCredit": null
     },
     {
-      "id": "KD",
-      "theme": "tecnico-operativo",
-      "rank": "K",
+      "id": "9AU",
+      "theme": "autores",
+      "rank": "9",
       "title": "Vicente de Paula Faleiros",
       "body": "Autor de \"Estratégias em Serviço Social\" e \"Saber Profissional e Poder Institucional\": a intervenção como jogo de forças, fortalecendo o poder dos/as usuários/as.",
       "status": "rascunho",
-      "photoUrl": "assets/authors/KD.jpg",
+      "photoUrl": "assets/authors/vicente-de-paula-faleiros.jpg",
       "photoCredit": "Foto: SamuelEstrellaDF, CC BY-SA 4.0, via Wikimedia Commons"
     },
     {
@@ -511,9 +515,9 @@
       "photoCredit": null
     },
     {
-      "id": "JC",
-      "theme": "historico-formativo",
-      "rank": "J",
+      "id": "10AU",
+      "theme": "autores",
+      "rank": "10",
       "title": "Manuel Manrique Castro",
       "body": "Autor de \"História do Serviço Social na América Latina\": análise da gênese da profissão no continente, para além dos mitos de origem.",
       "status": "rascunho",
@@ -521,9 +525,9 @@
       "photoCredit": null
     },
     {
-      "id": "QC",
-      "theme": "historico-formativo",
-      "rank": "Q",
+      "id": "JAU",
+      "theme": "autores",
+      "rank": "J",
       "title": "Maria Carmelita Yazbek",
       "body": "Referência em assistência social e pobreza: \"Classes Subalternas e Assistência Social\" analisa os/as usuários/as como sujeitos de direitos, não como \"assistidos\".",
       "status": "rascunho",
@@ -531,9 +535,9 @@
       "photoCredit": null
     },
     {
-      "id": "KC",
-      "theme": "historico-formativo",
-      "rank": "K",
+      "id": "QAU",
+      "theme": "autores",
+      "rank": "Q",
       "title": "Raul de Carvalho",
       "body": "Coautor, com Iamamoto, de \"Relações Sociais e Serviço Social no Brasil\" (1982) — obra fundante da análise histórico-crítica da profissão.",
       "status": "rascunho",

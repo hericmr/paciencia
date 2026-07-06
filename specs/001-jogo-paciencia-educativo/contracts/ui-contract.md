@@ -5,8 +5,10 @@ interfaces estáveis que outras partes do sistema (e decks futuros) dependem.
 
 > **Nota de revisão (2026)**: o campo `suit` (naipe) foi renomeado para
 > `theme` (tema) e seus valores deixaram de ser naipes de baralho
-> (`spades`/`hearts`/...) para serem os 4 eixos temáticos diretamente. Ver
-> `data-model.md` e `research.md` (Decisão 6).
+> (`spades`/`hearts`/...) para serem os eixos temáticos diretamente (ver
+> `research.md`, Decisão 6). Em seguida, temas deixaram de ter tamanho fixo
+> de 13 cartas e o deck de estreia ganhou um 5º tema, "autores" (Decisão 7).
+> Ver `data-model.md` para o modelo atualizado.
 
 ## 1. Esquema de `src/data/cards.<deck>.json`
 
@@ -19,6 +21,7 @@ esquema para ser carregável pela engine sem alterações de código.
   "deckId": "servico-social-estreia",
   "deckName": "Serviço Social Brasileiro — Deck de Estreia",
   "themes": {
+    "autores":              { "axis": "Autores e autoras do Serviço Social", "shortLabel": "Autores" },
     "teorico-metodologico": { "axis": "Dimensão teórico-metodológica", "shortLabel": "Teórico-metodológica" },
     "etico-politico":       { "axis": "Dimensão ético-política", "shortLabel": "Ético-política" },
     "tecnico-operativo":    { "axis": "Dimensão técnico-operativa", "shortLabel": "Técnico-operativa" },
@@ -34,22 +37,38 @@ esquema para ser carregável pela engine sem alterações de código.
       "status": "rascunho",
       "photoUrl": null,
       "photoCredit": null
+    },
+    {
+      "id": "3AU",
+      "theme": "autores",
+      "rank": "3",
+      "title": "José Paulo Netto",
+      "body": "Autor de \"Ditadura e Serviço Social\"...",
+      "status": "rascunho",
+      "photoUrl": "assets/authors/jose-paulo-netto.jpg",
+      "photoCredit": "Foto: Núcleo de Estudos de Ontologia Marxiana, CC BY 3.0, via Wikimedia Commons"
     }
   ]
 }
 ```
 
 **Regras do contrato**:
-- `cards` DEVE conter exatamente 52 entradas: 13 por tema, ranks
-  `A,2,3,4,5,6,7,8,9,10,J,Q,K`, sem duplicatas.
+- `cards` DEVE somar o total esperado do deck (52 no deck de estreia).
+  Cada tema declarado em `themes` DEVE ter pelo menos 1 carta e nenhum `rank`
+  repetido dentro do mesmo tema — mas **temas podem ter tamanhos diferentes**
+  entre si (não há mais exigência de 13 cartas por tema nem de exatamente 4
+  temas). O tamanho de cada tema é sempre derivado dos dados
+  (`computeThemeSizes` em `src/engine/deck.js`), nunca hardcoded.
 - `status` DEVE ser um de `"rascunho"`, `"revisado"`, `"publicado"`.
 - `body` SHOULD ter no máximo 280 caracteres (limite de produção definido em
   `CONTEUDO_CARTAS.md`); a engine não trunca automaticamente — validação é
   responsabilidade do pipeline de conteúdo, não da engine de jogo.
-- `photoUrl`/`photoCredit`: usados apenas em cartas de autor/a (`rank` em
-  `J`, `Q`, `K`). Cartas de conceito/marco (`A`–`10`) DEVEM ter ambos como
-  `null`. Nunca inserir uma URL sem verificar que a imagem existe e que sua
-  licença permite o uso, preenchendo `photoCredit` com a atribuição exigida.
+- `photoUrl`/`photoCredit`: usados apenas em cartas do tema `"autores"`.
+  Cartas de qualquer outro tema DEVEM ter ambos como `null`. Nunca inserir
+  uma URL sem verificar que a imagem existe e que sua licença permite o uso,
+  preenchendo `photoCredit` com a atribuição exigida (ver
+  `scripts/author-photos-manifest.json` como fonte de verdade das fotos já
+  verificadas, e `scripts/download-author-photos.mjs` para aplicá-las).
 - A engine (`src/engine/`) NUNCA deve importar ou depender do conteúdo de
   `title`/`body`/`photoUrl` diretamente — apenas `id`, `theme`, `rank`. Isso é
   o que garante o desacoplamento do Princípio III. `status` é consultado pela

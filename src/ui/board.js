@@ -4,17 +4,17 @@ import { showRevealPopup } from "./reveal-popup.js";
 
 /**
  * @typedef {import("../engine/deck.js").EngineCard & { faceUp: boolean }} UICard
- * @typedef {Record<"teorico-metodologico"|"etico-politico"|"tecnico-operativo"|"historico-formativo", UICard[]>} Foundations
+ * @typedef {Record<string, UICard[]>} Foundations
  * @typedef {{
  *   tableau: UICard[][],
  *   stock: UICard[],
  *   waste: UICard[],
  *   foundations: Foundations,
+ *   themeSizes: Record<string, number>,
  *   status: string
  * }} GameState
  */
 
-const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
 const rankNames = {
   "A": "Ás", "2": "Dois", "3": "Três", "4": "Quatro", "5": "Cinco", "6": "Seis",
   "7": "Sete", "8": "Oito", "9": "Nove", "10": "Dez", "J": "Valete", "Q": "Dama", "K": "Rei"
@@ -162,7 +162,8 @@ export function renderBoard(container, gameState, cardsMap, progressStore, onSta
   leftGroup.appendChild(wasteSlot);
 
   // --- 3. FOUNDATIONS (FUNDAÇÕES) ---
-  THEMES.forEach((theme) => {
+  const themes = Object.keys(themesMeta);
+  themes.forEach((theme) => {
     const foundSlot = document.createElement("div");
     foundSlot.className = "pile-slot foundation-pile";
     foundSlot.dataset.theme = theme;
@@ -171,8 +172,9 @@ export function renderBoard(container, gameState, cardsMap, progressStore, onSta
     foundSlot.setAttribute("role", "region");
 
     const count = gameState.foundations[theme].length;
+    const themeSize = gameState.themeSizes[theme];
     const themeLabel = themesMeta[theme]?.shortLabel || theme;
-    foundSlot.setAttribute("aria-label", `Fundação de ${themeLabel}. ${count} de 13 cartas.`);
+    foundSlot.setAttribute("aria-label", `Fundação de ${themeLabel}. ${count} de ${themeSize} cartas.`);
 
     if (count > 0) {
       const topCard = gameState.foundations[theme][count - 1];
@@ -195,7 +197,7 @@ export function renderBoard(container, gameState, cardsMap, progressStore, onSta
             executeMove(selected.cardId, selected.source, { type: "foundation", theme }, gameState);
 
             // Verificar se completou a fundação
-            if (targetFoundation.length === 13) {
+            if (targetFoundation.length === gameState.themeSizes[theme]) {
               const newTotal = progressStore.incrementFoundationsCompleted();
               // Mostrar toast do princípio desbloqueado se estiver na faixa 1..11
               if (newTotal <= 11) {
@@ -235,7 +237,7 @@ export function renderBoard(container, gameState, cardsMap, progressStore, onSta
           const targetFoundation = gameState.foundations[theme];
           if (canMoveToFoundation(movingCard, theme)) {
             executeMove(cardId, source, { type: "foundation", theme }, gameState);
-            if (targetFoundation.length === 13) {
+            if (targetFoundation.length === gameState.themeSizes[theme]) {
               const newTotal = progressStore.incrementFoundationsCompleted();
               if (newTotal <= 11) {
                 const principles = window.currentPrinciples || [];
@@ -466,11 +468,11 @@ function handleMoveToTableauColumn(colIndex, gameState, onStateChange) {
  */
 function attemptAutoMove(card, source, gameState, progressStore, themesMeta, onStateChange) {
   // 1. Tentar mover para Fundação
-  for (const theme of THEMES) {
+  for (const theme of Object.keys(themesMeta)) {
     const targetFoundation = gameState.foundations[theme];
     if (canMoveToFoundation(card, theme)) {
       executeMove(card.id, source, { type: "foundation", theme }, gameState);
-      if (targetFoundation.length === 13) {
+      if (targetFoundation.length === gameState.themeSizes[theme]) {
         const newTotal = progressStore.incrementFoundationsCompleted();
         if (newTotal <= 11) {
           const principles = window.currentPrinciples || [];

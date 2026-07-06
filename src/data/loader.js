@@ -3,9 +3,7 @@
 /** @typedef {{ id: string, theme: string, rank: string, title: string, body: string, status: string, photoUrl: string|null, photoCredit: string|null }} CardData */
 /** @typedef {{ order: number, summary: string, fullText: string }} PrincipleData */
 
-const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
-const RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const AUTHOR_RANKS = new Set(["J", "Q", "K"]);
+const AUTHORS_THEME = "autores";
 
 /**
  * @param {string} deckUrl
@@ -36,31 +34,50 @@ export async function loadPrinciples(principlesUrl) {
 }
 
 /**
- * @param {{ cards?: CardData[] }} data
+ * Valida um deck sem assumir número fixo de temas nem de cartas por tema
+ * (ver research.md, Decisão 7). Cada tema declarado em `themes` deve ter ao
+ * menos 1 carta e nenhum rank duplicado dentro dele; fotos só são permitidas
+ * no tema "autores".
+ * @param {{ themes?: Record<string, unknown>, cards?: CardData[] }} data
  */
 export function validateDeck(data) {
-  if (!Array.isArray(data.cards) || data.cards.length !== 52) {
-    throw new Error(`Deck inválido: esperado 52 cartas, recebido ${data.cards?.length ?? 0}`);
+  if (!data.themes || typeof data.themes !== "object" || Object.keys(data.themes).length === 0) {
+    throw new Error("Deck inválido: nenhum tema declarado em 'themes'");
   }
-  for (const theme of THEMES) {
+  if (!Array.isArray(data.cards) || data.cards.length === 0) {
+    throw new Error("Deck inválido: nenhuma carta em 'cards'");
+  }
+
+  const declaredThemes = new Set(Object.keys(data.themes));
+  const seenIds = new Set();
+
+  for (const card of data.cards) {
+    if (seenIds.has(card.id)) {
+      throw new Error(`Deck inválido: id de carta duplicado "${card.id}"`);
+    }
+    seenIds.add(card.id);
+
+    if (!declaredThemes.has(card.theme)) {
+      throw new Error(`Deck inválido: carta "${card.id}" referencia tema não declarado "${card.theme}"`);
+    }
+
+    const isAuthorCard = card.theme === AUTHORS_THEME;
+    if (!isAuthorCard && (card.photoUrl || card.photoCredit)) {
+      throw new Error(`Deck inválido: carta "${card.id}" não é do tema "${AUTHORS_THEME}" mas tem foto`);
+    }
+    if (card.photoUrl && !card.photoCredit) {
+      throw new Error(`Deck inválido: carta "${card.id}" tem photoUrl sem photoCredit (atribuição obrigatória)`);
+    }
+  }
+
+  for (const theme of declaredThemes) {
     const cardsInTheme = data.cards.filter((c) => c.theme === theme);
-    if (cardsInTheme.length !== 13) {
-      throw new Error(`Deck inválido: tema "${theme}" tem ${cardsInTheme.length} cartas, esperado 13`);
+    if (cardsInTheme.length === 0) {
+      throw new Error(`Deck inválido: tema "${theme}" está declarado mas não tem nenhuma carta`);
     }
-    const ranksInTheme = new Set(cardsInTheme.map((c) => c.rank));
-    for (const rank of RANKS) {
-      if (!ranksInTheme.has(rank)) {
-        throw new Error(`Deck inválido: tema "${theme}" está sem a carta de valor "${rank}"`);
-      }
-    }
-    for (const card of cardsInTheme) {
-      const isAuthorCard = AUTHOR_RANKS.has(card.rank);
-      if (!isAuthorCard && (card.photoUrl || card.photoCredit)) {
-        throw new Error(`Deck inválido: carta "${card.id}" não é de autor/a (J/Q/K) mas tem foto`);
-      }
-      if (card.photoUrl && !card.photoCredit) {
-        throw new Error(`Deck inválido: carta "${card.id}" tem photoUrl sem photoCredit (atribuição obrigatória)`);
-      }
+    const ranksInTheme = cardsInTheme.map((c) => c.rank);
+    if (new Set(ranksInTheme).size !== ranksInTheme.length) {
+      throw new Error(`Deck inválido: tema "${theme}" tem ranks duplicados entre suas cartas`);
     }
   }
 }
@@ -80,4 +97,4 @@ export function validatePrinciples(principles) {
   }
 }
 
-export { THEMES, RANKS, AUTHOR_RANKS };
+export { AUTHORS_THEME };

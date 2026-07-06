@@ -54,7 +54,7 @@ async function main() {
 
   for (const entry of manifest.photos) {
     const ext = entry.imageUrl.split(".").pop().split("?")[0];
-    const filename = `${entry.cardId}.${ext}`;
+    const filename = `${entry.slug}.${ext}`;
     const destPath = join(AUTHORS_DIR, filename);
     const relativePath = `assets/authors/${filename}`;
 

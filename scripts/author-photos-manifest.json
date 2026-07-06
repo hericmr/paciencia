@@ -1,17 +1,19 @@
 {
-  "_comment": "Manifesto de fotos de autores/as verificadas manualmente no Wikimedia Commons/Wikipédia antes de entrar no jogo (Princípio I da constituição: nenhuma URL entra sem checar que a imagem existe e a licença permite o uso). Cada entrada exige commonsFileUrl real (a página do arquivo, não a imagem crua), license e credit. Ver contracts/ui-contract.md.",
+  "_comment": "Manifesto de fotos de autores/as verificadas manualmente no Wikimedia Commons/Wikipédia antes de entrar no jogo (Princípio I da constituição: nenhuma URL entra sem checar que a imagem existe e a licença permite o uso). Cada entrada exige commonsFileUrl real (a página do arquivo, não a imagem crua), license e credit. cardId deve corresponder a uma carta do tema \"autores\" em cards.servico-social-estreia.json. Ver contracts/ui-contract.md.",
   "photos": [
     {
-      "cardId": "KS",
+      "cardId": "3AU",
       "person": "José Paulo Netto",
+      "slug": "jose-paulo-netto",
       "commonsFileUrl": "https://en.wikipedia.org/wiki/File:Jpnetto.jpg",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Jpnetto.jpg",
       "license": "CC BY 3.0",
       "credit": "Foto: Núcleo de Estudos de Ontologia Marxiana, CC BY 3.0, via Wikimedia Commons"
     },
     {
-      "cardId": "KD",
+      "cardId": "9AU",
       "person": "Vicente de Paula Faleiros",
+      "slug": "vicente-de-paula-faleiros",
       "commonsFileUrl": "https://pt.wikipedia.org/wiki/Ficheiro:Vicente_de_Paula_Faleiros.jpg",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Vicente_de_Paula_Faleiros.jpg",
       "license": "CC BY-SA 4.0",

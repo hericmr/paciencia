@@ -137,6 +137,10 @@ button:focus-visible {
 }
 
 /* Tabuleiro layout */
+#game-root[hidden] {
+  display: none;
+}
+
 #game-root {
   flex: 1;
   max-width: 1000px;

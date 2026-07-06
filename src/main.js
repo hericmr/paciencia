@@ -1,6 +1,6 @@
 // @ts-check
 import { loadDeck, loadPrinciples } from "./data/loader.js";
-import { buildDeck, shuffleDeck } from "./engine/deck.js";
+import { buildDeck, shuffleDeck, computeThemeSizes } from "./engine/deck.js";
 import { checkWin, hasNoValidMoves } from "./engine/win.js";
 import { createProgressStore } from "./progress/store.js";
 import { renderBoard } from "./ui/board.js";
@@ -76,8 +76,9 @@ function startNewGame() {
   reviewModeBtn?.classList.remove("active");
 
   const engineDeck = buildDeck(cardsData);
+  const themeSizes = computeThemeSizes(engineDeck);
   const shuffled = shuffleDeck(engineDeck);
-  
+
   // Converter deck para estrutura de UI com propriedade faceUp
   const uiDeck = shuffled.map((c) => ({ ...c, faceUp: false }));
   
@@ -100,18 +101,19 @@ function startNewGame() {
 
   const stock = uiDeck.slice(cardIdx);
   const waste = [];
-  const foundations = {
-    "teorico-metodologico": [],
-    "etico-politico": [],
-    "tecnico-operativo": [],
-    "historico-formativo": [],
-  };
+  // Uma fundação vazia por tema existente no deck carregado — não mais um
+  // conjunto fixo de 4 (ver research.md, Decisão 7).
+  const foundations = {};
+  for (const theme of Object.keys(themesMeta)) {
+    foundations[theme] = [];
+  }
 
   gameState = {
     tableau,
     stock,
     waste,
     foundations,
+    themeSizes,
     status: "em_andamento"
   };
 
@@ -135,7 +137,7 @@ function checkGameStatus() {
   if (!gameState) return;
 
   // 1. Verificar Vitória
-  if (checkWin(gameState.foundations)) {
+  if (checkWin(gameState.foundations, gameState.themeSizes)) {
     gameState.status = "vitoria";
     showStatusOverlay(
       "Vitória!",

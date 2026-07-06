@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildDeck, shuffleDeck, rankIndex, RANK_ORDER } from "../../src/engine/deck.js";
+import { buildDeck, shuffleDeck, rankIndex, computeThemeSizes, RANK_ORDER } from "../../src/engine/deck.js";
 
 const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
 
@@ -53,4 +53,26 @@ test("rankIndex ordena A..K de 1 a 13", () => {
   assert.equal(rankIndex("10"), 10);
   assert.equal(rankIndex("K"), 13);
   assert.throws(() => rankIndex("Z"));
+});
+
+test("computeThemeSizes: conta corretamente quando todos os temas têm o mesmo tamanho", () => {
+  const deck = buildDeck(sampleCardsData());
+  const sizes = computeThemeSizes(deck);
+  for (const theme of THEMES) {
+    assert.equal(sizes[theme], 13);
+  }
+});
+
+test("computeThemeSizes: temas de tamanhos diferentes (ex.: um 5º tema 'autores')", () => {
+  const mixedDeck = buildDeck([
+    ...sampleCardsData().filter((c) => c.theme !== "historico-formativo"),
+    { id: "1-autores", theme: "autores", rank: "A" },
+    { id: "2-autores", theme: "autores", rank: "2" },
+  ]);
+  const sizes = computeThemeSizes(mixedDeck);
+  assert.equal(sizes["teorico-metodologico"], 13);
+  assert.equal(sizes["etico-politico"], 13);
+  assert.equal(sizes["tecnico-operativo"], 13);
+  assert.equal(sizes["autores"], 2);
+  assert.equal("historico-formativo" in sizes, false);
 });
