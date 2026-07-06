@@ -12,32 +12,40 @@
 
 ### User Story 1 - Jogar uma partida completa de paciência (Priority: P1)
 
-Uma pessoa abre o jogo no navegador e joga uma partida de paciência (estilo Klondike:
-tableau, monte, descarte, quatro fundações por naipe) usando o baralho temático de
-52 cartas, sem precisar instalar nada ou criar conta.
+> **Revisão (2026)**: a mecânica desta user story deixou de ser Klondike
+> clássico (naipe + sequência A→K). Ver `research.md`, Decisão 6, e
+> `data-model.md`. Resumo da regra atual: cada uma das 4 fundações
+> corresponde a um **tema** (eixo do Serviço Social); uma carta entra na
+> fundação do seu tema a qualquer momento, em qualquer ordem; no tableau uma
+> carta só empilha sobre outra do **mesmo tema** (coluna vazia aceita
+> qualquer carta).
+
+Uma pessoa abre o jogo no navegador e joga uma partida de paciência (layout
+Klondike: tableau, monte, descarte, quatro fundações — uma por tema) usando o
+baralho temático de 52 cartas, sem precisar instalar nada ou criar conta.
 
 **Why this priority**: é o motor do produto — sem uma partida de paciência
 jogável e satisfatória, não há veículo para o conteúdo educativo. Precisa
 funcionar de forma independente de qualquer conteúdo educativo estar "pronto".
 
 **Independent Test**: abrir o jogo, embaralhar, mover cartas entre tableau e
-fundações seguindo as regras clássicas, e conseguir vencer (todas as 52 cartas
-nas 4 fundações, em ordem A→K por naipe) ou perder (sem jogadas válidas
-restantes). Testável sem nenhum texto educativo implementado.
+fundações seguindo as regras por tema, e conseguir vencer (todas as 52 cartas
+nas 4 fundações) ou perder (sem jogadas válidas restantes). Testável sem
+nenhum texto educativo implementado.
 
 **Acceptance Scenarios**:
 
 1. **Given** o jogo recém-carregado, **When** a pessoa clica em "Nova partida",
    **Then** o baralho de 52 cartas é embaralhado e distribuído no tableau, monte
    e fundações vazias, seguindo o layout clássico do Klondike.
-2. **Given** uma partida em andamento, **When** a pessoa move uma carta para uma
-   fundação onde ela é a próxima carta válida da sequência (A, 2, 3… do mesmo
-   naipe), **Then** a carta é aceita na fundação e removida de sua posição
-   anterior.
-3. **Given** uma partida em andamento, **When** a pessoa tenta uma jogada
-   inválida (ex.: carta fora de sequência ou naipe errado), **Then** a jogada é
-   rejeitada e a carta retorna à posição original.
-4. **Given** as 4 fundações completas (A→K em cada naipe), **When** a última
+2. **Given** uma partida em andamento, **When** a pessoa move uma carta
+   revelada para a fundação do mesmo tema dela, **Then** a carta é aceita na
+   fundação (em qualquer ordem) e removida de sua posição anterior.
+3. **Given** uma partida em andamento, **When** a pessoa tenta mover uma carta
+   para a fundação de um tema diferente do dela, ou empilhá-la no tableau
+   sobre uma carta de tema diferente, **Then** a jogada é rejeitada e a carta
+   retorna à posição original.
+4. **Given** as 4 fundações completas (13 cartas do tema correspondente cada), **When** a última
    carta é posicionada, **Then** o jogo exibe uma tela de vitória.
 
 ---
@@ -72,7 +80,7 @@ novo (em partida futura) não deve reexibir o pop-up.
 
 ### User Story 3 - Desbloquear os princípios do Código de Ética ao completar fundações (Priority: P3)
 
-Cada fundação (naipe) completada desbloqueia, em ordem, o próximo princípio
+Cada fundação (tema) completada desbloqueia, em ordem, o próximo princípio
 ainda não visto entre os 11 princípios fundamentais do Código de Ética de 1993.
 
 **Why this priority**: é a camada de progressão/recompensa de longo prazo que dá
@@ -86,12 +94,12 @@ modo revisão, mesmo que a partida termine antes da vitória final.
 **Acceptance Scenarios**:
 
 1. **Given** nenhum princípio desbloqueado ainda, **When** a primeira fundação de
-   qualquer naipe é completada em qualquer partida, **Then** o princípio nº 1 é
+   qualquer tema é completada em qualquer partida, **Then** o princípio nº 1 é
    marcado como desbloqueado permanentemente.
 2. **Given** N fundações já completadas ao longo do histórico de partidas,
    **When** uma nova fundação é completada, **Then** o próximo princípio ainda
    não desbloqueado (N+1) é liberado — a ordem de desbloqueio é sempre 1→11,
-   independente de qual naipe foi completado.
+   independente de qual tema foi completado.
 3. **Given** os 11 princípios já desbloqueados, **When** uma fundação adicional é
    completada, **Then** nenhum novo desbloqueio ocorre (não há efeito colateral
    nem erro).
@@ -101,7 +109,7 @@ modo revisão, mesmo que a partida termine antes da vitória final.
 ### User Story 4 - Explorar o conteúdo no modo revisão (Priority: P4)
 
 A pessoa acessa um modo revisão fora da partida, navega as cartas organizadas por
-naipe como flashcards, vendo o conteúdo das cartas já reveladas e as ainda não
+tema como flashcards, vendo o conteúdo das cartas já reveladas e as ainda não
 reveladas como "viradas" (ocultas), como incentivo a jogar mais partidas.
 
 **Why this priority**: reforça o valor de estudo do jogo e a mecânica de
@@ -110,12 +118,12 @@ colecionismo, mas é dispensável para uma primeira demonstração do core loop.
 **Independent Test**: com um subconjunto de cartas já revelado (via localStorage
 de teste), abrir o modo revisão e confirmar que cartas reveladas mostram seu
 conteúdo completo e cartas não reveladas aparecem viradas/bloqueadas, agrupadas
-corretamente por naipe.
+corretamente por tema.
 
 **Acceptance Scenarios**:
 
-1. **Given** o modo revisão aberto, **When** a pessoa seleciona um naipe,
-   **Then** vê as 13 cartas daquele naipe em ordem (A a K).
+1. **Given** o modo revisão aberto, **When** a pessoa seleciona um tema,
+   **Then** vê as 13 cartas daquele tema em ordem (A a K).
 2. **Given** uma carta já revelada em alguma partida, **When** exibida no modo
    revisão, **Then** mostra título e micro-texto completos.
 3. **Given** uma carta nunca revelada, **When** exibida no modo revisão,
@@ -162,12 +170,14 @@ princípios desbloqueados continuam visíveis no modo revisão.
 
 ### Functional Requirements
 
-- **FR-001**: O sistema DEVE implementar as regras clássicas de paciência
-  Klondike (tableau de 7 colunas, monte/estoque, descarte, 4 fundações por
-  naipe) com o baralho temático de 52 cartas.
-- **FR-002**: O sistema DEVE validar cada movimento de carta contra as regras de
-  Klondike antes de aceitá-lo (sequência alternada de cor no tableau, sequência
-  ascendente do mesmo naipe nas fundações).
+- **FR-001**: O sistema DEVE implementar o layout Klondike (tableau de 7
+  colunas, monte/estoque, descarte, 4 fundações — uma por tema) com o
+  baralho temático de 52 cartas.
+- **FR-002**: O sistema DEVE validar cada movimento de carta contra as regras
+  por tema antes de aceitá-lo: na fundação, aceita qualquer carta do mesmo
+  tema em qualquer ordem; no tableau, uma carta só empilha sobre outra do
+  mesmo tema (coluna vazia aceita qualquer carta). Não há mais alternância de
+  cor nem sequência de rank em nenhuma das duas (ver `research.md`, Decisão 6).
 - **FR-003**: O sistema DEVE detectar e sinalizar vitória (52 cartas nas
   fundações) e estado sem jogadas possíveis.
 - **FR-004**: O sistema DEVE exibir um pop-up com título e micro-texto da carta
@@ -177,8 +187,8 @@ princípios desbloqueados continuam visíveis no modo revisão.
   no modo revisão.
 - **FR-006**: O sistema DEVE desbloquear, em ordem fixa de 1 a 11, o próximo
   princípio do Código de Ética ainda não desbloqueado a cada fundação completada
-  (independente de qual naipe).
-- **FR-007**: O sistema DEVE oferecer um modo revisão navegável por naipe,
+  (independente de qual tema).
+- **FR-007**: O sistema DEVE oferecer um modo revisão navegável por tema,
   mostrando cartas reveladas com conteúdo completo e cartas não reveladas como
   bloqueadas/viradas.
 - **FR-008**: O sistema DEVE persistir localmente (armazenamento do navegador)
@@ -186,7 +196,7 @@ princípios desbloqueados continuam visíveis no modo revisão.
   recarregar a página.
 - **FR-009**: O sistema NÃO DEVE exigir criação de conta, login ou conexão de
   rede para jogar uma partida e usar o modo revisão.
-- **FR-010**: O sistema DEVE carregar os dados das cartas (textos, naipes,
+- **FR-010**: O sistema DEVE carregar os dados das cartas (textos, temas,
   princípios) de um arquivo de dados separado do código da engine, conforme
   Princípio III da constituição do projeto.
 - **FR-011**: Em builds de produção, o sistema DEVE substituir o micro-texto de
@@ -209,14 +219,18 @@ princípios desbloqueados continuam visíveis no modo revisão.
 
 ### Key Entities
 
-- **Card (Carta)**: uma das 52 cartas do baralho temático. Atributos: naipe
-  (espadas/copas/ouros/paus), valor (A–K), título, micro-texto, status de
-  revisão de conteúdo (rascunho/revisado/publicado), flag "já revelada".
-- **Suit (Naipe)**: agrupamento de 13 cartas correspondente a um eixo temático
+- **Card (Carta)**: uma das 52 cartas do baralho temático. Atributos: tema
+  (teórico-metodológico/ético-político/técnico-operativo/histórico-formativo),
+  valor (A–K, sem efeito nas regras de movimento, só diferencia as 13 cartas
+  do tema), título, micro-texto, foto do autor/a quando aplicável (J/Q/K),
+  status de revisão de conteúdo (rascunho/revisado/publicado), flag "já
+  revelada".
+- **Theme (Tema)**: agrupamento de 13 cartas correspondente a um eixo temático
   (teórico-metodológico, ético-político, técnico-operativo,
   histórico-formativo); tem uma Foundation associada.
-- **Foundation (Fundação)**: pilha de destino de um naipe no jogo de paciência;
-  estado: quantidade de cartas acumuladas (0–13) e se está completa.
+- **Foundation (Fundação)**: pilha de destino de um tema no jogo de paciência,
+  que aceita qualquer carta do tema em qualquer ordem; estado: quantidade de
+  cartas acumuladas (0–13) e se está completa.
 - **Principle (Princípio)**: um dos 11 princípios fundamentais do Código de
   Ética de 1993; tem ordem fixa de desbloqueio e texto resumido + texto
   integral (modo revisão).

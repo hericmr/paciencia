@@ -2,16 +2,26 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { checkWin, hasNoValidMoves } from "../../src/engine/win.js";
 
-const card = (rank, suit, faceUp = true) => ({ id: `${rank}${suit[0]}`, suit, rank, faceUp });
+const card = (rank, theme, faceUp = true) => ({ id: `${rank}-${theme}`, theme, rank, faceUp });
 
 function emptyFoundations() {
-  return { spades: [], hearts: [], diamonds: [], clubs: [] };
+  return {
+    "teorico-metodologico": [],
+    "etico-politico": [],
+    "tecnico-operativo": [],
+    "historico-formativo": [],
+  };
 }
 
 function fullFoundations() {
   const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-  const build = (suit) => ranks.map((r) => card(r, suit));
-  return { spades: build("spades"), hearts: build("hearts"), diamonds: build("diamonds"), clubs: build("clubs") };
+  const build = (theme) => ranks.map((r) => card(r, theme));
+  return {
+    "teorico-metodologico": build("teorico-metodologico"),
+    "etico-politico": build("etico-politico"),
+    "tecnico-operativo": build("tecnico-operativo"),
+    "historico-formativo": build("historico-formativo"),
+  };
 }
 
 test("checkWin: false enquanto alguma fundação está incompleta", () => {
@@ -24,8 +34,8 @@ test("checkWin: true quando as 4 fundações têm 13 cartas", () => {
 
 test("hasNoValidMoves: false se houver cartas no monte", () => {
   const state = {
-    tableau: [[card("K", "spades")]],
-    stock: [card("2", "hearts")],
+    tableau: [[card("K", "teorico-metodologico")]],
+    stock: [card("2", "etico-politico")],
     waste: [],
     foundations: emptyFoundations(),
   };
@@ -34,27 +44,17 @@ test("hasNoValidMoves: false se houver cartas no monte", () => {
 
 test("hasNoValidMoves: false se houver cartas no descarte", () => {
   const state = {
-    tableau: [[card("K", "spades")]],
+    tableau: [[card("K", "teorico-metodologico")]],
     stock: [],
-    waste: [card("2", "hearts")],
+    waste: [card("2", "etico-politico")],
     foundations: emptyFoundations(),
   };
   assert.equal(hasNoValidMoves(state), false);
 });
 
-test("hasNoValidMoves: false se uma carta do tableau puder ir para a fundação", () => {
+test("hasNoValidMoves: false se houver qualquer carta face-up no tableau (sempre pode ir à própria fundação)", () => {
   const state = {
-    tableau: [[card("A", "spades")], [card("K", "clubs")]],
-    stock: [],
-    waste: [],
-    foundations: emptyFoundations(),
-  };
-  assert.equal(hasNoValidMoves(state), false);
-});
-
-test("hasNoValidMoves: false se uma carta do tableau puder ir para outra coluna", () => {
-  const state = {
-    tableau: [[card("5", "hearts")], [card("6", "spades")]],
+    tableau: [[card("A", "teorico-metodologico")], [card("K", "historico-formativo")]],
     stock: [],
     waste: [],
     foundations: emptyFoundations(),
@@ -62,9 +62,9 @@ test("hasNoValidMoves: false se uma carta do tableau puder ir para outra coluna"
   assert.equal(hasNoValidMoves(state), false);
 });
 
-test("hasNoValidMoves: true quando não há monte, descarte, nem jogada de fundação/tableau", () => {
+test("hasNoValidMoves: true quando não há monte, descarte, nem nenhuma carta face-up jogável", () => {
   const state = {
-    tableau: [[card("K", "spades")], [card("K", "clubs")]],
+    tableau: [[card("K", "teorico-metodologico", false)], [card("K", "historico-formativo", false)]],
     stock: [],
     waste: [],
     foundations: emptyFoundations(),

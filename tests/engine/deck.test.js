@@ -2,23 +2,23 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { buildDeck, shuffleDeck, rankIndex, RANK_ORDER } from "../../src/engine/deck.js";
 
-const SUITS = ["spades", "hearts", "diamonds", "clubs"];
+const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
 
 function sampleCardsData() {
   const cards = [];
-  for (const suit of SUITS) {
+  for (const theme of THEMES) {
     for (const rank of RANK_ORDER) {
-      cards.push({ id: `${rank}${suit[0].toUpperCase()}`, suit, rank, title: "x", body: "x", status: "rascunho" });
+      cards.push({ id: `${rank}-${theme}`, theme, rank, title: "x", body: "x", status: "rascunho" });
     }
   }
   return cards;
 }
 
-test("buildDeck produz 52 cartas, 13 por naipe, sem duplicatas", () => {
+test("buildDeck produz 52 cartas, 13 por tema, sem duplicatas", () => {
   const deck = buildDeck(sampleCardsData());
   assert.equal(deck.length, 52);
-  for (const suit of SUITS) {
-    assert.equal(deck.filter((c) => c.suit === suit).length, 13);
+  for (const theme of THEMES) {
+    assert.equal(deck.filter((c) => c.theme === theme).length, 13);
   }
   const ids = new Set(deck.map((c) => c.id));
   assert.equal(ids.size, 52);

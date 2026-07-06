@@ -1,14 +1,15 @@
 // @ts-check
 
-/** @typedef {{ id: string, suit: string, rank: string, title: string, body: string, status: string }} CardData */
+/** @typedef {{ id: string, theme: string, rank: string, title: string, body: string, status: string, photoUrl: string|null, photoCredit: string|null }} CardData */
 /** @typedef {{ order: number, summary: string, fullText: string }} PrincipleData */
 
-const SUITS = ["spades", "hearts", "diamonds", "clubs"];
+const THEMES = ["teorico-metodologico", "etico-politico", "tecnico-operativo", "historico-formativo"];
 const RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const AUTHOR_RANKS = new Set(["J", "Q", "K"]);
 
 /**
  * @param {string} deckUrl
- * @returns {Promise<{ deckId: string, deckName: string, suits: object, cards: CardData[] }>}
+ * @returns {Promise<{ deckId: string, deckName: string, themes: object, cards: CardData[] }>}
  */
 export async function loadDeck(deckUrl) {
   const response = await fetch(deckUrl);
@@ -41,15 +42,24 @@ export function validateDeck(data) {
   if (!Array.isArray(data.cards) || data.cards.length !== 52) {
     throw new Error(`Deck inválido: esperado 52 cartas, recebido ${data.cards?.length ?? 0}`);
   }
-  for (const suit of SUITS) {
-    const cardsInSuit = data.cards.filter((c) => c.suit === suit);
-    if (cardsInSuit.length !== 13) {
-      throw new Error(`Deck inválido: naipe "${suit}" tem ${cardsInSuit.length} cartas, esperado 13`);
+  for (const theme of THEMES) {
+    const cardsInTheme = data.cards.filter((c) => c.theme === theme);
+    if (cardsInTheme.length !== 13) {
+      throw new Error(`Deck inválido: tema "${theme}" tem ${cardsInTheme.length} cartas, esperado 13`);
     }
-    const ranksInSuit = new Set(cardsInSuit.map((c) => c.rank));
+    const ranksInTheme = new Set(cardsInTheme.map((c) => c.rank));
     for (const rank of RANKS) {
-      if (!ranksInSuit.has(rank)) {
-        throw new Error(`Deck inválido: naipe "${suit}" está sem a carta de valor "${rank}"`);
+      if (!ranksInTheme.has(rank)) {
+        throw new Error(`Deck inválido: tema "${theme}" está sem a carta de valor "${rank}"`);
+      }
+    }
+    for (const card of cardsInTheme) {
+      const isAuthorCard = AUTHOR_RANKS.has(card.rank);
+      if (!isAuthorCard && (card.photoUrl || card.photoCredit)) {
+        throw new Error(`Deck inválido: carta "${card.id}" não é de autor/a (J/Q/K) mas tem foto`);
+      }
+      if (card.photoUrl && !card.photoCredit) {
+        throw new Error(`Deck inválido: carta "${card.id}" tem photoUrl sem photoCredit (atribuição obrigatória)`);
       }
     }
   }
@@ -70,4 +80,4 @@ export function validatePrinciples(principles) {
   }
 }
 
-export { SUITS, RANKS };
+export { THEMES, RANKS, AUTHOR_RANKS };

@@ -1,57 +1,44 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { canMoveToFoundation, canMoveToTableau, isValidSequence, isRed } from "../../src/engine/rules.js";
+import { canMoveToFoundation, canMoveToTableau, isSameThemeGroup } from "../../src/engine/rules.js";
 
-const c = (rank, suit) => ({ id: `${rank}${suit[0]}`, suit, rank });
+const c = (rank, theme) => ({ id: `${rank}-${theme}`, theme, rank });
 
-test("isRed identifica naipes vermelhos e pretos", () => {
-  assert.equal(isRed("hearts"), true);
-  assert.equal(isRed("diamonds"), true);
-  assert.equal(isRed("spades"), false);
-  assert.equal(isRed("clubs"), false);
+test("canMoveToFoundation: carta do mesmo tema da fundação é aceita, em qualquer rank", () => {
+  assert.equal(canMoveToFoundation(c("A", "teorico-metodologico"), "teorico-metodologico"), true);
+  assert.equal(canMoveToFoundation(c("K", "teorico-metodologico"), "teorico-metodologico"), true);
+  assert.equal(canMoveToFoundation(c("7", "teorico-metodologico"), "teorico-metodologico"), true);
 });
 
-test("canMoveToFoundation: Ás entra em fundação vazia", () => {
-  assert.equal(canMoveToFoundation(c("A", "spades"), []), true);
+test("canMoveToFoundation: carta de tema diferente é rejeitada", () => {
+  assert.equal(canMoveToFoundation(c("A", "etico-politico"), "teorico-metodologico"), false);
 });
 
-test("canMoveToFoundation: carta fora de sequência é rejeitada", () => {
-  assert.equal(canMoveToFoundation(c("2", "spades"), []), false);
+test("canMoveToTableau: qualquer carta entra em coluna vazia", () => {
+  assert.equal(canMoveToTableau(c("K", "teorico-metodologico"), null), true);
+  assert.equal(canMoveToTableau(c("2", "etico-politico"), null), true);
 });
 
-test("canMoveToFoundation: próxima carta da sequência do mesmo naipe é aceita", () => {
-  assert.equal(canMoveToFoundation(c("2", "spades"), [c("A", "spades")]), true);
+test("canMoveToTableau: mesmo tema é aceito, independente do rank", () => {
+  assert.equal(canMoveToTableau(c("5", "tecnico-operativo"), c("9", "tecnico-operativo")), true);
 });
 
-test("canMoveToFoundation: naipe errado é rejeitado", () => {
-  assert.equal(canMoveToFoundation(c("2", "hearts"), [c("A", "spades")]), false);
+test("canMoveToTableau: tema diferente é rejeitado", () => {
+  assert.equal(canMoveToTableau(c("5", "tecnico-operativo"), c("6", "historico-formativo")), false);
 });
 
-test("canMoveToTableau: apenas Rei entra em coluna vazia", () => {
-  assert.equal(canMoveToTableau(c("K", "spades"), null), true);
-  assert.equal(canMoveToTableau(c("Q", "spades"), null), false);
+test("isSameThemeGroup: sequência de um único tema é válida", () => {
+  assert.equal(
+    isSameThemeGroup([c("8", "teorico-metodologico"), c("3", "teorico-metodologico"), c("K", "teorico-metodologico")]),
+    true
+  );
 });
 
-test("canMoveToTableau: cor alternada e rank decrescente é aceito", () => {
-  assert.equal(canMoveToTableau(c("5", "hearts"), c("6", "spades")), true);
+test("isSameThemeGroup: temas mistos invalidam o grupo", () => {
+  assert.equal(isSameThemeGroup([c("8", "teorico-metodologico"), c("3", "etico-politico")]), false);
 });
 
-test("canMoveToTableau: mesma cor é rejeitado", () => {
-  assert.equal(canMoveToTableau(c("5", "spades"), c("6", "clubs")), false);
-});
-
-test("canMoveToTableau: rank não sequencial é rejeitado", () => {
-  assert.equal(canMoveToTableau(c("5", "hearts"), c("8", "spades")), false);
-});
-
-test("isValidSequence: sequência alternada e descendente é válida", () => {
-  assert.equal(isValidSequence([c("8", "spades"), c("7", "hearts"), c("6", "clubs")]), true);
-});
-
-test("isValidSequence: cores repetidas invalidam a sequência", () => {
-  assert.equal(isValidSequence([c("8", "spades"), c("7", "clubs")]), false);
-});
-
-test("isValidSequence: sequência de uma carta é sempre válida", () => {
-  assert.equal(isValidSequence([c("8", "spades")]), true);
+test("isSameThemeGroup: grupo vazio ou de uma carta é sempre válido", () => {
+  assert.equal(isSameThemeGroup([]), true);
+  assert.equal(isSameThemeGroup([c("8", "teorico-metodologico")]), true);
 });

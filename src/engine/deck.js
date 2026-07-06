@@ -1,19 +1,19 @@
 // @ts-check
 // Lógica pura de baralho: não depende de DOM, fetch, nem de título/texto das cartas
-// (apenas id/suit/rank), conforme contracts/ui-contract.md.
+// (apenas id/theme/rank), conforme contracts/ui-contract.md.
 
-/** @typedef {{ id: string, suit: "spades"|"hearts"|"diamonds"|"clubs", rank: string }} EngineCard */
+/** @typedef {{ id: string, theme: "teorico-metodologico"|"etico-politico"|"tecnico-operativo"|"historico-formativo", rank: string }} EngineCard */
 
 /**
  * Constrói o baralho de 52 cartas a partir dos dados de conteúdo, mantendo
  * apenas os campos estruturais que a engine precisa.
- * @param {{ suit: string, rank: string, id: string }[]} cardsData
+ * @param {{ theme: string, rank: string, id: string }[]} cardsData
  * @returns {EngineCard[]}
  */
 export function buildDeck(cardsData) {
-  return cardsData.map(({ id, suit, rank }) => ({
+  return cardsData.map(({ id, theme, rank }) => ({
     id,
-    suit: /** @type {EngineCard["suit"]} */ (suit),
+    theme: /** @type {EngineCard["theme"]} */ (theme),
     rank,
   }));
 }

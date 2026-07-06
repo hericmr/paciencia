@@ -102,19 +102,16 @@ derrota, sem nenhum texto educativo implementado (ver spec.md, US1).
       vitória/travamento; depende de T012) — heurística documentada no
       próprio arquivo: só considera "sem jogadas" quando monte E descarte
       estão vazios (ver comentário em win.js)
-- [ ] T014 [US1] Implementar `src/ui/board.js`: renderização inicial do
-      tableau/monte/descarte/fundações e distribuição das cartas — **PRÓXIMO
-      PASSO, ainda não iniciado**
-- [ ] T015 [US1] Implementar interação de mover carta em `src/ui/board.js`
+- [x] T014 [US1] Implementar `src/ui/board.js`: renderização inicial do
+      tableau/monte/descarte/fundações e distribuição das cartas
+- [x] T015 [US1] Implementar interação de mover carta em `src/ui/board.js`
       (mouse drag-and-drop; toque é tratado em T032/FR-012) chamando
       `rules.js` para validar cada jogada
-- [ ] T016 [US1] Implementar `src/styles/main.css`: layout responsivo básico
-      do tableau (FR-013), sem quebra a partir de ~360px de largura — arquivo
-      ainda não existe (referenciado por `index.html`, mas 404 até ser criado)
-- [ ] T017 [US1] Implementar `src/main.js`: botão "Nova partida", liga
+- [x] T016 [US1] Implementar `src/styles/main.css`: layout responsivo básico
+      do tableau (FR-013), sem quebra a partir de ~360px de largura
+- [x] T017 [US1] Implementar `src/main.js`: botão "Nova partida", liga
       `deck.js` + `rules.js` + `win.js` + `board.js`, exibe tela de
-      vitória/derrota (FR-003) — arquivo ainda não existe (referenciado por
-      `index.html`, mas 404 até ser criado)
+      vitória/derrota (FR-003)
 
 **Checkpoint**: US1 completa e jogável de forma independente.
 
@@ -129,19 +126,19 @@ mostra o texto correto; revelar de novo em partida futura não repete o pop-up.
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T018 [P] [US2] `tests/progress/store.test.js`: `isFirstReveal(cardId)`
+- [x] T018 [P] [US2] `tests/progress/store.test.js`: `revealCard(cardId)`
       retorna `true` uma única vez por carta e `false` depois; funciona com
       fallback em memória quando `localStorage` está indisponível
 
 ### Implementation for User Story 2
 
-- [ ] T019 [US2] Estender `src/progress/store.js` com
+- [x] T019 [US2] Estender `src/progress/store.js` com
       `markRevealed(cardId)` / `isFirstReveal(cardId)` (depende de T008)
-- [ ] T020 [US2] Implementar `src/ui/reveal-popup.js`: pop-up acessível
+- [x] T020 [US2] Implementar `src/ui/reveal-popup.js`: pop-up acessível
       (foco automático ao abrir, `Esc` fecha, devolve foco ao fechar,
       `aria-label`), aplicando o placeholder de FR-011 quando
       `status !== "publicado"` em build de produção
-- [ ] T021 [US2] Ligar o evento de virar carta em `src/ui/board.js` a
+- [x] T021 [US2] Ligar o evento de virar carta em `src/ui/board.js` a
       `progress/store.isFirstReveal` + `reveal-popup.js` (depende de T014,
       T019, T020)
 
@@ -159,17 +156,17 @@ fixa 1→11), independente do naipe.
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T022 [P] [US3] `tests/engine/principles.test.js`: função pura
+- [x] T022 [P] [US3] `tests/engine/principles.test.js`: função pura
       `computeUnlockedPrinciples(foundationsCompletedCount)` retorna sempre
       um prefixo contíguo `[1..min(11, N)]`, sem duplicar nem pular
 
 ### Implementation for User Story 3
 
-- [ ] T023 [US3] Implementar `src/engine/principles.js` (função pura acima)
-- [ ] T024 [US3] Estender `src/progress/store.js` com
+- [x] T023 [US3] Implementar `src/engine/principles.js` (função pura acima)
+- [x] T024 [US3] Estender `src/progress/store.js` com
       `foundationsCompletedCount` e recomputar princípios desbloqueados a
       cada incremento (depende de T008, T023)
-- [ ] T025 [US3] Ligar evento de fundação completa em `src/ui/board.js` a
+- [x] T025 [US3] Ligar evento de fundação completa em `src/ui/board.js` a
       `progress/store` + notificação visual simples de novo princípio
       desbloqueado (depende de T013, T024)
 
@@ -187,10 +184,10 @@ abrir o modo revisão e conferir agrupamento e bloqueio corretos (ver spec.md, U
 
 ### Implementation for User Story 4
 
-- [ ] T026 [US4] Implementar `src/ui/review-mode.js`: navegação por naipe,
+- [x] T026 [US4] Implementar `src/ui/review-mode.js`: navegação por naipe,
       renderizando cada carta como revelada (conteúdo completo) ou virada
       (bloqueada), consultando `progress/store` (depende de T006, T019)
-- [ ] T027 [US4] Adicionar ponto de entrada em `src/main.js` para abrir o
+- [x] T027 [US4] Adicionar ponto de entrada em `src/main.js` para abrir o
       modo revisão a partir da tela principal (depende de T017, T026)
 
 **Checkpoint**: US1–US4 funcionam juntas de forma independente.
@@ -203,17 +200,17 @@ abrir o modo revisão e conferir agrupamento e bloqueio corretos (ver spec.md, U
 a página.
 
 **Independent Test**: revelar cartas e completar uma fundação, recarregar a
-página, conferir que o progresso persiste (ver spec.md, US5).
+página, conterir que o progresso persiste (ver spec.md, US5).
 
 ### Tests for User Story 5 ⚠️
 
-- [ ] T028 [P] [US5] `tests/progress/store.test.js`: uma nova instância do
+- [x] T028 [P] [US5] `tests/progress/store.test.js`: uma nova instância do
       store, criada após "recarregar" (reconstrução do módulo), recupera o
       mesmo estado gravado anteriormente em `localStorage`
 
 ### Implementation for User Story 5
 
-- [ ] T029 [US5] Revisar `src/progress/store.js` para garantir
+- [x] T029 [US5] Revisar `src/progress/store.js` para garantir
       serialização/hidratação completa sob a chave versionada
       `paciencia_ss.progress.v1` na inicialização (depende de T008, T019, T024)
 
@@ -223,12 +220,12 @@ página, conferir que o progresso persiste (ver spec.md, US5).
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T030 [P] Implementar toque simples (tap-to-move) como alternativa ao
+- [x] T030 [P] Implementar toque simples (tap-to-move) como alternativa ao
       drag-and-drop em `src/ui/board.js` (FR-012)
-- [ ] T031 [P] Passe de acessibilidade em todo `src/ui/`: navegação por
+- [x] T031 [P] Passe de acessibilidade em todo `src/ui/`: navegação por
       teclado, `aria-label` em cartas, contraste AA, nenhuma informação só
       por cor (conforme `contracts/ui-contract.md`)
-- [ ] T032 [P] Passe de responsividade/mobile: validar em ~360px de largura
+- [x] T032 [P] Passe de responsividade/mobile: validar em ~360px de largura
       sem quebra de layout, áreas de toque ≥44×44px (FR-013)
 - [ ] T033 Rodar `quickstart.md` do início ao fim: servir localmente,
       `node --test tests/`, partida manual completa

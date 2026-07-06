@@ -86,3 +86,41 @@ novidade do produto é o conteúdo, não a variante de regras.
 **Alternatives considered**: Spider (2+ baralhos, mais complexo), FreeCell
 (sem monte, mecânica diferente). Nenhum se alinha ao termo "fundações" já
 usado na documentação de conteúdo; rejeitados.
+
+## Decisão 6: Remover naipes e ordem A→K; regras por tema/conteúdo
+
+**Decision**: o layout permanece Klondike (7 colunas de tableau, monte,
+descarte, 4 fundações), mas a regra de compatibilidade deixa de ser
+naipe+sequência de rank e passa a ser **igualdade de tema**: (1) uma carta
+entra na fundação do seu tema a qualquer momento, em qualquer ordem; (2) uma
+carta só empilha sobre outra do mesmo tema no tableau (coluna vazia aceita
+qualquer carta, não só Reis). O campo de dados antes chamado `suit` (com
+valores `spades`/`hearts`/`diamonds`/`clubs`) foi renomeado para `theme`, com
+valores que já são os 4 eixos (`teorico-metodologico`, `etico-politico`,
+`tecnico-operativo`, `historico-formativo`). Símbolos de naipe (♠♥♦♣) e a
+coloração vermelho/preto saem da UI, substituídos por uma cor própria por
+tema.
+
+**Rationale**: feedback direto do mantenedor — a mecânica de naipe de baralho
+era um verniz que não tinha relação com o conteúdo educativo (por que um
+conceito teórico-metodológico "é" espadas?). Agrupar por tema faz a mecânica
+de jogo reforçar o aprendizado (a pessoa literalmente organiza os conceitos
+por eixo), em vez de ser um sistema arbitrário emprestado do baralho
+tradicional que a pessoa tem que aprender e depois ignorar.
+
+**Consequência assumida**: como qualquer carta revelada sempre pode ir
+direto para sua própria fundação, o principal obstáculo do jogo deixa de ser
+"em que ordem posso jogar" e passa a ser puramente "desenterrar as cartas
+escondidas no tableau e no monte" — o jogo fica estruturalmente mais fácil de
+vencer do que um Klondike clássico. Isso é aceito como resultado do desenho:
+o valor do produto é a experiência de revelar/organizar conteúdo, não o
+desafio de solitaire em si. `hasNoValidMoves` (`win.js`) permanece como
+salvaguarda, mas na prática só é atingido quando não sobra nenhuma carta
+face-up jogável e monte+descarte estão vazios.
+
+**Alternatives considered**: manter naipe como identificador puramente
+técnico mas escondido da UI (rejeitado — o nome do campo continuaria
+sugerindo naipe de baralho para quem lê o código, uma abstração enganosa);
+reintroduzir alguma ordem alternativa dentro do tema, ex. por sub-eixo ou
+dificuldade (rejeitado por ora — não foi pedido, e adicionaria complexidade
+sem necessidade comprovada, Princípio IV).
