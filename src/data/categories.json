@@ -1,0 +1,116 @@
+{
+  "categories": [
+    {
+      "id": "CAT-01",
+      "nome": "Princípios do Código de Ética (1993)",
+      "eixo": "etica",
+      "palavras": ["Liberdade", "Democracia", "Equidade", "Justiça social", "Pluralismo", "Cidadania", "Direitos humanos", "Nova ordem societária", "Eliminação de preconceitos", "Qualidade dos serviços"],
+      "microtexto": "Os 11 princípios fundamentais (Res. CFESS 273/93) têm a liberdade como valor ético central e apontam para uma sociedade sem dominação-exploração de classe, etnia e gênero.",
+      "confundeCom": ["CAT-09", "CAT-10"]
+    },
+    {
+      "id": "CAT-02",
+      "nome": "Direitos do/a assistente social (Código, art. 2º)",
+      "eixo": "etica",
+      "palavras": ["Livre exercício", "Autonomia técnica", "Inviolabilidade do local de trabalho", "Sigilo profissional", "Pronunciamento público", "Aprimoramento profissional", "Desagravo público"],
+      "microtexto": "O Código garante condições para o exercício: autonomia, sigilo, inviolabilidade dos arquivos e direito de se pronunciar em matéria de sua especialidade.",
+      "confundeCom": ["CAT-03"]
+    },
+    {
+      "id": "CAT-03",
+      "nome": "Vedações ao/à assistente social",
+      "eixo": "etica",
+      "palavras": ["Práticas discriminatórias", "Abuso de autoridade", "Depor como testemunha (situação sigilosa)", "Emprestar o nome a serviço irregular", "Assédio", "Intermediar honorários indevidos", "Acatar ordem que fira a autonomia"],
+      "microtexto": "O Código não só garante direitos: veda condutas que violem usuários/as ou a profissão. Discriminar, abusar da autoridade e quebrar sigilo em depoimento estão entre as proibições.",
+      "confundeCom": ["CAT-02"]
+    },
+    {
+      "id": "CAT-04",
+      "nome": "Atribuições privativas (Lei 8.662/93, art. 5º)",
+      "eixo": "tecnica",
+      "palavras": ["Magistério em Serviço Social", "Direção de unidade de ensino de SS", "Fiscalização do exercício profissional", "Parecer sobre matéria de Serviço Social", "Supervisão direta de estágio em SS", "Coordenação de curso de SS", "Perícia sobre matéria de SS"],
+      "microtexto": "Privativas = SÓ assistente social pode (art. 5º). O truque para memorizar: quase todas contêm 'de Serviço Social' no enunciado — dizem respeito à própria profissão.",
+      "confundeCom": ["CAT-05"]
+    },
+    {
+      "id": "CAT-05",
+      "nome": "Competências (Lei 8.662/93, art. 4º)",
+      "eixo": "tecnica",
+      "palavras": ["Elaborar planos e programas", "Orientação social a indivíduos e grupos", "Estudos socioeconômicos", "Encaminhar providências", "Assessoria a movimentos sociais", "Gestão de políticas sociais", "Pesquisa sobre a realidade social"],
+      "microtexto": "Competências = o assistente social faz, mas outras profissões também podem (art. 4º). Confundir art. 4º com art. 5º é a pegadinha mais clássica das bancas.",
+      "confundeCom": ["CAT-04"]
+    },
+    {
+      "id": "CAT-06",
+      "nome": "Instrumentos e técnicas",
+      "eixo": "tecnica",
+      "palavras": ["Entrevista", "Visita domiciliar", "Estudo social", "Relatório social", "Reunião", "Observação", "Escuta qualificada", "Diário de campo"],
+      "microtexto": "Os instrumentos não são neutros: ganham direção pela instrumentalidade (Yolanda Guerra) — articulação das dimensões teórica, ética e técnica.",
+      "confundeCom": ["CAT-04"]
+    },
+    {
+      "id": "CAT-07",
+      "nome": "Proteção Social Básica",
+      "eixo": "politica_social",
+      "palavras": ["CRAS", "PAIF", "SCFV", "Prevenção de riscos", "Território de vulnerabilidade", "Fortalecimento de vínculos", "Cadastro Único"],
+      "microtexto": "PSB (PNAS/2004): caráter PREVENTIVO, executada no CRAS via PAIF e SCFV, para famílias em situação de vulnerabilidade — antes da violação de direitos.",
+      "confundeCom": ["CAT-08"]
+    },
+    {
+      "id": "CAT-08",
+      "nome": "Proteção Social Especial",
+      "eixo": "politica_social",
+      "palavras": ["CREAS", "PAEFI", "Abordagem social", "Acolhimento institucional", "Medidas socioeducativas", "Família acolhedora", "Direitos violados"],
+      "microtexto": "PSE: atende situações de RISCO e direitos JÁ violados — média complexidade (CREAS/PAEFI) e alta complexidade (acolhimento). A régua é: violou o direito? É especial.",
+      "confundeCom": ["CAT-07"]
+    },
+    {
+      "id": "CAT-09",
+      "nome": "Seguridade Social (CF/88)",
+      "eixo": "politica_social",
+      "palavras": ["Saúde", "Previdência", "Assistência social", "Universalidade da cobertura", "Seletividade e distributividade", "Equidade no custeio", "Caráter democrático da gestão"],
+      "microtexto": "O tripé da CF/88 (art. 194): saúde (universal), previdência (contributiva) e assistência (a quem dela necessitar). Os objetivos do parágrafo único caem MUITO em prova.",
+      "confundeCom": ["CAT-01", "CAT-10"]
+    },
+    {
+      "id": "CAT-10",
+      "nome": "Diretrizes e princípios do SUAS",
+      "eixo": "politica_social",
+      "palavras": ["Descentralização político-administrativa", "Participação popular", "Primazia do Estado", "Matricialidade sociofamiliar", "Territorialização", "Controle social", "Comando único"],
+      "microtexto": "PNAS/2004 e NOB/SUAS: gestão descentralizada com comando único por esfera, centralidade na família e no território, e controle social pelos conselhos.",
+      "confundeCom": ["CAT-09", "CAT-01"]
+    },
+    {
+      "id": "CAT-11",
+      "nome": "Marcos históricos da profissão",
+      "eixo": "historia",
+      "palavras": ["1936", "1979", "1982", "1988", "1993", "1996", "2005"],
+      "microtexto": "1993 é o ano-chave: Código de Ética, LOAS e Lei de Regulamentação — três pilares no mesmo ano. E a Virada de 1979 é o divisor de águas político da categoria.",
+      "confundeCom": ["CAT-12"]
+    },
+    {
+      "id": "CAT-12",
+      "nome": "Renovação e suas vertentes (Netto)",
+      "eixo": "teoria",
+      "palavras": ["Modernizadora", "Araxá", "Teresópolis", "Reatualização do conservadorismo", "Fenomenologia", "Intenção de ruptura", "Método BH"],
+      "microtexto": "Netto sistematiza três vertentes da renovação: modernizadora (Araxá/Teresópolis), reatualização do conservadorismo e intenção de ruptura — que se torna hegemônica nos anos 1980.",
+      "confundeCom": ["CAT-11", "CAT-14"]
+    },
+    {
+      "id": "CAT-13",
+      "nome": "Autoras e autores da vertente crítica",
+      "eixo": "historia",
+      "palavras": ["Iamamoto", "Netto", "Behring", "Yazbek", "Guerra", "Faleiros", "Martinelli", "Barroco", "Boschetti"],
+      "microtexto": "A tradição marxista no Serviço Social: Iamamoto (trabalho e reprodução), Netto (renovação), Behring (política social), Guerra (instrumentalidade), Barroco (ética).",
+      "confundeCom": []
+    },
+    {
+      "id": "CAT-14",
+      "nome": "Categorias do método crítico",
+      "eixo": "teoria",
+      "palavras": ["Totalidade", "Mediação", "Historicidade", "Contradição", "Práxis", "Questão social", "Reprodução das relações sociais"],
+      "microtexto": "Ler a realidade como totalidade histórica e contraditória, mediando o singular e o universal: é o que distingue a intervenção crítica do atendimento pontual.",
+      "confundeCom": ["CAT-12"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "categoryIds": ["CAT-13", "CAT-06", "CAT-11", "CAT-07"],
+      "cardsPerCategory": 3,
+      "selectedWords": {
+        "CAT-13": ["Iamamoto", "Netto", "Guerra"],
+        "CAT-06": ["Entrevista", "Visita domiciliar", "Estudo social"],
+        "CAT-11": ["1936", "1979", "1993"],
+        "CAT-07": ["CRAS", "PAIF", "SCFV"]
+      },
+      "columns": 4,
+      "moveLimit": 24,
+      "hint": null
+    }
+  ]
+}

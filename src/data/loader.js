@@ -1,100 +1,95 @@
 // @ts-check
 
-/** @typedef {{ id: string, theme: string, rank: string, title: string, body: string, status: string, photoUrl: string|null, photoCredit: string|null }} CardData */
-/** @typedef {{ order: number, summary: string, fullText: string }} PrincipleData */
-
-const AUTHORS_THEME = "autores";
+/** @typedef {{ id: string, nome: string, eixo: string, palavras: string[], microtexto: string, confundeCom: string[] }} CategoryData */
+/** @typedef {{ id: number, categoryIds: string[], cardsPerCategory: number, selectedWords: Record<string, string[]>, columns: number, moveLimit: number, hint: string|null }} LevelData */
 
 /**
- * @param {string} deckUrl
- * @returns {Promise<{ deckId: string, deckName: string, themes: object, cards: CardData[] }>}
+ * @param {string} categoriesUrl
+ * @returns {Promise<CategoryData[]>}
  */
-export async function loadDeck(deckUrl) {
-  const response = await fetch(deckUrl);
+export async function loadCategories(categoriesUrl) {
+  const response = await fetch(categoriesUrl);
   if (!response.ok) {
-    throw new Error(`Falha ao carregar deck de ${deckUrl}: HTTP ${response.status}`);
+    throw new Error(`Falha ao carregar categorias de ${categoriesUrl}: HTTP ${response.status}`);
   }
   const data = await response.json();
-  validateDeck(data);
-  return data;
+  validateCategories(data.categories);
+  return data.categories;
 }
 
 /**
- * @param {string} principlesUrl
- * @returns {Promise<PrincipleData[]>}
+ * @param {string} levelsUrl
+ * @param {CategoryData[]} categories
+ * @returns {Promise<LevelData[]>}
  */
-export async function loadPrinciples(principlesUrl) {
-  const response = await fetch(principlesUrl);
+export async function loadLevels(levelsUrl, categories) {
+  const response = await fetch(levelsUrl);
   if (!response.ok) {
-    throw new Error(`Falha ao carregar princípios de ${principlesUrl}: HTTP ${response.status}`);
+    throw new Error(`Falha ao carregar níveis de ${levelsUrl}: HTTP ${response.status}`);
   }
   const data = await response.json();
-  validatePrinciples(data.principles);
-  return data.principles;
+  validateLevels(data.levels, categories);
+  return data.levels;
 }
 
 /**
- * Valida um deck sem assumir número fixo de temas nem de cartas por tema
- * (ver research.md, Decisão 7). Cada tema declarado em `themes` deve ter ao
- * menos 1 carta e nenhum rank duplicado dentro dele; fotos só são permitidas
- * no tema "autores".
- * @param {{ themes?: Record<string, unknown>, cards?: CardData[] }} data
+ * @param {CategoryData[]} categories
  */
-export function validateDeck(data) {
-  if (!data.themes || typeof data.themes !== "object" || Object.keys(data.themes).length === 0) {
-    throw new Error("Deck inválido: nenhum tema declarado em 'themes'");
+export function validateCategories(categories) {
+  if (!Array.isArray(categories) || categories.length === 0) {
+    throw new Error("Categorias inválidas: nenhuma categoria encontrada");
   }
-  if (!Array.isArray(data.cards) || data.cards.length === 0) {
-    throw new Error("Deck inválido: nenhuma carta em 'cards'");
-  }
-
-  const declaredThemes = new Set(Object.keys(data.themes));
   const seenIds = new Set();
-
-  for (const card of data.cards) {
-    if (seenIds.has(card.id)) {
-      throw new Error(`Deck inválido: id de carta duplicado "${card.id}"`);
+  for (const category of categories) {
+    if (seenIds.has(category.id)) {
+      throw new Error(`Categorias inválidas: id duplicado "${category.id}"`);
     }
-    seenIds.add(card.id);
-
-    if (!declaredThemes.has(card.theme)) {
-      throw new Error(`Deck inválido: carta "${card.id}" referencia tema não declarado "${card.theme}"`);
+    seenIds.add(category.id);
+    if (!Array.isArray(category.palavras) || category.palavras.length === 0) {
+      throw new Error(`Categoria "${category.id}" sem palavras`);
     }
-
-    const isAuthorCard = card.theme === AUTHORS_THEME;
-    if (!isAuthorCard && (card.photoUrl || card.photoCredit)) {
-      throw new Error(`Deck inválido: carta "${card.id}" não é do tema "${AUTHORS_THEME}" mas tem foto`);
+    if (new Set(category.palavras).size !== category.palavras.length) {
+      throw new Error(`Categoria "${category.id}" tem palavras duplicadas`);
     }
-    if (card.photoUrl && !card.photoCredit) {
-      throw new Error(`Deck inválido: carta "${card.id}" tem photoUrl sem photoCredit (atribuição obrigatória)`);
-    }
-  }
-
-  for (const theme of declaredThemes) {
-    const cardsInTheme = data.cards.filter((c) => c.theme === theme);
-    if (cardsInTheme.length === 0) {
-      throw new Error(`Deck inválido: tema "${theme}" está declarado mas não tem nenhuma carta`);
-    }
-    const ranksInTheme = cardsInTheme.map((c) => c.rank);
-    if (new Set(ranksInTheme).size !== ranksInTheme.length) {
-      throw new Error(`Deck inválido: tema "${theme}" tem ranks duplicados entre suas cartas`);
+    if (!category.microtexto || category.microtexto.length > 280) {
+      throw new Error(`Categoria "${category.id}" com microtexto ausente ou maior que 280 caracteres`);
     }
   }
 }
 
 /**
- * @param {PrincipleData[]} principles
+ * @param {LevelData[]} levels
+ * @param {CategoryData[]} categories
  */
-export function validatePrinciples(principles) {
-  if (!Array.isArray(principles) || principles.length !== 11) {
-    throw new Error(`Princípios inválidos: esperado 11, recebido ${principles?.length ?? 0}`);
+export function validateLevels(levels, categories) {
+  if (!Array.isArray(levels) || levels.length === 0) {
+    throw new Error("Níveis inválidos: nenhum nível encontrado");
   }
-  const orders = principles.map((p) => p.order).sort((a, b) => a - b);
-  for (let i = 0; i < 11; i++) {
-    if (orders[i] !== i + 1) {
-      throw new Error(`Princípios inválidos: ordem deveria ser 1..11 contígua, recebido [${orders.join(",")}]`);
+  const categoriesById = new Map(categories.map((c) => [c.id, c]));
+
+  for (const level of levels) {
+    if (!Array.isArray(level.categoryIds) || level.categoryIds.length !== 4) {
+      throw new Error(`Nível ${level.id} inválido: precisa de exatamente 4 categoryIds`);
+    }
+    for (const categoryId of level.categoryIds) {
+      const category = categoriesById.get(categoryId);
+      if (!category) {
+        throw new Error(`Nível ${level.id} inválido: categoria "${categoryId}" não existe`);
+      }
+      const words = level.selectedWords?.[categoryId];
+      if (!Array.isArray(words) || words.length !== level.cardsPerCategory) {
+        throw new Error(
+          `Nível ${level.id} inválido: selectedWords["${categoryId}"] deveria ter ${level.cardsPerCategory} palavras`
+        );
+      }
+      for (const word of words) {
+        if (!category.palavras.includes(word)) {
+          throw new Error(`Nível ${level.id} inválido: palavra "${word}" não pertence ao pool de "${categoryId}"`);
+        }
+      }
+    }
+    if (level.moveLimit < level.cardsPerCategory * 4) {
+      throw new Error(`Nível ${level.id} inválido: moveLimit menor que cardsPerCategory × 4 (impossível vencer)`);
     }
   }
 }
-
-export { AUTHORS_THEME };

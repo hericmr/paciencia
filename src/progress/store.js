@@ -1,9 +1,10 @@
 // @ts-check
-// Persistência de progresso educativo (cartas reveladas, fundações completadas).
-// Usa localStorage quando disponível; cai para um storage em memória caso
-// contrário (bloqueado, indisponível), conforme research.md, Decisão 4.
+// Persistência de progresso educativo (categorias com microtexto já visto,
+// níveis já completados). Usa localStorage quando disponível; cai para um
+// storage em memória caso contrário (bloqueado, indisponível), conforme
+// specs/001-jogo-paciencia-educativo/research.md, Decisão 4.
 
-export const STORAGE_KEY = "paciencia_ss.progress.v1";
+export const STORAGE_KEY = "paciencia_ss.progress.v2";
 
 /** @typedef {{ getItem(key: string): string|null, setItem(key: string, value: string): void }} StorageLike */
 
@@ -38,14 +39,14 @@ export function detectStorage() {
 
 /**
  * @typedef {{
- *   revealedCardIds: string[],
- *   foundationsCompletedCount: number
+ *   revealedCategoryIds: string[],
+ *   completedLevelIds: number[]
  * }} ProgressState
  */
 
 /** @returns {ProgressState} */
 function emptyState() {
-  return { revealedCardIds: [], foundationsCompletedCount: 0 };
+  return { revealedCategoryIds: [], completedLevelIds: [] };
 }
 
 /**
@@ -59,9 +60,8 @@ function readState(storage, key) {
   try {
     const parsed = JSON.parse(raw);
     return {
-      revealedCardIds: Array.isArray(parsed.revealedCardIds) ? parsed.revealedCardIds : [],
-      foundationsCompletedCount:
-        typeof parsed.foundationsCompletedCount === "number" ? parsed.foundationsCompletedCount : 0,
+      revealedCategoryIds: Array.isArray(parsed.revealedCategoryIds) ? parsed.revealedCategoryIds : [],
+      completedLevelIds: Array.isArray(parsed.completedLevelIds) ? parsed.completedLevelIds : [],
     };
   } catch {
     return emptyState();
@@ -85,48 +85,57 @@ export function createProgressStore(options = {}) {
   const storage = options.storage ?? detectStorage();
   const key = options.key ?? STORAGE_KEY;
 
-  let state = readState(storage, key);
-  const revealedSet = new Set(state.revealedCardIds);
+  const initial = readState(storage, key);
+  const revealedSet = new Set(initial.revealedCategoryIds);
+  const completedLevelsSet = new Set(initial.completedLevelIds);
 
   function persist() {
-    state = { revealedCardIds: Array.from(revealedSet), foundationsCompletedCount: state.foundationsCompletedCount };
-    writeState(storage, key, state);
+    writeState(storage, key, {
+      revealedCategoryIds: Array.from(revealedSet),
+      completedLevelIds: Array.from(completedLevelsSet),
+    });
   }
 
   return {
     /**
-     * Marca uma carta como revelada. Retorna true se essa foi a primeira
-     * revelação (deve exibir pop-up de conteúdo); false se já era conhecida.
-     * @param {string} cardId
+     * Marca uma categoria como revelada (microtexto já visto). Retorna true
+     * se essa foi a primeira vez (deve exibir o pop-up); false se já era
+     * conhecida.
+     * @param {string} categoryId
      * @returns {boolean}
      */
-    revealCard(cardId) {
-      if (revealedSet.has(cardId)) return false;
-      revealedSet.add(cardId);
+    revealCategory(categoryId) {
+      if (revealedSet.has(categoryId)) return false;
+      revealedSet.add(categoryId);
       persist();
       return true;
     },
 
-    /** @param {string} cardId */
-    isRevealed(cardId) {
-      return revealedSet.has(cardId);
+    /** @param {string} categoryId */
+    isRevealed(categoryId) {
+      return revealedSet.has(categoryId);
     },
 
     /** @returns {string[]} */
-    getRevealedCardIds() {
+    getRevealedCategoryIds() {
       return Array.from(revealedSet);
     },
 
-    /** Registra uma fundação completada. Retorna o novo total histórico. */
-    incrementFoundationsCompleted() {
-      state.foundationsCompletedCount += 1;
+    /**
+     * Marca um nível como completado. Retorna true se era a primeira vez.
+     * @param {number} levelId
+     * @returns {boolean}
+     */
+    completeLevel(levelId) {
+      if (completedLevelsSet.has(levelId)) return false;
+      completedLevelsSet.add(levelId);
       persist();
-      return state.foundationsCompletedCount;
+      return true;
     },
 
-    /** @returns {number} */
-    getFoundationsCompletedCount() {
-      return state.foundationsCompletedCount;
+    /** @returns {number[]} */
+    getCompletedLevelIds() {
+      return Array.from(completedLevelsSet);
     },
   };
 }
