@@ -5,12 +5,19 @@
 
 ## Estrutura do deck
 
-| Naipe | Eixo | Ás (marco) | Figuras (autores/as) |
+> **Nota (2026)**: o jogo não usa mais naipes de baralho como mecânica — cada
+> um dos 4 eixos abaixo é um **tema**, e uma carta pode ir para a fundação do
+> seu tema a qualquer momento, em qualquer ordem (não há mais sequência
+> A→K obrigatória nem alternância de cor). Os símbolos ♠♥♦♣ abaixo indicam
+> apenas de qual linha desta tabela cada carta veio na v0.1; o jogo em si usa
+> os nomes dos eixos diretamente. Ver `specs/001-jogo-paciencia-educativo/research.md`, Decisão 6.
+
+| Tema (era "naipe") | Eixo | Ás (marco) | Figuras (autores/as) |
 |---|---|---|---|
-| ♠ Espadas | Dimensão teórico-metodológica | Movimento de Reconceituação | Netto, Iamamoto, Mészáros |
-| ♥ Copas | Dimensão ético-política | Código de Ética de 1993 | Behring, Barroco, Boschetti |
-| ♦ Ouros | Dimensão técnico-operativa | LOAS e SUAS | Faleiros, Guerra, Martinelli |
-| ♣ Paus | História e formação profissional | Congresso da Virada (1979) | Carvalho, Yazbek, Manrique Castro |
+| ♠ (teorico-metodologico) | Dimensão teórico-metodológica | Movimento de Reconceituação | Netto, Iamamoto, Mészáros |
+| ♥ (etico-politico) | Dimensão ético-política | Código de Ética de 1993 | Behring, Barroco, Boschetti |
+| ♦ (tecnico-operativo) | Dimensão técnico-operativa | LOAS e SUAS | Faleiros, Guerra, Martinelli |
+| ♣ (historico-formativo) | História e formação profissional | Congresso da Virada (1979) | Carvalho, Yazbek, Manrique Castro |
 
 **Fundações completadas** → desbloqueiam, em ordem, os 11 princípios fundamentais do Código de Ética de 1993 (ver final do documento).
 
@@ -119,7 +126,12 @@ Cada fundação completada desbloqueia o próximo princípio ainda não visto. T
 ## Notas de produção
 
 - **Ordem de revelação pedagógica**: o jogo embaralha as cartas normalmente; o conteúdo aparece na primeira vez que cada carta é revelada na partida (pop-up discreto e dispensável com um toque).
-- **Modo revisão**: as tabelas acima viram flashcards navegáveis por naipe; cartas ainda não reveladas em partida aparecem "viradas" (incentivo ao colecionismo).
+- **Modo revisão**: as tabelas acima viram flashcards navegáveis por tema; cartas ainda não reveladas em partida aparecem "viradas" (incentivo ao colecionismo).
+- **Fotos de autores/as (J/Q/K)**: pesquisadas manualmente no Wikimedia Commons/Wikipédia, uma a uma — nenhuma URL entra sem confirmar que a imagem existe e que a licença permite o uso (Princípio I da constituição). Resultado da pesquisa (06/07/2026):
+  - ✅ **José Paulo Netto** (K, teorico-metodologico): foto encontrada, CC BY 3.0, crédito "Núcleo de Estudos de Ontologia Marxiana". Baixada em `assets/authors/KS.jpg`.
+  - ✅ **Vicente de Paula Faleiros** (K, tecnico-operativo): foto encontrada, CC BY-SA 4.0, crédito "SamuelEstrellaDF". Baixada em `assets/authors/KD.jpg`.
+  - ❌ Sem foto disponível no Wikipedia/Wikimedia Commons (nenhum artigo ou arquivo encontrado): István Mészáros (apesar de ter artigo na Wikipédia em inglês, sem foto no infobox nem no Commons), Marilda Villela Iamamoto, Ivanete Boschetti, Maria Lúcia Silva Barroco, Elaine Rossetti Behring, Maria Lúcia Martinelli, Yolanda Guerra, Manuel Manrique Castro, Maria Carmelita Yazbek, Raul de Carvalho. São referências acadêmicas relevantes mas sem cobertura fotográfica em projetos Wikimedia — essas 10 cartas ficam com `photoUrl: null` (o jogo já trata isso graciosamente, exibindo só texto).
+  - Ver `scripts/author-photos-manifest.json` (fonte de verdade das fotos já verificadas) e `scripts/download-author-photos.mjs` (script que baixa e aplica ao `cards.servico-social-estreia.json`). Se alguém encontrar uma foto legitimamente licenciada para as 10 pendentes, adicionar uma entrada ao manifesto e rodar o script novamente — nunca editar `photoUrl` à mão sem um `commonsFileUrl` verificável.
 - **Revisão de conteúdo pendente** (antes do lançamento da Fase 5):
   - [ ] Conferir redação dos 11 princípios contra a Resolução CFESS 273/93 atualizada (Res. 594/2011 alterou o princípio 11 para incluir identidade de gênero)
   - [ ] Conferir artigos citados do Código (sigilo: arts. 15–18) e da Lei 8.662/93 (arts. 4º e 5º)

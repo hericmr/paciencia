@@ -2,66 +2,543 @@
   "deckId": "servico-social-estreia",
   "deckName": "Serviço Social Brasileiro — Deck de Estreia",
   "themes": {
-    "teorico-metodologico": { "axis": "Dimensão teórico-metodológica", "shortLabel": "Teórico-metodológica" },
-    "etico-politico": { "axis": "Dimensão ético-política", "shortLabel": "Ético-política" },
-    "tecnico-operativo": { "axis": "Dimensão técnico-operativa", "shortLabel": "Técnico-operativa" },
-    "historico-formativo": { "axis": "História e formação profissional", "shortLabel": "História e formação" }
+    "teorico-metodologico": {
+      "axis": "Dimensão teórico-metodológica",
+      "shortLabel": "Teórico-metodológica"
+    },
+    "etico-politico": {
+      "axis": "Dimensão ético-política",
+      "shortLabel": "Ético-política"
+    },
+    "tecnico-operativo": {
+      "axis": "Dimensão técnico-operativa",
+      "shortLabel": "Técnico-operativa"
+    },
+    "historico-formativo": {
+      "axis": "História e formação profissional",
+      "shortLabel": "História e formação"
+    }
   },
   "cards": [
-    { "id": "AS", "theme": "teorico-metodologico", "rank": "A", "title": "Movimento de Reconceituação", "body": "Processo latino-americano (a partir de 1965) de questionamento do Serviço Social tradicional, buscando romper com o conservadorismo e aproximar a profissão das lutas sociais e das teorias críticas.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "2S", "theme": "teorico-metodologico", "rank": "2", "title": "Questão social", "body": "Conjunto das expressões das desigualdades geradas pela contradição capital × trabalho. É a base sócio-histórica da profissão: o Serviço Social intervém nas suas múltiplas expressões.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "3S", "theme": "teorico-metodologico", "rank": "3", "title": "Teoria social crítica", "body": "Referência teórico-metodológica hegemônica na profissão: a tradição marxista, que apreende a realidade em sua totalidade, historicidade e contradição.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "4S", "theme": "teorico-metodologico", "rank": "4", "title": "Totalidade", "body": "Categoria do método: os fenômenos sociais só são compreendidos como parte de um todo articulado — nenhuma expressão da questão social se explica isolada da sociedade capitalista.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "5S", "theme": "teorico-metodologico", "rank": "5", "title": "Historicidade", "body": "A realidade social é histórica: produzida pela ação humana e, portanto, transformável. Nada no social é natural ou eterno.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "6S", "theme": "teorico-metodologico", "rank": "6", "title": "Mediação", "body": "Categoria que articula o singular (caso atendido) ao universal (estrutura social) pela particularidade. É o que impede tanto o empirismo quanto o abstracionismo na intervenção.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "7S", "theme": "teorico-metodologico", "rank": "7", "title": "Práxis", "body": "Unidade entre teoria e prática: atividade humana que transforma a realidade e, ao fazê-lo, transforma o próprio sujeito. Contrapõe-se à dicotomia \"teoria na academia, prática no campo\".", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "8S", "theme": "teorico-metodologico", "rank": "8", "title": "Reprodução das relações sociais", "body": "Chave de leitura de Iamamoto: a profissão participa tanto da reprodução da força de trabalho e da ideologia dominante quanto das respostas às necessidades da classe trabalhadora — uma posição contraditória.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "9S", "theme": "teorico-metodologico", "rank": "9", "title": "As três vertentes (Netto)", "body": "Perspectivas do processo de renovação: modernizadora (Araxá/Teresópolis), reatualização do conservadorismo (fenomenológica) e intenção de ruptura (crítica marxista, hegemônica a partir dos anos 1980).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "10S", "theme": "teorico-metodologico", "rank": "10", "title": "Instrumentalidade × instrumental", "body": "Instrumentalidade não é sinônimo de técnicas: é a capacidade da profissão de responder a demandas sociais, articulando as dimensões teórica, ética e técnica (Yolanda Guerra).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "JS", "theme": "teorico-metodologico", "rank": "J", "title": "István Mészáros", "body": "Filósofo húngaro, discípulo de Lukács. Em \"Para Além do Capital\", analisa o sistema sociometabólico do capital e sua crise estrutural — referência para o debate sobre trabalho e emancipação.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "QS", "theme": "teorico-metodologico", "rank": "Q", "title": "Marilda Villela Iamamoto", "body": "Autora de \"Relações Sociais e Serviço Social no Brasil\" (com Raul de Carvalho, 1982): inaugurou a leitura marxista da profissão como trabalho inserido na divisão sociotécnica do trabalho.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "KS", "theme": "teorico-metodologico", "rank": "K", "title": "José Paulo Netto", "body": "Autor de \"Ditadura e Serviço Social\" e \"Capitalismo Monopolista e Serviço Social\". Sistematizou a renovação da profissão e a categoria projeto ético-político.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-
-    { "id": "AH", "theme": "etico-politico", "rank": "A", "title": "Código de Ética de 1993", "body": "Resolução CFESS nº 273/93. Expressa a maturidade do projeto ético-político: liberdade como valor central, compromisso com a classe trabalhadora e horizonte de uma nova ordem societária.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "2H", "theme": "etico-politico", "rank": "2", "title": "Projeto ético-político", "body": "Projeto profissional construído coletivamente desde os anos 1980. Seus pilares: Código de Ética (1993), Lei de Regulamentação 8.662/93 e Diretrizes Curriculares da ABEPSS (1996).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "3H", "theme": "etico-politico", "rank": "3", "title": "Liberdade como valor central", "body": "Núcleo do Código de 1993: liberdade concebida como possibilidade de escolher entre alternativas concretas — daí o compromisso com a autonomia e emancipação dos indivíduos sociais.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "4H", "theme": "etico-politico", "rank": "4", "title": "Emancipação humana", "body": "Horizonte do projeto profissional: para além da emancipação política (direitos na ordem burguesa), a superação de toda forma de exploração e opressão.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "5H", "theme": "etico-politico", "rank": "5", "title": "Direitos humanos", "body": "O Código exige defesa intransigente dos direitos humanos e recusa do arbítrio e do autoritarismo — princípio que orienta inclusive a recusa de práticas institucionais violadoras.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "6H", "theme": "etico-politico", "rank": "6", "title": "Democracia", "body": "Socialização da participação política e da riqueza socialmente produzida. Para o projeto profissional, democracia não se reduz ao voto: é padrão de organização da vida social.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "7H", "theme": "etico-politico", "rank": "7", "title": "Equidade e justiça social", "body": "Princípio que fundamenta a universalidade de acesso a bens e serviços e a gestão democrática das políticas sociais.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "8H", "theme": "etico-politico", "rank": "8", "title": "Pluralismo", "body": "Respeito às correntes profissionais democráticas e ao debate teórico aberto — sem confundir pluralismo com ecletismo (mistura acrítica de teorias incompatíveis).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "9H", "theme": "etico-politico", "rank": "9", "title": "Sigilo profissional", "body": "Direito e dever: protege o/a usuário/a. Pode ser quebrado apenas em situações graves, envolvendo interesse relevante, tomando-se as devidas cautelas (arts. 15 a 18 do Código).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "10H", "theme": "etico-politico", "rank": "10", "title": "Vedações ao/à assistente social", "body": "O Código veda, entre outras: práticas discriminatórias, uso da autoridade para violar direitos, depoimento como testemunha sobre situação sigilosa e emprestar o nome a serviços irregulares.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "JH", "theme": "etico-politico", "rank": "J", "title": "Ivanete Boschetti", "body": "Referência no estudo da seguridade social brasileira e da assistência social entre \"avaliação e garantia de direitos\". Coautora de \"Política Social: fundamentos e história\" com Behring.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "QH", "theme": "etico-politico", "rank": "Q", "title": "Maria Lúcia Silva Barroco", "body": "Principal referência em ética no Serviço Social: \"Ética e Serviço Social — fundamentos ontológicos\" analisa a ética a partir da ontologia do ser social.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "KH", "theme": "etico-politico", "rank": "K", "title": "Elaine Rossetti Behring", "body": "Autora de \"Brasil em Contra-Reforma\" e \"Política Social: fundamentos e história\". Analisa a política social na crise do capital e o desmonte de direitos.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-
-    { "id": "AD", "theme": "tecnico-operativo", "rank": "A", "title": "LOAS e SUAS", "body": "LOAS (Lei 8.742/93): assistência social como direito e dever do Estado. PNAS/2004 e NOB/SUAS (2005) organizam o SUAS: gestão descentralizada, proteção básica (CRAS) e especial (CREAS).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "2D", "theme": "tecnico-operativo", "rank": "2", "title": "Estudo social", "body": "Processo metodológico para conhecer e analisar uma situação singular em sua relação com a totalidade social. Base para pareceres e decisões — não é mera coleta de dados.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "3D", "theme": "tecnico-operativo", "rank": "3", "title": "Laudo e parecer social", "body": "Laudo: documento resultante do estudo social, frequente no sociojurídico. Parecer: opinião técnica conclusiva do/a assistente social. Ambos são atribuições privativas (Lei 8.662/93).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "4D", "theme": "tecnico-operativo", "rank": "4", "title": "Entrevista", "body": "Instrumento privilegiado de aproximação com o/a usuário/a. Exige escuta qualificada, intencionalidade e registro — nunca interrogatório ou julgamento moral.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "5D", "theme": "tecnico-operativo", "rank": "5", "title": "Visita domiciliar", "body": "Instrumento de conhecimento das condições de vida no território. Deve respeitar a privacidade e não pode servir a fins de vigilância ou fiscalização moralizadora.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "6D", "theme": "tecnico-operativo", "rank": "6", "title": "Trabalho com grupos", "body": "Estratégia de socialização de informações e fortalecimento coletivo dos/as usuários/as — dimensão socioeducativa da profissão.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "7D", "theme": "tecnico-operativo", "rank": "7", "title": "Encaminhamento e rede", "body": "Articulação intersetorial entre políticas (assistência, saúde, educação, habitação). Encaminhar é garantir acesso, com acompanhamento — não \"empurrar\" o caso.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "8D", "theme": "tecnico-operativo", "rank": "8", "title": "Planejamento social", "body": "Elaboração, coordenação e avaliação de planos, programas e projetos na área social — competência prevista na Lei 8.662/93 (referência: Myrian Veras Baptista).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "9D", "theme": "tecnico-operativo", "rank": "9", "title": "Documentação e registro", "body": "Relatórios, prontuários e diários de campo: memória do trabalho, garantia de continuidade do atendimento e proteção ética — sempre sob guarda do sigilo.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "10D", "theme": "tecnico-operativo", "rank": "10", "title": "Competências × atribuições privativas", "body": "Competências (art. 4º da Lei 8.662/93) podem ser partilhadas com outras profissões; atribuições privativas (art. 5º) são exclusivas do/a assistente social. Clássica pegadinha de concurso.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "JD", "theme": "tecnico-operativo", "rank": "J", "title": "Maria Lúcia Martinelli", "body": "Referência em pesquisa qualitativa e história oral no Serviço Social. Em \"Serviço Social: identidade e alienação\", analisa a identidade profissional na sua gênese conservadora.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "QD", "theme": "tecnico-operativo", "rank": "Q", "title": "Yolanda Guerra", "body": "Autora de \"A Instrumentalidade do Serviço Social\": as respostas profissionais articulam as dimensões teórico-metodológica, ético-política e técnico-operativa.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "KD", "theme": "tecnico-operativo", "rank": "K", "title": "Vicente de Paula Faleiros", "body": "Autor de \"Estratégias em Serviço Social\" e \"Saber Profissional e Poder Institucional\": a intervenção como jogo de forças, fortalecendo o poder dos/as usuários/as.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-
-    { "id": "AC", "theme": "historico-formativo", "rank": "A", "title": "Congresso da Virada (1979)", "body": "III CBAS, São Paulo: a categoria destituiu a mesa oficial ligada à ditadura e a substituiu por lideranças dos trabalhadores. Marco da ruptura com o conservadorismo.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "2C", "theme": "historico-formativo", "rank": "2", "title": "Origens da profissão", "body": "O Serviço Social brasileiro nasce nos anos 1930, vinculado à Igreja Católica e à ação social burguesa, como resposta conservadora à questão social — não como evolução da caridade.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "3C", "theme": "historico-formativo", "rank": "3", "title": "Primeiras escolas (1936)", "body": "A primeira escola de Serviço Social do Brasil é fundada em São Paulo em 1936 (atual PUC-SP), seguida pelo Rio de Janeiro em 1937, sob influência franco-belga.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "4C", "theme": "historico-formativo", "rank": "4", "title": "Serviço Social tradicional", "body": "Prática ajustadora e psicologizante: \"caso, grupo e comunidade\" como métodos, influência norte-americana no pós-guerra e enquadramento moral dos \"desajustados\".", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "5C", "theme": "historico-formativo", "rank": "5", "title": "Desenvolvimentismo", "body": "Anos 1950-60: a profissão se vincula a projetos de desenvolvimento de comunidade (DC), ainda sem romper com o conservadorismo.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "6C", "theme": "historico-formativo", "rank": "6", "title": "Araxá e Teresópolis", "body": "Documentos (1967 e 1970) da vertente modernizadora: buscam atualizar a profissão com teorias sistêmicas e funcionalistas, a serviço do projeto da autocracia burguesa.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "7C", "theme": "historico-formativo", "rank": "7", "title": "Ditadura e modernização conservadora", "body": "O regime de 1964 expande o mercado de trabalho profissional (grandes instituições) ao mesmo tempo em que reprime o movimento de reconceituação latino-americano.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "8C", "theme": "historico-formativo", "rank": "8", "title": "Currículo de 1982", "body": "Primeira revisão curricular sob influência crítica: introduz a teoria social marxista na formação e prepara o terreno para as Diretrizes de 1996.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "9C", "theme": "historico-formativo", "rank": "9", "title": "Diretrizes Curriculares ABEPSS (1996)", "body": "Organizam a formação em três núcleos: fundamentos teórico-metodológicos da vida social; formação sócio-histórica do Brasil; e trabalho profissional.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "10C", "theme": "historico-formativo", "rank": "10", "title": "Conjunto CFESS/CRESS, ABEPSS e ENESSO", "body": "Entidades da categoria: CFESS/CRESS (fiscalização e orientação do exercício), ABEPSS (formação e pesquisa) e ENESSO (movimento estudantil).", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "JC", "theme": "historico-formativo", "rank": "J", "title": "Manuel Manrique Castro", "body": "Autor de \"História do Serviço Social na América Latina\": análise da gênese da profissão no continente, para além dos mitos de origem.", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "QC", "theme": "historico-formativo", "rank": "Q", "title": "Maria Carmelita Yazbek", "body": "Referência em assistência social e pobreza: \"Classes Subalternas e Assistência Social\" analisa os/as usuários/as como sujeitos de direitos, não como \"assistidos\".", "status": "rascunho", "photoUrl": null, "photoCredit": null },
-    { "id": "KC", "theme": "historico-formativo", "rank": "K", "title": "Raul de Carvalho", "body": "Coautor, com Iamamoto, de \"Relações Sociais e Serviço Social no Brasil\" (1982) — obra fundante da análise histórico-crítica da profissão.", "status": "rascunho", "photoUrl": null, "photoCredit": null }
+    {
+      "id": "AS",
+      "theme": "teorico-metodologico",
+      "rank": "A",
+      "title": "Movimento de Reconceituação",
+      "body": "Processo latino-americano (a partir de 1965) de questionamento do Serviço Social tradicional, buscando romper com o conservadorismo e aproximar a profissão das lutas sociais e das teorias críticas.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "2S",
+      "theme": "teorico-metodologico",
+      "rank": "2",
+      "title": "Questão social",
+      "body": "Conjunto das expressões das desigualdades geradas pela contradição capital × trabalho. É a base sócio-histórica da profissão: o Serviço Social intervém nas suas múltiplas expressões.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "3S",
+      "theme": "teorico-metodologico",
+      "rank": "3",
+      "title": "Teoria social crítica",
+      "body": "Referência teórico-metodológica hegemônica na profissão: a tradição marxista, que apreende a realidade em sua totalidade, historicidade e contradição.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "4S",
+      "theme": "teorico-metodologico",
+      "rank": "4",
+      "title": "Totalidade",
+      "body": "Categoria do método: os fenômenos sociais só são compreendidos como parte de um todo articulado — nenhuma expressão da questão social se explica isolada da sociedade capitalista.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "5S",
+      "theme": "teorico-metodologico",
+      "rank": "5",
+      "title": "Historicidade",
+      "body": "A realidade social é histórica: produzida pela ação humana e, portanto, transformável. Nada no social é natural ou eterno.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "6S",
+      "theme": "teorico-metodologico",
+      "rank": "6",
+      "title": "Mediação",
+      "body": "Categoria que articula o singular (caso atendido) ao universal (estrutura social) pela particularidade. É o que impede tanto o empirismo quanto o abstracionismo na intervenção.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "7S",
+      "theme": "teorico-metodologico",
+      "rank": "7",
+      "title": "Práxis",
+      "body": "Unidade entre teoria e prática: atividade humana que transforma a realidade e, ao fazê-lo, transforma o próprio sujeito. Contrapõe-se à dicotomia \"teoria na academia, prática no campo\".",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "8S",
+      "theme": "teorico-metodologico",
+      "rank": "8",
+      "title": "Reprodução das relações sociais",
+      "body": "Chave de leitura de Iamamoto: a profissão participa tanto da reprodução da força de trabalho e da ideologia dominante quanto das respostas às necessidades da classe trabalhadora — uma posição contraditória.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "9S",
+      "theme": "teorico-metodologico",
+      "rank": "9",
+      "title": "As três vertentes (Netto)",
+      "body": "Perspectivas do processo de renovação: modernizadora (Araxá/Teresópolis), reatualização do conservadorismo (fenomenológica) e intenção de ruptura (crítica marxista, hegemônica a partir dos anos 1980).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "10S",
+      "theme": "teorico-metodologico",
+      "rank": "10",
+      "title": "Instrumentalidade × instrumental",
+      "body": "Instrumentalidade não é sinônimo de técnicas: é a capacidade da profissão de responder a demandas sociais, articulando as dimensões teórica, ética e técnica (Yolanda Guerra).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "JS",
+      "theme": "teorico-metodologico",
+      "rank": "J",
+      "title": "István Mészáros",
+      "body": "Filósofo húngaro, discípulo de Lukács. Em \"Para Além do Capital\", analisa o sistema sociometabólico do capital e sua crise estrutural — referência para o debate sobre trabalho e emancipação.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "QS",
+      "theme": "teorico-metodologico",
+      "rank": "Q",
+      "title": "Marilda Villela Iamamoto",
+      "body": "Autora de \"Relações Sociais e Serviço Social no Brasil\" (com Raul de Carvalho, 1982): inaugurou a leitura marxista da profissão como trabalho inserido na divisão sociotécnica do trabalho.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "KS",
+      "theme": "teorico-metodologico",
+      "rank": "K",
+      "title": "José Paulo Netto",
+      "body": "Autor de \"Ditadura e Serviço Social\" e \"Capitalismo Monopolista e Serviço Social\". Sistematizou a renovação da profissão e a categoria projeto ético-político.",
+      "status": "rascunho",
+      "photoUrl": "assets/authors/KS.jpg",
+      "photoCredit": "Foto: Núcleo de Estudos de Ontologia Marxiana, CC BY 3.0, via Wikimedia Commons"
+    },
+    {
+      "id": "AH",
+      "theme": "etico-politico",
+      "rank": "A",
+      "title": "Código de Ética de 1993",
+      "body": "Resolução CFESS nº 273/93. Expressa a maturidade do projeto ético-político: liberdade como valor central, compromisso com a classe trabalhadora e horizonte de uma nova ordem societária.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "2H",
+      "theme": "etico-politico",
+      "rank": "2",
+      "title": "Projeto ético-político",
+      "body": "Projeto profissional construído coletivamente desde os anos 1980. Seus pilares: Código de Ética (1993), Lei de Regulamentação 8.662/93 e Diretrizes Curriculares da ABEPSS (1996).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "3H",
+      "theme": "etico-politico",
+      "rank": "3",
+      "title": "Liberdade como valor central",
+      "body": "Núcleo do Código de 1993: liberdade concebida como possibilidade de escolher entre alternativas concretas — daí o compromisso com a autonomia e emancipação dos indivíduos sociais.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "4H",
+      "theme": "etico-politico",
+      "rank": "4",
+      "title": "Emancipação humana",
+      "body": "Horizonte do projeto profissional: para além da emancipação política (direitos na ordem burguesa), a superação de toda forma de exploração e opressão.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "5H",
+      "theme": "etico-politico",
+      "rank": "5",
+      "title": "Direitos humanos",
+      "body": "O Código exige defesa intransigente dos direitos humanos e recusa do arbítrio e do autoritarismo — princípio que orienta inclusive a recusa de práticas institucionais violadoras.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "6H",
+      "theme": "etico-politico",
+      "rank": "6",
+      "title": "Democracia",
+      "body": "Socialização da participação política e da riqueza socialmente produzida. Para o projeto profissional, democracia não se reduz ao voto: é padrão de organização da vida social.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "7H",
+      "theme": "etico-politico",
+      "rank": "7",
+      "title": "Equidade e justiça social",
+      "body": "Princípio que fundamenta a universalidade de acesso a bens e serviços e a gestão democrática das políticas sociais.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "8H",
+      "theme": "etico-politico",
+      "rank": "8",
+      "title": "Pluralismo",
+      "body": "Respeito às correntes profissionais democráticas e ao debate teórico aberto — sem confundir pluralismo com ecletismo (mistura acrítica de teorias incompatíveis).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "9H",
+      "theme": "etico-politico",
+      "rank": "9",
+      "title": "Sigilo profissional",
+      "body": "Direito e dever: protege o/a usuário/a. Pode ser quebrado apenas em situações graves, envolvendo interesse relevante, tomando-se as devidas cautelas (arts. 15 a 18 do Código).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "10H",
+      "theme": "etico-politico",
+      "rank": "10",
+      "title": "Vedações ao/à assistente social",
+      "body": "O Código veda, entre outras: práticas discriminatórias, uso da autoridade para violar direitos, depoimento como testemunha sobre situação sigilosa e emprestar o nome a serviços irregulares.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "JH",
+      "theme": "etico-politico",
+      "rank": "J",
+      "title": "Ivanete Boschetti",
+      "body": "Referência no estudo da seguridade social brasileira e da assistência social entre \"avaliação e garantia de direitos\". Coautora de \"Política Social: fundamentos e história\" com Behring.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "QH",
+      "theme": "etico-politico",
+      "rank": "Q",
+      "title": "Maria Lúcia Silva Barroco",
+      "body": "Principal referência em ética no Serviço Social: \"Ética e Serviço Social — fundamentos ontológicos\" analisa a ética a partir da ontologia do ser social.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "KH",
+      "theme": "etico-politico",
+      "rank": "K",
+      "title": "Elaine Rossetti Behring",
+      "body": "Autora de \"Brasil em Contra-Reforma\" e \"Política Social: fundamentos e história\". Analisa a política social na crise do capital e o desmonte de direitos.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "AD",
+      "theme": "tecnico-operativo",
+      "rank": "A",
+      "title": "LOAS e SUAS",
+      "body": "LOAS (Lei 8.742/93): assistência social como direito e dever do Estado. PNAS/2004 e NOB/SUAS (2005) organizam o SUAS: gestão descentralizada, proteção básica (CRAS) e especial (CREAS).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "2D",
+      "theme": "tecnico-operativo",
+      "rank": "2",
+      "title": "Estudo social",
+      "body": "Processo metodológico para conhecer e analisar uma situação singular em sua relação com a totalidade social. Base para pareceres e decisões — não é mera coleta de dados.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "3D",
+      "theme": "tecnico-operativo",
+      "rank": "3",
+      "title": "Laudo e parecer social",
+      "body": "Laudo: documento resultante do estudo social, frequente no sociojurídico. Parecer: opinião técnica conclusiva do/a assistente social. Ambos são atribuições privativas (Lei 8.662/93).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "4D",
+      "theme": "tecnico-operativo",
+      "rank": "4",
+      "title": "Entrevista",
+      "body": "Instrumento privilegiado de aproximação com o/a usuário/a. Exige escuta qualificada, intencionalidade e registro — nunca interrogatório ou julgamento moral.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "5D",
+      "theme": "tecnico-operativo",
+      "rank": "5",
+      "title": "Visita domiciliar",
+      "body": "Instrumento de conhecimento das condições de vida no território. Deve respeitar a privacidade e não pode servir a fins de vigilância ou fiscalização moralizadora.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "6D",
+      "theme": "tecnico-operativo",
+      "rank": "6",
+      "title": "Trabalho com grupos",
+      "body": "Estratégia de socialização de informações e fortalecimento coletivo dos/as usuários/as — dimensão socioeducativa da profissão.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "7D",
+      "theme": "tecnico-operativo",
+      "rank": "7",
+      "title": "Encaminhamento e rede",
+      "body": "Articulação intersetorial entre políticas (assistência, saúde, educação, habitação). Encaminhar é garantir acesso, com acompanhamento — não \"empurrar\" o caso.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "8D",
+      "theme": "tecnico-operativo",
+      "rank": "8",
+      "title": "Planejamento social",
+      "body": "Elaboração, coordenação e avaliação de planos, programas e projetos na área social — competência prevista na Lei 8.662/93 (referência: Myrian Veras Baptista).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "9D",
+      "theme": "tecnico-operativo",
+      "rank": "9",
+      "title": "Documentação e registro",
+      "body": "Relatórios, prontuários e diários de campo: memória do trabalho, garantia de continuidade do atendimento e proteção ética — sempre sob guarda do sigilo.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "10D",
+      "theme": "tecnico-operativo",
+      "rank": "10",
+      "title": "Competências × atribuições privativas",
+      "body": "Competências (art. 4º da Lei 8.662/93) podem ser partilhadas com outras profissões; atribuições privativas (art. 5º) são exclusivas do/a assistente social. Clássica pegadinha de concurso.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "JD",
+      "theme": "tecnico-operativo",
+      "rank": "J",
+      "title": "Maria Lúcia Martinelli",
+      "body": "Referência em pesquisa qualitativa e história oral no Serviço Social. Em \"Serviço Social: identidade e alienação\", analisa a identidade profissional na sua gênese conservadora.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "QD",
+      "theme": "tecnico-operativo",
+      "rank": "Q",
+      "title": "Yolanda Guerra",
+      "body": "Autora de \"A Instrumentalidade do Serviço Social\": as respostas profissionais articulam as dimensões teórico-metodológica, ético-política e técnico-operativa.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "KD",
+      "theme": "tecnico-operativo",
+      "rank": "K",
+      "title": "Vicente de Paula Faleiros",
+      "body": "Autor de \"Estratégias em Serviço Social\" e \"Saber Profissional e Poder Institucional\": a intervenção como jogo de forças, fortalecendo o poder dos/as usuários/as.",
+      "status": "rascunho",
+      "photoUrl": "assets/authors/KD.jpg",
+      "photoCredit": "Foto: SamuelEstrellaDF, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    {
+      "id": "AC",
+      "theme": "historico-formativo",
+      "rank": "A",
+      "title": "Congresso da Virada (1979)",
+      "body": "III CBAS, São Paulo: a categoria destituiu a mesa oficial ligada à ditadura e a substituiu por lideranças dos trabalhadores. Marco da ruptura com o conservadorismo.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "2C",
+      "theme": "historico-formativo",
+      "rank": "2",
+      "title": "Origens da profissão",
+      "body": "O Serviço Social brasileiro nasce nos anos 1930, vinculado à Igreja Católica e à ação social burguesa, como resposta conservadora à questão social — não como evolução da caridade.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "3C",
+      "theme": "historico-formativo",
+      "rank": "3",
+      "title": "Primeiras escolas (1936)",
+      "body": "A primeira escola de Serviço Social do Brasil é fundada em São Paulo em 1936 (atual PUC-SP), seguida pelo Rio de Janeiro em 1937, sob influência franco-belga.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "4C",
+      "theme": "historico-formativo",
+      "rank": "4",
+      "title": "Serviço Social tradicional",
+      "body": "Prática ajustadora e psicologizante: \"caso, grupo e comunidade\" como métodos, influência norte-americana no pós-guerra e enquadramento moral dos \"desajustados\".",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "5C",
+      "theme": "historico-formativo",
+      "rank": "5",
+      "title": "Desenvolvimentismo",
+      "body": "Anos 1950-60: a profissão se vincula a projetos de desenvolvimento de comunidade (DC), ainda sem romper com o conservadorismo.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "6C",
+      "theme": "historico-formativo",
+      "rank": "6",
+      "title": "Araxá e Teresópolis",
+      "body": "Documentos (1967 e 1970) da vertente modernizadora: buscam atualizar a profissão com teorias sistêmicas e funcionalistas, a serviço do projeto da autocracia burguesa.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "7C",
+      "theme": "historico-formativo",
+      "rank": "7",
+      "title": "Ditadura e modernização conservadora",
+      "body": "O regime de 1964 expande o mercado de trabalho profissional (grandes instituições) ao mesmo tempo em que reprime o movimento de reconceituação latino-americano.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "8C",
+      "theme": "historico-formativo",
+      "rank": "8",
+      "title": "Currículo de 1982",
+      "body": "Primeira revisão curricular sob influência crítica: introduz a teoria social marxista na formação e prepara o terreno para as Diretrizes de 1996.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "9C",
+      "theme": "historico-formativo",
+      "rank": "9",
+      "title": "Diretrizes Curriculares ABEPSS (1996)",
+      "body": "Organizam a formação em três núcleos: fundamentos teórico-metodológicos da vida social; formação sócio-histórica do Brasil; e trabalho profissional.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "10C",
+      "theme": "historico-formativo",
+      "rank": "10",
+      "title": "Conjunto CFESS/CRESS, ABEPSS e ENESSO",
+      "body": "Entidades da categoria: CFESS/CRESS (fiscalização e orientação do exercício), ABEPSS (formação e pesquisa) e ENESSO (movimento estudantil).",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "JC",
+      "theme": "historico-formativo",
+      "rank": "J",
+      "title": "Manuel Manrique Castro",
+      "body": "Autor de \"História do Serviço Social na América Latina\": análise da gênese da profissão no continente, para além dos mitos de origem.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "QC",
+      "theme": "historico-formativo",
+      "rank": "Q",
+      "title": "Maria Carmelita Yazbek",
+      "body": "Referência em assistência social e pobreza: \"Classes Subalternas e Assistência Social\" analisa os/as usuários/as como sujeitos de direitos, não como \"assistidos\".",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    },
+    {
+      "id": "KC",
+      "theme": "historico-formativo",
+      "rank": "K",
+      "title": "Raul de Carvalho",
+      "body": "Coautor, com Iamamoto, de \"Relações Sociais e Serviço Social no Brasil\" (1982) — obra fundante da análise histórico-crítica da profissão.",
+      "status": "rascunho",
+      "photoUrl": null,
+      "photoCredit": null
+    }
   ]
 }

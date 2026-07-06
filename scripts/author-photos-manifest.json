@@ -1,0 +1,21 @@
+{
+  "_comment": "Manifesto de fotos de autores/as verificadas manualmente no Wikimedia Commons/Wikipédia antes de entrar no jogo (Princípio I da constituição: nenhuma URL entra sem checar que a imagem existe e a licença permite o uso). Cada entrada exige commonsFileUrl real (a página do arquivo, não a imagem crua), license e credit. Ver contracts/ui-contract.md.",
+  "photos": [
+    {
+      "cardId": "KS",
+      "person": "José Paulo Netto",
+      "commonsFileUrl": "https://en.wikipedia.org/wiki/File:Jpnetto.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Jpnetto.jpg",
+      "license": "CC BY 3.0",
+      "credit": "Foto: Núcleo de Estudos de Ontologia Marxiana, CC BY 3.0, via Wikimedia Commons"
+    },
+    {
+      "cardId": "KD",
+      "person": "Vicente de Paula Faleiros",
+      "commonsFileUrl": "https://pt.wikipedia.org/wiki/Ficheiro:Vicente_de_Paula_Faleiros.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Vicente_de_Paula_Faleiros.jpg",
+      "license": "CC BY-SA 4.0",
+      "credit": "Foto: SamuelEstrellaDF, CC BY-SA 4.0, via Wikimedia Commons"
+    }
+  ]
+}
