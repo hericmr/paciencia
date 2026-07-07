@@ -446,7 +446,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       }
 
       colEl.appendChild(wrapper);
-      topOffset += window.innerWidth < 600 ? 26 : 36;
+      topOffset += window.innerWidth < 600 ? 30 : 42;
     });
 
     // Aceitar drop/clique para "mover para desobstruir" — sempre permitido

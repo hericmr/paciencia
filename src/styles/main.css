@@ -343,7 +343,7 @@ button:focus-visible {
   width: var(--card-width);
   max-width: var(--card-width);
   /* altura da pilha responsiva proporcionalmente */
-  min-height: calc(var(--card-width) * 1.4 + 90px);
+  min-height: calc(var(--card-width) * 1.4 + 126px);
   border-radius: var(--card-radius);
   transition: box-shadow var(--transition-speed) ease;
 }
@@ -426,12 +426,19 @@ button:focus-visible {
 }
 
 .word-card.covered-under .word-card-text {
+  display: block !important;
   padding: 2px 4px !important;
-  font-size: clamp(0.55rem, 2.2vw, 0.78rem) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
   text-align: center !important;
   width: 100% !important;
   line-height: 1.1 !important;
   margin-top: 2px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+  color: #000000 !important;
 }
 
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
@@ -1029,7 +1036,7 @@ button:focus-visible {
   }
 
   .tableau-column {
-    min-height: calc(var(--card-width) * 1.4 + 66px); /* 3 offsets de 22px no mobile */
+    min-height: calc(var(--card-width) * 1.4 + 90px); /* 3 offsets de 30px no mobile */
   }
 
   .word-card-text {
