@@ -14,5 +14,29 @@
   "Guerra": {
     "photoUrl": "assets/authors/yolanda-guerra.jpeg",
     "photoCredit": "Foto de Yolanda Guerra"
+  },
+  "Behring": {
+    "photoUrl": "assets/authors/Behring.jpeg",
+    "photoCredit": "Foto de Elaine Behring"
+  },
+  "Boschetti": {
+    "photoUrl": "assets/authors/Boschetti.jpeg",
+    "photoCredit": "Foto de Ivanete Boschetti"
+  },
+  "CRAS": {
+    "photoUrl": "assets/authors/cras.jpeg",
+    "photoCredit": "Ilustração do CRAS"
+  },
+  "CREAS": {
+    "photoUrl": "assets/authors/creas.png",
+    "photoCredit": "Ilustração do CREAS"
+  },
+  "SCFV": {
+    "photoUrl": "assets/authors/SCFV.jpeg",
+    "photoCredit": "Ilustração do SCFV"
+  },
+  "LOAS": {
+    "photoUrl": "assets/authors/loas.jpeg",
+    "photoCredit": "Ilustração da LOAS"
   }
 }
