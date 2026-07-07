@@ -110,6 +110,37 @@ button:focus-visible {
   box-shadow: 0 0 10px rgba(243, 198, 79, 0.4);
 }
 
+.level-select {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  cursor: pointer;
+  height: 32px;
+  outline: none;
+  transition: all var(--transition-speed) ease;
+  box-sizing: border-box;
+}
+
+.level-select:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.level-select:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 5px rgba(207, 161, 38, 0.5);
+}
+
+.level-select option {
+  background: #0c2518;
+  color: var(--text-primary);
+}
+
 #controls {
   display: flex;
   gap: 0.8rem;
@@ -1019,7 +1050,7 @@ button:focus-visible {
     gap: 0.4rem;
   }
 
-  #controls button, #controls .moves-counter {
+  #controls button, #controls .moves-counter, #controls select {
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
     height: 28px;

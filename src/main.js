@@ -44,10 +44,18 @@ async function init() {
 
     newGameBtn?.addEventListener("click", () => startLevel(currentLevel?.id ?? levelsData[0].id));
     reviewModeBtn?.addEventListener("click", () => switchToReviewMode());
+    const levelSelect = document.getElementById("level-select");
+    levelSelect?.addEventListener("change", (e) => {
+      const selectedId = parseInt(e.target.value, 10);
+      if (!isNaN(selectedId)) {
+        startLevel(selectedId);
+      }
+    });
     muteBtn?.addEventListener("click", () => {
       soundManager.toggleMuted();
       updateMuteButton();
     });
+
     updateMuteButton();
 
     startLevel(levelsData[0].id);
@@ -72,6 +80,11 @@ function startLevel(levelId) {
 
   const level = levelsData.find((l) => l.id === levelId) ?? levelsData[0];
   currentLevel = level;
+
+  const levelSelect = document.getElementById("level-select");
+  if (levelSelect) {
+    levelSelect.value = String(level.id);
+  }
 
   const titleCards = buildTitleCards(level, categoriesData);
   const wordCards = buildWordCards(level);
