@@ -543,24 +543,21 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     let card = null;
     let column = null;
     let cardIndex = -1;
+    let subStack = [];
 
     const loc = findCardLocation(levelState.tableauColumns, cardId);
     if (loc) {
       source = "column";
       column = levelState.tableauColumns[loc.colIndex];
       cardIndex = loc.cardIndex;
-      // Só permite mover para a categoria se for a carta no topo da coluna (uma por vez)
-      if (cardIndex !== column.cards.length - 1) {
-        soundManager?.play("cardMove");
-        selectedCardId = null;
-        return;
-      }
       card = column.cards[cardIndex].card;
+      subStack = column.cards.slice(cardIndex);
     } else {
       const topWasteCard = levelState.waste?.[levelState.waste.length - 1];
       if (topWasteCard && topWasteCard.id === cardId) {
         source = "waste";
         card = topWasteCard;
+        subStack = [{ card, faceUp: true }];
       }
     }
 
@@ -574,8 +571,8 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     const assignedCategoryId = levelState.spotCategories[spotIndex];
 
     if (card.isTitleCard) {
-      // Se for uma carta-título, só aceita se o spot estiver fechado/vazio
-      // e essa categoria ainda não tiver sido aberta em outro spot
+      // Se for uma carta-título (base da pilha):
+      // Só aceita se o spot estiver fechado/vazio e essa categoria ainda não tiver sido aberta em outro spot
       if (assignedCategoryId === null) {
         const isAlreadyOpened = levelState.spotCategories.includes(card.categoryId);
         if (!isAlreadyOpened) {
@@ -583,7 +580,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           selectedCardId = null;
 
           if (source === "column") {
-            column.cards.pop();
+            column.cards.splice(cardIndex);
             const newTop = getTopEntry(column);
             if (newTop) newTop.faceUp = true;
           } else if (source === "waste") {
@@ -592,7 +589,27 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
           levelState.spotCategories[spotIndex] = card.categoryId;
           levelState.openCategoryIds.add(card.categoryId);
-          soundManager?.play("cardPlace");
+
+          // E insere todas as cartas de palavra que vieram junto na pilha
+          if (!levelState.slots[card.categoryId]) {
+            levelState.slots[card.categoryId] = [];
+          }
+          subStack.forEach((entry) => {
+            if (!entry.card.isTitleCard) {
+              levelState.slots[card.categoryId].push(entry.card);
+            }
+          });
+
+          const nowComplete = levelState.slots[card.categoryId].length === level.cardsPerCategory;
+          if (nowComplete) {
+            soundManager?.play("categoryComplete");
+            const category = categoriesMap.get(card.categoryId);
+            progressStore.revealCategory(card.categoryId);
+            if (category) showCategoryCompletePopup(category, authorPhotos[card.word] ?? null);
+            levelState.spotCategories[spotIndex] = null;
+          } else {
+            soundManager?.play("cardPlace");
+          }
         } else {
           // Já está aberta em outro lugar, rejeita e consome movimento
           levelState.movesRemaining -= 1;
@@ -606,21 +623,26 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         soundManager?.play("cardMove");
       }
     } else {
-      // Se for uma carta de palavra, só aceita se o spot tiver sido aberto para aquela mesma categoria
+      // Se for uma carta de palavra (base da pilha):
+      // Só aceita se o spot tiver sido aberto para aquela mesma categoria
       if (assignedCategoryId === card.categoryId && levelState.openCategoryIds.has(card.categoryId)) {
         levelState.movesRemaining -= 1;
         selectedCardId = null;
 
         if (source === "column") {
-          column.cards.pop();
+          column.cards.splice(cardIndex);
           const newTop = getTopEntry(column);
           if (newTop) newTop.faceUp = true;
         } else if (source === "waste") {
           levelState.waste.pop();
         }
 
-        if (!levelState.slots[card.categoryId]) levelState.slots[card.categoryId] = [];
-        levelState.slots[card.categoryId].push(card);
+        if (!levelState.slots[card.categoryId]) {
+          levelState.slots[card.categoryId] = [];
+        }
+        subStack.forEach((entry) => {
+          levelState.slots[card.categoryId].push(entry.card);
+        });
 
         const nowComplete = levelState.slots[card.categoryId].length === level.cardsPerCategory;
         if (nowComplete) {
@@ -628,11 +650,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           const category = categoriesMap.get(card.categoryId);
           progressStore.revealCategory(card.categoryId);
           if (category) showCategoryCompletePopup(category, authorPhotos[card.word] ?? null);
-
-          // Grupo finalizado: libera o spot imediatamente para uma nova
-          // categoria, sem exigir ação extra do jogador (research.md,
-          // Decisão 14). As cartas já aceitas continuam em
-          // levelState.slots[categoryId] — só a ocupação do spot muda.
           levelState.spotCategories[spotIndex] = null;
         } else {
           soundManager?.play("cardPlace");
