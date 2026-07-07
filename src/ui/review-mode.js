@@ -1,31 +1,47 @@
 // @ts-check
-import { showRevealPopup } from "./reveal-popup.js";
-import { rankIndex } from "../engine/deck.js";
+// Modo Revisão: permite ao jogador estudar todas as 14 categorias e seus eixos,
+// revelando o microtexto pedagógico e as palavras associadas apenas para as
+// categorias já desbloqueadas na partida.
 
-const rankNames = {
-  "A": "Ás", "2": "Dois", "3": "Três", "4": "Quatro", "5": "Cinco", "6": "Seis",
-  "7": "Sete", "8": "Oito", "9": "Nove", "10": "Dez", "J": "Valete", "Q": "Dama", "K": "Rei"
-};
+/**
+ * @typedef {{
+ *   id: string,
+ *   nome: string,
+ *   eixo: string,
+ *   palavras: string[],
+ *   microtexto: string,
+ *   confundeCom: string[]
+ * }} CategoryData
+ */
 
-/** @type {string|null} */
-let activeTheme = null;
+/** @type {string} Eixo atualmente selecionado para filtragem */
+let activeAxis = "etica";
 
 /**
  * Renderiza a tela de Modo Revisão.
  * @param {HTMLElement} container Elemento raiz do modo revisão
- * @param {any[]} cardsData Lista de dados de cartas carregados do JSON
- * @param {any[]} principlesData Lista de princípios carregados do JSON
+ * @param {CategoryData[]} categoriesData Lista de todas as 14 categorias
  * @param {any} progressStore Store de progresso
  * @param {() => void} onBack Callback para retornar ao jogo
- * @param {Record<string, { axis: string, shortLabel: string }>} themesMeta Metadados dos 4 temas
+ * @param {Record<string, { photoUrl: string, photoCredit: string }>} [authorPhotos] Fotos dos autores
  */
-export function renderReviewMode(container, cardsData, principlesData, progressStore, onBack, themesMeta = {}) {
-  const themes = Object.keys(themesMeta);
-  if (!activeTheme || !themes.includes(activeTheme)) {
-    activeTheme = themes[0] ?? null;
+export function renderReviewMode(container, categoriesData, progressStore, onBack, authorPhotos = {}) {
+  const axes = ["etica", "tecnica", "politica_social", "historia", "teoria", "sociojuridico", "questao_social"];
+  const axisNames = {
+    "etica": "Ética",
+    "tecnica": "Técnico-Operativo",
+    "politica_social": "Política Social",
+    "historia": "História",
+    "teoria": "Teórico-Metodológico",
+    "sociojuridico": "Sociojurídico",
+    "questao_social": "Questão Social"
+  };
+
+  if (!activeAxis || !axes.includes(activeAxis)) {
+    activeAxis = axes[0];
   }
 
-  // Limpar container
+  // Limpar o container
   container.innerHTML = "";
 
   // 1. Cabeçalho do modo revisão
@@ -33,149 +49,101 @@ export function renderReviewMode(container, cardsData, principlesData, progressS
   header.className = "review-header";
   header.innerHTML = `
     <h2 class="review-title">Modo Revisão</h2>
-    <button id="review-back-btn" type="button">Voltar ao Jogo</button>
+    <button id="review-back-btn" class="back-btn" type="button">Voltar ao Jogo</button>
   `;
   container.appendChild(header);
 
   // Evento do botão Voltar
   header.querySelector("#review-back-btn")?.addEventListener("click", onBack);
 
-  // 2. Tabs de Navegação dos Temas
+  // 2. Tabs de Navegação dos Eixos
   const tabsContainer = document.createElement("div");
   tabsContainer.className = "tabs";
 
-  themes.forEach((theme) => {
+  axes.forEach((axis) => {
     const tabBtn = document.createElement("button");
-    tabBtn.className = `tab-btn theme-${theme} ${activeTheme === theme ? "active" : ""}`;
+    tabBtn.className = `tab-btn axis-${axis} ${activeAxis === axis ? "active" : ""}`;
     tabBtn.type = "button";
-    tabBtn.innerText = themesMeta[theme]?.shortLabel || theme;
+    tabBtn.innerText = axisNames[axis];
     tabBtn.addEventListener("click", () => {
-      activeTheme = theme;
-      // Re-renderizar o modo revisão
-      renderReviewMode(container, cardsData, principlesData, progressStore, onBack, themesMeta);
+      activeAxis = axis;
+      renderReviewMode(container, categoriesData, progressStore, onBack, authorPhotos);
     });
     tabsContainer.appendChild(tabBtn);
   });
   container.appendChild(tabsContainer);
 
-  // 3. Grid de Cartas do Tema Ativo
+  // 3. Grid de Categorias do Eixo Ativo
   const gridContainer = document.createElement("div");
   gridContainer.className = "review-grid";
 
-  // Obter as cartas do tema ativo, ordenadas pela posição do rank em A..K
-  // (cada tema pode usar só um subconjunto dos ranks, ver research.md, Decisão 7)
-  const themeCards = cardsData
-    .filter((c) => c.theme === activeTheme)
-    .sort((a, b) => rankIndex(a.rank) - rankIndex(b.rank));
+  // Obter as categorias do eixo ativo
+  const axisCategories = categoriesData.filter((c) => c.eixo === activeAxis);
 
-  themeCards.forEach((cardData) => {
-    const isRevealed = progressStore.isRevealed(cardData.id);
-
-    const cardItem = document.createElement("div");
-    cardItem.className = "review-card-item";
-
-    const cardWrapper = document.createElement("div");
-    cardWrapper.className = "card-wrapper";
-
+  axisCategories.forEach((category) => {
+    const isRevealed = progressStore.isRevealed(category.id);
     const cardEl = document.createElement("div");
-    cardEl.className = `card-element ${isRevealed ? "" : "face-down"} ${isRevealed ? `theme-${cardData.theme}` : ""}`;
-    cardEl.tabIndex = 0;
-
-    const labelTheme = themesMeta[cardData.theme]?.shortLabel || cardData.theme;
-    const labelRank = rankNames[cardData.rank] || cardData.rank;
-    cardEl.setAttribute("aria-label", isRevealed ? `${labelRank} — ${labelTheme}, revelada` : `Carta bloqueada (${labelRank} — ${labelTheme})`);
+    cardEl.className = `category-card axis-${category.eixo} ${isRevealed ? "unlocked" : "locked"}`;
+    cardEl.setAttribute("role", "region");
+    cardEl.setAttribute("aria-label", isRevealed ? `Categoria ${category.nome}, revelada` : `Categoria bloqueada`);
 
     if (isRevealed) {
-      const photoThumb = cardData.photoUrl
-        ? `<img class="card-photo-thumb" src="${cardData.photoUrl}" alt="" />`
-        : "";
-      cardEl.innerHTML = `
-        <div class="card-header">
-          <span class="card-value">${cardData.rank}</span>
-          <span class="card-theme-dot" aria-hidden="true"></span>
-        </div>
-        ${photoThumb}
-        <div class="card-body">
-          <span class="card-title">${cardData.title}</span>
-        </div>
-        <button class="card-info-btn" type="button" aria-label="Ver informações sobre ${cardData.title}">ⓘ</button>
-      `;
+      // Procurar fotos associadas às palavras desta categoria
+      const photos = category.palavras
+        .map(word => ({ word, photo: authorPhotos[word] }))
+        .filter(item => !!item.photo);
 
-      // Evento de clique para mostrar pop-up com detalhes da carta revelada
-      cardEl.addEventListener("click", () => {
-        showRevealPopup(cardData, cardEl, themesMeta);
-      });
-
-      cardEl.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          showRevealPopup(cardData, cardEl, themesMeta);
-        }
-      });
-    } else {
-      // Carta bloqueada / não revelada
-      cardEl.setAttribute("title", "Jogue mais partidas para revelar esta carta.");
-    }
-
-    cardWrapper.appendChild(cardEl);
-    cardItem.appendChild(cardWrapper);
-
-    const cardLabel = document.createElement("span");
-    cardLabel.className = "review-card-label";
-    cardLabel.innerText = `${cardData.rank}`;
-    cardItem.appendChild(cardLabel);
-
-    gridContainer.appendChild(cardItem);
-  });
-  container.appendChild(gridContainer);
-
-  // 4. Seção dos Princípios Éticos (US3 / US4)
-  const principlesSection = document.createElement("div");
-  principlesSection.className = "principles-section";
-
-  const completedCount = progressStore.getFoundationsCompletedCount();
-  const unlockedCount = Math.min(11, completedCount);
-
-  principlesSection.innerHTML = `
-    <h3 class="principles-title">
-      <span>Princípios Fundamentais (Código de Ética de 1993)</span>
-      <span class="principles-counter">${unlockedCount} de 11 Desbloqueados (${completedCount} fundações concluídas no histórico)</span>
-    </h3>
-    <div class="principles-list" id="principles-list"></div>
-  `;
-  container.appendChild(principlesSection);
-
-  const principlesList = principlesSection.querySelector("#principles-list");
-  if (principlesList) {
-    principlesData.forEach((p) => {
-      const isUnlocked = p.order <= unlockedCount;
-      const principleEl = document.createElement("div");
-      principleEl.className = `principle-item ${isUnlocked ? "" : "locked"}`;
-      principleEl.setAttribute("role", "listitem");
-
-      if (isUnlocked) {
-        const displayFullText = p.fullText;
-        // O Código de Ética de 1993 é conteúdo oficial já publicado
-        // legislativamente; o placeholder de FR-011 aplica-se apenas às
-        // cartas do baralho (rascunho/revisado), não aos princípios.
-
-        principleEl.innerHTML = `
-          <div class="principle-badge">${p.order}</div>
-          <div class="principle-content">
-            <div class="principle-summary">${p.summary}</div>
-            <div class="principle-full-text">${displayFullText}</div>
+      let galleryHtml = "";
+      if (photos.length > 0) {
+        const itemsHtml = photos.map(item => `
+          <div class="gallery-item" title="${item.word} (Crédito: ${item.photo.photoCredit})">
+            <img src="${item.photo.photoUrl}" alt="Foto de ${item.word}" />
+            <span class="gallery-item-name">${item.word}</span>
           </div>
-        `;
-      } else {
-        principleEl.innerHTML = `
-          <div class="principle-badge">?</div>
-          <div class="principle-content">
-            <div class="principle-summary">Princípio Bloqueado</div>
-            <div class="principle-full-text">Complete mais fundações (eixos temáticos) em suas partidas para liberar este princípio do Código de Ética.</div>
+        `).join("");
+        galleryHtml = `
+          <div class="category-card-gallery-section">
+            <div class="category-card-gallery-title">Autores(as) da categoria:</div>
+            <div class="category-card-gallery">${itemsHtml}</div>
           </div>
         `;
       }
-      principlesList.appendChild(principleEl);
-    });
-  }
+
+      cardEl.innerHTML = `
+        <div class="category-card-header">
+          <span class="category-card-id">${category.id}</span>
+          <span class="category-card-axis-badge">${axisNames[category.eixo]}</span>
+        </div>
+        <h3 class="category-card-title">${category.nome}</h3>
+        <p class="category-card-microtext">${category.microtexto}</p>
+        <div class="category-card-words">
+          <div class="category-card-words-title">Palavras associadas:</div>
+          <div class="word-pills-container">
+            ${category.palavras.map(w => `<span class="word-pill">${w}</span>`).join("")}
+          </div>
+        </div>
+        ${galleryHtml}
+      `;
+    } else {
+      // Categoria bloqueada / não revelada
+      cardEl.innerHTML = `
+        <div class="category-card-header">
+          <span class="category-card-id">${category.id}</span>
+          <span class="category-card-axis-badge locked">Bloqueada</span>
+        </div>
+        <h3 class="category-card-title">🔒 Categoria Bloqueada</h3>
+        <p class="category-card-microtext locked">Jogue para revelar esta categoria e ver seu conteúdo de revisão pedagógica.</p>
+        <div class="category-card-words">
+          <div class="category-card-words-title">Palavras associadas (bloqueadas):</div>
+          <div class="word-pills-container">
+            ${Array(category.palavras.length).fill('<span class="word-pill locked">???</span>').join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    gridContainer.appendChild(cardEl);
+  });
+
+  container.appendChild(gridContainer);
 }

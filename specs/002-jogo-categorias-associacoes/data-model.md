@@ -1,5 +1,10 @@
 # Data Model: Jogo de Categorias e Associações — MVP Nível 1
 
+> **Nota de revisão**: ver `research.md`, Decisão 8 — categorias agora têm
+> uma carta-título enterrada no tableau; o tableau voltou a ser empilhado
+> por coluna (estilo Klondike), com apenas a carta do topo de cada coluna
+> acessível.
+
 ## Category (Categoria)
 
 Vive em `src/data/categories.json`. Cadastro completo das 14 categorias do
@@ -9,7 +14,8 @@ nível jogável — servem de banco de conteúdo para níveis futuros).
 | Campo | Tipo | Descrição | Regras de validação |
 |---|---|---|---|
 | `id` | string | Ex.: `"CAT-13"` | Único |
-| `nome` | string | Nome exibido no slot ao ser descoberta | Não vazio |
+| `nome` | string | Nome exibido no slot depois de aberta | Não vazio |
+| `cartaTitulo` | string | Texto exibido na carta-título enquanto ela está no tableau (antes de ser jogada). Usa o mesmo texto de `nome` (ver research.md, Decisão 8) | Não vazio |
 | `eixo` | string enum | `etica` \| `tecnica` \| `historia` \| `teoria` \| `politica_social` | Um dos 5 |
 | `palavras` | string[] | Pool completo de palavras candidatas (3–9 itens) | Sem duplicatas |
 | `microtexto` | string | Exibido ao completar a categoria em qualquer nível | ≤ 280 caracteres, não vazio |
@@ -23,27 +29,43 @@ Vive em `src/data/levels.json`. Nesta feature, só o Nível 1 é jogável.
 |---|---|---|---|
 | `id` | integer | Identificador do nível | Único |
 | `categoryIds` | string[4] | Quais categorias compõem o nível | Exatamente 4; todos devem existir em `categories.json` |
-| `cardsPerCategory` | integer | Quantas cartas de cada categoria entram no nível | 3–8 (documento de design) |
+| `cardsPerCategory` | integer | Quantas cartas de palavra de cada categoria entram no nível | 3–8 |
 | `selectedWords` | `Record<categoryId, string[]>` | Palavras curadas para este nível, uma lista por categoria | Cada lista tem exatamente `cardsPerCategory` itens, todos presentes em `palavras` daquela categoria |
+| `totalCards` | integer | `4 + (4 × cardsPerCategory)` — 4 cartas-título + as cartas de palavra | DEVE ser exatamente essa soma |
 | `columns` | integer | Colunas do tableau | 4–6 |
-| `moveLimit` | integer | Limite total de movimentos (certos + errados) | > 0; DEVE ser ≥ `cardsPerCategory × 4` (senão o nível seria impossível de vencer mesmo sem erros) |
+| `moveLimit` | integer | Limite total de movimentos (abrir categoria + classificar palavra + desobstruir coluna, certos ou errados) | > 0; DEVE ser ≥ `totalCards` (mínimo teórico sem nenhum movimento de desobstrução) |
+| `profundidadeTitulos` | string enum | `topo` \| `meio` \| `fundo` — onde as 4 cartas-título são inseridas nas colunas | Alavanca de dificuldade (ver research.md, Decisão 8) |
 | `hint` | string \| null | Dica pedagógica exibida na derrota | Opcional |
 
-## WordCard (Carta)
+## WordCard / TitleCard (Carta)
 
-Gerada em tempo de execução por `src/engine/level.js` a partir de um
-`Level` + `Category[]] — não é persistida como está no JSON de dados.
+Geradas em tempo de execução por `src/engine/level.js` a partir de um
+`Level` + `Category[]` — não são persistidas como estão nos JSON de dados.
 
 | Campo | Tipo | Descrição |
 |---|---|---|
-| `id` | string | `${categoryId}:${word}` (ex.: `"CAT-13:Netto"`) |
+| `id` | string | `${categoryId}:${word}` para palavras; `TITLE:${categoryId}` para cartas-título |
 | `categoryId` | string | Categoria correta desta carta |
-| `word` | string | Texto exibido na carta |
+| `word` | string | Texto exibido na carta (a palavra, ou `cartaTitulo` da categoria) |
+| `isTitleCard` | boolean | `true` só para a carta-título de cada categoria |
 
-Cartas do tema "autores" (`categoryId === "CAT-13"`) podem ter
-`photoUrl`/`photoCredit` resolvidos via `title`↔`word` na camada de
-apresentação (ver `contracts/ui-contract.md`) — a engine não carrega esses
-campos.
+Cartas cujo `word` corresponde a um nome com foto conhecida (ver
+`author-photos.json`) exibem a foto na camada de apresentação — a engine não
+carrega esse campo.
+
+## TableauColumn (Coluna do tableau)
+
+Gerada por `src/engine/level.js` (`dealTableau`). Uma pilha por coluna;
+`totalCards` distribuídas em round-robin entre `columns` colunas, sem
+monte/descarte (ver research.md, Decisão 8).
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `cards` | `{ card: WordCard, faceUp: boolean }[]` | Da base ao topo; só o último elemento (`faceUp: true`) é jogável |
+
+**Regra de acesso**: só a última carta de cada coluna (`faceUp: true`) pode
+ser movida. Ao remover a carta do topo, a carta abaixo dela vira
+`faceUp: true` automaticamente.
 
 ## LevelState (Estado de partida)
 
@@ -51,35 +73,59 @@ Efêmero — existe apenas durante um nível em andamento.
 
 | Campo | Tipo | Descrição |
 |---|---|---|
-| `tableau` | `WordCard[]` | Cartas ainda não classificadas (ou classificadas incorretamente e devolvidas) |
-| `slots` | `Record<categoryId, WordCard[]>` | Cartas já aceitas corretamente, por categoria |
-| `movesRemaining` | integer | Decrementado a cada tentativa de mover para um slot (Decisão 3) |
+| `tableauColumns` | `TableauColumn[]` | Estado atual das colunas |
+| `slots` | `Record<categoryId, WordCard[]>` | Cartas de palavra já aceitas corretamente, por categoria |
+| `openCategoryIds` | `Set<categoryId>` | Categorias cuja carta-título já foi jogada — só estas aceitam cartas de palavra |
+| `movesRemaining` | integer | Decrementado a cada tentativa de mover uma carta do topo de uma coluna (para um slot de categoria ou para outra coluna) |
 | `status` | string enum | `"em_andamento"` \| `"vitoria"` \| `"derrota"` |
 
+**Regras de movimento** (ver `contracts/ui-contract.md` para o esquema
+completo):
+- Carta-título → slot da própria categoria: sempre aceita; abre a categoria
+  (`openCategoryIds.add(categoryId)`).
+- Carta de palavra → slot de categoria: aceita só se `categoryId` bate E a
+  categoria já está em `openCategoryIds`; caso contrário rejeitada.
+- Qualquer carta do topo de uma coluna → topo de **outra** coluna: sempre
+  aceita, sem regra de compatibilidade (só reorganiza para desobstruir).
+- Todo movimento acima — aceito ou rejeitado — decrementa `movesRemaining`.
+
 **Transições de estado**:
-- `em_andamento` → `vitoria`: quando `slots[categoryId].length === cardsPerCategory` para as 4 categorias do nível — checado **antes** da checagem de derrota (spec.md, Edge Cases).
-- `em_andamento` → `derrota`: quando `movesRemaining === 0` e alguma categoria ainda está incompleta.
+- `em_andamento` → `vitoria`: quando `slots[categoryId].length ===
+  cardsPerCategory` para as 4 categorias do nível — checado **antes** da
+  checagem de derrota.
+- `em_andamento` → `derrota`: quando `movesRemaining === 0` e alguma
+  categoria ainda está incompleta.
 - Sem transição de volta — perder/vencer exige recarregar o nível.
+
+## SoundManager (Feedback sonoro)
+
+Módulo de apresentação (`src/audio/sound-manager.js`), sem estado de jogo —
+só decide qual arquivo tocar e se o áudio está mudo. Ver
+`contracts/ui-contract.md` §6 e `research.md`, Decisão 9.
+
+| Campo/Método | Tipo | Descrição |
+|---|---|---|
+| `play(eventName)` | função | Toca uma variante aleatória do som mapeado para `eventName`; não faz nada se mudo ou se o evento não existir |
+| `isMuted()` | função | Retorna o estado atual de mudo |
+| `setMuted(value)` / `toggleMuted()` | função | Altera o estado de mudo e persiste em `localStorage` |
+
+`eventName` ∈ `"cardPlace"` \| `"cardMove"` \| `"categoryComplete"` \|
+`"dealShuffle"`. Não lido pela engine (`src/engine/`) — chamado só pela
+camada de UI (`level-board.js`, `main.js`) em reação a movimentos já
+resolvidos.
 
 ## ProgressStore (Progresso do jogador)
 
-Reaproveita `src/progress/store.js` da v1 quase sem mudança de forma —
-generaliza "carta revelada" para "categoria com microtexto já visto":
-
-| Campo | Tipo | Descrição |
-|---|---|---|
-| `revealedCategoryIds` | Set/array de `id` | Categorias cujo microtexto já foi mostrado ao menos uma vez (em qualquer nível) |
-| `completedLevelIds` | array de integer | Níveis já vencidos ao menos uma vez |
-
-O antigo `foundationsCompletedCount`/desbloqueio dos 11 princípios do
-Código de Ética **não é retomado** nesta versão (ver spec.md, Assumptions).
+Sem alteração desta revisão — `revealedCategoryIds` / `completedLevelIds`
+(ver commit anterior).
 
 ## Relacionamentos
 
 ```text
+Category (1) ──has one──> TitleCard (via cartaTitulo)
 Category (1) ──contributes words to──> Level.selectedWords (N)
-Level (1) ──generates──> WordCard (cardsPerCategory × 4, em tempo de execução)
-WordCard (N) ──belongs to──> Category (1, via categoryId)
+Level (1) ──generates──> TitleCard×4 + WordCard×(cardsPerCategory×4), em tempo de execução
+TitleCard played ──opens──> Category slot (aceita WordCards dali em diante)
 LevelState.slots completion ──triggers──> Category.microtexto reveal
 ProgressStore ──tracks──> Category.revealed (por id) e Level.completed (por id)
 ```

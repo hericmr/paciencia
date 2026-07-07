@@ -102,3 +102,121 @@ após o primeiro acerto.
 primeira carta aceita naquele slot — rejeitado por ora como complexidade
 extra sem necessidade comprovada (Princípio IV); pode ser revisitado se o
 Nível 1 se mostrar frustrante demais nos testes manuais.
+
+## Decisão 8: Cartas-título enterradas no tableau (reintroduz empilhamento)
+
+**Decision**: cada categoria ganha uma **carta-título** própria
+(`cartaTitulo`, campo do dado de categoria) que é uma carta como qualquer
+outra dentro do baralho do nível — não um slot pré-existente. Uma categoria
+só aceita cartas de palavra depois que sua carta-título for encontrada e
+jogada no slot correspondente. O tableau volta a ser empilhado por coluna,
+como no Klondike original (feature 001): só a carta do topo de cada coluna
+é visível/jogável; embaixo dela as cartas ficam viradas para baixo
+(mostrando `assets/verso.png`) até serem descobertas. `profundidadeTitulos`
+(`topo`\|`meio`\|`fundo`) controla a posição da carta-título dentro da
+coluna em que ela foi inserida — quanto mais fundo, mais cartas precisam
+ser retiradas de cima dela antes de aparecer.
+
+Confirmado com o mantenedor: (1) tableau empilhado tipo Klondike; (2) uma
+carta de palavra cuja categoria ainda não abriu pode ser movida para o topo
+de **outra** coluna sem nenhuma regra de compatibilidade — serve só para
+desobstruir o caminho até uma carta enterrada; (3) jogar uma carta-título
+(abrindo a categoria) consome 1 movimento, exatamente como classificar uma
+palavra (certo ou errado).
+
+**Rationale**: aproxima o jogo de volta da mecânica de "desenterrar" que
+dava tensão ao Klondike original, mas mantém a camada pedagógica de
+categorias por cima — agora "vencer" exige tanto raciocínio de classificação
+quanto gestão de espaço/movimentos para desenterrar as 4 cartas-título a
+tempo.
+
+**Decisões de implementação (não especificadas pelo mantenedor, escolhidas
+para fechar o algoritmo)**:
+- `cartaTitulo` de cada categoria usa o próprio `nome` da categoria como
+  texto de exibição (é o que a pessoa vê ao desenterrar a carta, antes de
+  jogá-la — funciona como a "resposta" que ela vai confirmar ao jogar).
+- Sem monte/descarte: todas as `totalCards` (títulos + palavras) do nível
+  são distribuídas diretamente entre as `columns` colunas (round-robin), sem
+  pilha de reserva. O esquema do mantenedor não menciona monte, então optou-se
+  pela opção mais simples (Princípio IV).
+- Mapeamento de profundidade: dentro da coluna em que uma carta-título cai,
+  `topo` a posiciona como uma das últimas cartas empilhadas (acessível cedo),
+  `fundo` como uma das primeiras (bem enterrada), `meio` no meio da pilha.
+
+**Alternatives considered**: manter o tableau "tudo solto" e usar
+`profundidadeTitulos` só como peso de sorteio (cogitado na pergunta de
+esclarecimento, não escolhido); dar à carta-título um texto próprio distinto
+do `nome` (mais trabalho de conteúdo sem necessidade clara agora).
+
+## Decisão 9: Feedback sonoro com o pacote Kenney Casino Audio (CC0)
+
+**Decision**: o jogo ganha efeitos sonoros curtos para os eventos do
+tableau, usando os arquivos `.ogg` já presentes em
+`assets/kenney_casino-audio/Audio/` (pacote "Casino Audio" de Kenney
+Vleugels, licença CC0 — ver `assets/kenney_casino-audio/License.txt`, sem
+exigência de atribuição). Mapeamento:
+
+| Evento | Som |
+|---|---|
+| Carta aceita num slot de categoria (palavra certa ou carta-título abrindo a categoria) | `card-place-{1..4}.ogg` (variante aleatória) |
+| Carta rejeitada (volta ao topo da coluna) ou movida para desobstruir outra coluna | `card-slide-{1..8}.ogg` (variante aleatória) |
+| Categoria completada (pop-up de micro-texto abre) | `cards-pack-open-{1..2}.ogg` |
+| Distribuição inicial das cartas ao carregar/reiniciar um nível | `card-shuffle.ogg` (uma vez, junto com a animação de "virar" já existente) |
+
+**Rationale**: reforça o feedback tátil de cada ação (acerto, erro,
+conquista) sem depender de texto extra; o pacote já está no repositório,
+é CC0 (Princípio IV — zero custo de licença/manutenção) e cobre exatamente
+os eventos de "cartas" que o jogo tem.
+
+**Decisões de implementação**:
+- `src/audio/sound-manager.js`: módulo isolado, mesma forma de factory de
+  `src/progress/store.js` (`createSoundManager({ storage, AudioCtor, rng })`
+  com injeção de dependências para ser testável sem áudio real nem DOM).
+- Alternância entre variantes do mesmo evento é aleatória (`rng` injetável
+  nos testes) só para evitar repetição perceptível; não afeta a lógica do
+  jogo.
+- **Mute é obrigatório e persistente** (Princípio V — acessibilidade):
+  botão no cabeçalho (🔊/🔇), estado salvo em `localStorage`
+  (`paciencia_ss.audio.muted`), começa **ativado com som** por padrão. Nenhuma
+  informação do jogo é comunicada exclusivamente por som — áudio é reforço,
+  nunca portador de informação obrigatória.
+- Falha ao tocar (autoplay bloqueado pelo navegador, `Audio` indisponível em
+  ambiente de teste) é silenciosamente ignorada — nunca lança erro visível
+  ao jogador.
+
+**Alternatives considered**: sintetizar sons via Web Audio API em vez de
+arquivos — descartado, o pacote pronto já cobre os eventos com qualidade
+melhor e zero código extra (Princípio IV); música de fundo contínua —
+descartada por ora, fora do escopo pedido (só efeitos pontuais de
+interação).
+
+## Decisão 10: Slots de categoria no formato de carta (Paciência física)
+
+**Decision**: Refatorar os slots de categoria para que tenham o mesmo formato e proporção das cartas do jogo (`aspect-ratio: 2.5 / 3.5`, max-width: `140px`). Quando a carta-título ou cartas de palavras forem colocadas no spot, elas são empilhadas fisicamente de forma absoluta no spot (com um deslocamento vertical de `8px`), imitando a pilha de fundação de um jogo de paciência real. Os títulos e o progresso das categorias passam a ser exibidos em um cabeçalho logo acima do spot.
+
+**Rationale**: Alinha-se diretamente com o feedback do usuário de que os slots devem se comportar como os de um jogo de paciência física. Isso melhora a experiência de "encaixe" tátil das cartas e torna a visualização das cartas classificadas muito mais natural do que o uso de mini-cards de texto condensado.
+
+## Decisão 11: Mais categorias no nível com limite fixo de 4 spots dinâmicos e cartas totalmente embaralhadas
+
+**Decision**: 
+1. **Embaralhamento total de cartas**: Permitir a opção `"embaralhado"` para a profundidade das cartas-título, o que faz com que as cartas-título e as cartas de palavras sejam misturadas juntas e distribuídas de forma 100% aleatória no tableau desde o início, podendo ficar enterradas a qualquer profundidade.
+2. **Spots dinâmicos não pre-alocados**: Manter exatamente 4 spots/slots de categoria visíveis no topo da tela, mas desvinculá-los de categorias fixas no início do nível. Qualquer carta-título revelada pode ser solta em qualquer spot vazio, vinculando aquele spot à respectiva categoria de forma dinâmica.
+3. **Mais categorias configuradas**: Incluir 6 categorias no nível de dados do Nível 1. Como há apenas 4 spots disponíveis, o jogador resolve 4 das 6 categorias presentes para alcançar a vitória.
+
+**Rationale**: Alinha-se perfeitamente com os novos requisitos solicitados. A mistura completa de cartas simula a tensão e a necessidade de desobstrução de colunas de um Solitaire tradicional, e a presença de mais categorias com apenas 4 spots adiciona um elemento estratégico de escolha e distração (red herrings/pegadinhas), aumentando o desafio cognitivo e a rejogabilidade.
+
+**Decision**: Reintroduzir as pilhas de Monte (Stock) e Descarte (Waste) no topo esquerdo do tabuleiro, alinhados horizontalmente em uma grade de 6 colunas junto com os 4 spots de categoria (que ocupam as 4 colunas da direita), e estruturar o tableau em **exatamente 4 colunas** com uma distribuição em cascata (cascata de Paciência).
+1. No início do nível no modo `"embaralhado"`, distribuímos as cartas de forma crescente nas 4 colunas do tableau:
+   - Coluna 0: 2 cartas (1 fechada, 1 aberta)
+   - Coluna 1: 3 cartas (2 fechadas, 1 aberta)
+   - Coluna 2: 4 cartas (3 fechadas, 1 aberta)
+   - Coluna 3: 5 cartas (4 fechadas, 1 aberta)
+   - Total no Tableau: 14 cartas.
+2. As **10 cartas restantes** (do total de 24 cartas das 6 categorias) são alocadas como monte de compras/circulação (Monte) viradas para baixo.
+3. Clicar no Monte retira uma carta e a coloca no Descarte virada para cima.
+4. Se o Monte esvaziar, clicar nele recicla a pilha de Descarte de volta para o Monte.
+5. A carta do topo do Descarte é jogável, podendo ser arrastada ou selecionada para ser movida para qualquer uma das colunas do tableau ou spots de categoria corretos.
+
+**Rationale**: Alinha-se perfeitamente com o feedback de que o jogo precisa de exatamente 4 colunas de tableau com uma quantidade crescente de cartas por baixo (pirâmide/cascata clássica da Paciência) para dar a dinâmica real e desafiadora de desenterrar cartas ocultas, mantendo um monte de circulação balanceado.
+
+

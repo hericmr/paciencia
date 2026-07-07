@@ -4,113 +4,476 @@
       "id": "CAT-01",
       "nome": "Princípios do Código de Ética (1993)",
       "eixo": "etica",
-      "palavras": ["Liberdade", "Democracia", "Equidade", "Justiça social", "Pluralismo", "Cidadania", "Direitos humanos", "Nova ordem societária", "Eliminação de preconceitos", "Qualidade dos serviços"],
+      "palavras": [
+        "Liberdade",
+        "Democracia",
+        "Equidade",
+        "Justiça social",
+        "Pluralismo",
+        "Cidadania",
+        "Direitos humanos",
+        "Nova ordem societária",
+        "Eliminação de preconceitos",
+        "Qualidade dos serviços"
+      ],
       "microtexto": "Os 11 princípios fundamentais (Res. CFESS 273/93) têm a liberdade como valor ético central e apontam para uma sociedade sem dominação-exploração de classe, etnia e gênero.",
-      "confundeCom": ["CAT-09", "CAT-10"]
+      "confundeCom": [
+        "CAT-09",
+        "CAT-10",
+        "CAT-17"
+      ],
+      "cartaTitulo": "Princípios do Código de Ética (1993)"
     },
     {
       "id": "CAT-02",
       "nome": "Direitos do/a assistente social (Código, art. 2º)",
       "eixo": "etica",
-      "palavras": ["Livre exercício", "Autonomia técnica", "Inviolabilidade do local de trabalho", "Sigilo profissional", "Pronunciamento público", "Aprimoramento profissional", "Desagravo público"],
+      "palavras": [
+        "Livre exercício",
+        "Autonomia técnica",
+        "Inviolabilidade do local de trabalho",
+        "Sigilo profissional",
+        "Pronunciamento público",
+        "Aprimoramento profissional",
+        "Desagravo público"
+      ],
       "microtexto": "O Código garante condições para o exercício: autonomia, sigilo, inviolabilidade dos arquivos e direito de se pronunciar em matéria de sua especialidade.",
-      "confundeCom": ["CAT-03"]
+      "confundeCom": [
+        "CAT-03",
+        "CAT-16"
+      ],
+      "cartaTitulo": "Direitos do/a assistente social (Código, art. 2º)"
     },
     {
       "id": "CAT-03",
       "nome": "Vedações ao/à assistente social",
       "eixo": "etica",
-      "palavras": ["Práticas discriminatórias", "Abuso de autoridade", "Depor como testemunha (situação sigilosa)", "Emprestar o nome a serviço irregular", "Assédio", "Intermediar honorários indevidos", "Acatar ordem que fira a autonomia"],
+      "palavras": [
+        "Práticas discriminatórias",
+        "Abuso de autoridade",
+        "Depor como testemunha (situação sigilosa)",
+        "Emprestar o nome a serviço irregular",
+        "Assédio",
+        "Intermediar honorários indevidos",
+        "Acatar ordem que fira a autonomia"
+      ],
       "microtexto": "O Código não só garante direitos: veda condutas que violem usuários/as ou a profissão. Discriminar, abusar da autoridade e quebrar sigilo em depoimento estão entre as proibições.",
-      "confundeCom": ["CAT-02"]
+      "confundeCom": [
+        "CAT-02"
+      ],
+      "cartaTitulo": "Vedações ao/à assistente social"
     },
     {
       "id": "CAT-04",
       "nome": "Atribuições privativas (Lei 8.662/93, art. 5º)",
       "eixo": "tecnica",
-      "palavras": ["Magistério em Serviço Social", "Direção de unidade de ensino de SS", "Fiscalização do exercício profissional", "Parecer sobre matéria de Serviço Social", "Supervisão direta de estágio em SS", "Coordenação de curso de SS", "Perícia sobre matéria de SS"],
+      "palavras": [
+        "Magistério em Serviço Social",
+        "Direção de unidade de ensino de SS",
+        "Fiscalização do exercício profissional",
+        "Parecer sobre matéria de Serviço Social",
+        "Supervisão direta de estágio em SS",
+        "Coordenação de curso de SS",
+        "Perícia sobre matéria de SS"
+      ],
       "microtexto": "Privativas = SÓ assistente social pode (art. 5º). O truque para memorizar: quase todas contêm 'de Serviço Social' no enunciado — dizem respeito à própria profissão.",
-      "confundeCom": ["CAT-05"]
+      "confundeCom": [
+        "CAT-05"
+      ],
+      "cartaTitulo": "Atribuições privativas (Lei 8.662/93, art. 5º)"
     },
     {
       "id": "CAT-05",
       "nome": "Competências (Lei 8.662/93, art. 4º)",
       "eixo": "tecnica",
-      "palavras": ["Elaborar planos e programas", "Orientação social a indivíduos e grupos", "Estudos socioeconômicos", "Encaminhar providências", "Assessoria a movimentos sociais", "Gestão de políticas sociais", "Pesquisa sobre a realidade social"],
+      "palavras": [
+        "Elaborar planos e programas",
+        "Orientação social a indivíduos e grupos",
+        "Estudos socioeconômicos",
+        "Encaminhar providências",
+        "Assessoria a movimentos sociais",
+        "Gestão de políticas sociais",
+        "Pesquisa sobre a realidade social"
+      ],
       "microtexto": "Competências = o assistente social faz, mas outras profissões também podem (art. 4º). Confundir art. 4º com art. 5º é a pegadinha mais clássica das bancas.",
-      "confundeCom": ["CAT-04"]
+      "confundeCom": [
+        "CAT-04"
+      ],
+      "cartaTitulo": "Competências (Lei 8.662/93, art. 4º)"
     },
     {
       "id": "CAT-06",
       "nome": "Instrumentos e técnicas",
       "eixo": "tecnica",
-      "palavras": ["Entrevista", "Visita domiciliar", "Estudo social", "Relatório social", "Reunião", "Observação", "Escuta qualificada", "Diário de campo"],
+      "palavras": [
+        "Entrevista",
+        "Visita domiciliar",
+        "Estudo social",
+        "Relatório social",
+        "Reunião",
+        "Observação",
+        "Escuta qualificada",
+        "Diário de campo"
+      ],
       "microtexto": "Os instrumentos não são neutros: ganham direção pela instrumentalidade (Yolanda Guerra) — articulação das dimensões teórica, ética e técnica.",
-      "confundeCom": ["CAT-04"]
+      "confundeCom": [
+        "CAT-04",
+        "CAT-15"
+      ],
+      "cartaTitulo": "Instrumentos e técnicas"
     },
     {
       "id": "CAT-07",
       "nome": "Proteção Social Básica",
       "eixo": "politica_social",
-      "palavras": ["CRAS", "PAIF", "SCFV", "Prevenção de riscos", "Território de vulnerabilidade", "Fortalecimento de vínculos", "Cadastro Único"],
+      "palavras": [
+        "CRAS",
+        "PAIF",
+        "SCFV",
+        "Prevenção de riscos",
+        "Território de vulnerabilidade",
+        "Fortalecimento de vínculos",
+        "Cadastro Único"
+      ],
       "microtexto": "PSB (PNAS/2004): caráter PREVENTIVO, executada no CRAS via PAIF e SCFV, para famílias em situação de vulnerabilidade — antes da violação de direitos.",
-      "confundeCom": ["CAT-08"]
+      "confundeCom": [
+        "CAT-08"
+      ],
+      "cartaTitulo": "Proteção Social Básica"
     },
     {
       "id": "CAT-08",
       "nome": "Proteção Social Especial",
       "eixo": "politica_social",
-      "palavras": ["CREAS", "PAEFI", "Abordagem social", "Acolhimento institucional", "Medidas socioeducativas", "Família acolhedora", "Direitos violados"],
+      "palavras": [
+        "CREAS",
+        "PAEFI",
+        "Abordagem social",
+        "Acolhimento institucional",
+        "Medidas socioeducativas",
+        "Família acolhedora",
+        "Direitos violados"
+      ],
       "microtexto": "PSE: atende situações de RISCO e direitos JÁ violados — média complexidade (CREAS/PAEFI) e alta complexidade (acolhimento). A régua é: violou o direito? É especial.",
-      "confundeCom": ["CAT-07"]
+      "confundeCom": [
+        "CAT-07",
+        "CAT-18"
+      ],
+      "cartaTitulo": "Proteção Social Especial"
     },
     {
       "id": "CAT-09",
       "nome": "Seguridade Social (CF/88)",
       "eixo": "politica_social",
-      "palavras": ["Saúde", "Previdência", "Assistência social", "Universalidade da cobertura", "Seletividade e distributividade", "Equidade no custeio", "Caráter democrático da gestão"],
+      "palavras": [
+        "Saúde",
+        "Previdência",
+        "Assistência social",
+        "Universalidade da cobertura",
+        "Seletividade e distributividade",
+        "Equidade no custeio",
+        "Caráter democrático da gestão"
+      ],
       "microtexto": "O tripé da CF/88 (art. 194): saúde (universal), previdência (contributiva) e assistência (a quem dela necessitar). Os objetivos do parágrafo único caem MUITO em prova.",
-      "confundeCom": ["CAT-01", "CAT-10"]
+      "confundeCom": [
+        "CAT-01",
+        "CAT-10"
+      ],
+      "cartaTitulo": "Seguridade Social (CF/88)"
     },
     {
       "id": "CAT-10",
       "nome": "Diretrizes e princípios do SUAS",
       "eixo": "politica_social",
-      "palavras": ["Descentralização político-administrativa", "Participação popular", "Primazia do Estado", "Matricialidade sociofamiliar", "Territorialização", "Controle social", "Comando único"],
+      "palavras": [
+        "Descentralização político-administrativa",
+        "Participação popular",
+        "Primazia do Estado",
+        "Matricialidade sociofamiliar",
+        "Territorialização",
+        "Controle social",
+        "Comando único"
+      ],
       "microtexto": "PNAS/2004 e NOB/SUAS: gestão descentralizada com comando único por esfera, centralidade na família e no território, e controle social pelos conselhos.",
-      "confundeCom": ["CAT-09", "CAT-01"]
+      "confundeCom": [
+        "CAT-09",
+        "CAT-01",
+        "CAT-23"
+      ],
+      "cartaTitulo": "Diretrizes e princípios do SUAS"
     },
     {
       "id": "CAT-11",
       "nome": "Marcos históricos da profissão",
       "eixo": "historia",
-      "palavras": ["1936", "1979", "1982", "1988", "1993", "1996", "2005"],
-      "microtexto": "1993 é o ano-chave: Código de Ética, LOAS e Lei de Regulamentação — três pilares no mesmo ano. E a Virada de 1979 é o divisor de águas político da categoria.",
-      "confundeCom": ["CAT-12"]
+      "palavras": [
+        "Primeira escola de Serviço Social",
+        "Movimento de Reconceituação",
+        "Congresso da Virada",
+        "Currículo de 1982",
+        "Código de Ética vigente",
+        "Lei de Regulamentação",
+        "LOAS",
+        "Diretrizes Curriculares da ABEPSS"
+      ],
+      "microtexto": "A Virada (III CBAS, 1979) é o divisor político da categoria. E 1993 é o ano-chave de apoio: Código de Ética, Lei de Regulamentação e LOAS nascem juntos — três pilares do projeto ético-político.",
+      "confundeCom": [
+        "CAT-12"
+      ],
+      "cartaTitulo": "Marcos históricos da profissão"
     },
     {
       "id": "CAT-12",
       "nome": "Renovação e suas vertentes (Netto)",
       "eixo": "teoria",
-      "palavras": ["Modernizadora", "Araxá", "Teresópolis", "Reatualização do conservadorismo", "Fenomenologia", "Intenção de ruptura", "Método BH"],
+      "palavras": [
+        "Modernizadora",
+        "Araxá",
+        "Teresópolis",
+        "Reatualização do conservadorismo",
+        "Fenomenologia",
+        "Intenção de ruptura",
+        "Método BH"
+      ],
       "microtexto": "Netto sistematiza três vertentes da renovação: modernizadora (Araxá/Teresópolis), reatualização do conservadorismo e intenção de ruptura — que se torna hegemônica nos anos 1980.",
-      "confundeCom": ["CAT-11", "CAT-14"]
+      "confundeCom": [
+        "CAT-11",
+        "CAT-14"
+      ],
+      "cartaTitulo": "Renovação e suas vertentes (Netto)"
     },
     {
       "id": "CAT-13",
       "nome": "Autoras e autores da vertente crítica",
       "eixo": "historia",
-      "palavras": ["Iamamoto", "Netto", "Behring", "Yazbek", "Guerra", "Faleiros", "Martinelli", "Barroco", "Boschetti"],
+      "palavras": [
+        "Iamamoto",
+        "Netto",
+        "Behring",
+        "Yazbek",
+        "Guerra",
+        "Faleiros",
+        "Martinelli",
+        "Barroco",
+        "Boschetti"
+      ],
       "microtexto": "A tradição marxista no Serviço Social: Iamamoto (trabalho e reprodução), Netto (renovação), Behring (política social), Guerra (instrumentalidade), Barroco (ética).",
-      "confundeCom": []
+      "confundeCom": [],
+      "cartaTitulo": "Autoras e autores da vertente crítica"
     },
     {
       "id": "CAT-14",
       "nome": "Categorias do método crítico",
       "eixo": "teoria",
-      "palavras": ["Totalidade", "Mediação", "Historicidade", "Contradição", "Práxis", "Questão social", "Reprodução das relações sociais"],
+      "palavras": [
+        "Totalidade",
+        "Mediação",
+        "Historicidade",
+        "Contradição",
+        "Práxis",
+        "Questão social",
+        "Reprodução das relações sociais"
+      ],
       "microtexto": "Ler a realidade como totalidade histórica e contraditória, mediando o singular e o universal: é o que distingue a intervenção crítica do atendimento pontual.",
-      "confundeCom": ["CAT-12"]
+      "confundeCom": [
+        "CAT-12"
+      ],
+      "cartaTitulo": "Categorias do método crítico"
+    },
+    {
+      "id": "CAT-15",
+      "nome": "Documentos: laudo e parecer",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Laudo social",
+        "Parecer social",
+        "Perícia social",
+        "Quesitos",
+        "Opinião técnica conclusiva",
+        "Registro fundamentado",
+        "Materialização do estudo social"
+      ],
+      "microtexto": "Estudo social é o processo; laudo é o documento da perícia e responde quesitos do juízo; parecer é opinião técnica sucinta e conclusiva. Confundir os três é pegadinha garantida no sociojurídico.",
+      "confundeCom": [
+        "CAT-06"
+      ],
+      "cartaTitulo": "Documentos: laudo e parecer"
+    },
+    {
+      "id": "CAT-16",
+      "nome": "Campo sociojurídico",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Poder Judiciário",
+        "Ministério Público",
+        "Defensoria Pública",
+        "Sistema penitenciário",
+        "Perícia judicial",
+        "Interdisciplinaridade",
+        "Autonomia frente à requisição"
+      ],
+      "microtexto": "O sociojurídico articula as instituições de justiça e execução penal. O desafio ético: responder requisições sem virar \"olhos e ouvidos do juiz\" — o trabalho interdisciplinar não dilui a competência de cada profissão.",
+      "confundeCom": [
+        "CAT-02"
+      ],
+      "cartaTitulo": "Campo sociojurídico"
+    },
+    {
+      "id": "CAT-17",
+      "nome": "Direitos Humanos",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Declaração Universal dos Direitos Humanos",
+        "Universalidade",
+        "Indivisibilidade",
+        "Interdependência",
+        "Dignidade humana",
+        "Pactos internacionais",
+        "Dimensões de direitos"
+      ],
+      "microtexto": "DH são universais, indivisíveis e interdependentes. Para o Serviço Social não são abstração: o Código de 1993 assume sua defesa intransigente e a recusa do arbítrio e do autoritarismo.",
+      "confundeCom": [
+        "CAT-01"
+      ],
+      "cartaTitulo": "Direitos Humanos"
+    },
+    {
+      "id": "CAT-18",
+      "nome": "SGD e medidas de proteção (ECA)",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Conselho Tutelar",
+        "Medidas protetivas (art. 101)",
+        "Acolhimento familiar",
+        "Prioridade absoluta",
+        "Proteção integral",
+        "Promoção–defesa–controle",
+        "Excepcionalidade do afastamento"
+      ],
+      "microtexto": "O SGD (Res. CONANDA 113) opera em três eixos: promoção, defesa e controle. Medidas protetivas (art. 101) respondem a direito ameaçado ou violado — não confundir com as socioeducativas do art. 112.",
+      "confundeCom": [
+        "CAT-19",
+        "CAT-08"
+      ],
+      "cartaTitulo": "SGD e medidas de proteção (ECA)"
+    },
+    {
+      "id": "CAT-19",
+      "nome": "Adolescente e ato infracional",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Medidas socioeducativas (art. 112)",
+        "SINASE",
+        "Advertência",
+        "Liberdade assistida",
+        "Prestação de serviços à comunidade",
+        "Semiliberdade",
+        "Internação"
+      ],
+      "microtexto": "Socioeducativas respondem ao ato infracional; protetivas, à violação de direitos. Internação: excepcional, breve, máximo 3 anos. O SINASE (Lei 12.594/12) organiza a execução.",
+      "confundeCom": [
+        "CAT-18"
+      ],
+      "cartaTitulo": "Adolescente e ato infracional"
+    },
+    {
+      "id": "CAT-20",
+      "nome": "Violências contra criança e adolescente",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Violência física",
+        "Violência psicológica",
+        "Abuso sexual",
+        "Exploração sexual",
+        "Negligência",
+        "Escuta especializada",
+        "Depoimento especial"
+      ],
+      "microtexto": "A Lei 13.431/17 tipifica as violências e cria escuta especializada e depoimento especial para evitar a revitimização. Abuso ≠ exploração sexual: a segunda envolve troca ou mercantilização.",
+      "confundeCom": [
+        "CAT-18",
+        "CAT-21"
+      ],
+      "cartaTitulo": "Violências contra criança e adolescente"
+    },
+    {
+      "id": "CAT-21",
+      "nome": "Violência doméstica contra a mulher (Lei Maria da Penha)",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "Violência patrimonial",
+        "Violência moral",
+        "Medidas protetivas de urgência",
+        "Juizado de Violência Doméstica",
+        "Relação íntima de afeto",
+        "Independe de coabitação",
+        "Atendimento multidisciplinar"
+      ],
+      "microtexto": "A Maria da Penha (Lei 11.340/06) reconhece 5 formas de violência: física, psicológica, sexual, patrimonial e moral. As duas últimas são as que as bancas mais cobram — e as mais esquecidas.",
+      "confundeCom": [
+        "CAT-20",
+        "CAT-22"
+      ],
+      "cartaTitulo": "Violência doméstica contra a mulher (Lei Maria da Penha)"
+    },
+    {
+      "id": "CAT-22",
+      "nome": "Pessoa idosa (Estatuto)",
+      "eixo": "sociojuridico",
+      "palavras": [
+        "60 anos ou mais",
+        "Prioridade especial (80+)",
+        "Notificação compulsória",
+        "Obrigação alimentar solidária",
+        "ILPI",
+        "Medidas de proteção (art. 43)",
+        "Envelhecimento como direito personalíssimo"
+      ],
+      "microtexto": "Estatuto da Pessoa Idosa (Lei 10.741/03): 60+, com prioridade especial aos 80+. Violência contra idoso tem notificação compulsória, e a obrigação alimentar é solidária — o idoso escolhe de quem cobrar.",
+      "confundeCom": [
+        "CAT-18",
+        "CAT-21"
+      ],
+      "cartaTitulo": "Pessoa idosa (Estatuto)"
+    },
+    {
+      "id": "CAT-23",
+      "nome": "Famílias",
+      "eixo": "questao_social",
+      "palavras": [
+        "Pluralidade de arranjos",
+        "Família monoparental",
+        "Homoparentalidade",
+        "Famílias reconstituídas",
+        "Redes de apoio",
+        "Familismo",
+        "Sobrecarga feminina do cuidado"
+      ],
+      "microtexto": "Não existe \"a família\": existem famílias. A crítica ao familismo: políticas que transferem à família (leia-se: às mulheres) a proteção social que caberia ao Estado.",
+      "confundeCom": [
+        "CAT-10",
+        "CAT-24"
+      ],
+      "cartaTitulo": "Famílias"
+    },
+    {
+      "id": "CAT-24",
+      "nome": "Gênero, raça e diversidade",
+      "eixo": "questao_social",
+      "palavras": [
+        "Divisão sexual do trabalho",
+        "Interseccionalidade",
+        "Racismo estrutural",
+        "Patriarcado",
+        "Identidade de gênero",
+        "Relações intergeracionais",
+        "Etarismo"
+      ],
+      "microtexto": "Classe não explica tudo sozinha: gênero, raça e geração estruturam a desigualdade. Interseccionalidade lê essas opressões articuladas — não somadas uma a uma.",
+      "confundeCom": [
+        "CAT-23"
+      ],
+      "cartaTitulo": "Gênero, raça e diversidade"
     }
   ]
 }

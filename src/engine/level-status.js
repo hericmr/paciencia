@@ -11,7 +11,9 @@
  * @returns {boolean}
  */
 export function checkLevelWin(slots, level) {
-  return level.categoryIds.every((categoryId) => (slots[categoryId]?.length ?? 0) === level.cardsPerCategory);
+  const targetCount = Math.min(4, level.categoryIds.length);
+  const completedCount = level.categoryIds.filter((catId) => (slots[catId]?.length ?? 0) === level.cardsPerCategory).length;
+  return completedCount >= targetCount;
 }
 
 /**

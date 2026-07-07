@@ -1,8 +1,9 @@
 // @ts-check
 import { loadCategories, loadLevels } from "./data/loader.js";
-import { buildLevelCards, shuffleCards } from "./engine/level.js";
+import { buildTitleCards, buildWordCards, dealTableau } from "./engine/level.js";
 import { checkLevelWin, checkLevelLoss } from "./engine/level-status.js";
 import { createProgressStore } from "./progress/store.js";
+import { createSoundManager } from "./audio/sound-manager.js";
 import { renderLevelBoard } from "./ui/level-board.js";
 import { renderReviewMode } from "./ui/review-mode.js";
 
@@ -11,6 +12,7 @@ const gameRoot = document.getElementById("game-root");
 const reviewRoot = document.getElementById("review-root");
 const newGameBtn = document.getElementById("new-game-btn");
 const reviewModeBtn = document.getElementById("review-mode-btn");
+const muteBtn = document.getElementById("mute-btn");
 
 // Dados e stores globais
 /** @type {import("./data/loader.js").CategoryData[]} */
@@ -22,10 +24,13 @@ const categoriesMap = new Map();
 /** @type {Record<string, { photoUrl: string, photoCredit: string }>} */
 let authorPhotos = {};
 const progressStore = createProgressStore();
+const soundManager = createSoundManager({ storage: window.localStorage });
 /** @type {import("./ui/level-board.js").LevelState | null} */
 let levelState = null;
 /** @type {import("./data/loader.js").LevelData | null} */
 let currentLevel = null;
+/** true só no primeiro render após um "Nova partida"/troca de nível — dispara a animação de virar as cartas */
+let isFreshDeal = false;
 
 async function init() {
   try {
@@ -39,6 +44,11 @@ async function init() {
 
     newGameBtn?.addEventListener("click", () => startLevel(currentLevel?.id ?? levelsData[0].id));
     reviewModeBtn?.addEventListener("click", () => switchToReviewMode());
+    muteBtn?.addEventListener("click", () => {
+      soundManager.toggleMuted();
+      updateMuteButton();
+    });
+    updateMuteButton();
 
     startLevel(levelsData[0].id);
   } catch (error) {
@@ -63,25 +73,43 @@ function startLevel(levelId) {
   const level = levelsData.find((l) => l.id === levelId) ?? levelsData[0];
   currentLevel = level;
 
-  const cards = buildLevelCards(level);
-  const tableau = shuffleCards(cards);
+  const titleCards = buildTitleCards(level, categoriesData);
+  const wordCards = buildWordCards(level);
+  let tableauColumns;
+  let stock = [];
+  let waste = [];
+
+  const dealResult = dealTableau(titleCards, wordCards, level.columns, level.profundidadeTitulos);
+  if (Array.isArray(dealResult)) {
+    tableauColumns = dealResult;
+  } else {
+    tableauColumns = dealResult.columns;
+    stock = dealResult.stock;
+  }
 
   /** @type {Record<string, any[]>} */
   const slots = {};
   for (const categoryId of level.categoryIds) slots[categoryId] = [];
 
   levelState = {
-    tableau,
+    tableauColumns,
     slots,
+    openCategoryIds: new Set(),
+    spotCategories: [null, null, null, null],
+    stock,
+    waste,
     movesRemaining: level.moveLimit,
     status: "em_andamento",
   };
 
+  isFreshDeal = true;
   updateUI();
 }
 
 function updateUI() {
   if (!gameRoot || !levelState || !currentLevel) return;
+
+  if (isFreshDeal) soundManager.play("dealShuffle");
 
   renderLevelBoard(
     gameRoot,
@@ -94,8 +122,19 @@ function updateUI() {
       checkLevelStatus();
       updateUI();
     },
-    updateUI
+    updateUI,
+    isFreshDeal,
+    soundManager
   );
+  isFreshDeal = false;
+}
+
+function updateMuteButton() {
+  if (!muteBtn) return;
+  const muted = soundManager.isMuted();
+  muteBtn.textContent = muted ? "🔇" : "🔊";
+  muteBtn.setAttribute("aria-pressed", String(muted));
+  muteBtn.setAttribute("aria-label", muted ? "Ativar som" : "Desativar som");
 }
 
 function checkLevelStatus() {
@@ -132,7 +171,7 @@ function switchToReviewMode() {
       reviewRoot?.setAttribute("hidden", "true");
       reviewModeBtn?.classList.remove("active");
       updateUI();
-    });
+    }, authorPhotos);
   }
 }
 

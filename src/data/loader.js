@@ -1,7 +1,9 @@
 // @ts-check
 
-/** @typedef {{ id: string, nome: string, eixo: string, palavras: string[], microtexto: string, confundeCom: string[] }} CategoryData */
-/** @typedef {{ id: number, categoryIds: string[], cardsPerCategory: number, selectedWords: Record<string, string[]>, columns: number, moveLimit: number, hint: string|null }} LevelData */
+/** @typedef {{ id: string, nome: string, cartaTitulo: string, eixo: string, palavras: string[], microtexto: string, confundeCom: string[] }} CategoryData */
+/** @typedef {{ id: number, categoryIds: string[], cardsPerCategory: number, selectedWords: Record<string, string[]>, totalCards: number, columns: number, moveLimit: number, profundidadeTitulos: "topo"|"meio"|"fundo"|"embaralhado", hint: string|null }} LevelData */
+
+const VALID_DEPTHS = new Set(["topo", "meio", "fundo", "embaralhado"]);
 
 /**
  * @param {string} categoriesUrl
@@ -54,6 +56,9 @@ export function validateCategories(categories) {
     if (!category.microtexto || category.microtexto.length > 280) {
       throw new Error(`Categoria "${category.id}" com microtexto ausente ou maior que 280 caracteres`);
     }
+    if (!category.cartaTitulo) {
+      throw new Error(`Categoria "${category.id}" sem cartaTitulo`);
+    }
   }
 }
 
@@ -68,8 +73,8 @@ export function validateLevels(levels, categories) {
   const categoriesById = new Map(categories.map((c) => [c.id, c]));
 
   for (const level of levels) {
-    if (!Array.isArray(level.categoryIds) || level.categoryIds.length !== 4) {
-      throw new Error(`Nível ${level.id} inválido: precisa de exatamente 4 categoryIds`);
+    if (!Array.isArray(level.categoryIds) || level.categoryIds.length < 4) {
+      throw new Error(`Nível ${level.id} inválido: precisa de pelo menos 4 categoryIds`);
     }
     for (const categoryId of level.categoryIds) {
       const category = categoriesById.get(categoryId);
@@ -88,8 +93,16 @@ export function validateLevels(levels, categories) {
         }
       }
     }
-    if (level.moveLimit < level.cardsPerCategory * 4) {
-      throw new Error(`Nível ${level.id} inválido: moveLimit menor que cardsPerCategory × 4 (impossível vencer)`);
+    const numCategories = level.categoryIds.length;
+    const expectedTotal = numCategories + level.cardsPerCategory * numCategories;
+    if (level.totalCards !== expectedTotal) {
+      throw new Error(`Nível ${level.id} inválido: totalCards deveria ser ${expectedTotal} (${numCategories} títulos + ${numCategories}×cardsPerCategory)`);
+    }
+    if (level.moveLimit < level.totalCards) {
+      throw new Error(`Nível ${level.id} inválido: moveLimit menor que totalCards (impossível vencer sem nenhuma desobstrução)`);
+    }
+    if (!VALID_DEPTHS.has(level.profundidadeTitulos)) {
+      throw new Error(`Nível ${level.id} inválido: profundidadeTitulos deve ser "topo", "meio", "fundo" ou "embaralhado"`);
     }
   }
 }

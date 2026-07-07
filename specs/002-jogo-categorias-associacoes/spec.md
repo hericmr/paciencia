@@ -17,37 +17,20 @@ descontinuada. O código permanece no histórico do git (branch
 
 ### User Story 1 - Jogar um nível de categorias até vencer ou perder (Priority: P1)
 
-Uma pessoa abre o jogo e vê um tableau com cartas de palavras/conceitos
-soltas (não empilhadas, todas visíveis) e 4 slots de categoria vazios. Ela
-arrasta cada carta para o slot da categoria a que acredita que ela pertence.
-Cada movimento (certo ou errado) consome uma unidade do limite de
-movimentos do nível. A pessoa vence se completar as 4 categorias antes de
-esgotar os movimentos; perde se os movimentos acabarem antes disso.
+Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas para baixo, e apenas as do topo visíveis) e 4 slots de categoria vazios/trancados (spots). Entre as cartas no tabuleiro, estão misturadas e embaralhadas as cartas-título de mais de 4 categorias (ex: 6 categorias no Nível 1). A pessoa arrasta uma carta-título revelada para qualquer um dos 4 spots vazios para associá-lo àquela categoria e abri-lo. Em seguida, ela arrasta as cartas de palavra correspondentes para o spot aberto. Cada movimento (certo ou errado) consome uma unidade do limite de movimentos. Ela vence se preencher e completar os 4 spots (4 categorias) antes de esgotar os movimentos.
 
-**Why this priority**: é o motor do produto — sem essa mecânica de
-classificação com risco (movimentos limitados), não há jogo. Precisa
-funcionar de forma independente do conteúdo pedagógico estar polido.
+**Why this priority**: é o motor do produto — sem essa mecânica de classificação com risco (movimentos limitados), não há jogo. Precisa funcionar de forma independente do conteúdo pedagógico estar polido.
 
-**Independent Test**: carregar o Nível 1 (4 categorias × 3 cartas = 12
-cartas), classificar todas corretamente e confirmar vitória; em uma segunda
-partida, errar repetidamente até esgotar os movimentos e confirmar derrota.
+**Independent Test**: carregar o Nível 1 (6 categorias configuradas, totalizando 24 cartas distribuídas em 4 colunas de forma embaralhada), abrir 4 spots com cartas-título, classificar as palavras corretamente nestes spots até completar os 4 e confirmar vitória; em uma segunda partida, errar movimentos até esgotar o limite e confirmar derrota.
 
 **Acceptance Scenarios**:
 
-1. **Given** o Nível 1 carregado, **When** a pessoa arrasta uma carta para o
-   slot da categoria correta, **Then** a carta é aceita naquele slot, some do
-   tableau, e o contador de movimentos restantes diminui em 1.
-2. **Given** o Nível 1 em andamento, **When** a pessoa arrasta uma carta para
-   o slot de uma categoria diferente da correta, **Then** a carta retorna ao
-   tableau (jogada rejeitada), mas o contador de movimentos restantes ainda
-   diminui em 1 (o erro tem custo).
-3. **Given** uma categoria com todas as suas cartas corretamente
-   classificadas, **When** a última carta daquela categoria é aceita,
-   **Then** o slot é marcado como "completo".
-4. **Given** as 4 categorias completas, **When** a última é fechada,
-   **Then** o jogo exibe tela de vitória.
-5. **Given** o contador de movimentos chega a 0, **When** ainda existe ao
-   menos uma categoria incompleta, **Then** o jogo exibe tela de derrota.
+1. **Given** o Nível 1 carregado, **When** a pessoa arrasta uma carta-título do topo de uma coluna para um dos 4 spots vazios, **Then** o spot é associado a essa categoria, a carta-título é depositada no fundo do spot, e o contador de movimentos diminui em 1.
+2. **Given** um spot aberto para a Categoria A, **When** a pessoa arrasta uma carta de palavra da Categoria A para ele, **Then** a carta é aceita no spot (empilhada sobre a carta-título), some da coluna do tableau, e o contador diminui em 1.
+3. **Given** um spot aberto para a Categoria A, **When** a pessoa arrasta uma carta de palavra da Categoria B para ele, **Then** a carta retorna ao topo da coluna (rejeição) e o contador diminui em 1.
+4. **Given** um spot com todas as suas cartas corretamente classificadas, **When** a última é aceita, **Then** o spot é marcado como "completo".
+5. **Given** os 4 spots completos (4 categorias concluídas), **When** o último é fechado, **Then** o jogo exibe tela de vitória.
+6. **Given** o contador de movimentos chega a 0, **When** ainda resta ao menos um spot incompleto, **Then** o jogo exibe tela de derrota.
 
 ---
 
@@ -112,34 +95,30 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 
 ### Functional Requirements
 
-- **FR-001**: O sistema DEVE carregar um nível a partir de dados
-  estruturados (`src/data/levels.json` + `src/data/categories.json`):
-  4 categorias, cada uma com um subconjunto fixo de palavras (curadas, não
-  sorteadas em tempo de execução nesta versão).
-- **FR-002**: O sistema DEVE embaralhar e distribuir todas as cartas do
-  nível no tableau, todas viradas para cima (sem cartas ocultas — ao
-  contrário do modelo Klondike anterior).
-- **FR-003**: O sistema DEVE validar cada movimento de carta para um slot de
-  categoria: aceita se `card.categoryId === slot.categoryId`, rejeita
-  (carta retorna ao tableau) caso contrário.
-- **FR-004**: O sistema DEVE decrementar o contador de movimentos restantes
-  a cada tentativa de mover uma carta para um slot de categoria, seja aceita
-  ou rejeitada.
-- **FR-005**: O sistema DEVE detectar vitória (todas as categorias do nível
-  completas) verificando-a antes de detectar derrota.
-- **FR-006**: O sistema DEVE detectar derrota (movimentos esgotados com
-  categoria(s) incompleta(s)) e exibir a `dica_pedagogica` do nível, ou uma
-  mensagem genérica se não houver uma configurada.
+- **FR-001**: O sistema DEVE carregar um nível a partir de dados estruturados (`src/data/levels.json` + `src/data/categories.json`): 4 ou mais categorias, cada uma com um subconjunto fixo de palavras.
+- **FR-002**: O sistema DEVE embaralhar e distribuir todas as `totalCards` do nível em colunas empilhadas — só a carta do topo de cada coluna fica virada para cima e é jogável. As cartas-título podem ser totalmente embaralhadas e misturadas com as cartas de palavra (se configurado como "embaralhado" na profundidade).
+- **FR-003**: O sistema DEVE validar cada movimento da carta do topo de uma coluna: (a) carta-título → qualquer spot de categoria fechado: aceita, associa o spot àquela categoria e a abre; (b) carta de palavra → spot de categoria: aceita só se o spot estiver aberto e associado a essa categoria específica; (c) qualquer carta → topo de outra coluna: sempre aceita (desobstrução). Em qualquer caso de rejeição, a carta permanece no topo da coluna de origem.
+- **FR-004**: O sistema DEVE decrementar o contador de movimentos restantes a cada tentativa de mover a carta do topo de uma coluna, seja para um slot de categoria ou para outra coluna, aceita ou rejeitada.
+- **FR-011**: O sistema DEVE virar automaticamente para cima a carta que ficar no topo de uma coluna depois que a carta anterior sair dali.
+- **FR-012**: O sistema NÃO DEVE aceitar cartas de palavra em uma categoria cuja carta-título ainda não foi jogada e associada a um spot.
+- **FR-005**: O sistema DEVE detectar vitória (quando 4 spots de categoria do nível forem completados) verificando-a antes de detectar derrota.
+- **FR-006**: O sistema DEVE detectar derrota (movimentos esgotados com ao menos um spot incompleto) e exibir a `dica_pedagogica` do nível, ou uma mensagem genérica se não houver uma configurada.
+- **FR-015**: O sistema DEVE possuir uma pilha de Monte (Stock) e uma de Descarte (Waste). O Monte armazena cartas viradas para baixo e, ao ser clicado, distribui uma carta para o Descarte, cuja carta do topo é jogável.
+- **FR-016**: O sistema DEVE permitir a reciclagem do Descarte (re-empilhamento das cartas) de volta para o Monte quando o Monte estiver vazio.
 - **FR-007**: O sistema DEVE exibir um pop-up com o micro-texto da categoria
   no momento em que ela é completada.
 - **FR-008**: O sistema NÃO DEVE exigir criação de conta, login ou conexão
   de rede para jogar.
 - **FR-009**: O sistema DEVE carregar os dados de categorias/níveis de
   arquivos separados do código da engine (Princípio III da constituição).
-- **FR-010**: O sistema DEVE exibir cada slot de categoria com um rótulo
-  genérico (ex.: "Categoria 1") e apenas uma contagem de progresso até que
-  ela seja completada; o nome real da categoria só aparece junto com o
-  micro-texto no momento da conclusão (ver `research.md`, Decisão 7).
+- **FR-010**: O sistema DEVE exibir cada slot de categoria com um rótulo genérico (ex.: "Categoria 1") e um cadeado de fundo no slot de encaixe até que ela seja aberta pela carta-título. Ao abrir, o título da categoria é revelado no cabeçalho superior e o slot passa a exibir as cartas fisicamente empilhadas; o micro-texto correspondente só aparece no momento da conclusão (ver `research.md`, Decisão 7 e Decisão 10).
+- **FR-013**: O sistema DEVE tocar um efeito sonoro curto para: carta aceita
+  num slot, carta rejeitada/movida entre colunas, categoria completada, e
+  distribuição inicial das cartas (ver `research.md`, Decisão 9). Nenhuma
+  informação necessária para jogar pode depender só do som.
+- **FR-014**: O sistema DEVE oferecer um controle de mudo acessível
+  (alcançável por teclado, com `aria-pressed` refletindo o estado), com o
+  estado persistido entre sessões.
 
 ### Key Entities
 

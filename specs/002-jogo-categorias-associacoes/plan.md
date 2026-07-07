@@ -90,6 +90,8 @@ src/
 │   └── loader.js                  # Reescrito: carrega categories.json + levels.json
 ├── progress/
 │   └── store.js                   # Reaproveitado quase sem mudança
+├── audio/
+│   └── sound-manager.js           # Feedback sonoro (ver research.md, Decisão 9)
 ├── ui/
 │   ├── level-board.js             # Substitui board.js: tableau + slots de categoria
 │   ├── category-complete-popup.js # Substitui reveal-popup.js
