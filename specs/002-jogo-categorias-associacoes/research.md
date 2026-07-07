@@ -201,7 +201,7 @@ interação).
 **Decision**: 
 1. **Embaralhamento total de cartas**: Permitir a opção `"embaralhado"` para a profundidade das cartas-título, o que faz com que as cartas-título e as cartas de palavras sejam misturadas juntas e distribuídas de forma 100% aleatória no tableau desde o início, podendo ficar enterradas a qualquer profundidade.
 2. **Spots dinâmicos não pre-alocados**: Manter exatamente 4 spots/slots de categoria visíveis no topo da tela, mas desvinculá-los de categorias fixas no início do nível. Qualquer carta-título revelada pode ser solta em qualquer spot vazio, vinculando aquele spot à respectiva categoria de forma dinâmica.
-3. **Mais categorias configuradas**: Incluir 6 categorias no nível de dados do Nível 1. Como há apenas 4 spots disponíveis, o jogador resolve 4 das 6 categorias presentes para alcançar a vitória.
+3. **Mais categorias configuradas**: Incluir 7 categorias no nível de dados do Nível 1. Como há apenas 4 spots disponíveis, o jogador resolve 4 das 7 categorias presentes para alcançar a vitória.
 
 **Rationale**: Alinha-se perfeitamente com os novos requisitos solicitados. A mistura completa de cartas simula a tensão e a necessidade de desobstrução de colunas de um Solitaire tradicional, e a presença de mais categorias com apenas 4 spots adiciona um elemento estratégico de escolha e distração (red herrings/pegadinhas), aumentando o desafio cognitivo e a rejogabilidade.
 
@@ -212,7 +212,7 @@ interação).
    - Coluna 2: 4 cartas (3 fechadas, 1 aberta)
    - Coluna 3: 5 cartas (4 fechadas, 1 aberta)
    - Total no Tableau: 14 cartas.
-2. As **10 cartas restantes** (do total de 24 cartas das 6 categorias) são alocadas como monte de compras/circulação (Monte) viradas para baixo.
+2. As **14 cartas restantes** (do total de 28 cartas das 7 categorias) são alocadas como monte de compras/circulação (Monte) viradas para baixo.
 3. Clicar no Monte retira uma carta e a coloca no Descarte virada para cima.
 4. Se o Monte esvaziar, clicar nele recicla a pilha de Descarte de volta para o Monte.
 5. A carta do topo do Descarte é jogável, podendo ser arrastada ou selecionada para ser movida para qualquer uma das colunas do tableau ou spots de categoria corretos.

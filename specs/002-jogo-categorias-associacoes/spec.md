@@ -17,11 +17,11 @@ descontinuada. O código permanece no histórico do git (branch
 
 ### User Story 1 - Jogar um nível de categorias até vencer ou perder (Priority: P1)
 
-Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas para baixo, e apenas as do topo visíveis) e 4 slots de categoria vazios/trancados (spots). Entre as cartas no tabuleiro, estão misturadas e embaralhadas as cartas-título de mais de 4 categorias (ex: 6 categorias no Nível 1). A pessoa arrasta uma carta-título revelada para qualquer um dos 4 spots vazios para associá-lo àquela categoria e abri-lo. Em seguida, ela arrasta as cartas de palavra correspondentes para o spot aberto. Cada movimento (certo ou errado) consome uma unidade do limite de movimentos. Ela vence se preencher e completar os 4 spots (4 categorias) antes de esgotar os movimentos.
+Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas para baixo, e apenas as do topo visíveis) e 4 slots de categoria vazios/trancados (spots). Entre as cartas no tabuleiro, estão misturadas e embaralhadas as cartas-título de mais de 4 categorias (ex: 7 categorias no Nível 1). A pessoa arrasta uma carta-título revelada para qualquer um dos 4 spots vazios para associá-lo àquela categoria e abri-lo. Em seguida, ela arrasta as cartas de palavra correspondentes para o spot aberto. Cada movimento (certo ou errado) consome uma unidade do limite de movimentos. Ela vence se preencher e completar os 4 spots (4 categorias) antes de esgotar os movimentos.
 
 **Why this priority**: é o motor do produto — sem essa mecânica de classificação com risco (movimentos limitados), não há jogo. Precisa funcionar de forma independente do conteúdo pedagógico estar polido.
 
-**Independent Test**: carregar o Nível 1 (6 categorias configuradas, totalizando 24 cartas distribuídas em 4 colunas de forma embaralhada), abrir 4 spots com cartas-título, classificar as palavras corretamente nestes spots até completar os 4 e confirmar vitória; em uma segunda partida, errar movimentos até esgotar o limite e confirmar derrota.
+**Independent Test**: carregar o Nível 1 (7 categorias configuradas, totalizando 28 cartas distribuídas em 4 colunas de forma embaralhada), abrir 4 spots com cartas-título, classificar as palavras corretamente nestes spots até completar os 4 e confirmar vitória; em uma segunda partida, errar movimentos até esgotar o limite e confirmar derrota.
 
 **Acceptance Scenarios**:
 

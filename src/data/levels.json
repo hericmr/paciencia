@@ -2,7 +2,7 @@
   "levels": [
     {
       "id": 1,
-      "categoryIds": ["CAT-13", "CAT-06", "CAT-11", "CAT-07", "CAT-12", "CAT-14"],
+      "categoryIds": ["CAT-13", "CAT-06", "CAT-11", "CAT-07", "CAT-12", "CAT-14", "CAT-08"],
       "cardsPerCategory": 3,
       "selectedWords": {
         "CAT-13": ["Iamamoto", "Netto", "Guerra"],
@@ -10,9 +10,10 @@
         "CAT-11": ["Congresso da Virada", "LOAS", "Lei de Regulamentação"],
         "CAT-07": ["CRAS", "PAIF", "SCFV"],
         "CAT-12": ["Araxá", "Teresópolis", "Fenomenologia"],
-        "CAT-14": ["Totalidade", "Mediação", "Práxis"]
+        "CAT-14": ["Totalidade", "Mediação", "Práxis"],
+        "CAT-08": ["CREAS", "PAEFI", "Direitos violados"]
       },
-      "totalCards": 24,
+      "totalCards": 28,
       "columns": 4,
       "moveLimit": 48,
       "profundidadeTitulos": "embaralhado",
