@@ -106,6 +106,23 @@ button:focus-visible {
 #controls {
   display: flex;
   gap: 0.8rem;
+  align-items: center;
+}
+
+.moves-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--button-radius);
+  padding: 0.6rem 1.2rem;
+  font-weight: 750;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  height: 44px;
+  box-sizing: border-box;
 }
 
 #review-mode-btn.active {
@@ -159,7 +176,7 @@ button:focus-visible {
   justify-items: center;
   gap: 1rem;
   width: 100%;
-  margin-bottom: 2.5rem; /* Espaço para o empilhamento transbordar levemente sem colidir com o tableau */
+  margin-bottom: 1.2rem; /* Espaço para o empilhamento transbordar levemente sem colidir com o tableau */
 }
 
 /* Stock & Waste */
@@ -168,7 +185,7 @@ button:focus-visible {
   border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: var(--card-radius);
   width: 100%;
-  max-width: 140px;
+  max-width: 120px;
   aspect-ratio: 2.5 / 3.5;
   transition: all var(--transition-speed) ease;
   position: relative;
@@ -205,7 +222,7 @@ button:focus-visible {
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  max-width: 140px;
+  max-width: 120px;
 }
 
 .category-slot-header {
@@ -245,7 +262,7 @@ button:focus-visible {
   border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: var(--card-radius);
   width: 100%;
-  max-width: 140px;
+  max-width: 120px;
   aspect-ratio: 2.5 / 3.5;
   transition: all var(--transition-speed) ease;
   cursor: pointer;
@@ -315,10 +332,10 @@ button:focus-visible {
 .tableau-column {
   position: relative;
   width: 100%;
-  max-width: 140px;
-  /* altura da pilha: carta (aspect-ratio 2.5:3.5, ~196px a 140px de
+  max-width: 120px;
+  /* altura da pilha: carta (aspect-ratio 2.5:3.5, ~168px a 120px de
      largura) + 3 offsets de 30px (Nível 1 sempre tem 4 cartas/coluna) */
-  min-height: 296px;
+  min-height: 258px;
   border-radius: var(--card-radius);
   transition: box-shadow var(--transition-speed) ease;
 }
@@ -370,7 +387,7 @@ button:focus-visible {
   user-select: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease, outline 0.1s ease;
   width: 100%;
-  max-width: 140px;
+  max-width: 120px;
   aspect-ratio: 2.5 / 3.5;
   justify-content: center;
 }

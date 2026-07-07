@@ -58,13 +58,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   const dragBackImg = new Image();
   dragBackImg.src = "assets/verso.png";
 
-  // --- Contador de movimentos ---
-  const movesBar = document.createElement("div");
-  movesBar.className = "moves-bar";
-  movesBar.setAttribute("aria-live", "polite");
-  movesBar.textContent = `Movimentos restantes: ${levelState.movesRemaining}`;
-  container.appendChild(movesBar);
-
   // --- Top Board Row (Stock, Waste, and Category Slots) ---
   const topBoardRow = document.createElement("div");
   topBoardRow.className = "top-board-row";
@@ -79,10 +72,9 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
   const stockHeader = document.createElement("div");
   stockHeader.className = "category-slot-header";
-  const stockProgress = levelState.stock.length > 0 ? `Cartas: ${levelState.stock.length}` : "Vazio";
   stockHeader.innerHTML = `
-    <div class="category-slot-title">Monte</div>
-    <div class="category-slot-progress">${stockProgress}</div>
+    <div class="category-slot-title" style="visibility: hidden;">Monte</div>
+    <div class="category-slot-progress" style="visibility: hidden;">Vazio</div>
   `;
   stockWrapper.appendChild(stockHeader);
 
@@ -115,10 +107,9 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
   const wasteHeader = document.createElement("div");
   wasteHeader.className = "category-slot-header";
-  const wasteProgress = levelState.waste.length > 0 ? `Cartas: ${levelState.waste.length}` : "Vazio";
   wasteHeader.innerHTML = `
-    <div class="category-slot-title">Descarte</div>
-    <div class="category-slot-progress">${wasteProgress}</div>
+    <div class="category-slot-title" style="visibility: hidden;">Descarte</div>
+    <div class="category-slot-progress" style="visibility: hidden;">Vazio</div>
   `;
   wasteWrapper.appendChild(wasteHeader);
 

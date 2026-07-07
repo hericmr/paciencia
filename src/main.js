@@ -111,6 +111,13 @@ function updateUI() {
 
   if (isFreshDeal) soundManager.play("dealShuffle");
 
+  const movesCounter = document.getElementById("moves-counter");
+  if (movesCounter) {
+    movesCounter.textContent = `Movimentos: ${levelState.movesRemaining}`;
+    movesCounter.style.display = "inline-block";
+    movesCounter.setAttribute("aria-live", "polite");
+  }
+
   renderLevelBoard(
     gameRoot,
     levelState,
@@ -164,6 +171,9 @@ function switchToReviewMode() {
   removeStatusOverlay();
 
   reviewModeBtn?.classList.add("active");
+
+  const movesCounter = document.getElementById("moves-counter");
+  if (movesCounter) movesCounter.style.display = "none";
 
   if (reviewRoot) {
     renderReviewMode(reviewRoot, categoriesData, progressStore, () => {
