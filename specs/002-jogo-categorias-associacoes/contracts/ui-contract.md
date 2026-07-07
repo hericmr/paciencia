@@ -71,7 +71,12 @@ categorias. Palavras sem foto correspondente exibem só o texto.
 - **Tableau empilhado**: só a última carta de cada coluna (topo, virada para cima) é jogável. As demais ficam viradas para baixo (mostrando `assets/verso.png`), inacessíveis até a carta acima sair. As cartas-título e de palavra podem começar completamente embaralhadas e misturadas (se configurado como `"embaralhado"` em profundidade).
 - **Carta-título → qualquer spot de categoria fechado/vazio**: aceita; associa o spot àquela categoria e a abre. Se o spot estiver ocupado ou a categoria já estiver aberta em outro spot, é rejeitada.
 - **Carta de palavra → spot de categoria**: aceita só se o spot estiver aberto e associado a essa categoria específica; caso contrário, é rejeitada (a carta retorna ao topo da coluna de origem).
-- **Qualquer carta do topo → topo de outra coluna**: aceita se a coluna destino estiver vazia ou se a carta do topo da coluna destino pertencer à mesma categoria (CAT-XX) — permitindo empilhar cartas de mesma categoria no tableau de forma sequencial. Caso contrário, é rejeitada.
+- **Empilhamento e movimentação no tableau (Área de Mão)**:
+  - O jogador pode mover e reorganizar livremente as cartas abertas de sua área de jogo. Duas ou mais cartas podem ser empilhadas apenas quando pertencem à mesma categoria.
+  - Cada nova carta adicionada é colocada sobre as anteriores, permanecendo virada para o jogador. As cartas ficam parcialmente sobrepostas (em cascata), com a carta superior representando a última carta adicionada.
+  - A pilha mantém a ordem em que as cartas foram inseridas, sendo a carta do topo a última adicionada.
+  - Toda a sub-pilha de cartas abertas pode ser movida de uma vez como um único conjunto para outra coluna do tableau, ou o jogador pode mover as cartas individualmente.
+  - O movimento (de uma carta ou de uma sub-pilha) só é aceito se a coluna destino estiver vazia ou se a carta do topo da coluna destino pertencer à mesma categoria (CAT-XX). Caso contrário, é rejeitado.
 - **Monte (Stock)**: Pilha de cartas viradas para baixo. Ao ser clicado, retira a carta do topo e a adiciona à pilha de Descarte. Se estiver vazio, clicar nele recicla todas as cartas da pilha de Descarte de volta para o Monte.
 - **Descarte (Waste)**: Pilha de cartas viradas para cima. Apenas a carta do topo é visível e jogável, podendo ser selecionada ou arrastada para qualquer coluna do tableau (desobstrução) ou spots de categoria.
 - Todo movimento acima — aceito ou rejeitado — decrementa `movesRemaining` em 1.

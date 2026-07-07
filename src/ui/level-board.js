@@ -33,10 +33,17 @@ function getTopEntry(column) {
 /**
  * @param {TableauColumn[]} columns
  * @param {string} cardId
- * @returns {number} índice da coluna cujo topo é essa carta, ou -1
+ * @returns {{ colIndex: number, cardIndex: number }|null} localização da carta na coluna, ou null
  */
-function findColumnIndexByTopCardId(columns, cardId) {
-  return columns.findIndex((col) => getTopEntry(col)?.card.id === cardId);
+function findCardLocation(columns, cardId) {
+  for (let colIdx = 0; colIdx < columns.length; colIdx++) {
+    const column = columns[colIdx];
+    const cardIdx = column.cards.findIndex((entry) => entry.card.id === cardId);
+    if (cardIdx !== -1) {
+      return { colIndex: colIdx, cardIndex: cardIdx };
+    }
+  }
+  return null;
 }
 
 /**
@@ -250,25 +257,37 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     let topOffset = 0;
     column.cards.forEach((entry, entryIndex) => {
-      const isTop = entryIndex === column.cards.length - 1;
       const wrapper = document.createElement("div");
       wrapper.className = "stack-card-wrapper";
       wrapper.style.top = `${topOffset}px`;
 
-      if (entry.faceUp && isTop) {
+      if (entry.faceUp) {
         const cardEl = buildInteractiveCard(entry.card, authorPhotos, playDealAnimation, entryIndex, () => {
-          selectedCardId = selectedCardId === entry.card.id ? null : entry.card.id;
-          onStateChange();
+          if (selectedCardId && selectedCardId !== entry.card.id) {
+            attemptMoveToColumn(selectedCardId, colIndex);
+          } else {
+            selectedCardId = selectedCardId === entry.card.id ? null : entry.card.id;
+            onStateChange();
+          }
         });
         cardEl.setAttribute("draggable", "true");
         cardEl.addEventListener("dragstart", (e) => {
           e.dataTransfer?.setData("text/plain", entry.card.id);
+          // Oculta todas as cartas a partir deste índice para o drag do sub-stack
           setTimeout(() => {
-            cardEl.classList.add("dragging-placeholder");
+            for (let i = entryIndex; i < column.cards.length; i++) {
+              const cid = column.cards[i].card.id;
+              const el = colEl.querySelector(`[data-id="${cid}"]`);
+              if (el) el.classList.add("dragging-placeholder");
+            }
           }, 0);
         });
         cardEl.addEventListener("dragend", () => {
-          cardEl.classList.remove("dragging-placeholder");
+          for (let i = entryIndex; i < column.cards.length; i++) {
+            const cid = column.cards[i].card.id;
+            const el = colEl.querySelector(`[data-id="${cid}"]`);
+            if (el) el.classList.remove("dragging-placeholder");
+          }
         });
         wrapper.appendChild(cardEl);
       } else {
@@ -375,12 +394,20 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     let source = null;
     let card = null;
     let column = null;
+    let cardIndex = -1;
 
-    const colIndex = findColumnIndexByTopCardId(levelState.tableauColumns, cardId);
-    if (colIndex !== -1) {
+    const loc = findCardLocation(levelState.tableauColumns, cardId);
+    if (loc) {
       source = "column";
-      column = levelState.tableauColumns[colIndex];
-      card = getTopEntry(column)?.card;
+      column = levelState.tableauColumns[loc.colIndex];
+      cardIndex = loc.cardIndex;
+      // Só permite mover para a categoria se for a carta no topo da coluna (uma por vez)
+      if (cardIndex !== column.cards.length - 1) {
+        soundManager?.play("cardMove");
+        selectedCardId = null;
+        return;
+      }
+      card = column.cards[cardIndex].card;
     } else {
       const topWasteCard = levelState.waste?.[levelState.waste.length - 1];
       if (topWasteCard && topWasteCard.id === cardId) {
@@ -475,45 +502,49 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
    */
   function attemptMoveToColumn(cardId, targetColIndex) {
     let source = null;
-    let card = null;
     let column = null;
+    let cardIndex = -1;
+    let subStack = [];
 
-    const sourceColIndex = findColumnIndexByTopCardId(levelState.tableauColumns, cardId);
-    if (sourceColIndex !== -1) {
-      if (sourceColIndex === targetColIndex) return;
+    const loc = findCardLocation(levelState.tableauColumns, cardId);
+    if (loc) {
+      if (loc.colIndex === targetColIndex) return;
       source = "column";
-      column = levelState.tableauColumns[sourceColIndex];
-      card = getTopEntry(column)?.card;
+      column = levelState.tableauColumns[loc.colIndex];
+      cardIndex = loc.cardIndex;
+      subStack = column.cards.slice(cardIndex);
     } else {
       const topWasteCard = levelState.waste?.[levelState.waste.length - 1];
       if (topWasteCard && topWasteCard.id === cardId) {
         source = "waste";
-        card = topWasteCard;
+        subStack = [{ card: topWasteCard, faceUp: true }];
       }
     }
 
-    if (!card) return;
+    if (subStack.length === 0) return;
 
     levelState.movesRemaining -= 1;
     selectedCardId = null;
 
     const targetColumn = levelState.tableauColumns[targetColIndex];
+    const baseCard = subStack[0].card;
 
-    if (canMoveToTableauColumn(card, targetColumn)) {
+    if (canMoveToTableauColumn(baseCard, targetColumn)) {
       if (source === "column") {
-        column.cards.pop();
+        column.cards.splice(cardIndex); // remove subStack
         const newTop = getTopEntry(column);
         if (newTop) newTop.faceUp = true;
       } else if (source === "waste") {
         levelState.waste.pop();
       }
 
-      targetColumn.cards.push({ card, faceUp: true });
+      targetColumn.cards.push(...subStack);
       soundManager?.play("cardPlace");
     } else {
       soundManager?.play("cardMove");
     }
 
+    onStateChange();
     onLevelStatusChange();
   }
 }
