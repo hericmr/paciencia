@@ -62,6 +62,144 @@ function findCardLocation(columns, cardId) {
 export function renderLevelBoard(container, levelState, level, categoriesMap, authorPhotos, progressStore, onLevelStatusChange, onStateChange, playDealAnimation = false, soundManager = null) {
   container.innerHTML = "";
 
+  // Estado do drag de toque (touch) para dispositivos móveis
+  let touchActive = false;
+  let touchCardId = null;
+  let touchClone = null;
+  let touchOffsetX = 0;
+  let touchOffsetY = 0;
+  let currentTargetEl = null;
+
+  function initTouchDrag(cardEl, cardId, colIndex, isWaste = false) {
+    cardEl.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 1) return;
+      const touch = e.touches[0];
+      
+      touchActive = true;
+      touchCardId = cardId;
+      
+      const rect = cardEl.getBoundingClientRect();
+      touchOffsetX = touch.clientX - rect.left;
+      touchOffsetY = touch.clientY - rect.top;
+      
+      // Criar clone flutuante
+      touchClone = cardEl.cloneNode(true);
+      touchClone.classList.add("dragging-clone");
+      touchClone.style.position = "fixed";
+      touchClone.style.width = `${rect.width}px`;
+      touchClone.style.height = `${rect.height}px`;
+      touchClone.style.left = `${rect.left}px`;
+      touchClone.style.top = `${rect.top}px`;
+      touchClone.style.zIndex = "9999";
+      touchClone.style.pointerEvents = "none";
+      touchClone.style.opacity = "0.9";
+      touchClone.style.transform = "scale(1.05)";
+      touchClone.style.boxShadow = "0 12px 24px rgba(0,0,0,0.5)";
+      document.body.appendChild(touchClone);
+      
+      // Ocultar original
+      if (!isWaste) {
+        const loc = findCardLocation(levelState.tableauColumns, cardId);
+        if (loc) {
+          const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
+          if (colEl) {
+            const column = levelState.tableauColumns[loc.colIndex];
+            for (let i = loc.cardIndex; i < column.cards.length; i++) {
+              const cid = column.cards[i].card.id;
+              const el = colEl.querySelector(`[data-id="${cid}"]`);
+              if (el) el.classList.add("dragging-placeholder");
+            }
+          }
+        }
+      } else {
+        cardEl.classList.add("dragging-placeholder");
+      }
+      
+      e.stopPropagation();
+    }, { passive: true });
+
+    cardEl.addEventListener("touchmove", (e) => {
+      if (!touchActive || !touchClone) return;
+      const touch = e.touches[0];
+      
+      // Posiciona clone
+      touchClone.style.left = `${touch.clientX - touchOffsetX}px`;
+      touchClone.style.top = `${touch.clientY - touchOffsetY}px`;
+      
+      // Encontra elemento sob o toque
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (el) {
+        const targetCol = el.closest(".tableau-column");
+        const targetSlot = el.closest(".category-slot");
+        
+        if (currentTargetEl) {
+          currentTargetEl.classList.remove("valid-target");
+        }
+        
+        if (targetCol) {
+          currentTargetEl = targetCol;
+          currentTargetEl.classList.add("valid-target");
+        } else if (targetSlot) {
+          currentTargetEl = targetSlot;
+          currentTargetEl.classList.add("valid-target");
+        } else {
+          currentTargetEl = null;
+        }
+      }
+      
+      // Impede rolagem da tela durante o arrastar
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    cardEl.addEventListener("touchend", (e) => {
+      if (!touchActive) return;
+      touchActive = false;
+      
+      if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+      }
+      
+      if (!isWaste) {
+        const loc = findCardLocation(levelState.tableauColumns, touchCardId);
+        if (loc) {
+          const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
+          if (colEl) {
+            const column = levelState.tableauColumns[loc.colIndex];
+            for (let i = loc.cardIndex; i < column.cards.length; i++) {
+              const cid = column.cards[i].card.id;
+              const el = colEl.querySelector(`[data-id="${cid}"]`);
+              if (el) el.classList.remove("dragging-placeholder");
+            }
+          }
+        }
+      } else {
+        cardEl.classList.remove("dragging-placeholder");
+      }
+      
+      if (currentTargetEl) {
+        currentTargetEl.classList.remove("valid-target");
+        
+        if (currentTargetEl.classList.contains("tableau-column")) {
+          const targetColIndex = parseInt(currentTargetEl.dataset.col, 10);
+          if (!isNaN(targetColIndex)) {
+            attemptMoveToColumn(touchCardId, targetColIndex);
+          }
+        } else if (currentTargetEl.classList.contains("category-slot")) {
+          const targetSlotIndex = parseInt(currentTargetEl.dataset.spotIndex, 10);
+          if (!isNaN(targetSlotIndex)) {
+            attemptMoveToCategory(touchCardId, targetSlotIndex);
+          }
+        }
+        currentTargetEl = null;
+      }
+      
+      onStateChange();
+    });
+  }
+
   // --- Top Board Row (Stock, Waste, and Category Slots) ---
   const topBoardRow = document.createElement("div");
   topBoardRow.className = "top-board-row";
@@ -135,6 +273,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     cardEl.addEventListener("dragend", () => {
       cardEl.classList.remove("dragging-placeholder");
     });
+    initTouchDrag(cardEl, topWasteCard.id, -1, true);
     wasteEl.appendChild(cardEl);
     wasteEl.setAttribute("aria-label", `Descarte. Carta do topo: ${topWasteCard.word}.`);
   } else {
@@ -289,6 +428,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
             if (el) el.classList.remove("dragging-placeholder");
           }
         });
+        initTouchDrag(cardEl, entry.card.id, colIndex, false);
         wrapper.appendChild(cardEl);
       } else {
         const backEl = document.createElement("div");

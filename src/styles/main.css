@@ -390,6 +390,7 @@ button:focus-visible {
   box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow: hidden;
   cursor: grab;
   user-select: none;
@@ -403,6 +404,15 @@ button:focus-visible {
 /* Oculta a carta em sua posição original durante o arraste */
 .word-card.dragging-placeholder {
   opacity: 0 !important;
+}
+
+/* Garante arraste fluído por toque sem atraso de transição */
+.dragging-clone {
+  transition: none !important;
+  pointer-events: none !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
 }
 
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
@@ -917,44 +927,64 @@ button:focus-visible {
 /* Abaixo de 600px o offset de fanning das cartas empilhadas cai para
    22px (ver level-board.js) — reduzir min-height junto */
 @media (max-width: 600px) {
-  .tableau-columns {
+  :root {
+    --card-width: min(23vw, calc((100vw - 30px) / 4), 16vh);
+  }
+
+  #game-root {
+    padding: 0.4rem 0.5rem;
+    margin: 0.4rem auto;
     gap: 0.5rem;
   }
 
-  .tableau-column {
-    min-height: 234px;
-  }
-}
-
-@media (max-width: 480px) {
   .top-board-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    row-gap: 0.4rem;
+    column-gap: 0.5rem;
+    margin-bottom: 0.6rem;
   }
-  
-  .category-slot {
-    min-height: 80px;
-    padding: 0.8rem;
+
+  .top-board-row > :nth-child(1) { grid-column: 1 / 2; grid-row: 1; } /* Stock */
+  .top-board-row > :nth-child(2) { grid-column: 2 / 3; grid-row: 1; } /* Waste */
+
+  .top-board-row > :nth-child(3) { grid-column: 1 / 2; grid-row: 2; } /* Cat 1 */
+  .top-board-row > :nth-child(4) { grid-column: 2 / 3; grid-row: 2; } /* Cat 2 */
+  .top-board-row > :nth-child(5) { grid-column: 3 / 4; grid-row: 2; } /* Cat 3 */
+  .top-board-row > :nth-child(6) { grid-column: 4 / 5; grid-row: 2; } /* Cat 4 */
+
+  .category-slot-wrapper {
+    gap: 0.2rem;
   }
-  
+
+  .category-slot-title {
+    font-size: 0.65rem;
+    min-height: 1.2em;
+    margin-bottom: 0.1rem;
+  }
+
+  .category-slot-progress {
+    font-size: 0.6rem;
+  }
+
   .tableau-columns {
-    gap: 0.4rem;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
   }
 
   .tableau-column {
-    min-height: 210px;
+    min-height: calc(var(--card-width) * 1.4 + 66px); /* 3 offsets de 22px no mobile */
   }
 
   .word-card-text {
-    font-size: 0.9rem;
-    padding: 0.6rem;
+    font-size: clamp(0.75rem, 3.2vw, 0.95rem);
+    padding: 0.3rem;
   }
 
-  /* cartas-título têm texto mais longo (nome da categoria) — precisam de
-     fonte menor para caber sem cortar em colunas estreitas */
   .word-card.title-card .word-card-text {
-    font-size: 0.62rem;
-    line-height: 1.15;
-    padding: 0.3rem;
+    font-size: clamp(0.55rem, 2.5vw, 0.72rem);
+    line-height: 1.1;
+    padding: 0.2rem;
   }
 }
