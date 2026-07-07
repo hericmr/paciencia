@@ -101,11 +101,9 @@ categorias. Palavras sem foto correspondente exibem só o texto.
   e `photoCredit` visível.
 - Tela de derrota DEVE anunciar a dica pedagógica de forma acessível (não
   só visual) e oferecer um botão claro de "tentar novamente".
-- Toda carta jogável DEVE responder tanto a arrastar (drag-and-drop) quanto
-  a toque simples (seleção + toque no destino) como alternativa em telas
-  pequenas, com área de toque ≥ 44×44px.
-- Layout responsivo a partir de ~360px de largura, sem cortar as colunas do
-  tableau nem os 4 slots de categoria.
+- Toda carta jogável DEVE responder tanto a arrastar (drag-and-drop) com suporte nativo a toque via simulação de drag por eventos de toque (`touchstart`, `touchmove`, `touchend`), quanto a clique/toque simples (seleção + toque no destino) como alternativa em telas de toque.
+- Layout responsivo a partir de ~320px de largura, sem rolagem vertical, ajustando a largura das cartas via variável CSS responsiva `--card-width: min(13vw, 110px, 16vh)` (ou `14.5vh` no mobile) e alinhando os slots superiores e as colunas inferiores em uma grade uniforme de 4 colunas.
+- A barra de controles e contador no mobile deve ser fixada no rodapé da tela com altura compacta de `44px` e botões de `28px` sem emojis.
 
 ## 6. Feedback sonoro (ver research.md, Decisão 9)
 

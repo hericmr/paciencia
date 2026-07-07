@@ -264,3 +264,29 @@ sem alterar nenhuma outra pilha do tabuleiro.
 e adicionar um botão explícito de "liberar spot" — rejeitado por exigir
 ação extra do jogador sem ganho pedagógico, contrariando o requisito
 explícito de atualização automática da interface.
+
+## Decisão 15: Suporte Nativo a Toque (Touch Drag-and-Drop) no Mobile
+
+**Decision**: Implementar simulação nativa de drag-and-drop para dispositivos de toque (`touchstart`, `touchmove`, `touchend`).
+- No início do toque (`touchstart`), criamos um clone flutuante da carta (`dragging-clone`) posicionado de forma fixa e com `pointer-events: none;` para permitir a leitura do elemento sob o toque.
+- Durante o arraste (`touchmove`), o clone segue a ponta do dedo e usamos `document.elementFromPoint` para detectar dinamicamente as áreas de destino (`.tableau-column` ou `.category-slot`), adicionando a classe `.valid-target`. Impedimos a rolagem nativa do navegador para um manuseio estável.
+- Ao soltar (`touchend`), removemos o clone e efetuamos as rotinas de movimentação no destino encontrado.
+
+**Rationale**: A API nativa do HTML5 para arrastar (`draggable="true"`) não funciona por toque na maioria dos navegadores móveis. A simulação nativa resolve isso com desempenho excelente e sem dependências externas.
+
+## Decisão 16: Otimização de Responsividade e Layout de 4 Colunas no Celular
+
+**Decision**: Redesenhar a interface móvel (largura < 600px) para maximizar o tamanho das cartas e a área útil.
+- Organizar a barra de controle superior (`#controls`) de forma fixa no rodapé da tela com altura compacta de `44px` e sem emojis (usando textos curtos como "Som: On/Off"), liberando espaço no topo apenas para o título centralizado.
+- Ajustar a largura das cartas com a fórmula responsiva `--card-width: min(23vw, calc((100vw - 30px) / 4), 14.5vh);` garantindo que caibam na largura e altura do visor em qualquer proporção.
+- Reorganizar a `.top-board-row` em uma grade de 4 colunas em 2 linhas (Linha 1: Stock/Waste; Linha 2: 4 Category spots), alinhando-se perfeitamente às 4 colunas do tableau para uma estética limpa.
+
+**Rationale**: Permite que as cartas tenham o tamanho máximo possível no celular, melhorando a legibilidade sem exigir rolagem vertical ou zoom do usuário.
+
+## Decisão 17: Efeito Escadinha Legível com Cartas Cobertas
+
+**Decision**: Ajustar a exibição de cartas fanned (pilhas) no Tableau. Aumentamos o offset vertical para `36px` no desktop e `26px` no mobile. Introduzimos a classe `.covered-under` para cartas cobertas abaixo do topo da pilha:
+- Escondemos fotos de autor (`img.card-photo-thumb { display: none !important; }`).
+- Alinhamos o texto da palavra no topo absoluto da carta com tamanho de fonte responsivo (`clamp(...)`) e espaçamento mínimo.
+
+**Rationale**: Garante que o texto de cada carta na pilha permaneça 100% visível e legível no topo exposto ("abinha"), de forma idêntica à visualização em jogos comerciais de paciência.

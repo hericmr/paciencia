@@ -118,6 +118,11 @@
 - [x] T035 Ampliar o Nível 1 para 6 categorias mantendo apenas 4 spots dinâmicos (Decisão 11)
 - [x] T036 Atualizar as especificações de requisitos e regras de movimento
 - [x] T037 Restringir o empilhamento em colunas do tableau para aceitar apenas cartas da mesma categoria (Decisão 13)
+- [x] T038 Implementar movimentação de sub-pilhas (sub-stacks) de mesma categoria entre as colunas (Decisão 13)
+- [x] T039 Implementar suporte nativo a toque (touch drag-and-drop) para dispositivos móveis (Decisão 15)
+- [x] T040 Otimizar layout de responsividade mobile com grade de 4 colunas alinhadas e controles no rodapé (Decisão 16)
+- [x] T041 Exibir efeito escadinha legível ocultando fotos e alinhando texto de cartas cobertas ao topo (Decisão 17)
+- [x] T042 Adicionar fotos de Marilda Iamamoto e Yolanda Guerra e integrá-las nas cartas e créditos
 
 ## Phase 11: Finalização de grupos libera o spot (Decisão 14)
 

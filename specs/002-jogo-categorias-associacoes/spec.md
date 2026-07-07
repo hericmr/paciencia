@@ -123,13 +123,16 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 - **FR-014**: O sistema DEVE oferecer um controle de mudo acessível
   (alcançável por teclado, com `aria-pressed` refletindo o estado), com o
   estado persistido entre sessões.
-- **FR-017**: Quando um spot de categoria atinge todas as suas
+- **FR-017**: O sistema DEVE fornecer suporte nativo a toque (touch events) em dispositivos móveis para arrastar e soltar cartas e pilhas, clonando o elemento em tempo de arraste sem latência de CSS e detectando áreas receptoras dinamicamente.
+- **FR-018**: O sistema DEVE ocultar os emojis da barra de controles e mantê-la fixa no rodapé do dispositivo em telas de celular (largura de viewport menor que 600px), maximizando a área de jogo vertical e aproximando os botões dos polegares do usuário.
+- **FR-019**: O sistema DEVE garantir o efeito escadinha (fanning) legível no tableau: cartas cobertas abaixo de outra na pilha devem ocultar suas fotos e alinhar seu texto ao topo para que a palavra permaneça visível nas abas de 26px (mobile) ou 36px (desktop).
+- **FR-020**: Quando um spot de categoria atinge todas as suas
   `cardsPerCategory` cartas corretas (grupo finalizado), o sistema DEVE
   liberar aquele spot imediatamente após a jogada que o completou, sem
   exigir nenhuma ação adicional do jogador, tornando-o disponível para
   associar a uma nova carta-título. Nenhuma outra coluna, spot ou pilha do
   tabuleiro pode ser alterada por essa liberação (ver `research.md`,
-  Decisão 14).
+  Decisão 17).
 
 ### Key Entities
 
