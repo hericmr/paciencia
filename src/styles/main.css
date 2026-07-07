@@ -36,6 +36,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Remove o flash cinza/branco padrão do navegador ao tocar/clicar em
+     elementos clicáveis (cartas, slots, botões) — a seleção já tem seu
+     próprio destaque visual (.word-card.selected), não precisa do
+     highlight nativo por cima. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
