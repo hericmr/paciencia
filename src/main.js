@@ -139,7 +139,7 @@ function updateUI() {
 function updateMuteButton() {
   if (!muteBtn) return;
   const muted = soundManager.isMuted();
-  muteBtn.textContent = muted ? "🔇" : "🔊";
+  muteBtn.textContent = muted ? "Som: Off" : "Som: On";
   muteBtn.setAttribute("aria-pressed", String(muted));
   muteBtn.setAttribute("aria-label", muted ? "Ativar som" : "Desativar som");
 }

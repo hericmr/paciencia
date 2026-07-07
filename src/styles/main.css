@@ -5,6 +5,7 @@
   --bg-gradient: radial-gradient(circle at center, #1b4931 0%, #0c2518 100%);
   --text-primary: #f5f7f4;
   --text-secondary: #a4beae;
+  --card-width: min(13vw, 110px, 16vh);
   
   --color-gold: #f3c64f;
   --color-gold-hover: #ffd974;
@@ -42,28 +43,30 @@ body {
   background: var(--bg-gradient);
   background-attachment: fixed;
   color: var(--text-primary);
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  padding-bottom: 2rem;
+  overflow: hidden; /* Evita rolagem vertical do body */
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(12, 37, 24, 0.6);
-  backdrop-filter: blur(10px);
+  padding: 0.5rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 37, 24, 0.85);
+  backdrop-filter: blur(8px);
   z-index: 10;
+  height: 48px;
+  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   background: linear-gradient(135deg, #fff 30%, var(--color-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -72,19 +75,23 @@ h1 {
 button {
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.6rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-speed) ease;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 button:focus-visible {
@@ -116,12 +123,12 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--button-radius);
-  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  padding: 0.35rem 0.8rem;
   font-weight: 750;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.5px;
-  height: 44px;
+  height: 32px;
   box-sizing: border-box;
 }
 
@@ -131,24 +138,26 @@ button:focus-visible {
 }
 
 #mute-btn {
-  padding: 0.6rem 0.9rem;
-  font-size: 1.1rem;
-  line-height: 1;
-  min-width: 44px;
-  min-height: 44px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  min-width: 32px;
+  min-height: 32px;
+  height: 32px;
 }
 
 /* Board Layout */
 #game-root {
   flex: 1;
   max-width: 1000px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
+  margin: 0.6rem auto;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.8rem;
   width: 100%;
   position: relative;
+  overflow: hidden; /* Evita rolagem vertical do root */
+  justify-content: flex-start;
 }
 
 #game-root[hidden], #review-root[hidden] {
@@ -184,8 +193,8 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.02);
   border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: var(--card-radius);
-  width: 100%;
-  max-width: 120px;
+  width: var(--card-width);
+  max-width: var(--card-width);
   aspect-ratio: 2.5 / 3.5;
   transition: all var(--transition-speed) ease;
   position: relative;
@@ -220,9 +229,9 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 120px;
+  gap: 0.3rem;
+  width: var(--card-width);
+  max-width: var(--card-width);
 }
 
 .category-slot-header {
@@ -261,8 +270,8 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.02);
   border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: var(--card-radius);
-  width: 100%;
-  max-width: 120px;
+  width: var(--card-width);
+  max-width: var(--card-width);
   aspect-ratio: 2.5 / 3.5;
   transition: all var(--transition-speed) ease;
   cursor: pointer;
@@ -331,11 +340,10 @@ button:focus-visible {
 
 .tableau-column {
   position: relative;
-  width: 100%;
-  max-width: 120px;
-  /* altura da pilha: carta (aspect-ratio 2.5:3.5, ~168px a 120px de
-     largura) + 3 offsets de 30px (Nível 1 sempre tem 4 cartas/coluna) */
-  min-height: 258px;
+  width: var(--card-width);
+  max-width: var(--card-width);
+  /* altura da pilha responsiva proporcionalmente */
+  min-height: calc(var(--card-width) * 1.4 + 90px);
   border-radius: var(--card-radius);
   transition: box-shadow var(--transition-speed) ease;
 }
@@ -386,8 +394,8 @@ button:focus-visible {
   cursor: grab;
   user-select: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease, outline 0.1s ease;
-  width: 100%;
-  max-width: 120px;
+  width: var(--card-width);
+  max-width: var(--card-width);
   aspect-ratio: 2.5 / 3.5;
   justify-content: center;
 }
