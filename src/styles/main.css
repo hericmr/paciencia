@@ -415,6 +415,25 @@ button:focus-visible {
   z-index: 9999 !important;
 }
 
+/* Quando a carta está sob outra na pilha, mostra apenas o texto no topo exposto */
+.word-card.covered-under {
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+
+.word-card.covered-under img.card-photo-thumb {
+  display: none !important;
+}
+
+.word-card.covered-under .word-card-text {
+  padding: 2px 4px !important;
+  font-size: clamp(0.55rem, 2.2vw, 0.78rem) !important;
+  text-align: center !important;
+  width: 100% !important;
+  line-height: 1.1 !important;
+  margin-top: 2px !important;
+}
+
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
    (assets/verso.png) e vira para revelar a palavra. Só toca uma vez por
    nível novo (playDealAnimation em level-board.js) — não replay a cada

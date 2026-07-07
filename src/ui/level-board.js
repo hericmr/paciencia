@@ -344,12 +344,16 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       ];
 
       let topOffset = 0;
-      allCardsInSlot.forEach((card) => {
+      allCardsInSlot.forEach((card, cardIdx) => {
+        const isTop = cardIdx === allCardsInSlot.length - 1;
         const wrapper = document.createElement("div");
         wrapper.className = "stack-card-wrapper";
         wrapper.style.top = `${topOffset}px`;
 
         const cardEl = buildStaticCard(card, authorPhotos);
+        if (!isTop) {
+          cardEl.classList.add("covered-under");
+        }
         wrapper.appendChild(cardEl);
         slotEl.appendChild(wrapper);
 
@@ -428,6 +432,10 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
             if (el) el.classList.remove("dragging-placeholder");
           }
         });
+        const isTop = entryIndex === column.cards.length - 1;
+        if (!isTop) {
+          cardEl.classList.add("covered-under");
+        }
         initTouchDrag(cardEl, entry.card.id, colIndex, false);
         wrapper.appendChild(cardEl);
       } else {
@@ -438,7 +446,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       }
 
       colEl.appendChild(wrapper);
-      topOffset += window.innerWidth < 600 ? 22 : 30;
+      topOffset += window.innerWidth < 600 ? 26 : 36;
     });
 
     // Aceitar drop/clique para "mover para desobstruir" — sempre permitido
