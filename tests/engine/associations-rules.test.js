@@ -27,6 +27,28 @@ test("canPlaceInCategory: carta de palavra rejeitada em categoria de outro id, m
   assert.equal(canPlaceInCategory(wordCard("CAT-13", "Netto"), "CAT-06", open), false);
 });
 
-test("canMoveToTableauColumn: sempre permitido (desobstrução sem regra de compatibilidade)", () => {
-  assert.equal(canMoveToTableauColumn(), true);
+test("canMoveToTableauColumn: permitido se a coluna destino estiver vazia", () => {
+  const card = wordCard("CAT-13", "Iamamoto");
+  const targetCol = { cards: [] };
+  assert.equal(canMoveToTableauColumn(card, targetCol), true);
+});
+
+test("canMoveToTableauColumn: permitido se a coluna destino tiver carta do topo da mesma categoria", () => {
+  const card = wordCard("CAT-13", "Iamamoto");
+  const targetCol = {
+    cards: [
+      { card: wordCard("CAT-13", "Netto"), faceUp: true }
+    ]
+  };
+  assert.equal(canMoveToTableauColumn(card, targetCol), true);
+});
+
+test("canMoveToTableauColumn: rejeitado se a coluna destino tiver carta do topo de categoria diferente", () => {
+  const card = wordCard("CAT-13", "Iamamoto");
+  const targetCol = {
+    cards: [
+      { card: wordCard("CAT-07", "CRAS"), faceUp: true }
+    ]
+  };
+  assert.equal(canMoveToTableauColumn(card, targetCol), false);
 });

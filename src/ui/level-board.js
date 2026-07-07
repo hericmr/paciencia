@@ -497,7 +497,9 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     levelState.movesRemaining -= 1;
     selectedCardId = null;
 
-    if (canMoveToTableauColumn()) {
+    const targetColumn = levelState.tableauColumns[targetColIndex];
+
+    if (canMoveToTableauColumn(card, targetColumn)) {
       if (source === "column") {
         column.cards.pop();
         const newTop = getTopEntry(column);
@@ -506,7 +508,9 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         levelState.waste.pop();
       }
 
-      levelState.tableauColumns[targetColIndex].cards.push({ card, faceUp: true });
+      targetColumn.cards.push({ card, faceUp: true });
+      soundManager?.play("cardPlace");
+    } else {
       soundManager?.play("cardMove");
     }
 

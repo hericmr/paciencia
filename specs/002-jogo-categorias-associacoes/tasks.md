@@ -117,6 +117,7 @@
 - [x] T034 Adicionar Monte (Stock) e Descarte (Waste) e sua lógica de compra/reciclagem (Decisão 12)
 - [x] T035 Ampliar o Nível 1 para 6 categorias mantendo apenas 4 spots dinâmicos (Decisão 11)
 - [x] T036 Atualizar as especificações de requisitos e regras de movimento
+- [x] T037 Restringir o empilhamento em colunas do tableau para aceitar apenas cartas da mesma categoria (Decisão 13)
 
 ## Notes
 

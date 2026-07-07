@@ -71,7 +71,7 @@ categorias. Palavras sem foto correspondente exibem só o texto.
 - **Tableau empilhado**: só a última carta de cada coluna (topo, virada para cima) é jogável. As demais ficam viradas para baixo (mostrando `assets/verso.png`), inacessíveis até a carta acima sair. As cartas-título e de palavra podem começar completamente embaralhadas e misturadas (se configurado como `"embaralhado"` em profundidade).
 - **Carta-título → qualquer spot de categoria fechado/vazio**: aceita; associa o spot àquela categoria e a abre. Se o spot estiver ocupado ou a categoria já estiver aberta em outro spot, é rejeitada.
 - **Carta de palavra → spot de categoria**: aceita só se o spot estiver aberto e associado a essa categoria específica; caso contrário, é rejeitada (a carta retorna ao topo da coluna de origem).
-- **Qualquer carta do topo → topo de outra coluna**: sempre aceita, sem regra de compatibilidade — serve só para desobstruir uma coluna.
+- **Qualquer carta do topo → topo de outra coluna**: aceita se a coluna destino estiver vazia ou se a carta do topo da coluna destino pertencer à mesma categoria (CAT-XX) — permitindo empilhar cartas de mesma categoria no tableau de forma sequencial. Caso contrário, é rejeitada.
 - **Monte (Stock)**: Pilha de cartas viradas para baixo. Ao ser clicado, retira a carta do topo e a adiciona à pilha de Descarte. Se estiver vazio, clicar nele recicla todas as cartas da pilha de Descarte de volta para o Monte.
 - **Descarte (Waste)**: Pilha de cartas viradas para cima. Apenas a carta do topo é visível e jogável, podendo ser selecionada ou arrastada para qualquer coluna do tableau (desobstrução) ou spots de categoria.
 - Todo movimento acima — aceito ou rejeitado — decrementa `movesRemaining` em 1.

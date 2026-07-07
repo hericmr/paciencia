@@ -22,13 +22,18 @@ export function canPlaceInCategory(card, slotCategoryId, openCategoryIds) {
 }
 
 /**
- * Mover a carta do topo de uma coluna para o topo de outra: sempre aceito,
- * sem regra de compatibilidade — serve só para desobstruir o caminho até
- * uma carta enterrada (confirmado com o mantenedor, ver research.md,
- * Decisão 8). Mantido como função (em vez de `true` inline) para deixar a
- * regra nomeada e documentada no ponto de chamada.
+ * Mover a carta do topo de uma coluna (ou descarte) para o topo de outra coluna:
+ * aceito se a coluna destino estiver vazia ou se a carta do topo da coluna destino
+ * pertencer à mesma categoria (CAT-XX).
+ * @param {WordCard} card
+ * @param {any} targetColumn
  * @returns {boolean}
  */
-export function canMoveToTableauColumn() {
-  return true;
+export function canMoveToTableauColumn(card, targetColumn) {
+  if (!card) return false;
+  if (!targetColumn || !targetColumn.cards || targetColumn.cards.length === 0) {
+    return true;
+  }
+  const topEntry = targetColumn.cards[targetColumn.cards.length - 1];
+  return card.categoryId === topEntry.card.categoryId;
 }

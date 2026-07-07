@@ -219,4 +219,13 @@ interação).
 
 **Rationale**: Alinha-se perfeitamente com o feedback de que o jogo precisa de exatamente 4 colunas de tableau com uma quantidade crescente de cartas por baixo (pirâmide/cascata clássica da Paciência) para dar a dinâmica real e desafiadora de desenterrar cartas ocultas, mantendo um monte de circulação balanceado.
 
+## Decisão 13: Regra de Empilhamento por Categorias no Tableau (Substitui Decisão 8)
+
+**Decision**: Alterar a regra de desobstrução de colunas do tableau para restringir o empilhamento. Uma carta do topo de uma coluna ou descarte só pode ser empilhada sobre outra coluna do tableau se a coluna destino estiver vazia ou se a carta do topo da coluna destino pertencer à mesma categoria (`categoryId`).
+- Se a coluna destino estiver vazia, qualquer carta é aceita.
+- Se a coluna destino possuir cartas, a carta movida só é aceita se sua categoria corresponder exatamente à categoria da carta que está no topo da coluna destino.
+- Movimentos aceitos em colunas agora tocam o efeito sonoro de sucesso (`cardPlace`), e movimentos rejeitados tocam o som de arraste/rejeição (`cardMove`).
+
+**Rationale**: Alinha-se diretamente com o feedback do usuário de que o tableau deve permitir empilhar cartas de forma livre, porém estruturada por categoria, mimetizando a dinâmica e o desafio de ordenação do jogo de Paciência tradicional (onde empilha-se por naipes/cores alternadas). Isso aumenta o desafio tático de desobstrução, já que o jogador precisa planejar onde "estacionar" as cartas corretas para liberar as cartas fechadas sob elas.
+
 
