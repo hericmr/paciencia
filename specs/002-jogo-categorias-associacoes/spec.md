@@ -90,6 +90,10 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 - Todos os movimentos esgotados exatamente no momento em que a última
   categoria é completada: é vitória, não derrota (checar vitória antes de
   checar derrota).
+- Spot finalizado: o registro de conclusão (para fins de vitória) persiste
+  mesmo depois que o spot é reciclado para uma nova categoria — completar 4
+  spots ao longo da partida vence, ainda que cada spot tenha passado por
+  mais de uma categoria.
 
 ## Requirements *(mandatory)*
 
@@ -119,6 +123,13 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 - **FR-014**: O sistema DEVE oferecer um controle de mudo acessível
   (alcançável por teclado, com `aria-pressed` refletindo o estado), com o
   estado persistido entre sessões.
+- **FR-017**: Quando um spot de categoria atinge todas as suas
+  `cardsPerCategory` cartas corretas (grupo finalizado), o sistema DEVE
+  liberar aquele spot imediatamente após a jogada que o completou, sem
+  exigir nenhuma ação adicional do jogador, tornando-o disponível para
+  associar a uma nova carta-título. Nenhuma outra coluna, spot ou pilha do
+  tabuleiro pode ser alterada por essa liberação (ver `research.md`,
+  Decisão 14).
 
 ### Key Entities
 

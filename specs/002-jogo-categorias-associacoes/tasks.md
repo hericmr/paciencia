@@ -119,6 +119,16 @@
 - [x] T036 Atualizar as especificações de requisitos e regras de movimento
 - [x] T037 Restringir o empilhamento em colunas do tableau para aceitar apenas cartas da mesma categoria (Decisão 13)
 
+## Phase 11: Finalização de grupos libera o spot (Decisão 14)
+
+- [x] T038 Em `src/ui/level-board.js` (`attemptMoveToCategory`), ao detectar
+      `nowComplete`, liberar `levelState.spotCategories[spotIndex] = null`
+      no mesmo movimento — sem exigir ação extra do jogador, sem alterar
+      `levelState.slots` nem qualquer outra coluna/spot. Verificado
+      manualmente com RNG fixo (Playwright): grupo completa → pop-up
+      fecha → spot volta a "🔒 fechado" → aceita nova carta-título
+      normalmente.
+
 ## Notes
 
 - Manter o mesmo princípio da v1: `src/engine/` nunca importa

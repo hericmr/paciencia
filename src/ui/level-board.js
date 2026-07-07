@@ -480,6 +480,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           const category = categoriesMap.get(card.categoryId);
           progressStore.revealCategory(card.categoryId);
           if (category) showCategoryCompletePopup(category, authorPhotos[card.word] ?? null);
+
+          // Grupo finalizado: libera o spot imediatamente para uma nova
+          // categoria, sem exigir ação extra do jogador (research.md,
+          // Decisão 14). As cartas já aceitas continuam em
+          // levelState.slots[categoryId] — só a ocupação do spot muda.
+          levelState.spotCategories[spotIndex] = null;
         } else {
           soundManager?.play("cardPlace");
         }

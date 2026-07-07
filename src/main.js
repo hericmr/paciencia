@@ -213,7 +213,8 @@ function removeStatusOverlay() {
   document.getElementById("game-status-overlay")?.remove();
 }
 
-document.addEventListener("DOMContentLoaded", init);
-if (document.readyState === "interactive" || document.readyState === "complete") {
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
   init();
 }

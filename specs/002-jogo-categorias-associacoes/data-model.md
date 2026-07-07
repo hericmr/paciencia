@@ -71,30 +71,46 @@ ser movida. Ao remover a carta do topo, a carta abaixo dela vira
 
 Efêmero — existe apenas durante um nível em andamento.
 
+> **Nota de revisão**: campos `spotCategories`/`stock`/`waste` adicionados
+> pelas Decisões 11–14 (mais categorias que spots, Monte/Descarte,
+> liberação de spot ao finalizar grupo). O restante desta seção ainda
+> reflete o modelo anterior (4 categorias fixas, sem Monte/Descarte) onde
+> não conflita com essas decisões.
+
 | Campo | Tipo | Descrição |
 |---|---|---|
-| `tableauColumns` | `TableauColumn[]` | Estado atual das colunas |
-| `slots` | `Record<categoryId, WordCard[]>` | Cartas de palavra já aceitas corretamente, por categoria |
-| `openCategoryIds` | `Set<categoryId>` | Categorias cuja carta-título já foi jogada — só estas aceitam cartas de palavra |
-| `movesRemaining` | integer | Decrementado a cada tentativa de mover uma carta do topo de uma coluna (para um slot de categoria ou para outra coluna) |
+| `tableauColumns` | `TableauColumn[]` | Estado atual das colunas (sempre 4, cascata crescente — Decisão 12) |
+| `slots` | `Record<categoryId, WordCard[]>` | Cartas de palavra já aceitas corretamente, por categoria. Nunca é limpo, mesmo depois que o spot que a abriu é reciclado — é o registro definitivo de conclusão, usado por `checkLevelWin` |
+| `spotCategories` | `(categoryId\|null)[4]` | Qual categoria ocupa cada um dos 4 spots físicos, ou `null` se o spot está livre/fechado. Setado ao jogar uma carta-título num spot vazio; voltar a `null` quando aquele grupo finaliza (Decisão 14) |
+| `openCategoryIds` | `Set<categoryId>` | Categorias cuja carta-título já foi jogada em algum momento — nunca removido (uma categoria não reabre depois de completada, pois não há segunda carta-título) |
+| `stock` | `WordCard[]` | Monte: cartas restantes viradas para baixo, fora do tableau (Decisão 12) |
+| `waste` | `WordCard[]` | Descarte: cartas compradas do Monte, só a do topo é jogável (Decisão 12) |
+| `movesRemaining` | integer | Decrementado a cada tentativa de mover uma carta do topo de uma coluna/descarte (para um spot de categoria ou para outra coluna) |
 | `status` | string enum | `"em_andamento"` \| `"vitoria"` \| `"derrota"` |
 
 **Regras de movimento** (ver `contracts/ui-contract.md` para o esquema
 completo):
-- Carta-título → slot da própria categoria: sempre aceita; abre a categoria
-  (`openCategoryIds.add(categoryId)`).
-- Carta de palavra → slot de categoria: aceita só se `categoryId` bate E a
-  categoria já está em `openCategoryIds`; caso contrário rejeitada.
-- Qualquer carta do topo de uma coluna → topo de **outra** coluna: sempre
-  aceita, sem regra de compatibilidade (só reorganiza para desobstruir).
+- Carta-título → spot vazio (`spotCategories[i] === null`): aceita se essa
+  categoria ainda não estiver associada a outro spot; associa o spot a ela
+  (`spotCategories[i] = categoryId`, `openCategoryIds.add(categoryId)`).
+- Carta de palavra → spot de categoria: aceita só se `spotCategories[i] ===
+  card.categoryId`; caso contrário rejeitada.
+- Carta ou sub-pilha do topo de uma coluna/descarte → topo de **outra**
+  coluna: aceita se a coluna destino estiver vazia ou se sua carta do topo
+  for da mesma categoria (Decisão 13); caso contrário rejeitada.
 - Todo movimento acima — aceito ou rejeitado — decrementa `movesRemaining`.
+- **Grupo finalizado** (`slots[categoryId].length === cardsPerCategory`):
+  no mesmo movimento que o completa, `spotCategories[i] = null` — o spot
+  volta a "fechado" e aceita uma nova carta-título imediatamente, sem ação
+  extra do jogador (Decisão 14). `slots[categoryId]` não é alterado.
 
 **Transições de estado**:
-- `em_andamento` → `vitoria`: quando `slots[categoryId].length ===
-  cardsPerCategory` para as 4 categorias do nível — checado **antes** da
-  checagem de derrota.
-- `em_andamento` → `derrota`: quando `movesRemaining === 0` e alguma
-  categoria ainda está incompleta.
+- `em_andamento` → `vitoria`: quando pelo menos 4 categorias do nível têm
+  `slots[categoryId].length === cardsPerCategory` — checado **antes** da
+  checagem de derrota. Com a reciclagem de spots (Decisão 14), essas 4
+  podem ter ocupado o mesmo spot em momentos diferentes da partida.
+- `em_andamento` → `derrota`: quando `movesRemaining === 0` e menos de 4
+  categorias completas.
 - Sem transição de volta — perder/vencer exige recarregar o nível.
 
 ## SoundManager (Feedback sonoro)

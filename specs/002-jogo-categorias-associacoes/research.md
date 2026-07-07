@@ -228,4 +228,39 @@ interação).
 
 **Rationale**: Alinha-se diretamente com o feedback do usuário de que o tableau deve permitir empilhar cartas de forma livre, porém estruturada por categoria, mimetizando a dinâmica e o desafio de ordenação do jogo de Paciência tradicional (onde empilha-se por naipes/cores alternadas). Isso aumenta o desafio tático de desobstrução, já que o jogador precisa planejar onde "estacionar" as cartas corretas para liberar as cartas fechadas sob elas.
 
+## Decisão 14: Finalização de grupo libera o spot imediatamente
 
+**Decision**: quando um spot de categoria atinge `cardsInSlot.length ===
+cardsPerCategory` (grupo finalizado), o spot é liberado no mesmo instante,
+sem exigir nenhuma ação extra do jogador: `levelState.spotCategories[spotIndex]
+= null`. Na renderização seguinte, esse spot volta ao estado "fechado"
+(🔒 Categoria N) e aceita normalmente a carta-título de qualquer categoria
+ainda não aberta. As cartas já aceitas continuam intactas em
+`levelState.slots[categoryId]` — só a **ocupação do spot** muda, não o
+registro de conclusão (usado por `checkLevelWin`).
+
+**Rationale**: com mais categorias no nível do que spots disponíveis
+(Decisão 11: 7 categorias, 4 spots), travar um spot permanentemente na
+categoria que o abriu primeiro desperdiçaria spots preciosos assim que
+aquele grupo fechasse — o jogador ficaria sem como abrir as categorias
+restantes. Reciclar o spot no instante da finalização mantém os 4 spots
+sempre disponíveis para o conjunto de categorias ainda incompletas,
+sem alterar nenhuma outra pilha do tabuleiro.
+
+**Decisões de implementação**:
+- A liberação acontece dentro do mesmo bloco que já dispara o som
+  `categoryComplete` e o pop-up de micro-texto (`src/ui/level-board.js`,
+  `attemptMoveToCategory`) — um único ponto de mutação, sem novo estado
+  paralelo.
+- `checkLevelWin`/`checkLevelLoss` (`src/engine/level-status.js`) não
+  dependem de `spotCategories`, só de `levelState.slots`, então a
+  contagem de categorias completas não é afetada pela reciclagem do spot.
+- Não há como uma categoria já completa "voltar" a receber cartas: suas
+  `cardsPerCategory` palavras já foram todas consumidas do tableau/monte
+  no momento da conclusão, e sua carta-título já foi jogada uma única vez
+  (não há segunda cópia no baralho).
+
+**Alternatives considered**: manter o spot em estado "completo" permanente
+e adicionar um botão explícito de "liberar spot" — rejeitado por exigir
+ação extra do jogador sem ganho pedagógico, contrariando o requisito
+explícito de atualização automática da interface.
