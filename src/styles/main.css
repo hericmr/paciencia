@@ -272,19 +272,31 @@ button:focus-visible {
 
 .category-slot-title {
   font-weight: 800;
-  font-size: 0.85rem;
-  margin-bottom: 0.2rem;
-  color: var(--text-primary);
+  font-size: 0.78rem;
   line-height: 1.25;
-  min-height: 2.8em; /* Reserva espaço para manter o alinhamento mesmo com títulos de comprimentos diferentes */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #ffffff;
+  background: var(--color-gold);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  /* Altura fixa (não min-height): um nome de categoria longo nunca deve
+     empurrar o slot inteiro para baixo — o texto excedente é truncado com
+     reticências em vez de crescer o layout (ver -webkit-line-clamp abaixo). */
+  height: 2.6em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  text-align: center;
 }
 
-.category-slot.complete ~ .category-slot-header .category-slot-title,
-.category-slot.complete .category-slot-title {
-  color: var(--color-gold);
+.category-slot-title.complete {
+  background: var(--color-gold-hover);
+  box-shadow: 0 0 8px rgba(243, 198, 79, 0.5);
 }
 
 .category-slot-progress {
@@ -423,7 +435,7 @@ button:focus-visible {
 
 /* Carta virada para baixo: mostra o verso, não é jogável nem focável */
 .word-card.face-down {
-  background-image: url('../../assets/verso.png');
+  background-image: url('../../assets/verso.webp');
   background-size: cover;
   background-position: center;
   cursor: default;
@@ -500,7 +512,7 @@ button:focus-visible {
 }
 
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
-   (assets/verso.png) e vira para revelar a palavra. Só toca uma vez por
+   (assets/verso.webp) e vira para revelar a palavra. Só toca uma vez por
    nível novo (playDealAnimation em level-board.js) — não replay a cada
    clique, já que o tableau inteiro é re-renderizado a cada interação. */
 .word-card.dealing {
@@ -510,12 +522,12 @@ button:focus-visible {
 @keyframes card-deal-flip {
   0% {
     transform: rotateY(-90deg);
-    background-image: url('../../assets/verso.png');
+    background-image: url('../../assets/verso.webp');
     background-size: cover;
     background-position: center;
   }
   49.9% {
-    background-image: url('../../assets/verso.png');
+    background-image: url('../../assets/verso.webp');
     background-size: cover;
     background-position: center;
   }
@@ -748,6 +760,30 @@ button:focus-visible {
 #overlay-action-btn:hover {
   background: var(--color-gold-hover);
   box-shadow: 0 0 15px rgba(243, 198, 79, 0.5);
+}
+
+.game-status-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#overlay-secondary-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+#overlay-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeIn {
@@ -1086,9 +1122,9 @@ button:focus-visible {
   }
 
   .category-slot-title {
-    font-size: 0.65rem;
-    min-height: 1.2em;
-    margin-bottom: 0.1rem;
+    font-size: 0.62rem;
+    height: 2.3em;
+    padding: 0.2rem 0.35rem;
   }
 
   .category-slot-progress {
