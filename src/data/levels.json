@@ -18,6 +18,25 @@
       "moveLimit": 48,
       "profundidadeTitulos": "embaralhado",
       "hint": null
+    },
+    {
+      "id": 2,
+      "categoryIds": ["CAT-01", "CAT-02", "CAT-03", "CAT-04", "CAT-05", "CAT-09", "CAT-10"],
+      "cardsPerCategory": 4,
+      "selectedWords": {
+        "CAT-01": ["Liberdade", "Democracia", "Equidade", "Justiça social"],
+        "CAT-02": ["Livre exercício", "Autonomia técnica", "Sigilo profissional", "Desagravo público"],
+        "CAT-03": ["Práticas discriminatórias", "Abuso de autoridade", "Assédio", "Intermediar honorários indevidos"],
+        "CAT-04": ["Magistério em Serviço Social", "Fiscalização do exercício profissional", "Parecer sobre matéria de Serviço Social", "Perícia sobre matéria de SS"],
+        "CAT-05": ["Elaborar planos e programas", "Estudos socioeconômicos", "Assessoria a movimentos sociais", "Gestão de políticas sociais"],
+        "CAT-09": ["Saúde", "Previdência", "Assistência social", "Equidade no custeio"],
+        "CAT-10": ["Descentralização político-administrativa", "Matricialidade sociofamiliar", "Territorialização", "Comando único"]
+      },
+      "totalCards": 35,
+      "columns": 4,
+      "moveLimit": 60,
+      "profundidadeTitulos": "embaralhado",
+      "hint": "Dica: Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."
     }
   ]
 }

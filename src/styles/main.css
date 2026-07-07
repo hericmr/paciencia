@@ -352,11 +352,38 @@ button:focus-visible {
   box-shadow: 0 0 0 3px var(--color-gold), 0 0 12px rgba(243, 198, 79, 0.3);
 }
 
+/* Fanning padrão (vertical) */
+:root {
+  --fanning-x: 0px;
+  --fanning-y: 42px;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --fanning-x: 0px;
+    --fanning-y: 30px;
+  }
+}
+
+/* Fanning horizontal na orientação paisagem com pouca altura vertical */
+@media (max-height: 520px) and (orientation: landscape) {
+  :root {
+    --fanning-x: 18px;
+    --fanning-y: 0px;
+  }
+}
+
 .stack-card-wrapper {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: calc(var(--card-index) * var(--fanning-x));
+  top: calc(var(--card-index) * var(--fanning-y));
   width: 100%;
+}
+
+/* Os slots de categoria sempre usam fanning vertical de 8px */
+.category-slot .stack-card-wrapper {
+  left: 0 !important;
+  top: calc(var(--card-index) * 8px) !important;
 }
 
 .stack-card-wrapper .word-card {
@@ -1048,5 +1075,30 @@ button:focus-visible {
     font-size: clamp(0.55rem, 2.5vw, 0.72rem);
     line-height: 1.1;
     padding: 0.2rem;
+  }
+}
+
+/* Orientação Paisagem ou telas com pouca altura vertical: muda a escadinha para horizontal */
+@media (max-height: 520px) and (orientation: landscape) {
+  .tableau-columns {
+    align-items: flex-start !important;
+  }
+
+  .tableau-column {
+    min-height: calc(var(--card-width) * 1.4 + 20px) !important;
+    min-width: calc(var(--card-width) + 90px) !important;
+    max-width: none !important;
+  }
+
+  /* Ajusta o posicionamento do texto sob fanning horizontal */
+  .word-card.covered-under {
+    justify-content: center !important;
+    align-items: flex-start !important;
+  }
+
+  .word-card.covered-under .word-card-text {
+    text-align: left !important;
+    padding-left: 6px !important;
+    margin-top: 0 !important;
   }
 }

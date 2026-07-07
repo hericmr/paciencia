@@ -150,18 +150,30 @@ function checkLevelStatus() {
   if (checkLevelWin(levelState.slots, currentLevel)) {
     levelState.status = "vitoria";
     progressStore.completeLevel(currentLevel.id);
-    showStatusOverlay(
-      "Nível completo!",
-      "Você classificou todas as categorias corretamente. Explore o Modo Revisão para rever os micro-textos.",
-      "Jogar novamente"
-    );
+
+    const nextLevel = levelsData.find((l) => l.id === currentLevel.id + 1);
+    if (nextLevel) {
+      showStatusOverlay(
+        "Fase concluída!",
+        `Parabéns! Você classificou todas as categorias da Fase ${currentLevel.id} com sucesso. Pronto para a próxima?`,
+        `Ir para a Fase ${nextLevel.id}`,
+        nextLevel.id
+      );
+    } else {
+      showStatusOverlay(
+        "Jogo Concluído!",
+        "Espetacular! Você classificou com sucesso todas as categorias de todas as fases!",
+        "Reiniciar Jogo",
+        levelsData[0].id
+      );
+    }
     return;
   }
 
   if (checkLevelLoss(levelState.movesRemaining, levelState.slots, currentLevel)) {
     levelState.status = "derrota";
     const hint = currentLevel.hint || "Releia as palavras com calma antes de arrastar — cada movimento conta, certo ou errado.";
-    showStatusOverlay("Movimentos esgotados", hint, "Tentar novamente");
+    showStatusOverlay("Movimentos esgotados", hint, "Tentar novamente", currentLevel.id);
   }
 }
 
@@ -189,8 +201,9 @@ function switchToReviewMode() {
  * @param {string} title
  * @param {string} message
  * @param {string} buttonText
+ * @param {number|null} targetLevelId
  */
-function showStatusOverlay(title, message, buttonText) {
+function showStatusOverlay(title, message, buttonText, targetLevelId = null) {
   removeStatusOverlay();
 
   const overlay = document.createElement("div");
@@ -205,7 +218,7 @@ function showStatusOverlay(title, message, buttonText) {
   gameRoot?.appendChild(overlay);
 
   document.getElementById("overlay-action-btn")?.addEventListener("click", () => {
-    startLevel(currentLevel?.id ?? levelsData[0].id);
+    startLevel(targetLevelId ?? currentLevel?.id ?? levelsData[0].id);
   });
 }
 

@@ -343,12 +343,11 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         ...cardsInSlot
       ];
 
-      let topOffset = 0;
       allCardsInSlot.forEach((card, cardIdx) => {
         const isTop = cardIdx === allCardsInSlot.length - 1;
         const wrapper = document.createElement("div");
         wrapper.className = "stack-card-wrapper";
-        wrapper.style.top = `${topOffset}px`;
+        wrapper.style.setProperty('--card-index', String(cardIdx));
 
         const cardEl = buildStaticCard(card, authorPhotos);
         if (!isTop) {
@@ -356,8 +355,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         }
         wrapper.appendChild(cardEl);
         slotEl.appendChild(wrapper);
-
-        topOffset += 8; // offset de empilhamento vertical
       });
     }
 
@@ -398,11 +395,10 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     colEl.setAttribute("role", "region");
     colEl.setAttribute("aria-label", `Coluna ${colIndex + 1}, ${column.cards.length} cartas.`);
 
-    let topOffset = 0;
     column.cards.forEach((entry, entryIndex) => {
       const wrapper = document.createElement("div");
       wrapper.className = "stack-card-wrapper";
-      wrapper.style.top = `${topOffset}px`;
+      wrapper.style.setProperty('--card-index', String(entryIndex));
 
       if (entry.faceUp) {
         const cardEl = buildInteractiveCard(entry.card, authorPhotos, playDealAnimation, entryIndex, () => {
@@ -446,7 +442,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       }
 
       colEl.appendChild(wrapper);
-      topOffset += window.innerWidth < 600 ? 30 : 42;
     });
 
     // Aceitar drop/clique para "mover para desobstruir" — sempre permitido
