@@ -6,5 +6,13 @@
   "Faleiros": {
     "photoUrl": "assets/authors/vicente-de-paula-faleiros.jpg",
     "photoCredit": "Foto: SamuelEstrellaDF, CC BY-SA 4.0, via Wikimedia Commons"
+  },
+  "Iamamoto": {
+    "photoUrl": "assets/authors/marilda-iamamoto.jpg",
+    "photoCredit": "Foto de Marilda Iamamoto"
+  },
+  "Guerra": {
+    "photoUrl": "assets/authors/yolanda-guerra.jpeg",
+    "photoCredit": "Foto de Yolanda Guerra"
   }
 }
