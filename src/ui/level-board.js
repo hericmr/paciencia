@@ -55,9 +55,6 @@ function findColumnIndexByTopCardId(columns, cardId) {
 export function renderLevelBoard(container, levelState, level, categoriesMap, authorPhotos, progressStore, onLevelStatusChange, onStateChange, playDealAnimation = false, soundManager = null) {
   container.innerHTML = "";
 
-  const dragBackImg = new Image();
-  dragBackImg.src = "assets/verso.png";
-
   // --- Top Board Row (Stock, Waste, and Category Slots) ---
   const topBoardRow = document.createElement("div");
   topBoardRow.className = "top-board-row";
@@ -124,9 +121,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     cardEl.setAttribute("draggable", "true");
     cardEl.addEventListener("dragstart", (e) => {
       e.dataTransfer?.setData("text/plain", topWasteCard.id);
-      if (e.dataTransfer && typeof e.dataTransfer.setDragImage === "function") {
-        e.dataTransfer.setDragImage(dragBackImg, 50, 70);
-      }
+      setTimeout(() => {
+        cardEl.classList.add("dragging-placeholder");
+      }, 0);
+    });
+    cardEl.addEventListener("dragend", () => {
+      cardEl.classList.remove("dragging-placeholder");
     });
     wasteEl.appendChild(cardEl);
     wasteEl.setAttribute("aria-label", `Descarte. Carta do topo: ${topWasteCard.word}.`);
@@ -263,9 +263,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         cardEl.setAttribute("draggable", "true");
         cardEl.addEventListener("dragstart", (e) => {
           e.dataTransfer?.setData("text/plain", entry.card.id);
-          if (e.dataTransfer && typeof e.dataTransfer.setDragImage === "function") {
-            e.dataTransfer.setDragImage(dragBackImg, 50, 70);
-          }
+          setTimeout(() => {
+            cardEl.classList.add("dragging-placeholder");
+          }, 0);
+        });
+        cardEl.addEventListener("dragend", () => {
+          cardEl.classList.remove("dragging-placeholder");
         });
         wrapper.appendChild(cardEl);
       } else {

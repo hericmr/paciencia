@@ -392,6 +392,11 @@ button:focus-visible {
   justify-content: center;
 }
 
+/* Oculta a carta em sua posição original durante o arraste */
+.word-card.dragging-placeholder {
+  opacity: 0 !important;
+}
+
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
    (assets/verso.png) e vira para revelar a palavra. Só toca uma vez por
    nível novo (playDealAnimation em level-board.js) — não replay a cada
