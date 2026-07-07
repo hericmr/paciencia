@@ -7,8 +7,8 @@
   --text-secondary: #a4beae;
   --card-width: min(13vw, 110px, 16vh);
   
-  --color-gold: #f3c64f;
-  --color-gold-hover: #ffd974;
+  --color-gold: #cfa126;
+  --color-gold-hover: #e0b63f;
   
   --card-bg: #ffffff;
   --card-radius: 8px;
@@ -405,7 +405,7 @@ button:focus-visible {
 
 /* Carta-título: precisa ser desenterrada e jogada para abrir a categoria */
 .word-card.title-card {
-  border: 2px solid var(--color-gold);
+  border: 3.5px solid var(--color-gold);
 }
 
 /* Word Cards — proporção de carta de baralho real (2.5:3.5) */
