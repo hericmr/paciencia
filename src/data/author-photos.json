@@ -38,5 +38,9 @@
   "LOAS": {
     "photoUrl": "assets/authors/loas.jpeg",
     "photoCredit": "Ilustração da LOAS"
+  },
+  "PAEFI": {
+    "photoUrl": "assets/authors/paefi.png",
+    "photoCredit": "Ilustração do PAEFI"
   }
 }
