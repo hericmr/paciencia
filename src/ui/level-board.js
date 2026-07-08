@@ -220,12 +220,28 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   `;
   stockWrapper.appendChild(stockHeader);
 
+  // Container posicionado para o efeito escadinha do Monte: 0 a 2 cartas
+  // "fantasma" (decorativas, aria-hidden) ficam levemente deslocadas atrás
+  // da carta interativa do topo, dando a impressão de uma pilha física em
+  // vez de uma única carta achatada.
+  const stockPileEl = document.createElement("div");
+  stockPileEl.className = "stock-pile";
+
   const stockEl = document.createElement("div");
   stockEl.tabIndex = 0;
   stockEl.setAttribute("role", "button");
   if (levelState.stock.length > 0) {
     stockEl.className = "stock-slot has-cards word-card face-down";
     stockEl.setAttribute("aria-label", `Monte com ${levelState.stock.length} cartas. Clique para comprar.`);
+
+    const ghostLayers = Math.min(2, levelState.stock.length - 1);
+    for (let i = ghostLayers; i >= 1; i--) {
+      const ghostEl = document.createElement("div");
+      ghostEl.className = "stock-pile-ghost word-card face-down";
+      ghostEl.setAttribute("aria-hidden", "true");
+      ghostEl.style.setProperty("--layer-index", String(i));
+      stockPileEl.appendChild(ghostEl);
+    }
   } else {
     stockEl.className = "stock-slot empty";
     stockEl.setAttribute("aria-label", "Monte vazio. Clique para reciclar o descarte.");
@@ -245,7 +261,8 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       drawFromStock();
     }
   });
-  stockWrapper.appendChild(stockEl);
+  stockPileEl.appendChild(stockEl);
+  stockWrapper.appendChild(stockPileEl);
   topBoardRow.appendChild(stockWrapper);
 
   // 2. Waste Wrapper (Descarte)

@@ -244,6 +244,28 @@ button:focus-visible {
   cursor: pointer;
 }
 
+/* Efeito escadinha do Monte: 1-2 cartas fantasma (decorativas) deslocadas
+   atrás da carta interativa do topo, para parecer uma pilha física em vez
+   de uma única carta achatada. */
+.stock-pile {
+  position: relative;
+}
+
+.stock-pile > .stock-slot {
+  position: relative;
+  z-index: 10;
+}
+
+.stock-pile-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(calc(var(--layer-index) * 4px), calc(var(--layer-index) * 4px));
+  z-index: var(--layer-index);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
 .stock-slot.empty, .waste-slot.empty, .category-slot.closed {
   cursor: pointer;
 }

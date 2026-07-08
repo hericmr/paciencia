@@ -57,6 +57,7 @@ async function init() {
     });
 
     updateMuteButton();
+    startAmbientMusicWithRetry();
 
     startLevel(levelsData[0].id);
   } catch (error) {
@@ -149,6 +150,24 @@ function updateUI() {
   isFreshDeal = false;
 }
 
+/**
+ * Tenta iniciar a música ambiente em loop. Navegadores bloqueiam autoplay
+ * com som antes de um gesto do usuário — se a primeira tentativa (na carga
+ * da página) for recusada, tenta de novo no primeiro clique/toque/tecla.
+ */
+function startAmbientMusicWithRetry() {
+  soundManager.startAmbientMusic();
+  const retry = () => {
+    soundManager.startAmbientMusic();
+    document.removeEventListener("click", retry);
+    document.removeEventListener("keydown", retry);
+    document.removeEventListener("touchstart", retry);
+  };
+  document.addEventListener("click", retry, { once: true });
+  document.addEventListener("keydown", retry, { once: true });
+  document.addEventListener("touchstart", retry, { once: true });
+}
+
 function updateMuteButton() {
   if (!muteBtn) return;
   const muted = soundManager.isMuted();
@@ -185,6 +204,7 @@ function checkLevelStatus() {
 
   if (checkLevelLoss(levelState.movesRemaining, levelState.slots, currentLevel)) {
     levelState.status = "derrota";
+    soundManager.play("gameOver");
     const hint = currentLevel.hint || "Releia as palavras com calma antes de arrastar — cada movimento conta, certo ou errado.";
     showStatusOverlay("Movimentos esgotados", hint, "Tentar novamente", currentLevel.id);
   }

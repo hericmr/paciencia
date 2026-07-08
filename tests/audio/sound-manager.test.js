@@ -11,15 +11,23 @@ function createFakeStorage(initial = {}) {
   };
 }
 
-function createFakeAudioCtor(calls) {
+function createFakeAudioCtor(calls, instances = []) {
   return class FakeAudio {
     constructor(src) {
       this.src = src;
       this.volume = 1;
+      this.loop = false;
+      this.playCount = 0;
+      this.pauseCount = 0;
       calls.push(src);
+      instances.push(this);
     }
     play() {
+      this.playCount += 1;
       return Promise.resolve();
+    }
+    pause() {
+      this.pauseCount += 1;
     }
   };
 }
@@ -82,4 +90,77 @@ test("toggleMuted(): alterna e persiste no storage injetado", () => {
 test("estado inicial de mudo é lido do storage", () => {
   const sound = createSoundManager({ storage: createFakeStorage({ [MUTE_STORAGE_KEY]: "1" }) });
   assert.equal(sound.isMuted(), true);
+});
+
+test("play('gameOver'): toca o arquivo de game over", () => {
+  const calls = [];
+  const sound = createSoundManager({
+    storage: createFakeStorage(),
+    AudioCtor: createFakeAudioCtor(calls),
+  });
+
+  sound.play("gameOver");
+
+  assert.equal(calls.length, 1);
+  assert.match(calls[0], /gameover\.mp3$/);
+});
+
+test("startAmbientMusic(): cria a faixa em loop e toca", () => {
+  const calls = [];
+  const instances = [];
+  const sound = createSoundManager({
+    storage: createFakeStorage(),
+    AudioCtor: createFakeAudioCtor(calls, instances),
+  });
+
+  sound.startAmbientMusic();
+
+  assert.equal(calls.length, 1);
+  assert.match(calls[0], /musica_ambiente\.ogg$/);
+  assert.equal(instances[0].loop, true);
+  assert.equal(instances[0].playCount, 1);
+});
+
+test("startAmbientMusic(): chamadas repetidas reusam a mesma instância (idempotente)", () => {
+  const calls = [];
+  const instances = [];
+  const sound = createSoundManager({
+    storage: createFakeStorage(),
+    AudioCtor: createFakeAudioCtor(calls, instances),
+  });
+
+  sound.startAmbientMusic();
+  sound.startAmbientMusic();
+
+  assert.equal(calls.length, 1, "não deve criar uma segunda instância de Audio");
+  assert.equal(instances[0].playCount, 2);
+});
+
+test("startAmbientMusic(): não toca se já estiver mudo, mas fica pronta pra tocar ao desmutar", () => {
+  const calls = [];
+  const instances = [];
+  const sound = createSoundManager({
+    storage: createFakeStorage({ [MUTE_STORAGE_KEY]: "1" }),
+    AudioCtor: createFakeAudioCtor(calls, instances),
+  });
+
+  sound.startAmbientMusic();
+  assert.equal(instances[0].playCount, 0);
+
+  sound.toggleMuted();
+  assert.equal(instances[0].playCount, 1, "desmutar deve retomar a música ambiente já criada");
+});
+
+test("toggleMuted() para ligado pausa a música ambiente em andamento", () => {
+  const calls = [];
+  const instances = [];
+  const sound = createSoundManager({
+    storage: createFakeStorage(),
+    AudioCtor: createFakeAudioCtor(calls, instances),
+  });
+
+  sound.startAmbientMusic();
+  sound.toggleMuted();
+
+  assert.equal(instances[0].pauseCount, 1);
 });
