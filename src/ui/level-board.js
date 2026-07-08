@@ -104,7 +104,14 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
           if (colEl) {
             const column = levelState.tableauColumns[loc.colIndex];
-            for (let i = loc.cardIndex; i < column.cards.length; i++) {
+            const card = column.cards[loc.cardIndex].card;
+            let startIndex = loc.cardIndex;
+            if (card.isTitleCard) {
+              while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId) {
+                startIndex--;
+              }
+            }
+            for (let i = startIndex; i < column.cards.length; i++) {
               const cid = column.cards[i].card.id;
               const el = colEl.querySelector(`[data-id="${cid}"]`);
               if (el) el.classList.add("dragging-placeholder");
@@ -457,9 +464,17 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         cardEl.setAttribute("draggable", "true");
         cardEl.addEventListener("dragstart", (e) => {
           e.dataTransfer?.setData("text/plain", entry.card.id);
+          
+          let startIndex = entryIndex;
+          if (entry.card.isTitleCard) {
+            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId) {
+              startIndex--;
+            }
+          }
+          
           // Oculta todas as cartas a partir deste índice para o drag do sub-stack
           setTimeout(() => {
-            for (let i = entryIndex; i < column.cards.length; i++) {
+            for (let i = startIndex; i < column.cards.length; i++) {
               const cid = column.cards[i].card.id;
               const el = colEl.querySelector(`[data-id="${cid}"]`);
               if (el) el.classList.add("dragging-placeholder");
@@ -467,7 +482,13 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           }, 0);
         });
         cardEl.addEventListener("dragend", () => {
-          for (let i = entryIndex; i < column.cards.length; i++) {
+          let startIndex = entryIndex;
+          if (entry.card.isTitleCard) {
+            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId) {
+              startIndex--;
+            }
+          }
+          for (let i = startIndex; i < column.cards.length; i++) {
             const cid = column.cards[i].card.id;
             const el = colEl.querySelector(`[data-id="${cid}"]`);
             if (el) el.classList.remove("dragging-placeholder");
@@ -634,7 +655,18 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       column = levelState.tableauColumns[loc.colIndex];
       cardIndex = loc.cardIndex;
       card = column.cards[cardIndex].card;
-      subStack = column.cards.slice(cardIndex);
+      
+      if (card.isTitleCard) {
+        // Coleta a carta-título e todas as cartas da mesma categoria contíguas abaixo dela no tableau
+        let startIndex = cardIndex;
+        while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId) {
+          startIndex--;
+        }
+        subStack = column.cards.slice(startIndex);
+        cardIndex = startIndex; // Garante que a remoção ocorra a partir da base do grupo
+      } else {
+        subStack = column.cards.slice(cardIndex);
+      }
     } else {
       const topWasteCard = levelState.waste?.[levelState.waste.length - 1];
       if (topWasteCard && topWasteCard.id === cardId) {
