@@ -220,9 +220,11 @@ button:focus-visible {
 }
 
 /* Stock & Waste */
-.stock-slot, .waste-slot {
-  background: rgba(255, 255, 255, 0.02);
-  border: 2px dashed rgba(255, 255, 255, 0.15);
+/* Slots vazios no topo do tabuleiro (Stock, Waste e Categoria) */
+.stock-slot, .waste-slot, .category-slot {
+  background: #081a10; /* Retângulo sólido verde escuro, paleta do fundo */
+  border: 1px solid rgba(255, 255, 255, 0.04); /* Borda sólida ultrafina e discreta */
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra interna para o efeito de encaixe */
   border-radius: var(--card-radius);
   width: var(--card-width);
   max-width: var(--card-width);
@@ -230,30 +232,25 @@ button:focus-visible {
   transition: all var(--transition-speed) ease;
   position: relative;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stock-slot.has-cards {
   border: none;
   background: none;
+  box-shadow: none;
   cursor: pointer;
 }
 
-.stock-slot.empty {
+.stock-slot.empty, .waste-slot.empty, .category-slot.closed {
   cursor: pointer;
 }
 
-.stock-slot.empty:hover, .waste-slot.empty:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.slot-placeholder-recycle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 2.2rem;
-  color: rgba(255, 255, 255, 0.15);
+.stock-slot.empty:hover, .waste-slot.empty:hover, .category-slot.closed:hover {
+  background: #0d2719; /* Ligeiramente mais claro no hover */
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .category-slot-wrapper {
@@ -320,15 +317,10 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-.category-slot:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
 .category-slot.valid-target {
-  border-color: var(--color-gold);
-  background: rgba(243, 198, 79, 0.05);
-  box-shadow: 0 0 12px rgba(243, 198, 79, 0.2);
+  border-color: var(--color-gold) !important;
+  background: rgba(243, 198, 79, 0.05) !important;
+  box-shadow: 0 0 12px rgba(243, 198, 79, 0.2), inset 0 4px 10px rgba(0, 0, 0, 0.5) !important;
   transform: scale(1.02);
 }
 
@@ -338,13 +330,19 @@ button:focus-visible {
   box-shadow: 0 4px 15px rgba(243, 198, 79, 0.15);
 }
 
-.slot-placeholder-lock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 2.2rem;
-  color: rgba(255, 255, 255, 0.15);
+/* Estilos para os novos ícones de placeholder SVG */
+.slot-placeholder-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-gold);
+  opacity: 0.3; /* Baixa opacidade entre 20% e 40% */
+  transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.stock-slot.empty:hover .slot-placeholder-icon,
+.category-slot.closed:hover .slot-placeholder-icon {
+  opacity: 0.45;
+  transform: scale(1.06);
 }
 
 /* Sobrescritas para cartas estáticas depositadas nos slots */

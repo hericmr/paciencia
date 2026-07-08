@@ -229,7 +229,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   } else {
     stockEl.className = "stock-slot empty";
     stockEl.setAttribute("aria-label", "Monte vazio. Clique para reciclar o descarte.");
-    stockEl.innerHTML = `<div class="slot-placeholder-recycle">🔄</div>`;
+    stockEl.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="slot-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.72 2.78L21 8"/>
+        <polyline points="15 8 21 8 21 2"/>
+      </svg>
+    `;
   }
   stockEl.addEventListener("click", () => {
     drawFromStock();
@@ -312,7 +317,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     headerEl.className = "category-slot-header";
     if (!isOpen) {
       headerEl.innerHTML = `
-        <div class="category-slot-title" style="visibility: hidden;">🔒 Categoria ${index + 1}</div>
+        <div class="category-slot-title" style="visibility: hidden;">Categoria ${index + 1}</div>
         <div class="category-slot-progress" style="visibility: hidden;">Fechada</div>
       `;
     } else {
@@ -333,7 +338,15 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     if (!isOpen) {
       slotEl.setAttribute("aria-label", `Categoria ${index + 1}, fechada. Encontre e jogue a carta-título dela no tableau.`);
-      slotEl.innerHTML = `<div class="slot-placeholder-lock">🔒</div>`;
+      slotEl.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="slot-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m16 6 4 14"/>
+          <path d="M12 6v14"/>
+          <path d="M8 8v12"/>
+          <path d="M4 4v16"/>
+          <path d="M2 20h20"/>
+        </svg>
+      `;
     } else {
       slotEl.setAttribute("aria-label", `${category?.nome ?? categoryId}, aberta. ${cardsInSlot.length} de ${level.cardsPerCategory} cartas corretas.`);
       
