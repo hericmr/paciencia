@@ -10,7 +10,7 @@
   --color-gold: #cfa126;
   --color-gold-hover: #e0b63f;
   
-  --card-bg: #ffffff;
+  --card-bg: #faf5e6;
   --card-radius: 8px;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   --card-border: 1px solid rgba(0, 0, 0, 0.15);
@@ -222,9 +222,9 @@ button:focus-visible {
 /* Stock & Waste */
 /* Slots vazios no topo do tabuleiro (Stock, Waste e Categoria) */
 .stock-slot, .waste-slot, .category-slot {
-  background: #081a10; /* Retângulo sólido verde escuro, paleta do fundo */
+  background: #0b2215; /* Tom sólido de verde escuro ligeiramente mais suave */
   border: 1px solid rgba(255, 255, 255, 0.04); /* Borda sólida ultrafina e discreta */
-  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra interna para o efeito de encaixe */
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra interna mais suave */
   border-radius: var(--card-radius);
   width: var(--card-width);
   max-width: var(--card-width);
@@ -588,7 +588,7 @@ button:focus-visible {
 }
 
 .modal-container {
-  background: #ffffff;
+  background: var(--card-bg);
   color: var(--color-black);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
