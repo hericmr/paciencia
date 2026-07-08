@@ -265,7 +265,7 @@ button:focus-visible {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(calc(var(--layer-index) * 4px), calc(var(--layer-index) * 4px));
+  transform: translate(calc(var(--layer-index) * -3px), calc(var(--layer-index) * -3px));
   z-index: var(--layer-index);
   pointer-events: none;
   opacity: 0.85;
