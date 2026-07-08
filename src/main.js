@@ -140,8 +140,8 @@ function updateUI() {
     authorPhotos,
     progressStore,
     () => {
-      checkLevelStatus();
       updateUI();
+      checkLevelStatus();
     },
     updateUI,
     isFreshDeal,
@@ -279,7 +279,7 @@ function showStatusOverlay(title, message, buttonText, targetLevelId = null, sec
     </div>
   `;
 
-  gameRoot?.appendChild(overlay);
+  document.body.appendChild(overlay);
 
   document.getElementById("overlay-action-btn")?.addEventListener("click", () => {
     startLevel(targetLevelId ?? currentLevel?.id ?? levelsData[0].id);
