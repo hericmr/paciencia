@@ -294,18 +294,6 @@ button:focus-visible {
   color: #51cf66;
 }
 
-.category-slot {
-  background: rgba(255, 255, 255, 0.02);
-  border: 2px dashed rgba(255, 255, 255, 0.15);
-  border-radius: var(--card-radius);
-  width: var(--card-width);
-  max-width: var(--card-width);
-  aspect-ratio: 2.5 / 3.5;
-  transition: all var(--transition-speed) ease;
-  cursor: pointer;
-  position: relative;
-  box-sizing: border-box;
-}
 
 /* Evita interferência de cliques/drops nos elementos internos da pilha */
 .category-slot * {

@@ -340,11 +340,26 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       slotEl.setAttribute("aria-label", `Categoria ${index + 1}, fechada. Encontre e jogue a carta-título dela no tableau.`);
       slotEl.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" class="slot-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m16 6 4 14"/>
-          <path d="M12 6v14"/>
-          <path d="M8 8v12"/>
-          <path d="M4 4v16"/>
-          <path d="M2 20h20"/>
+          <!-- Corpo (Cabeça, Tórax, Abdômen) -->
+          <circle cx="12" cy="6" r="2" />
+          <circle cx="12" cy="11" r="2.5" />
+          <ellipse cx="12" cy="17" rx="2.2" ry="3" />
+          
+          <!-- Antenas -->
+          <path d="M11 4.5 Q9 2 7 3" />
+          <path d="M13 4.5 Q15 2 17 3" />
+          
+          <!-- Pernas Dianteiras -->
+          <path d="M10.5 10 C8 9 6 7 6 7" />
+          <path d="M13.5 10 C16 9 18 7 18 7" />
+          
+          <!-- Pernas Médias -->
+          <path d="M9.5 11 H5" />
+          <path d="M14.5 11 H19" />
+          
+          <!-- Pernas Traseiras -->
+          <path d="M10.5 12 C9 14 7 17 7 17" />
+          <path d="M13.5 12 C15 14 17 17 17 17" />
         </svg>
       `;
     } else {
