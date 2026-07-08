@@ -534,6 +534,42 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   /**
    * @param {WordCard} card
    * @param {Record<string, { photoUrl: string, photoCredit: string }>} photos
+   * @returns {string}
+   */
+  function getCardIconHtml(card, photos) {
+    if (card.isTitleCard) {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" class="card-ant-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Corpo (Cabeça, Tórax, Abdômen) -->
+          <circle cx="12" cy="6" r="2" />
+          <circle cx="12" cy="11" r="2.5" />
+          <ellipse cx="12" cy="17" rx="2.2" ry="3" />
+          
+          <!-- Antenas -->
+          <path d="M11 4.5 Q9 2 7 3" />
+          <path d="M13 4.5 Q15 2 17 3" />
+          
+          <!-- Pernas Dianteiras -->
+          <path d="M10.5 10 C8 9 6 7 6 7" />
+          <path d="M13.5 10 C16 9 18 7 18 7" />
+          
+          <!-- Pernas Médias -->
+          <path d="M9.5 11 H5" />
+          <path d="M14.5 11 H19" />
+          
+          <!-- Pernas Traseiras -->
+          <path d="M10.5 12 C9 14 7 17 7 17" />
+          <path d="M13.5 12 C15 14 17 17 17 17" />
+        </svg>
+      `;
+    }
+    const photo = photos[card.word];
+    return photo ? `<img class="card-photo-thumb" src="${photo.photoUrl}" alt="" />` : "";
+  }
+
+  /**
+   * @param {WordCard} card
+   * @param {Record<string, { photoUrl: string, photoCredit: string }>} photos
    * @param {boolean} deal
    * @param {number} dealIndex
    * @param {() => void} onClick
@@ -547,9 +583,8 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     cardEl.setAttribute("aria-label", card.isTitleCard ? `Carta-título: ${card.word}` : `Carta: ${card.word}`);
     if (deal) cardEl.style.animationDelay = `${dealIndex * 40}ms`;
 
-    const photo = photos[card.word];
-    const photoHtml = photo ? `<img class="card-photo-thumb" src="${photo.photoUrl}" alt="" />` : "";
-    cardEl.innerHTML = `${photoHtml}<span class="word-card-text">${card.word}</span>`;
+    const iconHtml = getCardIconHtml(card, photos);
+    cardEl.innerHTML = `${iconHtml}<span class="word-card-text">${card.word}</span>`;
 
     cardEl.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -574,9 +609,8 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     cardEl.className = `word-card static-card ${card.isTitleCard ? "title-card" : ""}`;
     cardEl.dataset.id = card.id;
 
-    const photo = photos[card.word];
-    const photoHtml = photo ? `<img class="card-photo-thumb" src="${photo.photoUrl}" alt="" />` : "";
-    cardEl.innerHTML = `${photoHtml}<span class="word-card-text">${card.word}</span>`;
+    const iconHtml = getCardIconHtml(card, photos);
+    cardEl.innerHTML = `${iconHtml}<span class="word-card-text">${card.word}</span>`;
 
     return cardEl;
   }

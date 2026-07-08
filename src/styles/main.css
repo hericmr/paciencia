@@ -519,7 +519,8 @@ button:focus-visible {
   align-items: stretch !important;
 }
 
-.word-card.covered-under img.card-photo-thumb {
+.word-card.covered-under img.card-photo-thumb,
+.word-card.covered-under svg.card-ant-icon {
   display: none !important;
 }
 
@@ -617,6 +618,18 @@ button:focus-visible {
   min-height: 45% !important;
   object-fit: cover;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.word-card svg.card-ant-icon {
+  width: 100%;
+  height: 45% !important;
+  min-height: 45% !important;
+  box-sizing: border-box;
+  padding: 0.35rem;
+  color: var(--color-gold); /* Cor mostarda premium para a formiga */
+  opacity: 0.8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 /* Modal Popup Styles */
