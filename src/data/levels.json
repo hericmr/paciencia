@@ -11,54 +11,61 @@
         "CAT-14",
         "CAT-08"
       ],
-      "cardsPerCategory": 4,
+      "cardsPerCategory": 5,
       "selectedWords": {
         "CAT-13": [
           "Iamamoto",
           "Netto",
           "Guerra",
-          "Behring"
+          "Behring",
+          "Faleiros"
         ],
         "CAT-06": [
           "Entrevista",
           "Visita domiciliar",
           "Estudo social",
-          "Relatório social"
+          "Relatório social",
+          "Diário de campo"
         ],
         "CAT-11": [
           "Congresso da Virada",
           "LOAS",
           "Lei de Regulamentação",
-          "Código de Ética vigente"
+          "Código de Ética vigente",
+          "Movimento de Reconceituação"
         ],
         "CAT-07": [
           "CRAS",
           "PAIF",
           "SCFV",
-          "Território de vulnerabilidade"
+          "Território de vulnerabilidade",
+          "Fortalecimento de vínculos"
         ],
         "CAT-12": [
           "Araxá",
           "Teresópolis",
           "Fenomenologia",
-          "Intenção de ruptura"
+          "Intenção de ruptura",
+          "Modernizadora"
         ],
         "CAT-14": [
           "Totalidade",
           "Mediação",
           "Práxis",
-          "Contradição"
+          "Contradição",
+          "Questão social"
         ],
         "CAT-08": [
           "CREAS",
           "PAEFI",
           "Direitos violados",
-          "Acolhimento institucional"
+          "Acolhimento institucional",
+          "Medidas socioeducativas"
         ]
       },
-      "totalCards": 35,
+      "totalCards": 42,
       "columns": 4,
-      "moveLimit": 60,
+      "moveLimit": 72,
       "profundidadeTitulos": "embaralhado",
       "hint": null
     },
@@ -73,54 +80,68 @@
         "CAT-09",
         "CAT-10"
       ],
-      "cardsPerCategory": 4,
+      "cardsPerCategory": 6,
       "selectedWords": {
         "CAT-01": [
           "Liberdade",
           "Democracia",
           "Equidade",
-          "Justiça social"
+          "Justiça social",
+          "Cidadania",
+          "Direitos humanos"
         ],
         "CAT-02": [
           "Livre exercício",
           "Autonomia técnica",
           "Sigilo profissional",
-          "Desagravo público"
+          "Desagravo público",
+          "Pronunciamento público",
+          "Aprimoramento profissional"
         ],
         "CAT-03": [
           "Práticas discriminatórias",
           "Abuso de autoridade",
           "Assédio",
-          "Intermediar honorários indevidos"
+          "Intermediar honorários indevidos",
+          "Depor como testemunha (situação sigilosa)",
+          "Acatar ordem que fira a autonomia"
         ],
         "CAT-04": [
           "Magistério em Serviço Social",
           "Fiscalização do exercício profissional",
           "Parecer sobre matéria de Serviço Social",
-          "Perícia sobre matéria de SS"
+          "Perícia sobre matéria de SS",
+          "Direção de unidade de ensino de SS",
+          "Coordenação de curso de SS"
         ],
         "CAT-05": [
           "Elaborar planos e programas",
           "Estudos socioeconômicos",
           "Assessoria a movimentos sociais",
-          "Gestão de políticas sociais"
+          "Gestão de políticas sociais",
+          "Orientação social a indivíduos e grupos",
+          "Pesquisa sobre a realidade social"
         ],
         "CAT-09": [
           "Saúde",
           "Previdência",
           "Assistência social",
-          "Equidade no custeio"
+          "Equidade no custeio",
+          "Universalidade da cobertura",
+          "Caráter democrático da gestão"
         ],
         "CAT-10": [
           "Descentralização político-administrativa",
           "Matricialidade sociofamiliar",
           "Territorialização",
-          "Comando único"
+          "Comando único",
+          "Participação popular",
+          "Controle social"
         ]
       },
-      "totalCards": 35,
+      "totalCards": 49,
       "columns": 4,
-      "moveLimit": 60,
+      "moveLimit": 84,
       "profundidadeTitulos": "embaralhado",
       "hint": "Dica: Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."
     },
@@ -136,60 +157,84 @@
         "CAT-23",
         "CAT-24"
       ],
-      "cardsPerCategory": 4,
+      "cardsPerCategory": 7,
       "selectedWords": {
         "CAT-15": [
           "Laudo social",
           "Parecer social",
           "Perícia social",
-          "Opinião técnica conclusiva"
+          "Quesitos",
+          "Opinião técnica conclusiva",
+          "Registro fundamentado",
+          "Materialização do estudo social"
         ],
         "CAT-18": [
           "Conselho Tutelar",
           "Medidas protetivas (art. 101)",
+          "Acolhimento familiar",
           "Prioridade absoluta",
-          "Proteção integral"
+          "Proteção integral",
+          "Promoção–defesa–controle",
+          "Excepcionalidade do afastamento"
         ],
         "CAT-19": [
           "Medidas socioeducativas (art. 112)",
           "SINASE",
+          "Advertência",
           "Liberdade assistida",
+          "Prestação de serviços à comunidade",
+          "Semiliberdade",
           "Internação"
         ],
         "CAT-20": [
           "Violência física",
+          "Violência psicológica",
           "Abuso sexual",
           "Exploração sexual",
-          "Escuta especializada"
+          "Negligência",
+          "Escuta especializada",
+          "Depoimento especial"
         ],
         "CAT-21": [
           "Violência patrimonial",
           "Violência moral",
           "Medidas protetivas de urgência",
+          "Juizado de Violência Doméstica",
+          "Relação íntima de afeto",
+          "Independe de coabitação",
           "Atendimento multidisciplinar"
         ],
         "CAT-22": [
           "60 anos ou mais",
           "Prioridade especial (80+)",
           "Notificação compulsória",
-          "Obrigação alimentar solidária"
+          "Obrigação alimentar solidária",
+          "ILPI",
+          "Medidas de proteção (art. 43)",
+          "Envelhecimento como direito personalíssimo"
         ],
         "CAT-23": [
           "Pluralidade de arranjos",
           "Família monoparental",
           "Homoparentalidade",
+          "Famílias reconstituídas",
+          "Redes de apoio",
+          "Familismo",
           "Sobrecarga feminina do cuidado"
         ],
         "CAT-24": [
           "Divisão sexual do trabalho",
           "Interseccionalidade",
           "Racismo estrutural",
-          "Identidade de gênero"
+          "Patriarcado",
+          "Identidade de gênero",
+          "Relações intergeracionais",
+          "Etarismo"
         ]
       },
-      "totalCards": 40,
+      "totalCards": 64,
       "columns": 4,
-      "moveLimit": 70,
+      "moveLimit": 110,
       "profundidadeTitulos": "embaralhado",
       "hint": "Dica: Diferencie Medidas Protetivas (ECA, art. 101 - proteção) de Medidas Socioeducativas (ECA, art. 112 - ato infracional), e Laudo (documento descritivo) de Parecer (opinião conclusiva)."
     }
