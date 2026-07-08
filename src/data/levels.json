@@ -37,6 +37,26 @@
       "moveLimit": 60,
       "profundidadeTitulos": "embaralhado",
       "hint": "Dica: Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."
+    },
+    {
+      "id": 3,
+      "categoryIds": ["CAT-15", "CAT-18", "CAT-19", "CAT-20", "CAT-21", "CAT-22", "CAT-23", "CAT-24"],
+      "cardsPerCategory": 4,
+      "selectedWords": {
+        "CAT-15": ["Laudo social", "Parecer social", "Perícia social", "Opinião técnica conclusiva"],
+        "CAT-18": ["Conselho Tutelar", "Medidas protetivas (art. 101)", "Prioridade absoluta", "Proteção integral"],
+        "CAT-19": ["Medidas socioeducativas (art. 112)", "SINASE", "Liberdade assistida", "Internação"],
+        "CAT-20": ["Violência física", "Abuso sexual", "Exploração sexual", "Escuta especializada"],
+        "CAT-21": ["Violência patrimonial", "Violência moral", "Medidas protetivas de urgência", "Atendimento multidisciplinar"],
+        "CAT-22": ["60 anos ou mais", "Prioridade especial (80+)", "Notificação compulsória", "Obrigação alimentar solidária"],
+        "CAT-23": ["Pluralidade de arranjos", "Família monoparental", "Homoparentalidade", "Sobrecarga feminina do cuidado"],
+        "CAT-24": ["Divisão sexual do trabalho", "Interseccionalidade", "Racismo estrutural", "Identidade de gênero"]
+      },
+      "totalCards": 40,
+      "columns": 4,
+      "moveLimit": 70,
+      "profundidadeTitulos": "embaralhado",
+      "hint": "Dica: Diferencie Medidas Protetivas (ECA, art. 101 - proteção) de Medidas Socioeducativas (ECA, art. 112 - ato infracional), e Laudo (documento descritivo) de Parecer (opinião conclusiva)."
     }
   ]
 }
