@@ -2,35 +2,121 @@
   "levels": [
     {
       "id": 1,
-      "categoryIds": ["CAT-13", "CAT-06", "CAT-11", "CAT-07", "CAT-12", "CAT-14", "CAT-08"],
-      "cardsPerCategory": 3,
+      "categoryIds": [
+        "CAT-13",
+        "CAT-06",
+        "CAT-11",
+        "CAT-07",
+        "CAT-12",
+        "CAT-14",
+        "CAT-08"
+      ],
+      "cardsPerCategory": 4,
       "selectedWords": {
-        "CAT-13": ["Iamamoto", "Netto", "Guerra"],
-        "CAT-06": ["Entrevista", "Visita domiciliar", "Estudo social"],
-        "CAT-11": ["Congresso da Virada", "LOAS", "Lei de Regulamentação"],
-        "CAT-07": ["CRAS", "PAIF", "SCFV"],
-        "CAT-12": ["Araxá", "Teresópolis", "Fenomenologia"],
-        "CAT-14": ["Totalidade", "Mediação", "Práxis"],
-        "CAT-08": ["CREAS", "PAEFI", "Direitos violados"]
+        "CAT-13": [
+          "Iamamoto",
+          "Netto",
+          "Guerra",
+          "Behring"
+        ],
+        "CAT-06": [
+          "Entrevista",
+          "Visita domiciliar",
+          "Estudo social",
+          "Relatório social"
+        ],
+        "CAT-11": [
+          "Congresso da Virada",
+          "LOAS",
+          "Lei de Regulamentação",
+          "Código de Ética vigente"
+        ],
+        "CAT-07": [
+          "CRAS",
+          "PAIF",
+          "SCFV",
+          "Território de vulnerabilidade"
+        ],
+        "CAT-12": [
+          "Araxá",
+          "Teresópolis",
+          "Fenomenologia",
+          "Intenção de ruptura"
+        ],
+        "CAT-14": [
+          "Totalidade",
+          "Mediação",
+          "Práxis",
+          "Contradição"
+        ],
+        "CAT-08": [
+          "CREAS",
+          "PAEFI",
+          "Direitos violados",
+          "Acolhimento institucional"
+        ]
       },
-      "totalCards": 28,
+      "totalCards": 35,
       "columns": 4,
-      "moveLimit": 48,
+      "moveLimit": 60,
       "profundidadeTitulos": "embaralhado",
       "hint": null
     },
     {
       "id": 2,
-      "categoryIds": ["CAT-01", "CAT-02", "CAT-03", "CAT-04", "CAT-05", "CAT-09", "CAT-10"],
+      "categoryIds": [
+        "CAT-01",
+        "CAT-02",
+        "CAT-03",
+        "CAT-04",
+        "CAT-05",
+        "CAT-09",
+        "CAT-10"
+      ],
       "cardsPerCategory": 4,
       "selectedWords": {
-        "CAT-01": ["Liberdade", "Democracia", "Equidade", "Justiça social"],
-        "CAT-02": ["Livre exercício", "Autonomia técnica", "Sigilo profissional", "Desagravo público"],
-        "CAT-03": ["Práticas discriminatórias", "Abuso de autoridade", "Assédio", "Intermediar honorários indevidos"],
-        "CAT-04": ["Magistério em Serviço Social", "Fiscalização do exercício profissional", "Parecer sobre matéria de Serviço Social", "Perícia sobre matéria de SS"],
-        "CAT-05": ["Elaborar planos e programas", "Estudos socioeconômicos", "Assessoria a movimentos sociais", "Gestão de políticas sociais"],
-        "CAT-09": ["Saúde", "Previdência", "Assistência social", "Equidade no custeio"],
-        "CAT-10": ["Descentralização político-administrativa", "Matricialidade sociofamiliar", "Territorialização", "Comando único"]
+        "CAT-01": [
+          "Liberdade",
+          "Democracia",
+          "Equidade",
+          "Justiça social"
+        ],
+        "CAT-02": [
+          "Livre exercício",
+          "Autonomia técnica",
+          "Sigilo profissional",
+          "Desagravo público"
+        ],
+        "CAT-03": [
+          "Práticas discriminatórias",
+          "Abuso de autoridade",
+          "Assédio",
+          "Intermediar honorários indevidos"
+        ],
+        "CAT-04": [
+          "Magistério em Serviço Social",
+          "Fiscalização do exercício profissional",
+          "Parecer sobre matéria de Serviço Social",
+          "Perícia sobre matéria de SS"
+        ],
+        "CAT-05": [
+          "Elaborar planos e programas",
+          "Estudos socioeconômicos",
+          "Assessoria a movimentos sociais",
+          "Gestão de políticas sociais"
+        ],
+        "CAT-09": [
+          "Saúde",
+          "Previdência",
+          "Assistência social",
+          "Equidade no custeio"
+        ],
+        "CAT-10": [
+          "Descentralização político-administrativa",
+          "Matricialidade sociofamiliar",
+          "Territorialização",
+          "Comando único"
+        ]
       },
       "totalCards": 35,
       "columns": 4,
@@ -40,17 +126,66 @@
     },
     {
       "id": 3,
-      "categoryIds": ["CAT-15", "CAT-18", "CAT-19", "CAT-20", "CAT-21", "CAT-22", "CAT-23", "CAT-24"],
+      "categoryIds": [
+        "CAT-15",
+        "CAT-18",
+        "CAT-19",
+        "CAT-20",
+        "CAT-21",
+        "CAT-22",
+        "CAT-23",
+        "CAT-24"
+      ],
       "cardsPerCategory": 4,
       "selectedWords": {
-        "CAT-15": ["Laudo social", "Parecer social", "Perícia social", "Opinião técnica conclusiva"],
-        "CAT-18": ["Conselho Tutelar", "Medidas protetivas (art. 101)", "Prioridade absoluta", "Proteção integral"],
-        "CAT-19": ["Medidas socioeducativas (art. 112)", "SINASE", "Liberdade assistida", "Internação"],
-        "CAT-20": ["Violência física", "Abuso sexual", "Exploração sexual", "Escuta especializada"],
-        "CAT-21": ["Violência patrimonial", "Violência moral", "Medidas protetivas de urgência", "Atendimento multidisciplinar"],
-        "CAT-22": ["60 anos ou mais", "Prioridade especial (80+)", "Notificação compulsória", "Obrigação alimentar solidária"],
-        "CAT-23": ["Pluralidade de arranjos", "Família monoparental", "Homoparentalidade", "Sobrecarga feminina do cuidado"],
-        "CAT-24": ["Divisão sexual do trabalho", "Interseccionalidade", "Racismo estrutural", "Identidade de gênero"]
+        "CAT-15": [
+          "Laudo social",
+          "Parecer social",
+          "Perícia social",
+          "Opinião técnica conclusiva"
+        ],
+        "CAT-18": [
+          "Conselho Tutelar",
+          "Medidas protetivas (art. 101)",
+          "Prioridade absoluta",
+          "Proteção integral"
+        ],
+        "CAT-19": [
+          "Medidas socioeducativas (art. 112)",
+          "SINASE",
+          "Liberdade assistida",
+          "Internação"
+        ],
+        "CAT-20": [
+          "Violência física",
+          "Abuso sexual",
+          "Exploração sexual",
+          "Escuta especializada"
+        ],
+        "CAT-21": [
+          "Violência patrimonial",
+          "Violência moral",
+          "Medidas protetivas de urgência",
+          "Atendimento multidisciplinar"
+        ],
+        "CAT-22": [
+          "60 anos ou mais",
+          "Prioridade especial (80+)",
+          "Notificação compulsória",
+          "Obrigação alimentar solidária"
+        ],
+        "CAT-23": [
+          "Pluralidade de arranjos",
+          "Família monoparental",
+          "Homoparentalidade",
+          "Sobrecarga feminina do cuidado"
+        ],
+        "CAT-24": [
+          "Divisão sexual do trabalho",
+          "Interseccionalidade",
+          "Racismo estrutural",
+          "Identidade de gênero"
+        ]
       },
       "totalCards": 40,
       "columns": 4,
