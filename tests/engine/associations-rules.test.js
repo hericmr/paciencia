@@ -52,3 +52,23 @@ test("canMoveToTableauColumn: rejeitado se a coluna destino tiver carta do topo 
   };
   assert.equal(canMoveToTableauColumn(card, targetCol), false);
 });
+
+test("canMoveToTableauColumn: rejeitado se a coluna destino tiver carta-título no topo, mesmo da mesma categoria", () => {
+  const card = wordCard("CAT-13", "Iamamoto");
+  const targetCol = {
+    cards: [
+      { card: titleCard("CAT-13", "Autores"), faceUp: true }
+    ]
+  };
+  assert.equal(canMoveToTableauColumn(card, targetCol), false);
+});
+
+test("canMoveToTableauColumn: permitido se mover a carta-título para cima de uma carta de palavra da mesma categoria", () => {
+  const card = titleCard("CAT-13", "Autores");
+  const targetCol = {
+    cards: [
+      { card: wordCard("CAT-13", "Netto"), faceUp: true }
+    ]
+  };
+  assert.equal(canMoveToTableauColumn(card, targetCol), true);
+});

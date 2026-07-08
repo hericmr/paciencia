@@ -35,5 +35,12 @@ export function canMoveToTableauColumn(card, targetColumn) {
     return true;
   }
   const topEntry = targetColumn.cards[targetColumn.cards.length - 1];
+  
+  // Se a carta do topo da coluna destino for uma carta-título (carta principal),
+  // nenhuma outra carta pode ser empilhada por cima dela no tableau.
+  if (topEntry.card.isTitleCard) {
+    return false;
+  }
+  
   return card.categoryId === topEntry.card.categoryId;
 }
