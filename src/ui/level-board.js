@@ -509,17 +509,26 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   container.appendChild(columnsRow);
 
   function drawFromStock() {
+    let actionTaken = false;
     if (levelState.stock.length > 0) {
       const card = levelState.stock.pop();
       levelState.waste.push(card);
       soundManager?.play("cardMove");
+      actionTaken = true;
     } else if (levelState.waste.length > 0) {
       // Recycle: reverse waste back into stock
       levelState.stock = levelState.waste.reverse();
       levelState.waste = [];
       soundManager?.play("cardPlace");
+      actionTaken = true;
     }
-    onStateChange();
+    
+    if (actionTaken) {
+      levelState.movesRemaining--;
+      onLevelStatusChange();
+    } else {
+      onStateChange();
+    }
   }
 
   /**
