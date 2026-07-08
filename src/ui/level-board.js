@@ -694,14 +694,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
             soundManager?.play("cardPlace");
           }
         } else {
-          // Já está aberta em outro lugar, rejeita e consome movimento
-          levelState.movesRemaining -= 1;
+          // Já está aberta em outro lugar, rejeita sem consumir movimento
           selectedCardId = null;
           soundManager?.play("cardMove");
         }
       } else {
-        // Spot ocupado, rejeita e consome movimento
-        levelState.movesRemaining -= 1;
+        // Spot ocupado, rejeita sem consumir movimento
         selectedCardId = null;
         soundManager?.play("cardMove");
       }
@@ -738,8 +736,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           soundManager?.play("cardPlace");
         }
       } else {
-        // Errada para esta categoria ou spot trancado, rejeita e consome movimento
-        levelState.movesRemaining -= 1;
+        // Errada para esta categoria ou spot trancado, rejeita sem consumir movimento
         selectedCardId = null;
         soundManager?.play("cardMove");
       }
@@ -777,13 +774,13 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     if (subStack.length === 0) return;
 
-    levelState.movesRemaining -= 1;
     selectedCardId = null;
 
     const targetColumn = levelState.tableauColumns[targetColIndex];
     const baseCard = subStack[0].card;
 
     if (canMoveToTableauColumn(baseCard, targetColumn)) {
+      levelState.movesRemaining -= 1;
       if (source === "column") {
         column.cards.splice(cardIndex); // remove subStack
         const newTop = getTopEntry(column);
