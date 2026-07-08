@@ -17,11 +17,11 @@ descontinuada. O código permanece no histórico do git (branch
 
 ### User Story 1 - Jogar um nível de categorias até vencer ou perder (Priority: P1)
 
-Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas para baixo, e apenas as do topo visíveis) e 4 slots de categoria vazios/trancados (spots). Entre as cartas no tabuleiro, estão misturadas e embaralhadas as cartas-título de mais de 4 categorias (ex: 7 categorias no Nível 1). A pessoa arrasta uma carta-título revelada para qualquer um dos 4 spots vazios para associá-lo àquela categoria e abri-lo. Em seguida, ela arrasta as cartas de palavra correspondentes para o spot aberto. Cada movimento (certo ou errado) consome uma unidade do limite de movimentos. Ela vence se preencher e completar os 4 spots (4 categorias) antes de esgotar os movimentos.
+Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas para baixo, e apenas as do topo visíveis) e 4 slots de categoria vazios/trancados (spots). Entre as cartas no tabuleiro, estão misturadas e embaralhadas as cartas-título de todas as categorias do nível (ex: 7 categorias no Nível 1). A pessoa arrasta uma carta-título revelada para qualquer um dos 4 spots vazios para associá-lo àquela categoria e abri-lo. Em seguida, ela arrasta as cartas de palavra correspondentes para o spot aberto. Cada movimento (certo ou errado) consome uma unidade do limite de movimentos. Ela vence se preencher e completar todas as categorias do nível antes de esgotar os movimentos (liberando slots completos para abrir novas categorias).
 
 **Why this priority**: é o motor do produto — sem essa mecânica de classificação com risco (movimentos limitados), não há jogo. Precisa funcionar de forma independente do conteúdo pedagógico estar polido.
 
-**Independent Test**: carregar o Nível 1 (7 categorias configuradas, totalizando 28 cartas distribuídas em 4 colunas de forma embaralhada), abrir 4 spots com cartas-título, classificar as palavras corretamente nestes spots até completar os 4 e confirmar vitória; em uma segunda partida, errar movimentos até esgotar o limite e confirmar derrota.
+**Independent Test**: carregar o Nível 1 (7 categorias configuradas, distribuídas em 4 colunas de forma embaralhada), abrir spots com cartas-título, classificar as palavras corretamente nestes spots até completar todas as 7 categorias (reciclando os spots à medida que são finalizados) e confirmar vitória; em uma segunda partida, errar movimentos até esgotar o limite e confirmar derrota.
 
 **Acceptance Scenarios**:
 
@@ -29,8 +29,8 @@ Uma pessoa abre o jogo e vê colunas de cartas empilhadas (com cartas viradas pa
 2. **Given** um spot aberto para a Categoria A, **When** a pessoa arrasta uma carta de palavra da Categoria A para ele, **Then** a carta é aceita no spot (empilhada sobre a carta-título), some da coluna do tableau, e o contador diminui em 1.
 3. **Given** um spot aberto para a Categoria A, **When** a pessoa arrasta uma carta de palavra da Categoria B para ele, **Then** a carta retorna ao topo da coluna (rejeição) e o contador diminui em 1.
 4. **Given** um spot com todas as suas cartas corretamente classificadas, **When** a última é aceita, **Then** o spot é marcado como "completo".
-5. **Given** os 4 spots completos (4 categorias concluídas), **When** o último é fechado, **Then** o jogo exibe tela de vitória.
-6. **Given** o contador de movimentos chega a 0, **When** ainda resta ao menos um spot incompleto, **Then** o jogo exibe tela de derrota.
+5. **Given** todas as categorias do nível completadas, **When** a última categoria é finalizada, **Then** o jogo exibe tela de vitória.
+6. **Given** o contador de movimentos chega a 0, **When** ainda resta ao menos uma categoria incompleta, **Then** o jogo exibe tela de derrota.
 
 ---
 
@@ -105,8 +105,8 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 - **FR-004**: O sistema DEVE decrementar o contador de movimentos restantes a cada tentativa de mover a carta do topo de uma coluna, seja para um slot de categoria ou para outra coluna, aceita ou rejeitada, bem como a cada clique no Monte (comprar ou reciclar) que execute ação válida.
 - **FR-011**: O sistema DEVE virar automaticamente para cima a carta que ficar no topo de uma coluna depois que a carta anterior sair dali.
 - **FR-012**: O sistema NÃO DEVE aceitar cartas de palavra em uma categoria cuja carta-título ainda não foi jogada e associada a um spot.
-- **FR-005**: O sistema DEVE detectar vitória (quando 4 spots de categoria do nível forem completados) verificando-a antes de detectar derrota.
-- **FR-006**: O sistema DEVE detectar derrota (movimentos esgotados com ao menos um spot incompleto) e exibir a `dica_pedagogica` do nível, ou uma mensagem genérica se não houver uma configurada.
+- **FR-005**: O sistema DEVE detectar vitória (quando todas as categorias configuradas para o nível forem completadas) verificando-a antes de detectar derrota.
+- **FR-006**: O sistema DEVE detectar derrota (movimentos esgotados com ao menos uma categoria incompleta) e exibir a `dica_pedagogica` do nível, ou uma mensagem genérica se não houver uma configurada.
 - **FR-015**: O sistema DEVE possuir uma pilha de Monte (Stock) e uma de Descarte (Waste). O Monte armazena cartas viradas para baixo com efeito visual de escadinha (cartas fantasmas) e, ao ser clicado, consome 1 movimento e distribui uma carta para o Descarte, cuja carta do topo é jogável.
 - **FR-016**: O sistema DEVE permitir a reciclagem do Descarte (re-empilhamento das cartas) de volta para o Monte quando o Monte estiver vazio, consumindo 1 movimento.
 - **FR-007**: O sistema DEVE exibir um pop-up com o micro-texto da categoria no momento em que ela é completada.

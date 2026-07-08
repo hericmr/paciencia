@@ -22,7 +22,7 @@ import { canMoveToTableauColumn } from "./associations-rules.js";
  * @returns {boolean}
  */
 export function checkLevelWin(slots, level) {
-  const targetCount = Math.min(4, level.categoryIds.length);
+  const targetCount = level.categoryIds.length;
   const completedCount = level.categoryIds.filter((catId) => (slots[catId]?.length ?? 0) === level.cardsPerCategory).length;
   return completedCount >= targetCount;
 }
