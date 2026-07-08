@@ -36,6 +36,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Remove o flash cinza/branco padrão do navegador ao tocar/clicar em
+     elementos clicáveis (cartas, slots, botões) — a seleção já tem seu
+     próprio destaque visual (.word-card.selected), não precisa do
+     highlight nativo por cima. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -321,7 +326,8 @@ button:focus-visible {
 }
 
 .category-slot.complete ~ .category-slot-header .category-slot-title,
-.category-slot.complete .category-slot-title {
+.category-slot.complete .category-slot-title,
+.category-slot-title.complete {
   background: var(--color-gold-hover);
   box-shadow: 0 0 10px rgba(207, 161, 38, 0.4);
 }
@@ -457,7 +463,7 @@ button:focus-visible {
 
 /* Carta virada para baixo: mostra o verso, não é jogável nem focável */
 .word-card.face-down {
-  background-image: url('../../assets/verso.png');
+  background-image: url('../../assets/verso.webp');
   background-size: cover;
   background-position: center;
   cursor: default;
@@ -534,7 +540,7 @@ button:focus-visible {
 }
 
 /* Animação de "virar" no primeiro carregamento do nível: mostra o verso
-   (assets/verso.png) e vira para revelar a palavra. Só toca uma vez por
+   (assets/verso.webp) e vira para revelar a palavra. Só toca uma vez por
    nível novo (playDealAnimation em level-board.js) — não replay a cada
    clique, já que o tableau inteiro é re-renderizado a cada interação. */
 .word-card.dealing {
@@ -544,12 +550,12 @@ button:focus-visible {
 @keyframes card-deal-flip {
   0% {
     transform: rotateY(-90deg);
-    background-image: url('../../assets/verso.png');
+    background-image: url('../../assets/verso.webp');
     background-size: cover;
     background-position: center;
   }
   49.9% {
-    background-image: url('../../assets/verso.png');
+    background-image: url('../../assets/verso.webp');
     background-size: cover;
     background-position: center;
   }
@@ -783,6 +789,30 @@ button:focus-visible {
 #overlay-action-btn:hover {
   background: var(--color-gold-hover);
   box-shadow: 0 0 15px rgba(243, 198, 79, 0.5);
+}
+
+.game-status-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#overlay-secondary-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+#overlay-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeIn {

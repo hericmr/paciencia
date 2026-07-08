@@ -1,7 +1,7 @@
 // @ts-check
 import { loadCategories, loadLevels } from "./data/loader.js";
 import { buildTitleCards, buildWordCards, dealTableau } from "./engine/level.js";
-import { checkLevelWin, checkLevelLoss } from "./engine/level-status.js";
+import { checkLevelWin, checkLevelLoss, hasAnyValidMove } from "./engine/level-status.js";
 import { createProgressStore } from "./progress/store.js";
 import { createSoundManager } from "./audio/sound-manager.js";
 import { renderLevelBoard } from "./ui/level-board.js";
@@ -202,11 +202,37 @@ function checkLevelStatus() {
     return;
   }
 
+  const firstLevelId = levelsData[0].id;
+  const offerBackToStart = currentLevel.id !== firstLevelId;
+
   if (checkLevelLoss(levelState.movesRemaining, levelState.slots, currentLevel)) {
     levelState.status = "derrota";
     soundManager.play("gameOver");
     const hint = currentLevel.hint || "Releia as palavras com calma antes de arrastar — cada movimento conta, certo ou errado.";
-    showStatusOverlay("Movimentos esgotados", hint, "Tentar novamente", currentLevel.id);
+    showStatusOverlay(
+      "Movimentos esgotados",
+      hint,
+      "Tentar novamente",
+      currentLevel.id,
+      offerBackToStart ? "Voltar à Fase 1" : null,
+      firstLevelId
+    );
+    return;
+  }
+
+  // Game over por travamento: nenhuma jogada válida resta (nem comprar/
+  // reciclar, nem mover carta para coluna ou spot), mesmo com movimentos
+  // sobrando — o embaralhamento deixou o jogador sem nenhuma ação possível.
+  if (!hasAnyValidMove(levelState)) {
+    levelState.status = "derrota";
+    showStatusOverlay(
+      "Fim de jogo",
+      "Não há mais nenhuma jogada válida possível neste embaralhamento — nem no Monte/Descarte, nem no tableau. Reinicie a fase para tentar de novo.",
+      "Reiniciar Fase",
+      currentLevel.id,
+      offerBackToStart ? "Voltar à Fase 1" : null,
+      firstLevelId
+    );
   }
 }
 
@@ -235,8 +261,10 @@ function switchToReviewMode() {
  * @param {string} message
  * @param {string} buttonText
  * @param {number|null} targetLevelId
+ * @param {string|null} [secondaryButtonText] rótulo do botão secundário (ex.: "Voltar à Fase 1"); omitido se null
+ * @param {number|null} [secondaryTargetLevelId] nível carregado ao clicar no botão secundário
  */
-function showStatusOverlay(title, message, buttonText, targetLevelId = null) {
+function showStatusOverlay(title, message, buttonText, targetLevelId = null, secondaryButtonText = null, secondaryTargetLevelId = null) {
   removeStatusOverlay();
 
   const overlay = document.createElement("div");
@@ -245,7 +273,10 @@ function showStatusOverlay(title, message, buttonText, targetLevelId = null) {
   overlay.innerHTML = `
     <h2 class="game-status-title">${title}</h2>
     <p class="game-status-message">${message}</p>
-    <button id="overlay-action-btn" type="button">${buttonText}</button>
+    <div class="game-status-actions">
+      <button id="overlay-action-btn" type="button">${buttonText}</button>
+      ${secondaryButtonText ? `<button id="overlay-secondary-btn" type="button">${secondaryButtonText}</button>` : ""}
+    </div>
   `;
 
   gameRoot?.appendChild(overlay);
@@ -253,6 +284,11 @@ function showStatusOverlay(title, message, buttonText, targetLevelId = null) {
   document.getElementById("overlay-action-btn")?.addEventListener("click", () => {
     startLevel(targetLevelId ?? currentLevel?.id ?? levelsData[0].id);
   });
+  if (secondaryButtonText) {
+    document.getElementById("overlay-secondary-btn")?.addEventListener("click", () => {
+      startLevel(secondaryTargetLevelId ?? levelsData[0].id);
+    });
+  }
 }
 
 function removeStatusOverlay() {

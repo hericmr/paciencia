@@ -340,7 +340,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     } else {
       const progressText = isComplete ? `${cardsInSlot.length}/${level.cardsPerCategory} ✓` : `${cardsInSlot.length}/${level.cardsPerCategory}`;
       headerEl.innerHTML = `
-        <div class="category-slot-title">${category?.nome ?? categoryId}</div>
+        <div class="category-slot-title ${isComplete ? "complete" : ""}">${category?.nome ?? categoryId}</div>
         <div class="category-slot-progress ${isComplete ? "complete" : ""}">${progressText}</div>
       `;
     }
