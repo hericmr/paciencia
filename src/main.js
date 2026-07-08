@@ -39,7 +39,7 @@ async function init() {
 
     levelsData = await loadLevels("src/data/levels.json", categoriesData);
 
-    const photosResponse = await fetch("src/data/author-photos.json");
+    const photosResponse = await fetch(`src/data/author-photos.json?t=${Date.now()}`);
     authorPhotos = photosResponse.ok ? await photosResponse.json() : {};
 
     newGameBtn?.addEventListener("click", () => startLevel(currentLevel?.id ?? levelsData[0].id));

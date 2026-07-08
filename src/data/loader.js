@@ -10,7 +10,7 @@ const VALID_DEPTHS = new Set(["topo", "meio", "fundo", "embaralhado"]);
  * @returns {Promise<CategoryData[]>}
  */
 export async function loadCategories(categoriesUrl) {
-  const response = await fetch(categoriesUrl);
+  const response = await fetch(`${categoriesUrl}?t=${Date.now()}`);
   if (!response.ok) {
     throw new Error(`Falha ao carregar categorias de ${categoriesUrl}: HTTP ${response.status}`);
   }
@@ -25,7 +25,7 @@ export async function loadCategories(categoriesUrl) {
  * @returns {Promise<LevelData[]>}
  */
 export async function loadLevels(levelsUrl, categories) {
-  const response = await fetch(levelsUrl);
+  const response = await fetch(`${levelsUrl}?t=${Date.now()}`);
   if (!response.ok) {
     throw new Error(`Falha ao carregar níveis de ${levelsUrl}: HTTP ${response.status}`);
   }
