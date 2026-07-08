@@ -100,39 +100,28 @@ nível (ou uma mensagem genérica, se o nível não tiver dica específica).
 ### Functional Requirements
 
 - **FR-001**: O sistema DEVE carregar um nível a partir de dados estruturados (`src/data/levels.json` + `src/data/categories.json`): 4 ou mais categorias, cada uma com um subconjunto fixo de palavras.
-- **FR-002**: O sistema DEVE embaralhar e distribuir todas as `totalCards` do nível em colunas empilhadas — só a carta do topo de cada coluna fica virada para cima e é jogável. As cartas-título podem ser totalmente embaralhadas e misturadas com as cartas de palavra (se configurado como "embaralhado" na profundidade).
-- **FR-003**: O sistema DEVE validar cada movimento de cartas entre colunas e slots: (a) carta-título → qualquer spot de categoria fechado: aceita, associa o spot àquela categoria e a abre; (b) carta de palavra → spot de categoria: aceita só se o spot estiver aberto e associado a essa categoria específica (apenas uma carta por vez); (c) carta ou sub-pilha de cartas abertas → topo de outra coluna do tableau: aceita se a coluna destino estiver vazia ou se a carta base da movimentação pertencer à mesma categoria da carta do topo da coluna destino (permitindo mover toda a sub-pilha como um único conjunto). Em qualquer caso de rejeição, as cartas permanecem na origem.
-- **FR-004**: O sistema DEVE decrementar o contador de movimentos restantes a cada tentativa de mover a carta do topo de uma coluna, seja para um slot de categoria ou para outra coluna, aceita ou rejeitada.
+- **FR-002**: O sistema DEVE embaralhar e distribuir todas as `totalCards` do nível em colunas empilhadas — só a carta do topo de cada coluna fica virada para cima e é jogável.
+- **FR-003**: O sistema DEVE validar cada movimento de cartas entre colunas e slots: (a) carta-título → qualquer spot de categoria fechado: aceita, associa o spot àquela categoria e a abre; (b) carta de palavra → spot de categoria: aceita só se o spot estiver aberto e associado a essa categoria específica (apenas uma carta por vez); (c) carta ou sub-pilha de cartas abertas → topo de outra coluna do tableau: aceita se a coluna destino estiver vazia ou se a carta base da movimentação pertencer à mesma categoria da carta do topo da coluna destino. **IMPORTANTE**: Nenhuma carta ou sub-pilha pode ser empilhada por cima de uma carta-título (carta principal) nas colunas do tableau. Em qualquer caso de rejeição, as cartas permanecem na origem.
+- **FR-004**: O sistema DEVE decrementar o contador de movimentos restantes a cada tentativa de mover a carta do topo de uma coluna, seja para um slot de categoria ou para outra coluna, aceita ou rejeitada, bem como a cada clique no Monte (comprar ou reciclar) que execute ação válida.
 - **FR-011**: O sistema DEVE virar automaticamente para cima a carta que ficar no topo de uma coluna depois que a carta anterior sair dali.
 - **FR-012**: O sistema NÃO DEVE aceitar cartas de palavra em uma categoria cuja carta-título ainda não foi jogada e associada a um spot.
 - **FR-005**: O sistema DEVE detectar vitória (quando 4 spots de categoria do nível forem completados) verificando-a antes de detectar derrota.
 - **FR-006**: O sistema DEVE detectar derrota (movimentos esgotados com ao menos um spot incompleto) e exibir a `dica_pedagogica` do nível, ou uma mensagem genérica se não houver uma configurada.
-- **FR-015**: O sistema DEVE possuir uma pilha de Monte (Stock) e uma de Descarte (Waste). O Monte armazena cartas viradas para baixo e, ao ser clicado, distribui uma carta para o Descarte, cuja carta do topo é jogável.
-- **FR-016**: O sistema DEVE permitir a reciclagem do Descarte (re-empilhamento das cartas) de volta para o Monte quando o Monte estiver vazio.
-- **FR-007**: O sistema DEVE exibir um pop-up com o micro-texto da categoria
-  no momento em que ela é completada.
-- **FR-008**: O sistema NÃO DEVE exigir criação de conta, login ou conexão
-  de rede para jogar.
-- **FR-009**: O sistema DEVE carregar os dados de categorias/níveis de
-  arquivos separados do código da engine (Princípio III da constituição).
-- **FR-010**: O sistema DEVE exibir cada slot de categoria com um rótulo genérico (ex.: "Categoria 1") e um cadeado de fundo no slot de encaixe até que ela seja aberta pela carta-título. Ao abrir, o título da categoria é revelado no cabeçalho superior e o slot passa a exibir as cartas fisicamente empilhadas; o micro-texto correspondente só aparece no momento da conclusão (ver `research.md`, Decisão 7 e Decisão 10).
-- **FR-013**: O sistema DEVE tocar um efeito sonoro curto para: carta aceita
-  num slot, carta rejeitada/movida entre colunas, categoria completada, e
-  distribuição inicial das cartas (ver `research.md`, Decisão 9). Nenhuma
-  informação necessária para jogar pode depender só do som.
-- **FR-014**: O sistema DEVE oferecer um controle de mudo acessível
-  (alcançável por teclado, com `aria-pressed` refletindo o estado), com o
-  estado persistido entre sessões.
+- **FR-015**: O sistema DEVE possuir uma pilha de Monte (Stock) e uma de Descarte (Waste). O Monte armazena cartas viradas para baixo com efeito visual de escadinha (cartas fantasmas) e, ao ser clicado, consome 1 movimento e distribui uma carta para o Descarte, cuja carta do topo é jogável.
+- **FR-016**: O sistema DEVE permitir a reciclagem do Descarte (re-empilhamento das cartas) de volta para o Monte quando o Monte estiver vazio, consumindo 1 movimento.
+- **FR-007**: O sistema DEVE exibir um pop-up com o micro-texto da categoria no momento em que ela é completada.
+- **FR-008**: O sistema NÃO DEVE exigir criação de conta, login ou conexão de rede para jogar.
+- **FR-009**: O sistema DEVE carregar os dados de categorias/níveis de arquivos separados do código da engine (Princípio III da constituição).
+- **FR-010**: O sistema DEVE exibir cada slot de categoria com um rótulo genérico (ex.: "Categoria 1") e um ícone de formiga estilizada (SVG) no slot de encaixe até que ela seja aberta pela carta-título. Ao abrir, o título da categoria é revelado no cabeçalho superior (etiqueta mostarda com letras verde-escuras) e o slot passa a exibir as cartas fisicamente empilhadas; o micro-texto correspondente só aparece no momento da conclusão.
+- **FR-013**: O sistema DEVE tocar um efeito sonoro curto para: carta aceita num slot, carta rejeitada/movida entre colunas, categoria completada, fim de jogo (Game Over) e distribuição inicial das cartas. Nenhuma informação necessária para jogar pode depender só do som.
+- **FR-014**: O sistema DEVE oferecer um controle de mudo acessível (alcançável por teclado, com `aria-pressed` refletindo o estado), com o estado persistido entre sessões. Controla tanto efeitos quanto a música de fundo.
 - **FR-017**: O sistema DEVE fornecer suporte nativo a toque (touch events) em dispositivos móveis para arrastar e soltar cartas e pilhas, clonando o elemento em tempo de arraste sem latência de CSS e detectando áreas receptoras dinamicamente.
 - **FR-018**: O sistema DEVE ocultar os emojis da barra de controles e mantê-la fixa no rodapé do dispositivo em telas de celular (largura de viewport menor que 600px), maximizando a área de jogo vertical e aproximando os botões dos polegares do usuário.
 - **FR-019**: O sistema DEVE garantir o efeito escadinha (fanning) legível no tableau: cartas cobertas abaixo de outra na pilha devem ocultar suas fotos e alinhar seu texto ao topo para que a palavra permaneça visível nas abas de 26px (mobile) ou 36px (desktop).
-- **FR-020**: Quando um spot de categoria atinge todas as suas
-  `cardsPerCategory` cartas corretas (grupo finalizado), o sistema DEVE
-  liberar aquele spot imediatamente após a jogada que o completou, sem
-  exigir nenhuma ação adicional do jogador, tornando-o disponível para
-  associar a uma nova carta-título. Nenhuma outra coluna, spot ou pilha do
-  tabuleiro pode ser alterada por essa liberação (ver `research.md`,
-  Decisão 17).
+- **FR-020**: Quando um spot de categoria atinge todas as suas `cardsPerCategory` cartas corretas (grupo finalizado), o sistema DEVE liberar aquele spot imediatamente após a jogada que o completou, sem exigir nenhuma ação adicional do jogador, tornando-o disponível para associar a uma nova carta-título. Nenhuma outra coluna, spot ou pilha do tabuleiro pode ser alterada por essa liberação.
+- **FR-021**: O sistema DEVE detectar travamento total (deadlock, nenhuma jogada válida disponível no tableau, Monte ou Descarte) e declarar derrota imediatamente com o overlay correspondente.
+- **FR-022**: O sistema DEVE carregar e reproduzir uma música ambiente em loop (`musica_ambiente.ogg`) assim que o jogador interagir com o site, com comportamento idempotente.
+- **FR-023**: O sistema DEVE utilizar o formato WebP para todas as imagens e miniaturas dos autores para garantir máxima otimização de largura de banda e tempo de resposta.
 
 ### Key Entities
 

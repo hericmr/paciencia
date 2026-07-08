@@ -191,33 +191,28 @@ Cada categoria tem:
 
 ---
 
-## Nível 1 (único nível jogável hoje)
+## Níveis do Jogo (Configurados)
 
-Usa 4 das 24 categorias, 3 palavras curadas de cada (não o pool inteiro):
+O jogo possui 3 fases ativas configuradas em `levels.json`:
 
-| Categoria | Palavras selecionadas |
-|---|---|
-| CAT-13 — Autoras e autores da vertente crítica | Iamamoto, Netto, Guerra |
-| CAT-06 — Instrumentos e técnicas | Entrevista, Visita domiciliar, Estudo social |
-| CAT-11 — Marcos históricos da profissão | Congresso da Virada, LOAS, Lei de Regulamentação |
-| CAT-07 — Proteção Social Básica | CRAS, PAIF, SCFV |
+### Nível 1 — Eixos Fundamentais
+* **Categorias (7)**: `CAT-13` (Autores), `CAT-06` (Instrumentos), `CAT-11` (Marcos Históricos), `CAT-07` (Básica), `CAT-12` (Renovação), `CAT-14` (Método), `CAT-08` (Especial).
+* **Cartas por categoria**: 5 (1 título + 5 palavras, totalizando 42 cartas).
+* **Configurações**: 4 colunas, `moveLimit: 72`, profundidade de títulos "embaralhado", sem dica.
 
-`columns: 4`, `moveLimit: 32`, `profundidadeTitulos: "topo"`, `hint: null`.
+### Nível 2 — Código de Ética e Legislação
+* **Categorias (7)**: `CAT-01` (Princípios do Código), `CAT-02` (Direitos), `CAT-03` (Vedações), `CAT-04` (Atribuições Privativas), `CAT-05` (Competências), `CAT-09` (Seguridade Social), `CAT-10` (SUAS).
+* **Cartas por categoria**: 6 (1 título + 6 palavras, totalizando 49 cartas).
+* **Configurações**: 4 colunas, `moveLimit: 84`, profundidade de títulos "embaralhado".
+* **Dica**: *"Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."*
 
-> ⚠️ A troca das palavras da CAT-11 **exige atualizar `selectedWords` em
-> `levels.json`** junto com `categories.json` — os anos soltos (1936,
-> 1979, 1993) deixam de existir no pool.
+### Nível 3 — Sociojurídico e Questão Social
+* **Categorias (8)**: `CAT-15` (Laudo/Parecer), `CAT-18` (SGD/ECA), `CAT-19` (Medidas Socioeducativas), `CAT-20` (Violências Criança/Adolescente), `CAT-21` (Lei Maria da Penha), `CAT-22` (Pessoa Idosa), `CAT-23` (Famílias), `CAT-24` (Gênero/Raça/Diversidade).
+* **Cartas por categoria**: 6 (1 título + 6 palavras, totalizando 56 cartas).
+* **Configurações**: 4 colunas, `moveLimit: 96`, profundidade de títulos "embaralhado".
+* **Dica**: *"Diferencie Medidas Protetivas (ECA, art. 101 - proteção) de Medidas Socioeducativas (ECA, art. 112 - ato infracional), e Laudo (documento descritivo) de Parecer (opinião conclusiva)."*
 
-## Níveis futuros (rascunho de curadoria)
-
-Pares de confusão que rendem bons níveis:
-
-| Nível candidato | Categorias | Tensão pedagógica |
-|---|---|---|
-| Sociojurídico I | CAT-18 + CAT-19 + CAT-15 + CAT-16 | protetiva × socioeducativa; documento × campo |
-| Documentos e instrumentos | CAT-06 + CAT-15 + CAT-04 + CAT-05 | processo × produto; privativa × competência |
-| Violências e proteções | CAT-20 + CAT-21 + CAT-22 + CAT-08 | medidas protetivas de leis diferentes |
-| Ética e direitos | CAT-01 + CAT-02 + CAT-03 + CAT-17 | princípio × direito × vedação × DH |
+---
 
 ## Regras ao editar
 
