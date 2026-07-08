@@ -60,7 +60,7 @@
           "PAEFI",
           "Direitos violados",
           "Acolhimento institucional",
-          "Medidas socioeducativas"
+          "MSE em meio aberto"
         ]
       },
       "totalCards": 42,
@@ -88,7 +88,7 @@
           "Equidade",
           "Justiça social",
           "Cidadania",
-          "Direitos humanos"
+          "Defesa intransigente dos direitos humanos"
         ],
         "CAT-02": [
           "Livre exercício",
@@ -157,12 +157,11 @@
         "CAT-23",
         "CAT-24"
       ],
-      "cardsPerCategory": 7,
+      "cardsPerCategory": 6,
       "selectedWords": {
         "CAT-15": [
           "Laudo social",
           "Parecer social",
-          "Perícia social",
           "Quesitos",
           "Opinião técnica conclusiva",
           "Registro fundamentado",
@@ -171,7 +170,6 @@
         "CAT-18": [
           "Conselho Tutelar",
           "Medidas protetivas (art. 101)",
-          "Acolhimento familiar",
           "Prioridade absoluta",
           "Proteção integral",
           "Promoção–defesa–controle",
@@ -180,18 +178,16 @@
         "CAT-19": [
           "Medidas socioeducativas (art. 112)",
           "SINASE",
-          "Advertência",
           "Liberdade assistida",
           "Prestação de serviços à comunidade",
           "Semiliberdade",
           "Internação"
         ],
         "CAT-20": [
-          "Violência física",
-          "Violência psicológica",
+          "Violência institucional",
+          "Revitimização",
           "Abuso sexual",
           "Exploração sexual",
-          "Negligência",
           "Escuta especializada",
           "Depoimento especial"
         ],
@@ -201,8 +197,7 @@
           "Medidas protetivas de urgência",
           "Juizado de Violência Doméstica",
           "Relação íntima de afeto",
-          "Independe de coabitação",
-          "Atendimento multidisciplinar"
+          "Independe de coabitação"
         ],
         "CAT-22": [
           "60 anos ou mais",
@@ -210,15 +205,13 @@
           "Notificação compulsória",
           "Obrigação alimentar solidária",
           "ILPI",
-          "Medidas de proteção (art. 43)",
-          "Envelhecimento como direito personalíssimo"
+          "Medidas de proteção (art. 43)"
         ],
         "CAT-23": [
           "Pluralidade de arranjos",
           "Família monoparental",
           "Homoparentalidade",
           "Famílias reconstituídas",
-          "Redes de apoio",
           "Familismo",
           "Sobrecarga feminina do cuidado"
         ],
@@ -228,13 +221,12 @@
           "Racismo estrutural",
           "Patriarcado",
           "Identidade de gênero",
-          "Relações intergeracionais",
           "Etarismo"
         ]
       },
-      "totalCards": 64,
+      "totalCards": 56,
       "columns": 4,
-      "moveLimit": 110,
+      "moveLimit": 96,
       "profundidadeTitulos": "embaralhado",
       "hint": "Dica: Diferencie Medidas Protetivas (ECA, art. 101 - proteção) de Medidas Socioeducativas (ECA, art. 112 - ato infracional), e Laudo (documento descritivo) de Parecer (opinião conclusiva)."
     }
