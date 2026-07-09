@@ -71,6 +71,41 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   let currentTargetEl = null;
 
   function initTouchDrag(cardEl, cardId, colIndex, isWaste = false) {
+    // Reverte todo o estado visual do drag (clone flutuante, placeholders,
+    // realce do alvo). Compartilhado entre touchend e touchcancel para que
+    // um gesto interrompido pelo sistema (ligação, troca de app) não deixe
+    // o clone da carta preso na tela.
+    function teardownTouchDrag() {
+      touchActive = false;
+
+      if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+      }
+
+      if (!isWaste) {
+        const loc = findCardLocation(levelState.tableauColumns, touchCardId);
+        if (loc) {
+          const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
+          if (colEl) {
+            const column = levelState.tableauColumns[loc.colIndex];
+            for (let i = loc.cardIndex; i < column.cards.length; i++) {
+              const cid = column.cards[i].card.id;
+              const el = colEl.querySelector(`[data-id="${cid}"]`);
+              if (el) el.classList.remove("dragging-placeholder");
+            }
+          }
+        }
+      } else {
+        cardEl.classList.remove("dragging-placeholder");
+      }
+
+      if (currentTargetEl) {
+        currentTargetEl.classList.remove("valid-target");
+        currentTargetEl = null;
+      }
+    }
+
     cardEl.addEventListener("touchstart", (e) => {
       if (e.touches.length > 1) return;
       const touch = e.touches[0];
@@ -162,47 +197,33 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     cardEl.addEventListener("touchend", (e) => {
       if (!touchActive) return;
-      touchActive = false;
-      
-      if (touchClone) {
-        touchClone.remove();
-        touchClone = null;
-      }
-      
-      if (!isWaste) {
-        const loc = findCardLocation(levelState.tableauColumns, touchCardId);
-        if (loc) {
-          const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
-          if (colEl) {
-            const column = levelState.tableauColumns[loc.colIndex];
-            for (let i = loc.cardIndex; i < column.cards.length; i++) {
-              const cid = column.cards[i].card.id;
-              const el = colEl.querySelector(`[data-id="${cid}"]`);
-              if (el) el.classList.remove("dragging-placeholder");
-            }
-          }
-        }
-      } else {
-        cardEl.classList.remove("dragging-placeholder");
-      }
-      
-      if (currentTargetEl) {
-        currentTargetEl.classList.remove("valid-target");
-        
-        if (currentTargetEl.classList.contains("tableau-column")) {
-          const targetColIndex = parseInt(currentTargetEl.dataset.col, 10);
+
+      const targetEl = currentTargetEl;
+      teardownTouchDrag();
+
+      if (targetEl) {
+        if (targetEl.classList.contains("tableau-column")) {
+          const targetColIndex = parseInt(targetEl.dataset.col, 10);
           if (!isNaN(targetColIndex)) {
             attemptMoveToColumn(touchCardId, targetColIndex);
           }
-        } else if (currentTargetEl.classList.contains("category-slot")) {
-          const targetSlotIndex = parseInt(currentTargetEl.dataset.spotIndex, 10);
+        } else if (targetEl.classList.contains("category-slot")) {
+          const targetSlotIndex = parseInt(targetEl.dataset.spotIndex, 10);
           if (!isNaN(targetSlotIndex)) {
             attemptMoveToCategory(touchCardId, targetSlotIndex);
           }
         }
-        currentTargetEl = null;
       }
-      
+
+      onStateChange();
+    });
+
+    // Dispara quando o sistema interrompe o gesto (ligação recebida, troca de
+    // app, gesto de navegador) sem gerar touchend. Sem isso o clone flutuante
+    // e os placeholders ficavam presos na tela indefinidamente.
+    cardEl.addEventListener("touchcancel", () => {
+      if (!touchActive) return;
+      teardownTouchDrag();
       onStateChange();
     });
   }
