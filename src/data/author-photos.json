@@ -42,5 +42,13 @@
   "PAEFI": {
     "photoUrl": "assets/authors/paefi.webp",
     "photoCredit": "Ilustração do PAEFI"
+  },
+  "PAIF": {
+    "photoUrl": "assets/authors/paif.webp",
+    "photoCredit": "Ilustração do PAIF"
+  },
+  "Cadastro Único": {
+    "photoUrl": "assets/authors/cad_unico.webp",
+    "photoCredit": "Ilustração do Cadastro Único"
   }
 }

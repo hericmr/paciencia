@@ -463,7 +463,7 @@ button:focus-visible {
 
 /* Carta virada para baixo: mostra o verso, não é jogável nem focável */
 .word-card.face-down {
-  background-image: url('../../assets/verso.webp');
+  background-image: url('../../assets/verso_v2.webp');
   background-size: cover;
   background-position: center;
   cursor: default;
@@ -551,12 +551,12 @@ button:focus-visible {
 @keyframes card-deal-flip {
   0% {
     transform: rotateY(-90deg);
-    background-image: url('../../assets/verso.webp');
+    background-image: url('../../assets/verso_v2.webp');
     background-size: cover;
     background-position: center;
   }
   49.9% {
-    background-image: url('../../assets/verso.webp');
+    background-image: url('../../assets/verso_v2.webp');
     background-size: cover;
     background-position: center;
   }
