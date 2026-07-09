@@ -1013,12 +1013,26 @@ button:focus-visible {
   border-radius: 20px;
   font-weight: 600;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.word-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.word-pill:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
 }
 
 .word-pill.locked {
   background: rgba(0,0,0,0.15);
   color: rgba(255,255,255,0.15);
   border: 1px dashed rgba(255,255,255,0.1);
+  cursor: default;
 }
 
 /* Category Card Locked State */

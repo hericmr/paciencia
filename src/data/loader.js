@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @typedef {{ id: string, nome: string, cartaTitulo: string, eixo: string, palavras: string[], microtexto: string, confundeCom: string[] }} CategoryData */
+/** @typedef {{ id: string, nome: string, cartaTitulo: string, eixo: string, palavras: string[], microtexto: string, confundeCom: string[], explicacoesPalavras?: Record<string, string> }} CategoryData */
 /** @typedef {{ id: number, categoryIds: string[], cardsPerCategory: number, selectedWords: Record<string, string[]>, totalCards: number, columns: number, moveLimit: number, profundidadeTitulos: "topo"|"meio"|"fundo"|"embaralhado", hint: string|null }} LevelData */
 
 const VALID_DEPTHS = new Set(["topo", "meio", "fundo", "embaralhado"]);
@@ -58,6 +58,13 @@ export function validateCategories(categories) {
     }
     if (!category.cartaTitulo) {
       throw new Error(`Categoria "${category.id}" sem cartaTitulo`);
+    }
+    if (category.explicacoesPalavras) {
+      for (const word of Object.keys(category.explicacoesPalavras)) {
+        if (!category.palavras.includes(word)) {
+          console.warn(`Categoria "${category.id}": explicacoesPalavras tem a chave "${word}", que não está em "palavras" (provável erro de digitação).`);
+        }
+      }
     }
   }
 }

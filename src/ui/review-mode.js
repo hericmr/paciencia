@@ -2,6 +2,7 @@
 // Modo Revisão: permite ao jogador estudar todas as 14 categorias e seus eixos,
 // revelando o microtexto pedagógico e as palavras associadas apenas para as
 // categorias já desbloqueadas na partida.
+import { showWordInfoPopup } from "./word-info-popup.js";
 
 /**
  * @typedef {{
@@ -10,7 +11,8 @@
  *   eixo: string,
  *   palavras: string[],
  *   microtexto: string,
- *   confundeCom: string[]
+ *   confundeCom: string[],
+ *   explicacoesPalavras?: Record<string, string>
  * }} CategoryData
  */
 
@@ -119,7 +121,7 @@ export function renderReviewMode(container, categoriesData, progressStore, onBac
         <div class="category-card-words">
           <div class="category-card-words-title">Palavras associadas:</div>
           <div class="word-pills-container">
-            ${category.palavras.map(w => `<span class="word-pill">${w}</span>`).join("")}
+            ${category.palavras.map(w => `<button type="button" class="word-pill" data-word="${w}">${w}</button>`).join("")}
           </div>
         </div>
         ${galleryHtml}
@@ -140,6 +142,16 @@ export function renderReviewMode(container, categoriesData, progressStore, onBac
           </div>
         </div>
       `;
+    }
+
+    if (isRevealed) {
+      cardEl.querySelectorAll(".word-pill[data-word]").forEach((pillEl) => {
+        pillEl.addEventListener("click", () => {
+          const word = pillEl.getAttribute("data-word") ?? "";
+          const texto = category.explicacoesPalavras?.[word];
+          showWordInfoPopup(word, category.nome, texto, authorPhotos[word] ?? null, /** @type {HTMLElement} */ (pillEl));
+        });
+      });
     }
 
     gridContainer.appendChild(cardEl);

@@ -22,7 +22,19 @@
         "CAT-10",
         "CAT-17"
       ],
-      "cartaTitulo": "Princípios do Código de Ética (1993)"
+      "cartaTitulo": "Princípios do Código de Ética (1993)",
+      "explicacoesPalavras": {
+        "Liberdade": "Valor ético central do Código de 1993: a liberdade como possibilidade de escolha entre alternativas concretas, ligada à autonomia, emancipação e plena expansão dos indivíduos sociais.",
+        "Democracia": "Reconhecida como socialização da participação política e da riqueza socialmente produzida — não se restringe ao voto, mas envolve o acesso a bens e decisões.",
+        "Equidade": "O Código se posiciona em favor da equidade e da justiça social, de modo a assegurar universalidade de acesso aos bens e serviços dos programas e políticas sociais, bem como sua gestão democrática.",
+        "Justiça social": "Aparece junto com a equidade no mesmo princípio: garantir que o acesso às políticas sociais seja universal, e não um privilégio de poucos. Nas provas, os dois termos costumam vir em dupla.",
+        "Pluralismo": "Garantia do pluralismo: respeito às correntes profissionais democráticas e suas expressões teóricas, com compromisso pelo constante aprimoramento intelectual. Atenção: pluralismo não é ecletismo.",
+        "Cidadania": "Ampliação e consolidação da cidadania, considerada tarefa primordial de toda a sociedade, com vistas à garantia dos direitos civis, sociais e políticos das classes trabalhadoras.",
+        "Defesa intransigente dos direitos humanos": "Vem acompanhada, no mesmo princípio, da recusa do arbítrio e do autoritarismo. É defesa intransigente: não se relativiza, nem mesmo diante de requisições institucionais ou no campo sociojurídico.",
+        "Nova ordem societária": "Opção por um projeto profissional vinculado ao processo de construção de uma nova ordem societária, sem dominação, exploração de classe, etnia e gênero. É a dimensão estratégica do projeto ético-político.",
+        "Eliminação de preconceitos": "Empenho na eliminação de todas as formas de preconceito, incentivando o respeito à diversidade, a participação de grupos socialmente discriminados e a discussão das diferenças.",
+        "Qualidade dos serviços": "Compromisso com a qualidade dos serviços prestados à população e com o aprimoramento intelectual, na perspectiva da competência profissional. Qualidade aqui é dever ético, não gerencialismo."
+      }
     },
     {
       "id": "CAT-02",
@@ -42,7 +54,16 @@
         "CAT-03",
         "CAT-16"
       ],
-      "cartaTitulo": "Direitos do/a assistente social (Código, art. 2º)"
+      "cartaTitulo": "Direitos do/a assistente social (Código, art. 2º)",
+      "explicacoesPalavras": {
+        "Livre exercício": "Garantia e defesa das atribuições e prerrogativas estabelecidas na Lei 8.662/93 e no próprio Código: exercer a profissão sem impedimentos indevidos.",
+        "Autonomia técnica": "Ampla autonomia no exercício da profissão: o/a assistente social não é obrigado/a a prestar serviços incompatíveis com suas atribuições, cargos ou funções.",
+        "Inviolabilidade do local de trabalho": "Inviolabilidade do local de trabalho e dos respectivos arquivos e documentação. É a garantia material do sigilo: prontuários e registros não podem ser devassados.",
+        "Sigilo profissional": "Ao mesmo tempo direito e dever: protege o/a usuário/a. Só pode ser quebrado em situações cuja gravidade exija, para evitar prejuízo maior, revelando o estritamente necessário.",
+        "Pronunciamento público": "Direito de se pronunciar em matéria de sua especialidade, sobretudo quando se tratar de assuntos de interesse da população.",
+        "Aprimoramento profissional": "Direito ao aprimoramento profissional de forma contínua, colocando-o a serviço dos princípios do Código. Conecta-se ao princípio da qualidade dos serviços.",
+        "Desagravo público": "Direito a desagravo público por ofensa que atinja a honra profissional, requerido ao CRESS. É a resposta institucional da categoria a ataques ao exercício profissional."
+      }
     },
     {
       "id": "CAT-03",
@@ -61,7 +82,16 @@
       "confundeCom": [
         "CAT-02"
       ],
-      "cartaTitulo": "Vedações ao/à assistente social"
+      "cartaTitulo": "Vedações ao/à assistente social",
+      "explicacoesPalavras": {
+        "Práticas discriminatórias": "É vedado exercer a profissão com discriminação por questões de inserção de classe, gênero, etnia, religião, nacionalidade, orientação sexual, idade ou condição física.",
+        "Abuso de autoridade": "É vedado abusar da autoridade profissional em detrimento de usuários/as, colegas ou outros/as profissionais. A relação com o/a usuário/a não é relação de tutela.",
+        "Depor como testemunha (situação sigilosa)": "É vedado depor como testemunha sobre situação sigilosa do/a usuário/a conhecida no exercício profissional, mesmo quando autorizado/a. Pegadinha clássica: a autorização do usuário NÃO libera o depoimento.",
+        "Emprestar o nome a serviço irregular": "É vedado permitir ou emprestar o nome a instituições e serviços onde o exercício profissional seja irregular, inclusive para acobertar quem não é assistente social.",
+        "Assédio": "O Código veda a prática e a conivência com condutas de assédio, constrangimento e violação de direitos nas relações de trabalho, seja com usuários/as, seja com colegas.",
+        "Intermediar honorários indevidos": "É vedado receber comissões ou vantagens por encaminhamentos, bem como intermediar pagamentos indevidos. O interesse do/a usuário/a não pode virar mercadoria.",
+        "Acatar ordem que fira a autonomia": "É vedado acatar determinação institucional que fira os princípios e diretrizes do Código. A subordinação administrativa não anula a autonomia técnica e ética."
+      }
     },
     {
       "id": "CAT-04",
@@ -80,7 +110,16 @@
       "confundeCom": [
         "CAT-05"
       ],
-      "cartaTitulo": "Atribuições privativas (Lei 8.662/93, art. 5º)"
+      "cartaTitulo": "Atribuições privativas (Lei 8.662/93, art. 5º)",
+      "explicacoesPalavras": {
+        "Magistério em Serviço Social": "Só assistente social pode ministrar as disciplinas de Serviço Social. Lecionar disciplinas afins (sociologia, política social em outros cursos) não é privativo.",
+        "Direção de unidade de ensino de SS": "Dirigir unidades de ensino e cursos de Serviço Social é privativo: quem conduz a formação da profissão precisa ser da profissão.",
+        "Fiscalização do exercício profissional": "Fiscalizar o exercício profissional é atribuição privativa, exercida por meio do conjunto CFESS/CRESS. Agente fiscal é sempre assistente social.",
+        "Parecer sobre matéria de Serviço Social": "Assessoria, consultoria e parecer SOBRE MATÉRIA de Serviço Social são privativos (art. 5º). Assessoria a movimentos sociais em política social, sem esse recorte, é competência do art. 4º.",
+        "Supervisão direta de estágio em SS": "O treinamento e a supervisão direta de estagiários/as de Serviço Social são privativos: supervisor/a de campo e supervisor/a acadêmico/a devem ser assistentes sociais.",
+        "Coordenação de curso de SS": "Coordenar cursos e projetos de formação em Serviço Social, em graduação e pós, é privativo da profissão.",
+        "Perícia sobre matéria de SS": "Vistorias, perícias técnicas e laudos EM MATÉRIA de Serviço Social são privativos. Já o estudo socioeconômico genérico é competência (art. 4º). A banca adora inverter os dois."
+      }
     },
     {
       "id": "CAT-05",
@@ -99,7 +138,16 @@
       "confundeCom": [
         "CAT-04"
       ],
-      "cartaTitulo": "Competências (Lei 8.662/93, art. 4º)"
+      "cartaTitulo": "Competências (Lei 8.662/93, art. 4º)",
+      "explicacoesPalavras": {
+        "Elaborar planos e programas": "Elaborar, implementar, executar e avaliar políticas, planos, programas e projetos sociais: competência do art. 4º, compartilhável com outras profissões.",
+        "Orientação social a indivíduos e grupos": "Prestar orientação social a indivíduos, grupos e à população, identificando recursos e fazendo uso deles no atendimento e na defesa de direitos.",
+        "Estudos socioeconômicos": "Realizar estudos socioeconômicos com os/as usuários/as para fins de benefícios e serviços sociais (art. 4º). Não confundir: perícia em matéria de Serviço Social é privativa (art. 5º).",
+        "Encaminhar providências": "Encaminhar providências e prestar orientação social a indivíduos, grupos e à população. O encaminhamento não é despacho burocrático: articula a rede em defesa de direitos.",
+        "Assessoria a movimentos sociais": "Prestar assessoria e apoio aos movimentos sociais em matéria relacionada às políticas sociais (art. 4º). Se o enunciado disser 'em matéria de Serviço Social', vira privativa (art. 5º).",
+        "Gestão de políticas sociais": "Planejamento, organização e administração de benefícios e serviços sociais é competência. Já 'planejamento, organização e administração de Serviço Social' é privativa. A diferença está no objeto.",
+        "Pesquisa sobre a realidade social": "Realizar pesquisas que subsidiem a ação profissional: a dimensão investigativa é constitutiva do trabalho, não atividade acessória."
+      }
     },
     {
       "id": "CAT-06",
@@ -120,7 +168,17 @@
         "CAT-04",
         "CAT-15"
       ],
-      "cartaTitulo": "Instrumentos e técnicas"
+      "cartaTitulo": "Instrumentos e técnicas",
+      "explicacoesPalavras": {
+        "Entrevista": "Instrumento clássico de aproximação com o/a usuário/a: diálogo com intencionalidade, individual ou grupal, que exige preparo e não se confunde com interrogatório.",
+        "Visita domiciliar": "Permite conhecer as condições de vida e as relações no território. Não é fiscalização nem inspeção da intimidade: seu uso exige finalidade clara e respeito à privacidade.",
+        "Estudo social": "Processo metodológico de conhecer e interpretar uma situação social em profundidade. É o processo; laudo e parecer são documentos que dele resultam.",
+        "Relatório social": "Documento que descreve e interpreta uma situação atendida, com registro fundamentado. Difere do laudo, que é próprio da perícia e responde a quesitos.",
+        "Reunião": "Instrumento coletivo: socializa informações, organiza grupos e mobiliza. Lembra que o trabalho profissional não se esgota no atendimento individual.",
+        "Observação": "Apreensão intencional do real para além do que é dito: condições do território, relações, expressões não verbais. Alimenta o estudo social e o diário de campo.",
+        "Escuta qualificada": "Escuta atenta, sem julgamento moral, que reconhece o/a usuário/a como sujeito de direitos e não como caso a ser corrigido.",
+        "Diário de campo": "Registro sistemático de observações, impressões e análises do cotidiano profissional. Sustenta a dimensão investigativa e a sistematização da prática."
+      }
     },
     {
       "id": "CAT-07",
@@ -138,7 +196,15 @@
       "confundeCom": [
         "CAT-08"
       ],
-      "cartaTitulo": "Proteção Social Básica"
+      "cartaTitulo": "Proteção Social Básica",
+      "explicacoesPalavras": {
+        "CRAS": "Unidade pública ESTATAL de base territorial, porta de entrada do SUAS. Oferta obrigatória e exclusiva do PAIF: nenhuma OSC pode executá-lo.",
+        "PAIF": "Serviço de Proteção e Atendimento Integral à Família: trabalho social com famílias, de caráter continuado e preventivo. Só existe no CRAS.",
+        "SCFV": "Serviço de Convivência e Fortalecimento de Vínculos: complementar ao PAIF, organizado em grupos por ciclos de vida (crianças, adolescentes, pessoas idosas).",
+        "Prevenção de riscos": "A marca da PSB é atuar ANTES da violação de direitos, prevenindo situações de risco por meio do desenvolvimento de potencialidades e do acesso a direitos.",
+        "Fortalecimento de vínculos": "Objetivo central da PSB: fortalecer vínculos familiares e comunitários, apostando na convivência como forma de proteção.",
+        "Cadastro Único": "Instrumento de identificação e caracterização socioeconômica das famílias de baixa renda: porta de acesso a programas como o Bolsa Família e a Tarifa Social."
+      }
     },
     {
       "id": "CAT-08",
@@ -158,7 +224,16 @@
         "CAT-07",
         "CAT-18"
       ],
-      "cartaTitulo": "Proteção Social Especial"
+      "cartaTitulo": "Proteção Social Especial",
+      "explicacoesPalavras": {
+        "CREAS": "Unidade pública estatal da média complexidade. Oferta obrigatória do PAEFI e referência para abordagem social e medidas socioeducativas em meio aberto.",
+        "PAEFI": "Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos: atende situações de violência e violação de direitos em que os vínculos familiares NÃO foram rompidos.",
+        "Abordagem social": "Serviço de média complexidade: busca ativa em espaços públicos para identificar trabalho infantil, exploração sexual e população em situação de rua, construindo vínculo e acesso à rede.",
+        "Acolhimento institucional": "Alta complexidade: proteção integral (moradia, alimentação, cuidado) para quem teve vínculos rompidos ou está sem referência familiar. Abrigos, casas-lares, ILPIs.",
+        "MSE em meio aberto": "Liberdade assistida e prestação de serviços à comunidade são acompanhadas pelo CREAS: a execução das medidas em meio aberto é responsabilidade do SUAS.",
+        "Família acolhedora": "Modalidade de alta complexidade: crianças e adolescentes afastados do convívio são acolhidos em famílias cadastradas. O ECA a prioriza em relação ao acolhimento institucional.",
+        "Direitos violados": "A régua que separa básica de especial: se o direito já foi violado (violência, abandono, situação de rua), a resposta é da PSE."
+      }
     },
     {
       "id": "CAT-09",
@@ -178,7 +253,16 @@
         "CAT-01",
         "CAT-10"
       ],
-      "cartaTitulo": "Seguridade Social (CF/88)"
+      "cartaTitulo": "Seguridade Social (CF/88)",
+      "explicacoesPalavras": {
+        "Saúde": "Direito de todos e dever do Estado (art. 196): universal e não contributiva, garantida pelo SUS mediante políticas que reduzam o risco de doença.",
+        "Previdência": "A perna CONTRIBUTIVA do tripé: de filiação obrigatória, protege contra riscos do trabalho e da vida (idade, invalidez, morte, maternidade, desemprego involuntário).",
+        "Assistência social": "Prestada a quem dela necessitar, INDEPENDENTEMENTE de contribuição (art. 203). Rompe com a lógica do favor: é direito do cidadão e dever do Estado.",
+        "Universalidade da cobertura": "Objetivo do art. 194, parágrafo único: universalidade da cobertura e do atendimento. A seguridade deve alcançar todos os riscos e todas as pessoas.",
+        "Seletividade e distributividade": "Objetivo que convive em tensão com a universalidade: seleciona prestações conforme as necessidades e distribui a quem mais precisa. As bancas cobram a literalidade.",
+        "Equidade no custeio": "Equidade na forma de participação no custeio: quem pode mais, contribui mais. Articula-se à diversidade da base de financiamento.",
+        "Caráter democrático da gestão": "Gestão democrática e descentralizada, com participação quadripartite: trabalhadores, empregadores, aposentados e governo nos órgãos colegiados."
+      }
     },
     {
       "id": "CAT-10",
@@ -199,7 +283,16 @@
         "CAT-01",
         "CAT-23"
       ],
-      "cartaTitulo": "Diretrizes e princípios do SUAS"
+      "cartaTitulo": "Diretrizes e princípios do SUAS",
+      "explicacoesPalavras": {
+        "Descentralização político-administrativa": "Diretriz da LOAS (art. 5º): coordenação e normas gerais na esfera federal, execução nos estados, DF e municípios. Descentralizar não é o mesmo que desresponsabilizar a União.",
+        "Participação popular": "Participação da população, por meio de organizações representativas, na formulação das políticas e no controle das ações em todos os níveis (LOAS, art. 5º, II).",
+        "Primazia do Estado": "Primazia da responsabilidade do Estado na condução da política de assistência social em cada esfera de governo. As entidades complementam, mas não substituem o dever estatal.",
+        "Matricialidade sociofamiliar": "Centralidade na família para a concepção e implementação de benefícios, serviços, programas e projetos. Atenção à crítica: centralidade na família não pode virar familismo.",
+        "Territorialização": "As ofertas se organizam a partir do território e de suas dinamicas: é lá que a desigualdade se expressa e que a proteção deve chegar.",
+        "Controle social": "Exercido pelos conselhos (paritários e deliberativos) e pelas conferências: a sociedade civil fiscaliza e delibera sobre a política e seus recursos.",
+        "Comando único": "Um único órgão gestor da assistência social em cada esfera de governo. Evita a pulverização histórica das ações entre primeiro-damismo e órgãos dispersos."
+      }
     },
     {
       "id": "CAT-11",
@@ -219,7 +312,17 @@
       "confundeCom": [
         "CAT-12"
       ],
-      "cartaTitulo": "Marcos históricos da profissão"
+      "cartaTitulo": "Marcos históricos da profissão",
+      "explicacoesPalavras": {
+        "Primeira escola de Serviço Social": "1936, São Paulo: a primeira escola nasce ligada à Igreja Católica e à influência franco-belga, no marco do Serviço Social conservador de origem.",
+        "Movimento de Reconceituação": "Movimento latino-americano dos anos 1960: contesta o Serviço Social tradicional importado e busca uma profissão comprometida com a realidade do continente.",
+        "Congresso da Virada": "III CBAS, 1979, São Paulo: a base destitui a mesa oficial ligada à ditadura e a substitui por representantes dos trabalhadores. Divisor político da categoria.",
+        "Currículo de 1982": "Marco da formação: incorpora a teoria social crítica e a análise histórica da sociedade brasileira ao currículo mínimo dos cursos.",
+        "Código de Ética vigente": "1993 (Res. CFESS 273/93): consolida a direção crítica com a liberdade como valor central. Já passou por alterações pontuais, mas segue vigente.",
+        "Lei de Regulamentação": "Lei 8.662/93: regulamenta a profissão, define competências (art. 4º) e atribuições privativas (art. 5º) e organiza o conjunto CFESS/CRESS.",
+        "LOAS": "Lei 8.742/93: a assistência social vira política pública de seguridade, direito do cidadão e dever do Estado. Mesma safra de 1993 do Código e da Lei de Regulamentação.",
+        "Diretrizes Curriculares da ABEPSS": "1996: estruturam a formação em núcleos de fundamentos, tendo o trabalho e a questão social como eixos centrais."
+      }
     },
     {
       "id": "CAT-12",
@@ -239,7 +342,16 @@
         "CAT-11",
         "CAT-14"
       ],
-      "cartaTitulo": "Renovação e suas vertentes (Netto)"
+      "cartaTitulo": "Renovação e suas vertentes (Netto)",
+      "explicacoesPalavras": {
+        "Modernizadora": "Primeira vertente: adequa a profissão ao projeto desenvolvimentista da ditadura, com base teórica estrutural-funcionalista. Moderniza a técnica sem questionar a ordem.",
+        "Araxá": "1967: primeiro documento da vertente modernizadora, produzido em seminário do CBCISS. Busca definir teoria e metodologia para a profissão sem romper com o conservadorismo.",
+        "Teresópolis": "1970: aprofunda a perspectiva modernizadora com forte ênfase metodológica e operativa. Consolida a cientificização de perfil tecnicista.",
+        "Reatualização do conservadorismo": "Segunda vertente: recupera o conservadorismo em novas bases, com apelo à pessoa, ao diálogo e à transformação individual. Documentos de Sumaré e Alto da Boa Vista.",
+        "Fenomenologia": "Matriz teórica da reatualização do conservadorismo: a ênfase na vivência e no diálogo desloca a análise das estruturas sociais para o sujeito singular.",
+        "Intenção de ruptura": "Terceira vertente: aproxima a profissão da tradição marxista e rompe com o conservadorismo. Nasce na academia e se torna hegemônica na categoria nos anos 1980.",
+        "Método BH": "Experiência pioneira da intenção de ruptura na PUC-MG, anos 1970: primeira tentativa sistemática de formação profissional em bases marxistas no Brasil."
+      }
     },
     {
       "id": "CAT-13",
@@ -258,7 +370,18 @@
       ],
       "microtexto": "A tradição marxista no Serviço Social: Iamamoto (trabalho e reprodução), Netto (renovação), Behring (política social), Guerra (instrumentalidade), Barroco (ética).",
       "confundeCom": [],
-      "cartaTitulo": "Autoras e autores da vertente crítica"
+      "cartaTitulo": "Autoras e autores da vertente crítica",
+      "explicacoesPalavras": {
+        "Iamamoto": "Marilda Iamamoto: em 'Relações Sociais e Serviço Social no Brasil' (com Raul de Carvalho), situa a profissão na reprodução das relações sociais e define a questão social como sua base de fundação.",
+        "Netto": "José Paulo Netto: em 'Ditadura e Serviço Social' e 'Capitalismo Monopolista e Serviço Social', sistematiza a renovação e vincula a profissão à ordem monopólica.",
+        "Behring": "Elaine Behring: referência em política social e fundo público; em 'Brasil em Contra-Reforma' analisa o desmonte neoliberal dos direitos nos anos 1990.",
+        "Yazbek": "Maria Carmelita Yazbek: em 'Classes Subalternas e Assistência Social', analisa a pobreza, a subalternidade e o lugar da assistência na proteção social brasileira.",
+        "Guerra": "Yolanda Guerra: autora de 'A Instrumentalidade do Serviço Social', categoria que articula as dimensões teórico-metodológica, ético-política e técnico-operativa.",
+        "Faleiros": "Vicente de Paula Faleiros: em 'Saber Profissional e Poder Institucional', pensa a prática como correlação de forças nas instituições.",
+        "Martinelli": "Maria Lúcia Martinelli: em 'Serviço Social: identidade e alienação', analisa a identidade atribuída à profissão em sua origem burguesa.",
+        "Barroco": "Maria Lúcia Barroco: em 'Ética e Serviço Social: fundamentos ontológicos', dá base marxista e ontológica à ética profissional e ao Código de 1993.",
+        "Boschetti": "Ivanete Boschetti: referência em seguridade social e direitos; com Behring, escreveu 'Política Social: fundamentos e história', leitura obrigatória de concurso."
+      }
     },
     {
       "id": "CAT-14",
@@ -277,7 +400,16 @@
       "confundeCom": [
         "CAT-12"
       ],
-      "cartaTitulo": "Categorias do método crítico"
+      "cartaTitulo": "Categorias do método crítico",
+      "explicacoesPalavras": {
+        "Totalidade": "O real como complexo de complexos: nenhum fenômeno se explica isolado. A situação singular de um/a usuário/a só ganha sentido articulada à estrutura social.",
+        "Mediação": "Categoria que articula o singular, o particular e o universal: permite passar da aparência imediata do caso à sua essência histórica e social.",
+        "Historicidade": "Os fenômenos sociais são históricos: foram produzidos e podem ser transformados. Nada do que existe é natural ou eterno, inclusive a pobreza.",
+        "Contradição": "Motor do movimento do real: a sociedade capitalista produz riqueza e miséria no mesmo processo. A política social é, ela mesma, contraditória: concessão e conquista.",
+        "Práxis": "Atividade humana que transforma o mundo e o próprio sujeito: unidade entre teoria e prática. Teoria sem prática é estéril; prática sem teoria é cega.",
+        "Questão social": "Conjunto das expressões das desigualdades da sociedade capitalista madura, fundadas na contradição capital-trabalho. É a base sócio-histórica da profissão (Iamamoto).",
+        "Reprodução das relações sociais": "Reprodução da totalidade da vida social, não apenas da força de trabalho: inclui a reprodução das classes, das ideias e das formas de dominação."
+      }
     },
     {
       "id": "CAT-15",
@@ -295,7 +427,15 @@
       "confundeCom": [
         "CAT-06"
       ],
-      "cartaTitulo": "Documentos: laudo e parecer"
+      "cartaTitulo": "Documentos: laudo e parecer",
+      "explicacoesPalavras": {
+        "Laudo social": "Documento que resulta da perícia social: apresenta o estudo realizado, a análise fundamentada e responde aos quesitos formulados no processo.",
+        "Parecer social": "Opinião técnica SUCINTA e CONCLUSIVA sobre uma questão específica, com base no conhecimento da matéria. Pode acompanhar o laudo ou ser emitido isoladamente.",
+        "Quesitos": "Perguntas formuladas pelo juízo e pelas partes que o/a perito/a deve responder no laudo. Respondê-los não anula a autonomia: o/a profissional responde a partir de sua competência.",
+        "Opinião técnica conclusiva": "A marca distintiva do parecer: é breve e chega a uma conclusão. Se a prova falar em 'opinião sucinta e conclusiva', a resposta é parecer, não laudo.",
+        "Registro fundamentado": "Exigência ética e técnica: todo documento deve ser fundamentado teoricamente, sem juízo de valor moral sobre os/as usuários/as.",
+        "Materialização do estudo social": "Laudo e parecer são a materialização do estudo social em documento: o estudo é o processo de conhecimento; laudo e parecer, seus produtos."
+      }
     },
     {
       "id": "CAT-16",
@@ -314,7 +454,16 @@
       "confundeCom": [
         "CAT-02"
       ],
-      "cartaTitulo": "Campo sociojurídico"
+      "cartaTitulo": "Campo sociojurídico",
+      "explicacoesPalavras": {
+        "Poder Judiciário": "Espaço histórico de inserção da profissão: varas de família, infância e juventude, violência doméstica. O/a assistente social subsidia decisões, mas não decide pelo juízo.",
+        "Ministério Público": "Fiscal da lei e defensor de direitos coletivos e difusos: equipes técnicas subsidiam a atuação dos/as promotores/as em matéria social.",
+        "Defensoria Pública": "Garante assistência jurídica integral e gratuita a quem não pode pagar: espaço estratégico de acesso à justiça para a população usuária das políticas sociais.",
+        "Sistema penitenciário": "A LEP prevê a assistência social às pessoas presas e egressas. Campo tensionado pelo debate sobre o exame criminológico e o risco de práticas avaliativo-punitivas.",
+        "Vara da Infância e Juventude": "O ECA prevê equipe interprofissional (arts. 150-151) para subsidiar as decisões: espaço clássico do estudo social e do laudo.",
+        "Interdisciplinaridade": "Trabalho conjunto entre profissões que NÃO dilui as competências de cada uma: cada área contribui a partir de seu saber específico.",
+        "Autonomia frente à requisição": "Responder requisições judiciais não significa executar tarefas incompatíveis com a profissão: a resposta se dá com autonomia técnica e nos limites da competência profissional."
+      }
     },
     {
       "id": "CAT-17",
@@ -333,7 +482,16 @@
       "confundeCom": [
         "CAT-01"
       ],
-      "cartaTitulo": "Direitos Humanos"
+      "cartaTitulo": "Direitos Humanos",
+      "explicacoesPalavras": {
+        "Declaração Universal dos Direitos Humanos": "1948, ONU: marco do reconhecimento internacional dos direitos humanos após a Segunda Guerra. Ponto de partida do sistema internacional de proteção.",
+        "Universalidade": "Os direitos humanos valem para TODAS as pessoas, sem distinção de nacionalidade, classe, raça, gênero ou qualquer outra condição.",
+        "Indivisibilidade": "Direitos civis, políticos, econômicos, sociais e culturais formam um todo: não se pode garantir uns e negar outros.",
+        "Interdependência": "A realização de um direito depende dos demais: sem saúde e educação, a liberdade política vira formalidade.",
+        "Dignidade humana": "Fundamento dos direitos humanos e da própria República (CF/88, art. 1º, III): o ser humano como fim, nunca como meio.",
+        "Pactos internacionais": "1966: Pacto dos Direitos Civis e Políticos e Pacto dos Direitos Econômicos, Sociais e Culturais dão força jurídica vinculante à Declaração de 1948.",
+        "Dimensões de direitos": "A literatura atual prefere 'dimensões' a 'gerações': os direitos não se sucedem nem se substituem, acumulam-se e se articulam."
+      }
     },
     {
       "id": "CAT-18",
@@ -352,7 +510,15 @@
         "CAT-19",
         "CAT-08"
       ],
-      "cartaTitulo": "SGD e medidas de proteção (ECA)"
+      "cartaTitulo": "SGD e medidas de proteção (ECA)",
+      "explicacoesPalavras": {
+        "Conselho Tutelar": "Órgão permanente, autônomo e NÃO jurisdicional, encarregado de zelar pelos direitos de crianças e adolescentes: 5 membros eleitos, mandato de 4 anos.",
+        "Medidas protetivas (art. 101)": "Aplicáveis quando o direito está ameaçado ou violado: vão do encaminhamento aos responsáveis até o acolhimento. Não respondem a ato infracional: isso é o art. 112.",
+        "Prioridade absoluta": "CF art. 227 e ECA art. 4º: primazia em receber proteção e socorro, precedência de atendimento, preferência nas políticas e destinação privilegiada de recursos.",
+        "Proteção integral": "Doutrina que fundamenta o ECA: criança e adolescente como sujeitos de direitos em condição peculiar de desenvolvimento, e não como objetos de tutela.",
+        "Promoção–defesa–controle": "Os três eixos do Sistema de Garantia de Direitos (Res. CONANDA 113/2006): promover o acesso, defender contra violações e controlar a efetivação das políticas.",
+        "Excepcionalidade do afastamento": "O afastamento do convívio familiar é medida EXCEPCIONAL e provisória: a regra é o direito à convivência familiar e comunitária."
+      }
     },
     {
       "id": "CAT-19",
@@ -371,7 +537,16 @@
       "confundeCom": [
         "CAT-18"
       ],
-      "cartaTitulo": "Adolescente e ato infracional"
+      "cartaTitulo": "Adolescente e ato infracional",
+      "explicacoesPalavras": {
+        "Medidas socioeducativas (art. 112)": "Respondem ao ATO INFRACIONAL praticado por adolescente: da advertência à internação. Não confundir com as protetivas do art. 101, que respondem à violação de direitos.",
+        "SINASE": "Lei 12.594/2012: organiza a execução das medidas socioeducativas e institui o Plano Individual de Atendimento (PIA) como eixo do acompanhamento.",
+        "Advertência": "A mais branda: admoestação verbal pela autoridade judiciária, reduzida a termo e assinada.",
+        "Liberdade assistida": "Meio aberto: acompanhamento personalizado por orientador, pelo prazo mínimo de 6 meses, com foco na escolarização e na profissionalização.",
+        "Prestação de serviços à comunidade": "Tarefas gratuitas de interesse geral, por no máximo 6 meses, com jornada máxima de 8 horas semanais, sem prejuízo da escola ou do trabalho.",
+        "Semiliberdade": "Restrição parcial de liberdade: o/a adolescente realiza atividades externas (escola, trabalho) independentemente de autorização judicial.",
+        "Internação": "Regida por três princípios: brevidade, excepcionalidade e respeito à condição peculiar de desenvolvimento. Máximo de 3 anos, reavaliação a cada 6 meses e liberação compulsória aos 21."
+      }
     },
     {
       "id": "CAT-20",
@@ -391,7 +566,16 @@
         "CAT-18",
         "CAT-21"
       ],
-      "cartaTitulo": "Violências contra criança e adolescente"
+      "cartaTitulo": "Violências contra criança e adolescente",
+      "explicacoesPalavras": {
+        "Violência institucional": "Praticada por instituições e agentes públicos que deveriam proteger: atendimentos que humilham, negam acesso ou repetem sofrimentos.",
+        "Revitimização": "Fazer a criança reviver a violência ao repetir o relato desnecessariamente em múltiplos órgãos. É exatamente o que a Lei 13.431/17 busca evitar.",
+        "Abuso sexual": "Violência sexual SEM troca ou mercantilização, geralmente praticada por pessoa de confiança ou da família. Diferencia-se da exploração pela ausência de comércio.",
+        "Exploração sexual": "Envolve troca, pagamento ou mercantilização do corpo da criança ou adolescente. A presença do elemento comercial é o que a distingue do abuso.",
+        "Negligência": "Omissão dos cuidados básicos (alimentação, saúde, educação, afeto) por quem tem o dever de cuidar. Atenção: exige distinguir negligência de pobreza da família.",
+        "Escuta especializada": "Realizada na rede de proteção (saúde, assistência, educação), limitada ao ESTRITAMENTE necessário para o encaminhamento. Não é investigação.",
+        "Depoimento especial": "Oitiva perante autoridade policial ou judiciária, em ambiente acolhedor, com profissional especializado e gravação: colhe a prova sem revitimizar."
+      }
     },
     {
       "id": "CAT-21",
@@ -411,7 +595,16 @@
         "CAT-20",
         "CAT-22"
       ],
-      "cartaTitulo": "Violência doméstica contra a mulher (Lei Maria da Penha)"
+      "cartaTitulo": "Violência doméstica contra a mulher (Lei Maria da Penha)",
+      "explicacoesPalavras": {
+        "Violência patrimonial": "Retenção, subtração ou destruição de bens, documentos, instrumentos de trabalho e recursos econômicos da mulher. Uma das formas mais esquecidas e mais cobradas.",
+        "Violência moral": "Calúnia, difamação ou injúria contra a mulher. Não confundir com a psicológica, que atinge a autoestima e o controle do comportamento.",
+        "Medidas protetivas de urgência": "Afastamento do agressor do lar, proibição de aproximação e de contato, entre outras: o juiz decide em até 48 horas a partir do pedido.",
+        "Juizado de Violência Doméstica": "Juizados com competência CÍVEL e CRIMINAL: julgam o crime e as questões de família (guarda, alimentos) no mesmo espaço.",
+        "Relação íntima de afeto": "A lei alcança qualquer relação íntima de afeto, atual ou passada, inclusive entre mulheres: a proteção não depende de casamento nem de orientação sexual.",
+        "Independe de coabitação": "A violência doméstica se configura mesmo que agressor e vítima NÃO morem juntos: literalidade da lei que as bancas adoram cobrar.",
+        "Atendimento multidisciplinar": "A lei prevê equipe de atendimento multidisciplinar (arts. 29 a 32), com profissionais das áreas psicossocial, jurídica e de saúde, subsidiando o juízo e acolhendo a mulher."
+      }
     },
     {
       "id": "CAT-22",
@@ -431,7 +624,16 @@
         "CAT-18",
         "CAT-21"
       ],
-      "cartaTitulo": "Pessoa idosa (Estatuto)"
+      "cartaTitulo": "Pessoa idosa (Estatuto)",
+      "explicacoesPalavras": {
+        "60 anos ou mais": "Definição legal de pessoa idosa no Brasil (Lei 10.741/03, art. 1º): 60 anos ou mais. Não confundir com os 65 anos do BPC.",
+        "Prioridade especial (80+)": "A Lei 13.466/17 criou a prioridade ESPECIAL: entre as pessoas idosas, as de 80 anos ou mais têm preferência no atendimento.",
+        "Notificação compulsória": "Casos de suspeita ou confirmação de violência contra pessoa idosa DEVEM ser notificados às autoridades: para os serviços de saúde, é obrigação legal.",
+        "Obrigação alimentar solidária": "A obrigação de prestar alimentos é solidária: a pessoa idosa pode escolher de qual dos obrigados cobrar, sem ordem preferencial.",
+        "ILPI": "Instituição de Longa Permanência para Idosos: modalidade de acolhimento da alta complexidade do SUAS, para quem não tem condições de permanecer com a família.",
+        "Medidas de proteção (art. 43)": "Aplicáveis quando os direitos são ameaçados ou violados por ação ou omissão da sociedade ou do Estado, por falta ou abuso da família, ou em razão da própria condição pessoal.",
+        "Envelhecimento como direito personalíssimo": "O Estatuto (art. 8º) define o envelhecimento como direito personalíssimo, e sua proteção, como direito social: envelhecer com dignidade é direito, não fardo."
+      }
     },
     {
       "id": "CAT-23",
@@ -451,7 +653,16 @@
         "CAT-10",
         "CAT-24"
       ],
-      "cartaTitulo": "Famílias"
+      "cartaTitulo": "Famílias",
+      "explicacoesPalavras": {
+        "Pluralidade de arranjos": "Contra o modelo único da família nuclear burguesa: as políticas devem reconhecer a diversidade real de composições e vínculos, sem hierarquizar arranjos.",
+        "Família monoparental": "Formada por um único adulto responsável e seus dependentes: reconhecida pela CF/88 (art. 226, § 4º) como entidade familiar.",
+        "Homoparentalidade": "Famílias formadas por casais do mesmo gênero e seus filhos: o STF reconheceu a união homoafetiva como entidade familiar em 2011.",
+        "Famílias reconstituídas": "Novas uniões que reúnem filhos de relações anteriores: arranjo cada vez mais comum, que exige das políticas leitura sem moralismo.",
+        "Redes de apoio": "Parentesco ampliado, vizinhança e comunidade que compartilham cuidado e proteção: o trabalho com famílias mapeia e fortalece essas redes.",
+        "Familismo": "Modelo em que a política transfere à família a proteção social que caberia ao Estado: a família entra como recurso, e o Estado sai de cena.",
+        "Sobrecarga feminina do cuidado": "Quando a política diz 'família', quem responde é a mulher: o familismo se apoia na divisão sexual do trabalho e sobrecarrega mães, avós e filhas."
+      }
     },
     {
       "id": "CAT-24",
@@ -470,7 +681,16 @@
       "confundeCom": [
         "CAT-23"
       ],
-      "cartaTitulo": "Gênero, raça e diversidade"
+      "cartaTitulo": "Gênero, raça e diversidade",
+      "explicacoesPalavras": {
+        "Divisão sexual do trabalho": "Separação e hierarquização do trabalho por sexo: o produtivo (valorizado) associado aos homens, o reprodutivo e do cuidado (invisibilizado e não pago) às mulheres.",
+        "Interseccionalidade": "Lê as opressões de classe, raça e gênero de forma ARTICULADA, não somadas uma a uma. Formulada por Kimberlé Crenshaw; no Brasil, dialoga com Lélia Gonzalez e Carla Akotirene.",
+        "Racismo estrutural": "O racismo não é desvio individual: estrutura as relações econômicas, políticas e institucionais da sociedade brasileira (Silvio Almeida).",
+        "Patriarcado": "Sistema de dominação masculina que organiza a família, o trabalho e o Estado: para a vertente crítica, articula-se ao capitalismo e ao racismo.",
+        "Identidade de gênero": "Modo como a pessoa se percebe e se apresenta em relação ao gênero: não se confunde com orientação sexual, que diz respeito à atração afetivo-sexual.",
+        "Relações intergeracionais": "A geração também estrutura desigualdades e trocas: relações entre crianças, jovens, adultos e pessoas idosas na família e nas políticas.",
+        "Etarismo": "Discriminação por idade, sobretudo contra pessoas idosas: naturaliza a exclusão do trabalho, da tecnologia e das decisões."
+      }
     }
   ]
 }
