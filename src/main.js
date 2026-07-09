@@ -7,6 +7,17 @@ import { createSoundManager } from "./audio/sound-manager.js";
 import { renderLevelBoard } from "./ui/level-board.js";
 import { renderReviewMode } from "./ui/review-mode.js";
 import { showWordInfoPopup } from "./ui/word-info-popup.js";
+import { ensurePlayerName } from "./leaderboard/player-name.js";
+import { submitPhaseTime, fetchPhaseRanking } from "./leaderboard/client.js";
+import { buildRankingHtml } from "./leaderboard/ranking-view.js";
+
+/** @type {Record<number, string>} rótulo de cada fase, usado no ranking */
+const PHASE_NAMES = {
+  1: "Fase 1",
+  2: "Fase 2",
+  3: "Fase 3",
+  4: "Fase Especial: Marxismo",
+};
 
 // Elementos do DOM
 const gameRoot = document.getElementById("game-root");
@@ -34,6 +45,8 @@ let currentLevel = null;
 /** true só no primeiro render após um "Nova partida"/troca de nível — dispara a animação de virar as cartas */
 let isFreshDeal = false;
 let isInspectMode = false;
+/** timestamp (Date.now()) de quando a fase atual começou, para o ranking */
+let phaseStartedAt = 0;
 
 async function init() {
   try {
@@ -174,6 +187,7 @@ function startLevel(levelId) {
     status: "em_andamento",
   };
 
+  phaseStartedAt = Date.now();
   isFreshDeal = true;
   updateUI();
 }
@@ -234,27 +248,62 @@ function updateMuteButton() {
   muteBtn.setAttribute("aria-label", muted ? "Ativar som" : "Desativar som");
 }
 
-function checkLevelStatus() {
+/**
+ * Garante o nome do jogador, envia o tempo da fase recém-concluída pro
+ * ranking e busca o Top 10 atualizado, já pronto em HTML. Nunca lança: se o
+ * ranking estiver fora do ar, o jogo segue normalmente sem essa seção.
+ * @param {number} phaseId
+ * @param {number} timeMs
+ * @returns {Promise<string>}
+ */
+async function submitAndBuildRankingHtml(phaseId, timeMs) {
+  try {
+    const playerName = await ensurePlayerName();
+    await submitPhaseTime({
+      playerName,
+      phaseId,
+      phaseName: PHASE_NAMES[phaseId] ?? `Fase ${phaseId}`,
+      timeMs,
+    });
+    const ranking = await fetchPhaseRanking(phaseId, 10);
+    return buildRankingHtml(ranking, playerName, timeMs);
+  } catch (error) {
+    console.error("Ranking indisponível:", error);
+    return "";
+  }
+}
+
+async function checkLevelStatus() {
   if (!levelState || !currentLevel) return;
 
   if (checkLevelWin(levelState.slots, currentLevel)) {
     levelState.status = "vitoria";
     progressStore.completeLevel(currentLevel.id);
 
-    const nextLevel = levelsData.find((l) => l.id === currentLevel.id + 1);
+    const finishedLevel = currentLevel;
+    const timeMs = Date.now() - phaseStartedAt;
+    const rankingHtml = await submitAndBuildRankingHtml(finishedLevel.id, timeMs);
+
+    const nextLevel = levelsData.find((l) => l.id === finishedLevel.id + 1);
     if (nextLevel) {
       showStatusOverlay(
         "Fase concluída!",
-        `Parabéns! Você classificou todas as categorias da Fase ${currentLevel.id} com sucesso. Pronto para a próxima?`,
+        `Parabéns! Você classificou todas as categorias da Fase ${finishedLevel.id} com sucesso. Pronto para a próxima?`,
         `Ir para a Fase ${nextLevel.id}`,
-        nextLevel.id
+        nextLevel.id,
+        null,
+        null,
+        rankingHtml
       );
     } else {
       showStatusOverlay(
         "Jogo Concluído!",
         "Espetacular! Você classificou com sucesso todas as categorias de todas as fases!",
         "Reiniciar Jogo",
-        levelsData[0].id
+        levelsData[0].id,
+        null,
+        null,
+        rankingHtml
       );
     }
     return;
@@ -321,8 +370,9 @@ function switchToReviewMode() {
  * @param {number|null} targetLevelId
  * @param {string|null} [secondaryButtonText] rótulo do botão secundário (ex.: "Voltar à Fase 1"); omitido se null
  * @param {number|null} [secondaryTargetLevelId] nível carregado ao clicar no botão secundário
+ * @param {string} [extraHtml] HTML extra inserido entre a mensagem e os botões (ex.: ranking da fase)
  */
-function showStatusOverlay(title, message, buttonText, targetLevelId = null, secondaryButtonText = null, secondaryTargetLevelId = null) {
+function showStatusOverlay(title, message, buttonText, targetLevelId = null, secondaryButtonText = null, secondaryTargetLevelId = null, extraHtml = "") {
   removeStatusOverlay();
 
   const overlay = document.createElement("div");
@@ -331,6 +381,7 @@ function showStatusOverlay(title, message, buttonText, targetLevelId = null, sec
   overlay.innerHTML = `
     <h2 class="game-status-title">${title}</h2>
     <p class="game-status-message">${message}</p>
+    ${extraHtml}
     <div class="game-status-actions">
       <button id="overlay-action-btn" type="button">${buttonText}</button>
       ${secondaryButtonText ? `<button id="overlay-secondary-btn" type="button">${secondaryButtonText}</button>` : ""}

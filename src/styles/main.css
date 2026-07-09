@@ -872,6 +872,103 @@ body.inspect-mode-active .word-card:hover {
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
+/* Ranking (dentro do game-status-overlay, tema escuro) */
+.overlay-ranking {
+  text-align: left;
+  margin-bottom: 1.4rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+
+.overlay-ranking-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-gold);
+  margin-bottom: 0.6rem;
+}
+
+.ranking-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.ranking-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+}
+
+.ranking-row--you {
+  background: rgba(243, 198, 79, 0.15);
+  font-weight: 700;
+}
+
+.ranking-row--empty {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.ranking-pos {
+  width: 2rem;
+  flex-shrink: 0;
+  color: var(--color-gold);
+  font-weight: 800;
+}
+
+.ranking-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ranking-time {
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.overlay-ranking-you {
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* Input de nome no modal (tema claro do .modal-container) */
+.leaderboard-name-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.8rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.leaderboard-name-input:focus {
+  outline: var(--focus-outline);
+  outline-offset: 1px;
+}
+
 /* Review Mode */
 #review-root {
   max-width: 1000px;
