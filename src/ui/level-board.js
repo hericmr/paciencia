@@ -142,7 +142,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
             const card = column.cards[loc.cardIndex].card;
             let startIndex = loc.cardIndex;
             if (card.isTitleCard) {
-              while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId) {
+              while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId && column.cards[startIndex - 1].faceUp) {
                 startIndex--;
               }
             }
@@ -488,11 +488,11 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           
           let startIndex = entryIndex;
           if (entry.card.isTitleCard) {
-            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId) {
+            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId && column.cards[startIndex - 1].faceUp) {
               startIndex--;
             }
           }
-          
+
           // Oculta todas as cartas a partir deste índice para o drag do sub-stack
           setTimeout(() => {
             for (let i = startIndex; i < column.cards.length; i++) {
@@ -505,7 +505,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         cardEl.addEventListener("dragend", () => {
           let startIndex = entryIndex;
           if (entry.card.isTitleCard) {
-            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId) {
+            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId && column.cards[startIndex - 1].faceUp) {
               startIndex--;
             }
           }
@@ -678,9 +678,11 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       card = column.cards[cardIndex].card;
       
       if (card.isTitleCard) {
-        // Coleta a carta-título e todas as cartas da mesma categoria contíguas abaixo dela no tableau
+        // Coleta a carta-título e todas as cartas da mesma categoria contíguas
+        // e já viradas abaixo dela no tableau — cartas ainda viradas para
+        // baixo não fazem parte do grupo revelado e não podem ser arrastadas.
         let startIndex = cardIndex;
-        while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId) {
+        while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId && column.cards[startIndex - 1].faceUp) {
           startIndex--;
         }
         subStack = column.cards.slice(startIndex);
