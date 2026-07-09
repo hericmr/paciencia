@@ -229,6 +229,99 @@
       "moveLimit": 96,
       "profundidadeTitulos": "embaralhado",
       "hint": "Dica: Diferencie Medidas Protetivas (ECA, art. 101 - proteção) de Medidas Socioeducativas (ECA, art. 112 - ato infracional), e Laudo (documento descritivo) de Parecer (opinião conclusiva)."
+    },
+    {
+      "id": 4,
+      "categoryIds": [
+        "MRX-01",
+        "MRX-02",
+        "MRX-03",
+        "MRX-04",
+        "MRX-05",
+        "MRX-06",
+        "MRX-07",
+        "MRX-08"
+      ],
+      "cardsPerCategory": 7,
+      "selectedWords": {
+        "MRX-01": [
+          "Mercadoria",
+          "Valor de uso e valor de troca",
+          "Trabalho abstrato",
+          "Força de trabalho",
+          "Mais-valia absoluta",
+          "Mais-valia relativa",
+          "Fetichismo da mercadoria"
+        ],
+        "MRX-02": [
+          "Trabalho como protoforma",
+          "Teleologia",
+          "Prévia-ideação",
+          "Objetivação",
+          "Estranhamento (alienação)",
+          "Práxis",
+          "Ser social"
+        ],
+        "MRX-03": [
+          "Estado ampliado",
+          "Sociedade civil",
+          "Aparelhos privados de hegemonia",
+          "Hegemonia",
+          "Intelectual orgânico",
+          "Bloco histórico",
+          "Guerra de posição"
+        ],
+        "MRX-04": [
+          "Superexploração da força de trabalho",
+          "Transferência de valor",
+          "Intercâmbio desigual",
+          "Cisão do ciclo do capital",
+          "Subimperialismo",
+          "Capitalismo dependente",
+          "Ruy Mauro Marini"
+        ],
+        "MRX-05": [
+          "Lei geral da acumulação capitalista",
+          "Superpopulação relativa",
+          "Exército industrial de reserva",
+          "Pauperismo",
+          "Composição orgânica do capital",
+          "Concentração e centralização",
+          "Questão social"
+        ],
+        "MRX-06": [
+          "Queda tendencial da taxa de lucro",
+          "Fordismo",
+          "Toyotismo",
+          "Acumulação flexível",
+          "Financeirização",
+          "Neoliberalismo",
+          "Precarização do trabalho"
+        ],
+        "MRX-07": [
+          "Crise estrutural do capital",
+          "Sistema sociometabólico do capital",
+          "Capital versus capitalismo",
+          "Tripé capital, trabalho e Estado",
+          "Incontrolabilidade do capital",
+          "Desemprego estrutural",
+          "Para Além do Capital"
+        ],
+        "MRX-08": [
+          "Modo de produção",
+          "Forças produtivas e relações de produção",
+          "Base e superestrutura",
+          "Ideologia",
+          "Aparência e essência",
+          "Concreto pensado",
+          "Síntese de múltiplas determinações"
+        ]
+      },
+      "totalCards": 64,
+      "columns": 4,
+      "moveLimit": 112,
+      "profundidadeTitulos": "embaralhado",
+      "hint": "Dica: Marini (TMD) explica a superexploração e a dependência latino-americana; Mészáros distingue capital de capitalismo; a lei geral da acumulação (O Capital, cap. 23) fundamenta a leitura crítica da questão social."
     }
   ]
 }

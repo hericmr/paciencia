@@ -26,7 +26,8 @@
   --color-axis-politica_social: #862e9c;
   --color-axis-sociojuridico: #2b8a3e;
   --color-axis-questao_social: #ae3ec9;
-  
+  --color-axis-marxismo: #c92a2a;
+
   --transition-speed: 0.2s;
   --focus-outline: 3px solid var(--color-gold);
 }
@@ -888,6 +889,7 @@ button:focus-visible {
 .tab-btn.axis-politica_social { border-left-color: var(--color-axis-politica_social); }
 .tab-btn.axis-sociojuridico { border-left-color: var(--color-axis-sociojuridico); }
 .tab-btn.axis-questao_social { border-left-color: var(--color-axis-questao_social); }
+.tab-btn.axis-marxismo { border-left-color: var(--color-axis-marxismo); }
 
 .tab-btn.active {
   background: var(--text-primary);
@@ -902,6 +904,7 @@ button:focus-visible {
 .tab-btn.active.axis-politica_social { background: var(--color-axis-politica_social); color: #fff; border-color: var(--color-axis-politica_social); }
 .tab-btn.active.axis-sociojuridico { background: var(--color-axis-sociojuridico); color: #fff; border-color: var(--color-axis-sociojuridico); }
 .tab-btn.active.axis-questao_social { background: var(--color-axis-questao_social); color: #fff; border-color: var(--color-axis-questao_social); }
+.tab-btn.active.axis-marxismo { background: var(--color-axis-marxismo); color: #fff; border-color: var(--color-axis-marxismo); }
 
 /* Category Cards Grid */
 .review-grid {
@@ -938,6 +941,7 @@ button:focus-visible {
 .category-card.axis-politica_social { border-top-color: var(--color-axis-politica_social); }
 .category-card.axis-sociojuridico { border-top-color: var(--color-axis-sociojuridico); }
 .category-card.axis-questao_social { border-top-color: var(--color-axis-questao_social); }
+.category-card.axis-marxismo { border-top-color: var(--color-axis-marxismo); }
 
 .category-card-header {
   display: flex;
@@ -971,6 +975,7 @@ button:focus-visible {
 .category-card.axis-politica_social .category-card-axis-badge { background: rgba(134, 46, 156, 0.2); color: #eebefa; }
 .category-card.axis-sociojuridico .category-card-axis-badge { background: rgba(43, 138, 62, 0.2); color: #8ce99a; }
 .category-card.axis-questao_social .category-card-axis-badge { background: rgba(174, 62, 201, 0.2); color: #eebefa; }
+.category-card.axis-marxismo .category-card-axis-badge { background: rgba(201, 42, 42, 0.2); color: #ffa8a8; }
 
 .category-card-axis-badge.locked {
   background: rgba(255,255,255,0.08);

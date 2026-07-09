@@ -691,6 +691,238 @@
         "Relações intergeracionais": "A geração também estrutura desigualdades e trocas: relações entre crianças, jovens, adultos e pessoas idosas na família e nas políticas.",
         "Etarismo": "Discriminação por idade, sobretudo contra pessoas idosas: naturaliza a exclusão do trabalho, da tecnologia e das decisões."
       }
+    },
+    {
+      "id": "MRX-01",
+      "nome": "Crítica da economia política (O Capital)",
+      "eixo": "marxismo",
+      "palavras": [
+        "Mercadoria",
+        "Valor de uso e valor de troca",
+        "Trabalho abstrato",
+        "Força de trabalho",
+        "Mais-valia absoluta",
+        "Mais-valia relativa",
+        "Fetichismo da mercadoria",
+        "Acumulação primitiva"
+      ],
+      "microtexto": "O Capital começa pela mercadoria, célula da riqueza capitalista. O segredo da exploração: a força de trabalho cria mais valor do que custa, e essa diferença é a mais-valia.",
+      "confundeCom": [
+        "MRX-05",
+        "MRX-04"
+      ],
+      "cartaTitulo": "Crítica da economia política (O Capital)",
+      "explicacoesPalavras": {
+        "Mercadoria": "Forma elementar da riqueza no capitalismo: unidade de valor de uso e valor. É por ela que O Capital começa, do mais simples ao mais complexo.",
+        "Valor de uso e valor de troca": "Valor de uso é a utilidade da coisa; valor de troca é a proporção em que se troca por outras. O valor de troca é forma de manifestação do valor, determinado pelo tempo de trabalho socialmente necessário.",
+        "Trabalho abstrato": "Dispêndio de força humana de trabalho indiferenciada: é a substância do valor. Já o trabalho concreto, útil e específico, produz valores de uso. Um mesmo trabalho, duas dimensões.",
+        "Força de trabalho": "Mercadoria especial: seu valor é o dos meios de subsistência necessários para reproduzi-la, mas seu USO cria mais valor do que ela custa. Marx compra e vende força de trabalho, não trabalho.",
+        "Mais-valia absoluta": "Extraída pelo prolongamento da jornada além do tempo de trabalho necessário. Foi o mecanismo típico dos primórdios do capitalismo e segue vivo na precarização.",
+        "Mais-valia relativa": "Extraída pela redução do tempo de trabalho necessário, via aumento da produtividade que barateia os meios de subsistência. É a forma dominante no capitalismo desenvolvido.",
+        "Fetichismo da mercadoria": "Relações sociais entre pessoas aparecem como relações entre coisas: o mercado parece ter vida própria e as mercadorias, vontade. É a forma de mistificação própria do capitalismo.",
+        "Acumulação primitiva": "A pré-história do capital: separação violenta entre produtores e meios de produção, com cercamentos, colonização e escravidão. Não é acumulação por poupança, é expropriação."
+      }
+    },
+    {
+      "id": "MRX-02",
+      "nome": "Trabalho e ontologia do ser social",
+      "eixo": "marxismo",
+      "palavras": [
+        "Trabalho como protoforma",
+        "Teleologia",
+        "Prévia-ideação",
+        "Objetivação",
+        "Estranhamento (alienação)",
+        "Práxis",
+        "Ser social"
+      ],
+      "microtexto": "Para Lukács, o trabalho é a protoforma do ser social: pôr teleológico que transforma a natureza e o próprio sujeito. Sob o capital, a objetivação se converte em estranhamento.",
+      "confundeCom": [
+        "MRX-08"
+      ],
+      "cartaTitulo": "Trabalho e ontologia do ser social",
+      "explicacoesPalavras": {
+        "Trabalho como protoforma": "Categoria fundante do ser social (Lukács): o trabalho é o modelo de toda práxis, ponto de partida da sociabilidade, da linguagem e da consciência.",
+        "Teleologia": "O trabalho é orientado por um fim posto previamente na consciência: o humano projeta antes de executar. A teleologia opera sobre a causalidade natural, sem suprimi-la.",
+        "Prévia-ideação": "O resultado do trabalho existe idealmente antes de sua realização material. É a famosa comparação de Marx: o pior arquiteto se distingue da melhor abelha porque projeta a obra na cabeça.",
+        "Objetivação": "Exteriorização do sujeito no produto do trabalho: momento de humanização, em que as capacidades humanas ganham existência objetiva no mundo.",
+        "Estranhamento (alienação)": "Sob as relações capitalistas, o produto e o próprio ato de trabalhar se voltam contra o trabalhador como potência estranha (Manuscritos de 1844). O problema não é a objetivação, é sua forma histórica.",
+        "Práxis": "Atividade humana consciente e transformadora, que modifica o mundo e o próprio sujeito. No projeto ético-político, fundamenta a unidade entre teoria e intervenção.",
+        "Ser social": "Os humanos são seres históricos que se autoproduzem pelo trabalho: não há natureza humana fixa, há um ser que se constitui socialmente."
+      }
+    },
+    {
+      "id": "MRX-03",
+      "nome": "Estado ampliado e hegemonia (Gramsci)",
+      "eixo": "marxismo",
+      "palavras": [
+        "Estado ampliado",
+        "Sociedade civil",
+        "Aparelhos privados de hegemonia",
+        "Hegemonia",
+        "Intelectual orgânico",
+        "Bloco histórico",
+        "Guerra de posição"
+      ],
+      "microtexto": "Gramsci amplia o Estado: sociedade política (coerção) mais sociedade civil (consenso). A hegemonia se disputa nos aparelhos privados: escola, igreja, imprensa e, hoje, também nas OSCs.",
+      "confundeCom": [
+        "MRX-08"
+      ],
+      "cartaTitulo": "Estado ampliado e hegemonia (Gramsci)",
+      "explicacoesPalavras": {
+        "Estado ampliado": "Estado = sociedade política + sociedade civil: coerção revestida de consenso. O Estado não é só aparato repressivo, é também educador e organizador do consentimento.",
+        "Sociedade civil": "Em Gramsci, é a esfera dos aparelhos privados de hegemonia, onde as classes disputam direção. Não confundir com o uso despolitizado de 'terceiro setor': sociedade civil é campo de luta, não espaço neutro.",
+        "Aparelhos privados de hegemonia": "Organismos de adesão voluntária (escolas, igrejas, imprensa, associações, partidos) que difundem visões de mundo e organizam o consenso das classes.",
+        "Hegemonia": "Direção intelectual e moral exercida por uma classe: combina domínio (coerção) e consenso ativo dos dirigidos. Hegemonia não é só força, é capacidade de dirigir.",
+        "Intelectual orgânico": "Intelectual vinculado a uma classe, que lhe dá homogeneidade e consciência de sua função. Para Gramsci, todos são intelectuais, mas nem todos exercem essa função na sociedade.",
+        "Bloco histórico": "Unidade orgânica entre estrutura e superestrutura em uma época determinada: a articulação concreta entre economia, política e cultura.",
+        "Guerra de posição": "Luta prolongada pela hegemonia travada nas trincheiras da sociedade civil, própria das sociedades de tipo 'ocidental', em que o Estado ampliado é robusto."
+      }
+    },
+    {
+      "id": "MRX-04",
+      "nome": "Teoria Marxista da Dependência",
+      "eixo": "marxismo",
+      "palavras": [
+        "Superexploração da força de trabalho",
+        "Transferência de valor",
+        "Intercâmbio desigual",
+        "Cisão do ciclo do capital",
+        "Subimperialismo",
+        "Capitalismo dependente",
+        "Ruy Mauro Marini"
+      ],
+      "microtexto": "Marini: a dependência se reproduz pela transferência de valor ao centro, compensada na periferia pela superexploração: remunerar a força de trabalho abaixo do seu valor.",
+      "confundeCom": [
+        "MRX-01",
+        "MRX-06"
+      ],
+      "cartaTitulo": "Teoria Marxista da Dependência",
+      "explicacoesPalavras": {
+        "Superexploração da força de trabalho": "Categoria central de Marini: remuneração da força de trabalho abaixo do seu valor, combinando intensificação, prolongamento da jornada e arrocho. O fundo de consumo do trabalhador é convertido em fundo de acumulação do capital.",
+        "Transferência de valor": "Parte do valor produzido nas economias dependentes é apropriada pelas economias centrais, via comércio e remessas. A superexploração surge como compensação interna dessa perda.",
+        "Intercâmbio desigual": "Troca de mercadorias que contêm quantidades desiguais de trabalho: nações que produzem com menor produtividade cedem valor às de maior produtividade sem que a lei do valor seja violada.",
+        "Cisão do ciclo do capital": "Na economia dependente, produção e consumo se separam: produz-se para exportar, e o consumo do trabalhador deixa de importar para a realização do capital. Isso libera a superexploração de freios internos.",
+        "Subimperialismo": "Expansão de economias dependentes intermediárias sobre países vizinhos, como o Brasil da ditadura: uma forma dependente de imperialismo, sem deixar de ser dependente.",
+        "Capitalismo dependente": "Em Florestan Fernandes, o capitalismo periférico articula desenvolvimento e heteronomia: a burguesia local associa-se ao imperialismo em vez de enfrentá-lo, e a dupla apropriação do excedente recai sobre o trabalho.",
+        "Ruy Mauro Marini": "Autor de 'Dialética da Dependência' (1973), obra síntese da TMD, escrita no exílio. Ao lado de Theotônio dos Santos e Vânia Bambirra, formulou a crítica marxista ao desenvolvimentismo."
+      }
+    },
+    {
+      "id": "MRX-05",
+      "nome": "Lei geral da acumulação e questão social",
+      "eixo": "marxismo",
+      "palavras": [
+        "Lei geral da acumulação capitalista",
+        "Superpopulação relativa",
+        "Exército industrial de reserva",
+        "Pauperismo",
+        "Composição orgânica do capital",
+        "Concentração e centralização",
+        "Questão social"
+      ],
+      "microtexto": "Quanto mais o capital acumula, mais produz população excedente e pauperismo: é a lei geral (O Capital, cap. 23) que fundamenta a leitura crítica da questão social no Serviço Social.",
+      "confundeCom": [
+        "MRX-01",
+        "MRX-07"
+      ],
+      "cartaTitulo": "Lei geral da acumulação e questão social",
+      "explicacoesPalavras": {
+        "Lei geral da acumulação capitalista": "Acumulação de riqueza em um polo é, ao mesmo tempo, acumulação de miséria e degradação no polo oposto. A desigualdade não é falha do sistema: é seu resultado necessário.",
+        "Superpopulação relativa": "População trabalhadora que excede as necessidades médias de valorização do capital, em três formas: flutuante, latente e estagnada. É produto da própria acumulação, não do crescimento demográfico.",
+        "Exército industrial de reserva": "A função da superpopulação: os desempregados pressionam os salários para baixo e disciplinam os ocupados. Reserva disponível para as expansões do capital.",
+        "Pauperismo": "A camada mais profunda da superpopulação relativa, o asilo dos inválidos do exército ativo. No debate profissional, é a base material sobre a qual se constitui a questão social no século XIX.",
+        "Composição orgânica do capital": "Relação entre capital constante (meios de produção) e capital variável (força de trabalho). Seu aumento expulsa trabalho vivo da produção e alimenta a superpopulação relativa.",
+        "Concentração e centralização": "Concentração: crescimento dos capitais individuais pela acumulação. Centralização: fusão e absorção de capitais já existentes. Juntas, formam os grandes monopólios.",
+        "Questão social": "Conjunto das expressões das desigualdades fundadas na contradição capital-trabalho. Lê-la pela lei geral da acumulação impede tratá-la como soma de 'problemas sociais' isolados."
+      }
+    },
+    {
+      "id": "MRX-06",
+      "nome": "Crise, reestruturação produtiva e neoliberalismo",
+      "eixo": "marxismo",
+      "palavras": [
+        "Queda tendencial da taxa de lucro",
+        "Fordismo",
+        "Toyotismo",
+        "Acumulação flexível",
+        "Financeirização",
+        "Neoliberalismo",
+        "Precarização do trabalho"
+      ],
+      "microtexto": "Da crise dos anos 1970 à acumulação flexível (Harvey): o capital responde à queda da lucratividade reestruturando a produção e o Estado, com financeirização e trabalho precário.",
+      "confundeCom": [
+        "MRX-07",
+        "MRX-04"
+      ],
+      "cartaTitulo": "Crise, reestruturação produtiva e neoliberalismo",
+      "explicacoesPalavras": {
+        "Queda tendencial da taxa de lucro": "O aumento da composição orgânica do capital tende a reduzir a taxa de lucro, ainda que existam contratendências (aumento da exploração, barateamento do capital constante). É lei tendencial, não fatalidade linear.",
+        "Fordismo": "Padrão de acumulação do pós-guerra: produção em massa, linha de montagem, consumo de massa e pacto salarial. No centro, formou par com o Estado de bem-estar; na periferia, chegou incompleto.",
+        "Toyotismo": "Padrão da reestruturação produtiva: produção enxuta, just-in-time, trabalhador polivalente, terceirização e gestão pelo envolvimento. Flexibiliza a produção e corrói o trabalho.",
+        "Acumulação flexível": "Categoria de David Harvey ('Condição Pós-Moderna'): resposta à crise do fordismo com flexibilidade dos processos, dos mercados e, sobretudo, do trabalho.",
+        "Financeirização": "Dominância do capital portador de juros e do capital fictício na acumulação: o fundo público passa a ser disputado pela dívida, pressionando as políticas sociais.",
+        "Neoliberalismo": "Ofensiva do capital contra o trabalho a partir da crise dos 1970: privatização, desregulamentação e contrarreforma do Estado, com desmonte dos direitos sociais.",
+        "Precarização do trabalho": "Informalidade, intermitência, pejotização e uberização: a corrosão dos vínculos e direitos do trabalho é traço estrutural do padrão flexível, não desvio passageiro."
+      }
+    },
+    {
+      "id": "MRX-07",
+      "nome": "Mészáros e o sistema do capital",
+      "eixo": "marxismo",
+      "palavras": [
+        "Crise estrutural do capital",
+        "Sistema sociometabólico do capital",
+        "Capital versus capitalismo",
+        "Tripé capital, trabalho e Estado",
+        "Incontrolabilidade do capital",
+        "Desemprego estrutural",
+        "Para Além do Capital"
+      ],
+      "microtexto": "Mészáros distingue capital de capitalismo: superar o capitalismo sem erradicar o capital mantém o sociometabolismo da dominação. E a crise aberta nos anos 1970 é estrutural, não cíclica.",
+      "confundeCom": [
+        "MRX-06",
+        "MRX-05"
+      ],
+      "cartaTitulo": "Mészáros e o sistema do capital",
+      "explicacoesPalavras": {
+        "Crise estrutural do capital": "Aberta nos anos 1970: contínua, universal e de longo prazo, atinge a totalidade do sistema e não apenas um setor ou país. Difere das crises cíclicas, que eram parciais e passageiras.",
+        "Sistema sociometabólico do capital": "Modo de controle da reprodução social fundado no capital, no trabalho alienado e no Estado: um sociometabolismo que subordina todas as esferas da vida à lógica da expansão.",
+        "Capital versus capitalismo": "O capital é relação de dominação anterior e mais ampla que o capitalismo. Por isso as experiências pós-capitalistas do século XX não o superaram: aboliram o capitalista privado, não o capital.",
+        "Tripé capital, trabalho e Estado": "As três dimensões do sistema se sustentam mutuamente: não se supera uma sem atacar as outras. Daí a crítica de Mészáros às estratégias meramente estatais de transição.",
+        "Incontrolabilidade do capital": "O capital é um sistema de controle sem sujeito controlável: expansionista e orientado à acumulação, atropela limites humanos e ambientais. Corrigi-lo por dentro tem alcance estreito.",
+        "Desemprego estrutural": "Na crise estrutural, o desemprego deixa de funcionar como exército de reserva reabsorvível e atinge o núcleo do sistema, tornando supérflua parcela crescente da força de trabalho.",
+        "Para Além do Capital": "Obra de 1995, referência da crítica contemporânea ao sistema do capital, com forte influência no Serviço Social brasileiro e no debate sobre a educação (via 'A Educação para Além do Capital')."
+      }
+    },
+    {
+      "id": "MRX-08",
+      "nome": "Método: materialismo histórico-dialético",
+      "eixo": "marxismo",
+      "palavras": [
+        "Modo de produção",
+        "Forças produtivas e relações de produção",
+        "Base e superestrutura",
+        "Ideologia",
+        "Aparência e essência",
+        "Concreto pensado",
+        "Síntese de múltiplas determinações"
+      ],
+      "microtexto": "O método parte do concreto caótico, abstrai e retorna ao concreto pensado: síntese de múltiplas determinações (Introdução de 1857). A crítica atravessa a aparência sem descartá-la.",
+      "confundeCom": [
+        "MRX-02",
+        "MRX-03"
+      ],
+      "cartaTitulo": "Método: materialismo histórico-dialético",
+      "explicacoesPalavras": {
+        "Modo de produção": "Articulação histórica entre forças produtivas e relações de produção: a forma como uma sociedade produz e reproduz sua vida material. Cada modo tem suas leis próprias.",
+        "Forças produtivas e relações de produção": "Meios de produção, técnica e força de trabalho de um lado; relações de propriedade e de controle do processo de outro. A contradição entre ambos move as transformações históricas.",
+        "Base e superestrutura": "As relações de produção formam a base sobre a qual se erguem as formas jurídicas, políticas e ideológicas. Atenção: determinação em última instância, não determinismo mecânico.",
+        "Ideologia": "Representações que invertem ou naturalizam o real em favor da classe dominante: as ideias dominantes são as ideias da classe dominante. Em Gramsci, a ideologia é também terreno de luta.",
+        "Aparência e essência": "Se aparência e essência coincidissem, toda ciência seria desnecessária (Marx). A aparência não é ilusão a descartar: é forma necessária de manifestação da essência, que a análise precisa atravessar.",
+        "Concreto pensado": "O concreto reproduzido no pensamento como totalidade rica e articulada: ponto de CHEGADA da investigação, não de partida (Introdução de 1857).",
+        "Síntese de múltiplas determinações": "A definição do concreto na Introdução de 1857: unidade do diverso. Nenhum fenômeno se explica por uma causa única, mas pela articulação de suas determinações."
+      }
     }
   ]
 }

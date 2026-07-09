@@ -50,5 +50,9 @@
   "Cadastro Único": {
     "photoUrl": "assets/authors/cad_unico.webp",
     "photoCredit": "Ilustração do Cadastro Único"
+  },
+  "Crítica da economia política (O Capital)": {
+    "photoUrl": "assets/authors/marx.webp",
+    "photoCredit": "Foto de Karl Marx"
   }
 }

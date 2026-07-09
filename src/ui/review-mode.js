@@ -28,7 +28,7 @@ let activeAxis = "etica";
  * @param {Record<string, { photoUrl: string, photoCredit: string }>} [authorPhotos] Fotos dos autores
  */
 export function renderReviewMode(container, categoriesData, progressStore, onBack, authorPhotos = {}) {
-  const axes = ["etica", "tecnica", "politica_social", "historia", "teoria", "sociojuridico", "questao_social"];
+  const axes = ["etica", "tecnica", "politica_social", "historia", "teoria", "sociojuridico", "questao_social", "marxismo"];
   const axisNames = {
     "etica": "Ética",
     "tecnica": "Técnico-Operativo",
@@ -36,7 +36,8 @@ export function renderReviewMode(container, categoriesData, progressStore, onBac
     "historia": "História",
     "teoria": "Teórico-Metodológico",
     "sociojuridico": "Sociojurídico",
-    "questao_social": "Questão Social"
+    "questao_social": "Questão Social",
+    "marxismo": "Marxismo"
   };
 
   if (!activeAxis || !axes.includes(activeAxis)) {
