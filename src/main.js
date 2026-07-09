@@ -6,12 +6,14 @@ import { createProgressStore } from "./progress/store.js";
 import { createSoundManager } from "./audio/sound-manager.js";
 import { renderLevelBoard } from "./ui/level-board.js";
 import { renderReviewMode } from "./ui/review-mode.js";
+import { showWordInfoPopup } from "./ui/word-info-popup.js";
 
 // Elementos do DOM
 const gameRoot = document.getElementById("game-root");
 const reviewRoot = document.getElementById("review-root");
 const newGameBtn = document.getElementById("new-game-btn");
 const reviewModeBtn = document.getElementById("review-mode-btn");
+const inspectBtn = document.getElementById("inspect-btn");
 const muteBtn = document.getElementById("mute-btn");
 
 // Dados e stores globais
@@ -31,6 +33,7 @@ let levelState = null;
 let currentLevel = null;
 /** true só no primeiro render após um "Nova partida"/troca de nível — dispara a animação de virar as cartas */
 let isFreshDeal = false;
+let isInspectMode = false;
 
 async function init() {
   try {
@@ -55,6 +58,61 @@ async function init() {
       soundManager.toggleMuted();
       updateMuteButton();
     });
+
+    inspectBtn?.addEventListener("click", () => {
+      isInspectMode = !isInspectMode;
+      if (isInspectMode) {
+        inspectBtn.setAttribute("aria-pressed", "true");
+        inspectBtn.classList.add("active");
+        document.body.classList.add("inspect-mode-active");
+      } else {
+        inspectBtn.setAttribute("aria-pressed", "false");
+        inspectBtn.classList.remove("active");
+        document.body.classList.remove("inspect-mode-active");
+      }
+    });
+
+    // Intercepta cliques nas cartas para o modo inspeção antes do level-board processar o movimento
+    gameRoot?.addEventListener("click", (e) => {
+      if (!isInspectMode) return;
+      const cardEl = /** @type {HTMLElement} */ (e.target).closest(".word-card");
+      if (!cardEl) return;
+      
+      const id = cardEl.getAttribute("data-id");
+      if (!id) return; // Cartas viradas para baixo não têm data-id
+
+      e.stopPropagation();
+      e.preventDefault();
+
+      let categoryId, word, isTitle;
+      if (id.startsWith("TITLE:")) {
+        isTitle = true;
+        categoryId = id.split(":")[1];
+        word = "Carta Categoria";
+      } else {
+        isTitle = false;
+        const firstColon = id.indexOf(":");
+        categoryId = id.substring(0, firstColon);
+        word = id.substring(firstColon + 1);
+      }
+
+      const category = categoriesMap.get(categoryId);
+      if (category) {
+        if (isTitle) {
+          showWordInfoPopup(word, category.nome, category.microtexto, null, cardEl);
+        } else {
+          const texto = category.explicacoesPalavras?.[word];
+          const photo = authorPhotos[word] ?? null;
+          showWordInfoPopup(word, category.nome, texto, photo, cardEl);
+        }
+      }
+
+      // Desliga o modo inspeção após 1 uso
+      isInspectMode = false;
+      inspectBtn?.setAttribute("aria-pressed", "false");
+      inspectBtn?.classList.remove("active");
+      document.body.classList.remove("inspect-mode-active");
+    }, { capture: true });
 
     updateMuteButton();
     startAmbientMusicWithRetry();

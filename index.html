@@ -6,12 +6,12 @@
   <title>Serviço Social — Jogo Educativo</title>
   <meta name="description" content="Um jogo educativo de categorização e associações sobre o Serviço Social Brasileiro e seus princípios éticos fundamentais. Jogue, aprenda e revise o Código de Ética de 1993." />
   <meta name="keywords" content="Serviço Social, Código de Ética, CFESS, CRESS, Jogo Educativo, Assistente Social" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐜</text></svg>">
+  <link rel="icon" href="assets/authors/marx.webp" type="image/webp">
   <link rel="stylesheet" href="src/styles/main.css" />
 </head>
 <body>
   <header>
-    <h1>Serviço Social</h1>
+    <h1><img src="assets/authors/marx.webp" alt="Logo" class="header-logo">Serviço Social</h1>
     <div id="controls">
       <span id="moves-counter" class="moves-counter" style="display: none;"></span>
       <select id="level-select" class="level-select" aria-label="Selecionar Fase">
@@ -22,6 +22,7 @@
       </select>
       <button id="new-game-btn" type="button">Nova partida</button>
       <button id="review-mode-btn" type="button">Modo revisão</button>
+      <button id="inspect-btn" type="button" aria-pressed="false" aria-label="Inspecionar carta">?</button>
       <button id="mute-btn" type="button" aria-pressed="false" aria-label="Desativar som">Som: On</button>
     </div>
   </header>

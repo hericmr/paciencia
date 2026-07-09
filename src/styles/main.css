@@ -18,12 +18,16 @@
   --color-red: #d32f2f;
   --color-black: #1a1a1a;
 
+  /* Feedback visual (match/erro) */
+  --color-error: #ef5350;
+  --color-success: #66bb6a;
+
   /* Axis Colors */
   --color-axis-teoria: #2f6fed;
   --color-axis-etica: #d6336c;
   --color-axis-tecnica: #0c8599;
   --color-axis-historia: #e8590c;
-  --color-axis-politica_social: #862e9c;
+  --color-axis-politica_social: #5c40a8;
   --color-axis-sociojuridico: #2b8a3e;
   --color-axis-questao_social: #ae3ec9;
   --color-axis-marxismo: #c92a2a;
@@ -76,6 +80,17 @@ h1 {
   background: linear-gradient(135deg, #fff 30%, var(--color-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 button {
@@ -114,6 +129,21 @@ button:focus-visible {
 #new-game-btn:hover {
   background: var(--color-gold-hover);
   box-shadow: 0 0 10px rgba(243, 198, 79, 0.4);
+}
+
+#inspect-btn.active {
+  background: var(--color-gold);
+  color: #0c2518;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 10px rgba(243, 198, 79, 0.4);
+}
+
+body.inspect-mode-active .word-card {
+  cursor: help !important;
+}
+
+body.inspect-mode-active .word-card:hover {
+  box-shadow: 0 0 0 2px var(--color-gold), 0 8px 16px rgba(0, 0, 0, 0.5) !important;
 }
 
 .level-select {
@@ -193,7 +223,10 @@ button:focus-visible {
   gap: 0.8rem;
   width: 100%;
   position: relative;
-  overflow: hidden; /* Evita rolagem vertical do root */
+  overflow-y: auto; /* Permite scroll quando conteúdo excede a tela */
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(207, 161, 38, 0.3) transparent;
   justify-content: flex-start;
 }
 
@@ -222,14 +255,14 @@ button:focus-visible {
   justify-items: center;
   gap: 1rem;
   width: 100%;
-  margin-bottom: 1.2rem; /* Espaço para o empilhamento transbordar levemente sem colidir com o tableau */
+  margin-bottom: 0.6rem;
 }
 
 /* Stock & Waste */
 /* Slots vazios no topo do tabuleiro (Stock, Waste e Categoria) */
 .stock-slot, .waste-slot, .category-slot {
   background: #0b2215; /* Tom sólido de verde escuro ligeiramente mais suave */
-  border: 1px solid rgba(255, 255, 255, 0.04); /* Borda sólida ultrafina e discreta */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda sólida discreta */
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra interna mais suave */
   border-radius: var(--card-radius);
   width: var(--card-width);
@@ -277,8 +310,8 @@ button:focus-visible {
 }
 
 .stock-slot.empty:hover, .waste-slot.empty:hover, .category-slot.closed:hover {
-  background: #0d2719; /* Ligeiramente mais claro no hover */
-  border-color: rgba(255, 255, 255, 0.08);
+  background: #0d2719;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .category-slot-wrapper {
@@ -305,24 +338,22 @@ button:focus-visible {
 
 .category-slot-title {
   font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 0.72rem;
-  color: #0c2518 !important; /* Verde escuro igual ao fundo */
-  background: var(--color-gold); /* Fundo mostarda */
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #0c2518;
+  background: var(--color-gold);
   padding: 0.35rem 0.6rem;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   text-align: center;
   line-height: 1.2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   width: 100%;
-  height: 52px;
-  min-height: 52px;
-  max-height: 52px;
+  min-height: 44px;
+  max-height: 56px;
   overflow: hidden;
-  text-overflow: ellipsis;
   box-sizing: border-box;
 }
 
@@ -378,7 +409,7 @@ button:focus-visible {
   width: 28px;
   height: 28px;
   color: var(--color-gold);
-  opacity: 0.3; /* Baixa opacidade entre 20% e 40% */
+  opacity: 0.45; /* Opacidade elevada para melhor visibilidade */
   transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
@@ -407,7 +438,7 @@ button:focus-visible {
   justify-items: center;
   gap: 1rem;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .tableau-column {
@@ -415,7 +446,7 @@ button:focus-visible {
   width: var(--card-width);
   max-width: var(--card-width);
   /* altura da pilha responsiva proporcionalmente */
-  min-height: calc(var(--card-width) * 1.4 + 126px);
+  min-height: calc(var(--card-width) * 1.4 + 80px);
   border-radius: var(--card-radius);
   transition: box-shadow var(--transition-speed) ease;
 }
@@ -581,9 +612,11 @@ button:focus-visible {
   cursor: grabbing;
 }
 
-.word-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+@media (hover: hover) {
+  .word-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .word-card:focus-visible {
@@ -595,19 +628,24 @@ button:focus-visible {
   transform: translateY(-8px);
   box-shadow: 0 10px 20px rgba(243, 198, 79, 0.4);
   outline: var(--focus-outline);
+  border-color: var(--color-gold);
 }
 
 .word-card-text {
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(0.75rem, 2.5vw, 0.95rem);
   text-align: center;
   padding: 0.35rem 0.2rem !important; /* Reduzido para evitar corte de texto */
   word-break: normal;
   overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
   line-height: 1.15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* grid (não flex) para centralizar: um filho de flex-container encolhe até
+     seu max-content por padrão (min-width:auto), o que faz palavras longas
+     vazarem da carta em vez de quebrar linha. grid não tem esse problema. */
+  display: grid;
+  place-items: center;
   flex: 1;
   width: 100%;
   box-sizing: border-box;
@@ -1161,6 +1199,29 @@ button:focus-visible {
     border-radius: 4px;
   }
 
+  /* Transforma o botão de inspeção num botão flutuante (FAB) dentro da área de jogo */
+  #inspect-btn {
+    position: fixed;
+    bottom: 56px; /* Acima da barra de controles que tem 44px + margem */
+    right: 16px;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    font-size: 1.2rem !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+    z-index: 200;
+    background: var(--color-gold);
+    color: #0c2518;
+    border: none;
+  }
+  
+  #inspect-btn.active {
+    background: #0c2518;
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+  }
+
   .top-board-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1218,7 +1279,7 @@ button:focus-visible {
   }
 
   .word-card.title-card .word-card-text {
-    font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important;
+    font-size: clamp(0.62rem, 2.4vw, 0.75rem) !important;
     line-height: 1.1;
     padding: 0.15rem 0.1rem !important;
   }
@@ -1310,5 +1371,62 @@ button:focus-visible {
   
   .tableau-column {
     min-height: calc(var(--card-width) * 1.4 + 90px) !important;
+  }
+}
+
+/* ===== FEEDBACK VISUAL: ERRO (movimento inválido) ===== */
+@keyframes card-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px) rotate(-1deg); }
+  30% { transform: translateX(5px) rotate(1deg); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+}
+
+.word-card.move-rejected {
+  animation: card-shake 0.45s ease-out;
+  box-shadow: 0 0 0 3px var(--color-error), 0 4px 12px rgba(239, 83, 80, 0.35) !important;
+}
+
+/* Glow vermelho sutil no slot-alvo errado */
+.category-slot.reject-flash {
+  animation: slot-reject-pulse 0.5s ease-out;
+}
+
+@keyframes slot-reject-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 83, 80, 0.5); }
+  50% { box-shadow: 0 0 14px 4px rgba(239, 83, 80, 0.3); }
+  100% { box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3); }
+}
+
+/* ===== FEEDBACK VISUAL: ACERTO (movimento válido) ===== */
+@keyframes card-place-glow {
+  0% { box-shadow: 0 0 0 0 rgba(102, 187, 106, 0.6); }
+  50% { box-shadow: 0 0 18px 6px rgba(102, 187, 106, 0.3); }
+  100% { box-shadow: var(--card-shadow); }
+}
+
+.word-card.move-accepted {
+  animation: card-place-glow 0.5s ease-out;
+}
+
+/* Pulso verde no slot ao receber carta correta */
+.category-slot.accept-flash {
+  animation: slot-accept-pulse 0.5s ease-out;
+}
+
+@keyframes slot-accept-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(102, 187, 106, 0.6); }
+  50% { box-shadow: 0 0 16px 5px rgba(102, 187, 106, 0.25); }
+  100% { box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-card.move-rejected,
+  .word-card.move-accepted,
+  .category-slot.reject-flash,
+  .category-slot.accept-flash {
+    animation: none;
   }
 }

@@ -62,6 +62,39 @@ function findCardLocation(columns, cardId) {
 export function renderLevelBoard(container, levelState, level, categoriesMap, authorPhotos, progressStore, onLevelStatusChange, onStateChange, playDealAnimation = false, soundManager = null) {
   container.innerHTML = "";
 
+  /**
+   * Adiciona uma classe CSS temporária a um elemento para disparar uma
+   * animação de feedback (shake, glow). Remove automaticamente no fim
+   * da animação para que possa ser re-disparada.
+   * @param {string} cardId - id da carta (data-id) ou null
+   * @param {number|null} spotIndex - índice do slot de categoria ou null
+   * @param {"accepted"|"rejected"} type
+   */
+  function flashFeedback(cardId, spotIndex, type) {
+    const cardClass = type === "rejected" ? "move-rejected" : "move-accepted";
+    const slotClass = type === "rejected" ? "reject-flash" : "accept-flash";
+
+    if (cardId) {
+      const el = container.querySelector(`[data-id="${cardId}"]`);
+      if (el) {
+        el.classList.remove(cardClass);
+        // Force reflow para permitir re-trigger da animação
+        void el.offsetWidth;
+        el.classList.add(cardClass);
+        el.addEventListener("animationend", () => el.classList.remove(cardClass), { once: true });
+      }
+    }
+    if (spotIndex !== null) {
+      const slotEl = container.querySelector(`.category-slot[data-spot-index="${spotIndex}"]`);
+      if (slotEl) {
+        slotEl.classList.remove(slotClass);
+        void slotEl.offsetWidth;
+        slotEl.classList.add(slotClass);
+        slotEl.addEventListener("animationend", () => slotEl.classList.remove(slotClass), { once: true });
+      }
+    }
+  }
+
   // Estado do drag de toque (touch) para dispositivos móveis
   let touchActive = false;
   let touchCardId = null;
@@ -747,16 +780,19 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
             levelState.spotCategories[spotIndex] = null;
           } else {
             soundManager?.play("cardPlace");
+            flashFeedback(null, spotIndex, "accepted");
           }
         } else {
           // Já está aberta em outro lugar, rejeita sem consumir movimento
           selectedCardId = null;
           soundManager?.play("cardMove");
+          flashFeedback(cardId, spotIndex, "rejected");
         }
       } else {
         // Spot ocupado, rejeita sem consumir movimento
         selectedCardId = null;
         soundManager?.play("cardMove");
+        flashFeedback(cardId, spotIndex, "rejected");
       }
     } else {
       // Se for uma carta de palavra (base da pilha):
@@ -789,11 +825,13 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           levelState.spotCategories[spotIndex] = null;
         } else {
           soundManager?.play("cardPlace");
+          flashFeedback(null, spotIndex, "accepted");
         }
       } else {
         // Errada para esta categoria ou spot trancado, rejeita sem consumir movimento
         selectedCardId = null;
         soundManager?.play("cardMove");
+        flashFeedback(cardId, spotIndex, "rejected");
       }
     }
 
