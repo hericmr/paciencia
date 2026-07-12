@@ -341,24 +341,38 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   const wasteEl = document.createElement("div");
   wasteEl.className = "waste-slot";
   if (levelState.waste.length > 0) {
-    const topWasteCard = levelState.waste[levelState.waste.length - 1];
-    const cardEl = buildInteractiveCard(topWasteCard, authorPhotos, false, 0, () => {
-      selectedCardId = selectedCardId === topWasteCard.id ? null : topWasteCard.id;
-      onStateChange();
+    const startIdx = Math.max(0, levelState.waste.length - 3);
+    const visibleWaste = levelState.waste.slice(startIdx);
+    
+    visibleWaste.forEach((wasteCard, idx) => {
+      const isTop = idx === visibleWaste.length - 1;
+      const cardEl = buildInteractiveCard(wasteCard, authorPhotos, false, 0, () => {
+        if (!isTop) return;
+        selectedCardId = selectedCardId === wasteCard.id ? null : wasteCard.id;
+        onStateChange();
+      });
+      
+      cardEl.style.position = "absolute";
+      cardEl.style.left = `calc(${idx} * 15px)`;
+      cardEl.style.zIndex = `${idx}`;
+      
+      if (isTop) {
+        cardEl.setAttribute("draggable", "true");
+        cardEl.addEventListener("dragstart", (e) => {
+          e.dataTransfer?.setData("text/plain", wasteCard.id);
+          setTimeout(() => {
+            cardEl.classList.add("dragging-placeholder");
+          }, 0);
+        });
+        cardEl.addEventListener("dragend", () => {
+          cardEl.classList.remove("dragging-placeholder");
+        });
+        initTouchDrag(cardEl, wasteCard.id, -1, true);
+        wasteEl.setAttribute("aria-label", `Descarte. Carta do topo: ${wasteCard.word}.`);
+      }
+      
+      wasteEl.appendChild(cardEl);
     });
-    cardEl.setAttribute("draggable", "true");
-    cardEl.addEventListener("dragstart", (e) => {
-      e.dataTransfer?.setData("text/plain", topWasteCard.id);
-      setTimeout(() => {
-        cardEl.classList.add("dragging-placeholder");
-      }, 0);
-    });
-    cardEl.addEventListener("dragend", () => {
-      cardEl.classList.remove("dragging-placeholder");
-    });
-    initTouchDrag(cardEl, topWasteCard.id, -1, true);
-    wasteEl.appendChild(cardEl);
-    wasteEl.setAttribute("aria-label", `Descarte. Carta do topo: ${topWasteCard.word}.`);
   } else {
     wasteEl.className = "waste-slot empty";
     wasteEl.setAttribute("aria-label", "Descarte vazio.");

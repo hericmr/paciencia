@@ -268,7 +268,7 @@ body.inspect-mode-active .word-card:hover {
 /* Stock & Waste */
 /* Slots vazios no topo do tabuleiro (Stock, Waste e Categoria) */
 .stock-slot, .waste-slot, .category-slot {
-  background: #0b2215; /* Tom sólido de verde escuro ligeiramente mais suave */
+  background: #154228; /* Verde mais claro, próximo à cor de fundo */
   border: 1px solid rgba(255, 255, 255, 0.08); /* Borda sólida discreta */
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra interna mais suave */
   border-radius: var(--card-radius);
@@ -317,7 +317,7 @@ body.inspect-mode-active .word-card:hover {
 }
 
 .stock-slot.empty:hover, .waste-slot.empty:hover, .category-slot.closed:hover {
-  background: #0d2719;
+  background: #195232;
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -1325,27 +1325,31 @@ body.inspect-mode-active .word-card:hover {
     border-radius: 4px;
   }
 
-  /* Transforma o botão de inspeção num botão flutuante (FAB) dentro da área de jogo */
+  /* Botão de interrogação flutuante (FAB) na mesa do jogador */
   #inspect-btn {
-    position: fixed;
-    bottom: 56px; /* Acima da barra de controles que tem 44px + margem */
-    right: 16px;
-    width: 44px !important;
-    height: 44px !important;
+    position: absolute !important;
+    top: -60px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
     border-radius: 50% !important;
-    font-size: 1.2rem !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
     padding: 0 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
-    z-index: 200;
-    background: var(--color-gold);
-    color: #0c2518;
-    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+    z-index: 9999 !important;
+    background: var(--color-gold) !important;
+    color: #0c2518 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
-  
+
   #inspect-btn.active {
-    background: #0c2518;
-    color: var(--color-gold);
-    border: 2px solid var(--color-gold);
+    background: #0c2518 !important;
+    color: var(--color-gold) !important;
+    border: 2px solid var(--color-gold) !important;
   }
 
   .top-board-row {
