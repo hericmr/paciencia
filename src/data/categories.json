@@ -158,7 +158,7 @@
         "Visita domiciliar",
         "Estudo social",
         "Relatório social",
-        "Reunião",
+        "Reunião de rede",
         "Observação",
         "Escuta qualificada",
         "Diário de campo"
@@ -174,7 +174,7 @@
         "Visita domiciliar": "Permite conhecer as condições de vida e as relações no território. Não é fiscalização nem inspeção da intimidade: seu uso exige finalidade clara e respeito à privacidade.",
         "Estudo social": "Processo metodológico de conhecer e interpretar uma situação social em profundidade. É o processo; laudo e parecer são documentos que dele resultam.",
         "Relatório social": "Documento que descreve e interpreta uma situação atendida, com registro fundamentado. Difere do laudo, que é próprio da perícia e responde a quesitos.",
-        "Reunião": "Instrumento coletivo: socializa informações, organiza grupos e mobiliza. Lembra que o trabalho profissional não se esgota no atendimento individual.",
+        "Reunião de rede": "Instrumento coletivo: socializa informações, organiza grupos e mobiliza. Lembra que o trabalho profissional não se esgota no atendimento individual.",
         "Observação": "Apreensão intencional do real para além do que é dito: condições do território, relações, expressões não verbais. Alimenta o estudo social e o diário de campo.",
         "Escuta qualificada": "Escuta atenta, sem julgamento moral, que reconhece o/a usuário/a como sujeito de direitos e não como caso a ser corrigido.",
         "Diário de campo": "Registro sistemático de observações, impressões e análises do cotidiano profissional. Sustenta a dimensão investigativa e a sistematização da prática."
@@ -299,14 +299,14 @@
       "nome": "Marcos históricos da profissão",
       "eixo": "historia",
       "palavras": [
-        "Primeira escola de Serviço Social",
-        "Movimento de Reconceituação",
-        "Congresso da Virada",
-        "Currículo de 1982",
-        "Código de Ética vigente",
-        "Lei de Regulamentação",
-        "LOAS",
-        "Diretrizes Curriculares da ABEPSS"
+        "Primeira escola de Serviço Social (1936)",
+        "Movimento de Reconceituação (1965)",
+        "Congresso da Virada (1979)",
+        "Currículo (1982)",
+        "Código de Ética vigente (1993)",
+        "Lei de Regulamentação (1993)",
+        "LOAS (1993)",
+        "Diretrizes Curriculares da ABEPSS (1996)"
       ],
       "microtexto": "A Virada (III CBAS, 1979) é o divisor político da categoria. E 1993 é o ano-chave de apoio: Código de Ética, Lei de Regulamentação e LOAS nascem juntos — três pilares do projeto ético-político.",
       "confundeCom": [
@@ -314,14 +314,14 @@
       ],
       "cartaTitulo": "Marcos históricos da profissão",
       "explicacoesPalavras": {
-        "Primeira escola de Serviço Social": "1936, São Paulo: a primeira escola nasce ligada à Igreja Católica e à influência franco-belga, no marco do Serviço Social conservador de origem.",
-        "Movimento de Reconceituação": "Movimento latino-americano dos anos 1960: contesta o Serviço Social tradicional importado e busca uma profissão comprometida com a realidade do continente.",
-        "Congresso da Virada": "III CBAS, 1979, São Paulo: a base destitui a mesa oficial ligada à ditadura e a substitui por representantes dos trabalhadores. Divisor político da categoria.",
-        "Currículo de 1982": "Marco da formação: incorpora a teoria social crítica e a análise histórica da sociedade brasileira ao currículo mínimo dos cursos.",
-        "Código de Ética vigente": "1993 (Res. CFESS 273/93): consolida a direção crítica com a liberdade como valor central. Já passou por alterações pontuais, mas segue vigente.",
-        "Lei de Regulamentação": "Lei 8.662/93: regulamenta a profissão, define competências (art. 4º) e atribuições privativas (art. 5º) e organiza o conjunto CFESS/CRESS.",
-        "LOAS": "Lei 8.742/93: a assistência social vira política pública de seguridade, direito do cidadão e dever do Estado. Mesma safra de 1993 do Código e da Lei de Regulamentação.",
-        "Diretrizes Curriculares da ABEPSS": "1996: estruturam a formação em núcleos de fundamentos, tendo o trabalho e a questão social como eixos centrais."
+        "Primeira escola de Serviço Social (1936)": "1936, São Paulo: a primeira escola nasce ligada à Igreja Católica e à influência franco-belga, no marco do Serviço Social conservador de origem.",
+        "Movimento de Reconceituação (1965)": "Movimento latino-americano dos anos 1960: contesta o Serviço Social tradicional importado e busca uma profissão comprometida com a realidade do continente.",
+        "Congresso da Virada (1979)": "III CBAS, 1979, São Paulo: a base destitui a mesa oficial ligada à ditadura e a substitui por representantes dos trabalhadores. Divisor político da categoria.",
+        "Currículo (1982)": "Marco da formação: incorpora a teoria social crítica e a análise histórica da sociedade brasileira ao currículo mínimo dos cursos.",
+        "Código de Ética vigente (1993)": "1993 (Res. CFESS 273/93): consolida a direção crítica com a liberdade como valor central. Já passou por alterações pontuais, mas segue vigente.",
+        "Lei de Regulamentação (1993)": "Lei 8.662/93: regulamenta a profissão, define competências (art. 4º) e atribuições privativas (art. 5º) e organiza o conjunto CFESS/CRESS.",
+        "LOAS (1993)": "Lei 8.742/93: a assistência social vira política pública de seguridade, direito do cidadão e dever do Estado. Mesma safra de 1993 do Código e da Lei de Regulamentação.",
+        "Diretrizes Curriculares da ABEPSS (1996)": "1996: estruturam a formação em núcleos de fundamentos, tendo o trabalho e a questão social como eixos centrais."
       }
     },
     {
@@ -330,8 +330,8 @@
       "eixo": "teoria",
       "palavras": [
         "Modernizadora",
-        "Araxá",
-        "Teresópolis",
+        "Araxá (1967)",
+        "Teresópolis (1970)",
         "Reatualização do conservadorismo",
         "Fenomenologia",
         "Intenção de ruptura",
@@ -345,8 +345,8 @@
       "cartaTitulo": "Renovação e suas vertentes (Netto)",
       "explicacoesPalavras": {
         "Modernizadora": "Primeira vertente: adequa a profissão ao projeto desenvolvimentista da ditadura, com base teórica estrutural-funcionalista. Moderniza a técnica sem questionar a ordem.",
-        "Araxá": "1967: primeiro documento da vertente modernizadora, produzido em seminário do CBCISS. Busca definir teoria e metodologia para a profissão sem romper com o conservadorismo.",
-        "Teresópolis": "1970: aprofunda a perspectiva modernizadora com forte ênfase metodológica e operativa. Consolida a cientificização de perfil tecnicista.",
+        "Araxá (1967)": "1967: primeiro documento da vertente modernizadora, produzido em seminário do CBCISS. Busca definir teoria e metodologia para a profissão sem romper com o conservadorismo.",
+        "Teresópolis (1970)": "1970: aprofunda a perspectiva modernizadora com forte ênfase metodológica e operativa. Consolida a cientificização de perfil tecnicista.",
         "Reatualização do conservadorismo": "Segunda vertente: recupera o conservadorismo em novas bases, com apelo à pessoa, ao diálogo e à transformação individual. Documentos de Sumaré e Alto da Boa Vista.",
         "Fenomenologia": "Matriz teórica da reatualização do conservadorismo: a ênfase na vivência e no diálogo desloca a análise das estruturas sociais para o sujeito singular.",
         "Intenção de ruptura": "Terceira vertente: aproxima a profissão da tradição marxista e rompe com o conservadorismo. Nasce na academia e se torna hegemônica na categoria nos anos 1980.",

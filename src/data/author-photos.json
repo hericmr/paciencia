@@ -54,5 +54,65 @@
   "Crítica da economia política (O Capital)": {
     "photoUrl": "assets/authors/marx.webp",
     "photoCredit": "Foto de Karl Marx"
+  },
+  "Yazbek": {
+    "photoUrl": "assets/authors/yazbek.webp",
+    "photoCredit": "Foto: Maria Carmelita Yazbek"
+  },
+  "Código de Ética vigente (1993)": {
+    "photoUrl": "assets/authors/codigo_de_etica.webp",
+    "photoCredit": "Capa do Código de Ética"
+  },
+  "Congresso da Virada (1979)": {
+    "photoUrl": "assets/authors/congresso_da_virada.webp",
+    "photoCredit": "III CBAS"
+  },
+  "Conselho Tutelar": {
+    "photoUrl": "assets/authors/conselho_tutelar.webp",
+    "photoCredit": "Logo do Conselho Tutelar"
+  },
+  "Diário de campo": {
+    "photoUrl": "assets/authors/diario_de_campo.webp",
+    "photoCredit": "Ilustração"
+  },
+  "Entrevista": {
+    "photoUrl": "assets/authors/entrevista.webp",
+    "photoCredit": "Ilustração"
+  },
+  "Primeira escola de Serviço Social (1936)": {
+    "photoUrl": "assets/authors/escola_de_serviço_social.webp",
+    "photoCredit": "CEAS"
+  },
+  "60 anos ou mais": {
+    "photoUrl": "assets/authors/estatuto_da_pessoa_idosa.webp",
+    "photoCredit": "Capa Oficial"
+  },
+  "Juizado de Violência Doméstica": {
+    "photoUrl": "assets/authors/lei_maria_da_penha.webp",
+    "photoCredit": "Lei Maria da Penha"
+  },
+  "Medidas protetivas de urgência": {
+    "photoUrl": "assets/authors/lei_maria_da_penha.webp",
+    "photoCredit": "Lei Maria da Penha"
+  },
+  "Reunião de rede": {
+    "photoUrl": "assets/authors/reuniao_de_rede.webp",
+    "photoCredit": "Ilustração"
+  },
+  "SINASE": {
+    "photoUrl": "assets/authors/sinase.webp",
+    "photoCredit": "Logo Oficial"
+  },
+  "Visita domiciliar": {
+    "photoUrl": "assets/authors/visita_domiciliar.webp",
+    "photoCredit": "Ilustração"
+  },
+  "Doutrina da Proteção Integral": {
+    "photoUrl": "assets/authors/eca.webp",
+    "photoCredit": "ECA"
+  },
+  "Medidas protetivas (art. 101)": {
+    "photoUrl": "assets/authors/eca.webp",
+    "photoCredit": "ECA"
   }
 }

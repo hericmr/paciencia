@@ -34,13 +34,16 @@ export function buildRankingHtml(ranking, playerName, timeMs) {
             </li>`;
         })
         .join("")
-    : `<li class="ranking-row ranking-row--empty">Nenhum tempo registrado ainda para esta fase.</li>`;
+    : `<li class="ranking-row ranking-row--empty" style="justify-content: center; text-align: center; padding: 1.5rem 0.5rem; word-break: break-word;">Nenhum tempo registrado ainda para esta fase.</li>`;
+
+  const youHtml = timeMs != null
+    ? `<div class="overlay-ranking-you">Seu tempo nesta corrida: <strong>${formatTime(timeMs)}</strong></div>`
+    : "";
 
   return `
-    <div class="overlay-ranking">
-      <div class="overlay-ranking-title">Ranking — melhores tempos desta fase</div>
+    <div id="ranking-container" class="overlay-ranking">
       <ol class="ranking-list">${rows}</ol>
-      <div class="overlay-ranking-you">Seu tempo nesta corrida: <strong>${formatTime(timeMs)}</strong></div>
+      ${youHtml}
     </div>
   `;
 }

@@ -130,7 +130,46 @@ async function init() {
     updateMuteButton();
     startAmbientMusicWithRetry();
 
-    startLevel(levelsData[0].id);
+    try {
+      const mascotHtml = `
+        <div class="mascot-container">
+          <div class="speech-bubble">
+            <h2>Fala, assistente social!</h2>
+            <p>Prontes pra colocar o Serviço Social em jogo e revisar conteúdos? Confira o Top 10 da Fase ${levelsData[0].id}:</p>
+          </div>
+          <img src="assets/logo.webp" alt="Formiga Serviço Social" class="mascot-img">
+        </div>
+      `;
+      const loadingHtml = `<div id="ranking-container" style="color: var(--color-gold); padding: 1rem 0;">Buscando os melhores tempos...</div>`;
+
+      showStatusOverlay(
+        "",
+        "",
+        "Bora pro Jogo! 🐜",
+        levelsData[0].id,
+        null,
+        null,
+        mascotHtml + loadingHtml
+      );
+
+      fetchPhaseRanking(levelsData[0].id, 10)
+        .then((ranking) => {
+          const container = document.getElementById("ranking-container");
+          if (container) {
+            container.outerHTML = buildRankingHtml(ranking, null, null);
+          }
+        })
+        .catch((err) => {
+          console.error("Ranking inicial indisponível", err);
+          const container = document.getElementById("ranking-container");
+          if (container) {
+            container.innerHTML = "Ranking temporariamente indisponível.";
+          }
+        });
+    } catch (err) {
+      console.error("Ranking inicial indisponível", err);
+      startLevel(levelsData[0].id);
+    }
   } catch (error) {
     console.error("Erro ao inicializar o jogo:", error);
     if (gameRoot) {
@@ -285,25 +324,44 @@ async function checkLevelStatus() {
     const rankingHtml = await submitAndBuildRankingHtml(finishedLevel.id, timeMs);
 
     const nextLevel = levelsData.find((l) => l.id === finishedLevel.id + 1);
+    let mascotHtml;
     if (nextLevel) {
+      mascotHtml = `
+        <div class="mascot-container">
+          <div class="speech-bubble">
+            <h2>Aí sim, você deitou! 🔥</h2>
+            <p>Fase ${finishedLevel.id} concluída com estilo! O Serviço Social agradece. Bora amassar a próxima?</p>
+          </div>
+          <img src="assets/logo.webp" alt="Formiga Serviço Social" class="mascot-img">
+        </div>
+      `;
       showStatusOverlay(
-        "Fase concluída!",
-        `Parabéns! Você classificou todas as categorias da Fase ${finishedLevel.id} com sucesso. Pronto para a próxima?`,
-        `Ir para a Fase ${nextLevel.id}`,
+        "",
+        "",
+        `Mandar ver na Fase ${nextLevel.id}`,
         nextLevel.id,
         null,
         null,
-        rankingHtml
+        mascotHtml + rankingHtml
       );
     } else {
+      mascotHtml = `
+        <div class="mascot-container">
+          <div class="speech-bubble">
+            <h2>ZEROU O GAME! 🏆</h2>
+            <p>Absoluto cinema! Você destruiu em todas as categorias. Já pode até dar aula de Serviço Social!</p>
+          </div>
+          <img src="assets/logo.webp" alt="Formiga Serviço Social" class="mascot-img">
+        </div>
+      `;
       showStatusOverlay(
-        "Jogo Concluído!",
-        "Espetacular! Você classificou com sucesso todas as categorias de todas as fases!",
-        "Reiniciar Jogo",
+        "",
+        "",
+        "Jogar de novo",
         levelsData[0].id,
         null,
         null,
-        rankingHtml
+        mascotHtml + rankingHtml
       );
     }
     return;
@@ -379,8 +437,8 @@ function showStatusOverlay(title, message, buttonText, targetLevelId = null, sec
   overlay.id = "game-status-overlay";
   overlay.className = "game-status-overlay show";
   overlay.innerHTML = `
-    <h2 class="game-status-title">${title}</h2>
-    <p class="game-status-message">${message}</p>
+    ${title ? `<h2 class="game-status-title">${title}</h2>` : ""}
+    ${message ? `<p class="game-status-message">${message}</p>` : ""}
     ${extraHtml}
     <div class="game-status-actions">
       <button id="overlay-action-btn" type="button">${buttonText}</button>

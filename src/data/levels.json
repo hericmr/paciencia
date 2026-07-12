@@ -11,61 +11,68 @@
         "CAT-14",
         "CAT-08"
       ],
-      "cardsPerCategory": 5,
+      "cardsPerCategory": 6,
       "selectedWords": {
         "CAT-13": [
           "Iamamoto",
           "Netto",
           "Guerra",
           "Behring",
-          "Faleiros"
+          "Faleiros",
+          "Yazbek"
         ],
         "CAT-06": [
           "Entrevista",
           "Visita domiciliar",
           "Estudo social",
           "Relatório social",
-          "Diário de campo"
+          "Diário de campo",
+          "Reunião de rede"
         ],
         "CAT-11": [
-          "Congresso da Virada",
-          "LOAS",
-          "Lei de Regulamentação",
-          "Código de Ética vigente",
-          "Movimento de Reconceituação"
+          "Congresso da Virada (1979)",
+          "LOAS (1993)",
+          "Lei de Regulamentação (1993)",
+          "Código de Ética vigente (1993)",
+          "Movimento de Reconceituação (1965)",
+          "Primeira escola de Serviço Social (1936)"
         ],
         "CAT-07": [
           "CRAS",
           "PAIF",
           "SCFV",
           "Fortalecimento de vínculos",
-          "Cadastro Único"
+          "Cadastro Único",
+          "Prevenção de riscos"
         ],
         "CAT-12": [
-          "Araxá",
-          "Teresópolis",
+          "Araxá (1967)",
+          "Teresópolis (1970)",
           "Fenomenologia",
           "Intenção de ruptura",
-          "Modernizadora"
+          "Modernizadora",
+          "Reatualização do conservadorismo"
         ],
         "CAT-14": [
           "Totalidade",
           "Mediação",
           "Práxis",
           "Contradição",
-          "Questão social"
+          "Questão social",
+          "Historicidade"
         ],
         "CAT-08": [
           "CREAS",
           "PAEFI",
           "Direitos violados",
           "Acolhimento institucional",
-          "MSE em meio aberto"
+          "MSE em meio aberto",
+          "Abordagem social"
         ]
       },
-      "totalCards": 42,
+      "totalCards": 49,
       "columns": 4,
-      "moveLimit": 72,
+      "moveLimit": 96,
       "profundidadeTitulos": "embaralhado",
       "hint": null
     },
