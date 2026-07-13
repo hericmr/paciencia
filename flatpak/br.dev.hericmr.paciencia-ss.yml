@@ -40,5 +40,5 @@ modules:
       - type: git
         url: https://github.com/hericmr/paciencia.git
         tag: v0.1.0
-        commit: 8ee83d91956ada1a9f4f0968eccde49579b9f16a
+        commit: 05677d0eb76688cc596e5371576f5b1b4962eca0
       - ../src-tauri/cargo-sources.json
