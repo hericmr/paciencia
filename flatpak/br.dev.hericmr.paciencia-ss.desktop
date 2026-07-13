@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Serviço Social
+Comment=Jogo de cartas educativo sobre Serviço Social Brasileiro
+Exec=paciencia-ss
+Icon=br.dev.hericmr.paciencia-ss
+Categories=Game;Education;
+Terminal=false
+StartupWMClass=paciencia-ss
