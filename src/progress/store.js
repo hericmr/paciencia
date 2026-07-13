@@ -26,7 +26,7 @@ export function createMemoryStorage() {
  * Detecta se o localStorage do navegador está disponível e utilizável.
  * @returns {StorageLike}
  */
-export function detectStorage() {
+function detectStorage() {
   try {
     const testKey = "__paciencia_ss_test__";
     window.localStorage.setItem(testKey, "1");

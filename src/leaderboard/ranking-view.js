@@ -9,7 +9,7 @@ function escapeHtml(value) {
 }
 
 /** @param {number} ms */
-export function formatTime(ms) {
+function formatTime(ms) {
   const totalSeconds = Math.max(0, Math.round(ms / 1000));
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;

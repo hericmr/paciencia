@@ -37,7 +37,7 @@ export async function loadLevels(levelsUrl, categories) {
 /**
  * @param {CategoryData[]} categories
  */
-export function validateCategories(categories) {
+function validateCategories(categories) {
   if (!Array.isArray(categories) || categories.length === 0) {
     throw new Error("Categorias inválidas: nenhuma categoria encontrada");
   }
@@ -73,7 +73,7 @@ export function validateCategories(categories) {
  * @param {LevelData[]} levels
  * @param {CategoryData[]} categories
  */
-export function validateLevels(levels, categories) {
+function validateLevels(levels, categories) {
   if (!Array.isArray(levels) || levels.length === 0) {
     throw new Error("Níveis inválidos: nenhum nível encontrado");
   }

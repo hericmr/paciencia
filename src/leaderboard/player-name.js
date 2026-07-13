@@ -5,7 +5,7 @@
 const STORAGE_KEY = "paciencia_ss.leaderboard.playerName";
 
 /** @returns {string|null} */
-export function getSavedPlayerName() {
+function getSavedPlayerName() {
   try {
     return window.localStorage.getItem(STORAGE_KEY);
   } catch {

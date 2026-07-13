@@ -3,6 +3,38 @@ import { canPlaceInCategory, canMoveToTableauColumn } from "../engine/associatio
 import { showCategoryCompletePopup } from "./category-complete-popup.js";
 
 /**
+ * Ícone de formiga (SVG compartilhado entre o slot fechado e a carta-título).
+ * @param {string} className
+ * @returns {string}
+ */
+function antIconSvg(className) {
+  return `
+    <svg xmlns="http://www.w3.org/2000/svg" class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Corpo (Cabeça, Tórax, Abdômen) -->
+      <circle cx="12" cy="6" r="2" />
+      <circle cx="12" cy="11" r="2.5" />
+      <ellipse cx="12" cy="17" rx="2.2" ry="3" />
+
+      <!-- Antenas -->
+      <path d="M11 4.5 Q9 2 7 3" />
+      <path d="M13 4.5 Q15 2 17 3" />
+
+      <!-- Pernas Dianteiras -->
+      <path d="M10.5 10 C8 9 6 7 6 7" />
+      <path d="M13.5 10 C16 9 18 7 18 7" />
+
+      <!-- Pernas Médias -->
+      <path d="M9.5 11 H5" />
+      <path d="M14.5 11 H19" />
+
+      <!-- Pernas Traseiras -->
+      <path d="M10.5 12 C9 14 7 17 7 17" />
+      <path d="M13.5 12 C15 14 17 17 17 17" />
+    </svg>
+  `;
+}
+
+/**
  * @typedef {import("../engine/level.js").WordCard} WordCard
  * @typedef {import("../engine/level.js").TableauColumn} TableauColumn
  * @typedef {{
@@ -19,8 +51,6 @@ import { showCategoryCompletePopup } from "./category-complete-popup.js";
 
 /** @type {string|null} carta selecionada (id), para o fluxo clique+clique em telas de toque */
 let selectedCardId = null;
-
-
 
 /**
  * @param {TableauColumn} column
@@ -44,6 +74,26 @@ function findCardLocation(columns, cardId) {
     }
   }
   return null;
+}
+
+/**
+ * Início do grupo arrastável de uma carta-título: ela e todas as cartas
+ * contíguas da mesma categoria já viradas para cima abaixo dela na coluna
+ * (cartas ainda viradas para baixo não fazem parte do grupo revelado).
+ * Para carta de palavra, retorna o próprio índice.
+ * @param {TableauColumn} column
+ * @param {number} cardIndex
+ * @returns {number}
+ */
+function findSubStackStart(column, cardIndex) {
+  const card = column.cards[cardIndex].card;
+  let startIndex = cardIndex;
+  if (card.isTitleCard) {
+    while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId && column.cards[startIndex - 1].faceUp) {
+      startIndex--;
+    }
+  }
+  return startIndex;
 }
 
 /**
@@ -172,13 +222,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           const colEl = container.querySelector(`[data-col="${loc.colIndex}"]`);
           if (colEl) {
             const column = levelState.tableauColumns[loc.colIndex];
-            const card = column.cards[loc.cardIndex].card;
-            let startIndex = loc.cardIndex;
-            if (card.isTitleCard) {
-              while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId && column.cards[startIndex - 1].faceUp) {
-                startIndex--;
-              }
-            }
+            const startIndex = findSubStackStart(column, loc.cardIndex);
             for (let i = startIndex; i < column.cards.length; i++) {
               const cid = column.cards[i].card.id;
               const el = colEl.querySelector(`[data-id="${cid}"]`);
@@ -430,30 +474,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     if (!isOpen) {
       slotEl.setAttribute("aria-label", `Categoria ${index + 1}, fechada. Encontre e jogue a carta-título dela no tableau.`);
-      slotEl.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="slot-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Corpo (Cabeça, Tórax, Abdômen) -->
-          <circle cx="12" cy="6" r="2" />
-          <circle cx="12" cy="11" r="2.5" />
-          <ellipse cx="12" cy="17" rx="2.2" ry="3" />
-          
-          <!-- Antenas -->
-          <path d="M11 4.5 Q9 2 7 3" />
-          <path d="M13 4.5 Q15 2 17 3" />
-          
-          <!-- Pernas Dianteiras -->
-          <path d="M10.5 10 C8 9 6 7 6 7" />
-          <path d="M13.5 10 C16 9 18 7 18 7" />
-          
-          <!-- Pernas Médias -->
-          <path d="M9.5 11 H5" />
-          <path d="M14.5 11 H19" />
-          
-          <!-- Pernas Traseiras -->
-          <path d="M10.5 12 C9 14 7 17 7 17" />
-          <path d="M13.5 12 C15 14 17 17 17 17" />
-        </svg>
-      `;
+      slotEl.innerHTML = antIconSvg("slot-placeholder-icon");
     } else {
       slotEl.setAttribute("aria-label", `${category?.nome ?? categoryId}, aberta. ${cardsInSlot.length} de ${level.cardsPerCategory} cartas corretas.`);
       
@@ -532,13 +553,8 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         cardEl.setAttribute("draggable", "true");
         cardEl.addEventListener("dragstart", (e) => {
           e.dataTransfer?.setData("text/plain", entry.card.id);
-          
-          let startIndex = entryIndex;
-          if (entry.card.isTitleCard) {
-            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId && column.cards[startIndex - 1].faceUp) {
-              startIndex--;
-            }
-          }
+
+          const startIndex = findSubStackStart(column, entryIndex);
 
           // Oculta todas as cartas a partir deste índice para o drag do sub-stack
           setTimeout(() => {
@@ -550,12 +566,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
           }, 0);
         });
         cardEl.addEventListener("dragend", () => {
-          let startIndex = entryIndex;
-          if (entry.card.isTitleCard) {
-            while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === entry.card.categoryId && column.cards[startIndex - 1].faceUp) {
-              startIndex--;
-            }
-          }
+          const startIndex = findSubStackStart(column, entryIndex);
           for (let i = startIndex; i < column.cards.length; i++) {
             const cid = column.cards[i].card.id;
             const el = colEl.querySelector(`[data-id="${cid}"]`);
@@ -627,30 +638,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
    */
   function getCardIconHtml(card, photos) {
     if (card.isTitleCard) {
-      return `
-        <svg xmlns="http://www.w3.org/2000/svg" class="card-ant-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Corpo (Cabeça, Tórax, Abdômen) -->
-          <circle cx="12" cy="6" r="2" />
-          <circle cx="12" cy="11" r="2.5" />
-          <ellipse cx="12" cy="17" rx="2.2" ry="3" />
-          
-          <!-- Antenas -->
-          <path d="M11 4.5 Q9 2 7 3" />
-          <path d="M13 4.5 Q15 2 17 3" />
-          
-          <!-- Pernas Dianteiras -->
-          <path d="M10.5 10 C8 9 6 7 6 7" />
-          <path d="M13.5 10 C16 9 18 7 18 7" />
-          
-          <!-- Pernas Médias -->
-          <path d="M9.5 11 H5" />
-          <path d="M14.5 11 H19" />
-          
-          <!-- Pernas Traseiras -->
-          <path d="M10.5 12 C9 14 7 17 7 17" />
-          <path d="M13.5 12 C15 14 17 17 17 17" />
-        </svg>
-      `;
+      return antIconSvg("card-ant-icon");
     }
     const photo = photos[card.word];
     return photo ? `<img class="card-photo-thumb" src="${photo.photoUrl}" alt="" />` : "";
@@ -724,19 +712,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       cardIndex = loc.cardIndex;
       card = column.cards[cardIndex].card;
       
-      if (card.isTitleCard) {
-        // Coleta a carta-título e todas as cartas da mesma categoria contíguas
-        // e já viradas abaixo dela no tableau — cartas ainda viradas para
-        // baixo não fazem parte do grupo revelado e não podem ser arrastadas.
-        let startIndex = cardIndex;
-        while (startIndex > 0 && column.cards[startIndex - 1].card.categoryId === card.categoryId && column.cards[startIndex - 1].faceUp) {
-          startIndex--;
-        }
-        subStack = column.cards.slice(startIndex);
-        cardIndex = startIndex; // Garante que a remoção ocorra a partir da base do grupo
-      } else {
-        subStack = column.cards.slice(cardIndex);
-      }
+      // Para carta-título, inclui as cartas da mesma categoria contíguas e já
+      // viradas abaixo dela no tableau — cartas ainda viradas para baixo não
+      // fazem parte do grupo revelado e não podem ser arrastadas.
+      const startIndex = findSubStackStart(column, cardIndex);
+      subStack = column.cards.slice(startIndex);
+      cardIndex = startIndex; // Garante que a remoção ocorra a partir da base do grupo
     } else {
       const topWasteCard = levelState.waste?.[levelState.waste.length - 1];
       if (topWasteCard && topWasteCard.id === cardId) {
@@ -811,7 +792,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     } else {
       // Se for uma carta de palavra (base da pilha):
       // Só aceita se o spot tiver sido aberto para aquela mesma categoria
-      if (assignedCategoryId === card.categoryId && levelState.openCategoryIds.has(card.categoryId)) {
+      if (canPlaceInCategory(card, assignedCategoryId, levelState.openCategoryIds)) {
         levelState.movesRemaining -= 1;
         selectedCardId = null;
 
