@@ -59,7 +59,7 @@ Cada categoria tem:
 ## Eixo: Técnico-operativo
 
 ### CAT-04 — Atribuições privativas (Lei 8.662/93, art. 5º)
-**Palavras**: Magistério em Serviço Social, Direção de unidade de ensino de SS, Fiscalização do exercício profissional, Parecer sobre matéria de Serviço Social, Supervisão direta de estágio em SS, Coordenação de curso de SS, Perícia sobre matéria de SS
+**Palavras**: Magistério em Serviço Social, Direção de unidade de ensino de SS, Fiscalização do exercício profissional (CFESS/CRESS), Parecer sobre matéria de Serviço Social, Supervisão direta de estágio em SS, Coordenação de curso de SS, Perícia sobre matéria de SS
 **Microtexto**: Privativas = SÓ assistente social pode (art. 5º). O truque para memorizar: quase todas contêm "de Serviço Social" no enunciado — dizem respeito à própria profissão.
 **Confunde com**: CAT-05
 
@@ -204,7 +204,23 @@ O jogo possui 3 fases ativas configuradas em `levels.json`:
 * **Categorias (7)**: `CAT-01` (Princípios do Código), `CAT-02` (Direitos), `CAT-03` (Vedações), `CAT-04` (Atribuições Privativas), `CAT-05` (Competências), `CAT-09` (Seguridade Social), `CAT-10` (SUAS).
 * **Cartas por categoria**: 6 (1 título + 6 palavras, totalizando 49 cartas).
 * **Configurações**: 4 colunas, `moveLimit: 84`, profundidade de títulos "embaralhado".
-* **Dica**: *"Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."*
+* **Dica**: *"No Código de Ética, direitos são o art. 2º e vedações o art. 4º. Na Lei 8.662/93, competências (art. 4º) são partilháveis; atribuições privativas (art. 5º) são exclusivas."*
+
+> ✅ **Revisado (2026-07-13):** ajustada a seleção (`selectedWords`) do
+> Nível 2 para eliminar cartas ambíguas entre categorias:
+> - `CAT-01`: "Equidade" → "Nova ordem societária" (colidia com "Equidade
+>   no custeio" da `CAT-09`).
+> - `CAT-02`: "Aprimoramento profissional" → "Inviolabilidade do local de
+>   trabalho" (colidia conceitualmente com "Qualidade dos serviços" da
+>   `CAT-01`).
+> - `CAT-09`: "Caráter democrático da gestão" → "Seletividade e
+>   distributividade" (excesso de cartas "democráticas" entre `CAT-01`,
+>   `CAT-09` e `CAT-10`).
+> - `CAT-10`: "Participação popular" → "Primazia do Estado" (mesmo
+>   motivo acima).
+>
+> Todas as palavras trocadas já existiam no pool `palavras` da respectiva
+> categoria em `categories.json` — nenhuma palavra nova foi criada.
 
 ### Nível 3 — Sociojurídico e Questão Social
 * **Categorias (8)**: `CAT-15` (Laudo/Parecer), `CAT-18` (SGD/ECA), `CAT-19` (Medidas Socioeducativas), `CAT-20` (Violências Criança/Adolescente), `CAT-21` (Lei Maria da Penha), `CAT-22` (Pessoa Idosa), `CAT-23` (Famílias), `CAT-24` (Gênero/Raça/Diversidade).

@@ -92,7 +92,7 @@
         "CAT-01": [
           "Liberdade",
           "Democracia",
-          "Equidade",
+          "Nova ordem societária",
           "Justiça social",
           "Cidadania",
           "Defesa intransigente dos direitos humanos"
@@ -103,7 +103,7 @@
           "Sigilo profissional",
           "Desagravo público",
           "Pronunciamento público",
-          "Aprimoramento profissional"
+          "Inviolabilidade do local de trabalho"
         ],
         "CAT-03": [
           "Práticas discriminatórias",
@@ -115,7 +115,7 @@
         ],
         "CAT-04": [
           "Magistério em Serviço Social",
-          "Fiscalização do exercício profissional",
+          "Fiscalização do exercício profissional (CFESS/CRESS)",
           "Parecer sobre matéria de Serviço Social",
           "Perícia sobre matéria de SS",
           "Direção de unidade de ensino de SS",
@@ -135,14 +135,14 @@
           "Assistência social",
           "Equidade no custeio",
           "Universalidade da cobertura",
-          "Caráter democrático da gestão"
+          "Seletividade e distributividade"
         ],
         "CAT-10": [
           "Descentralização político-administrativa",
           "Matricialidade sociofamiliar",
           "Territorialização",
           "Comando único",
-          "Participação popular",
+          "Primazia do Estado",
           "Controle social"
         ]
       },
@@ -150,7 +150,7 @@
       "columns": 4,
       "moveLimit": 96,
       "profundidadeTitulos": "embaralhado",
-      "hint": "Dica: Condições e direitos (art. 2º) vs Vedações (art. 4º/5º) e Competências (art. 4º) vs Atribuições Privativas (art. 5º)."
+      "hint": "Dica: No Código de Ética, direitos são o art. 2º e vedações o art. 4º. Na Lei 8.662/93, competências (art. 4º) são partilháveis; atribuições privativas (art. 5º) são exclusivas."
     },
     {
       "id": 3,
