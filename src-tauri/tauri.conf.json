@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "paciencia-ss",
+  "version": "0.1.0",
+  "identifier": "br.dev.hericmr.paciencia-ss",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:8000",
+    "beforeDevCommand": {
+      "script": "python3 -m http.server 8000",
+      "cwd": "..",
+      "wait": false
+    },
+    "beforeBuildCommand": {
+      "script": "node scripts/prepare-desktop-dist.mjs",
+      "cwd": ".."
+    }
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Serviço Social",
+        "width": 1024,
+        "height": 768,
+        "minWidth": 640,
+        "minHeight": 480,
+        "resizable": true,
+        "fullscreen": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "appimage"],
+    "category": "EducationalGame",
+    "shortDescription": "Jogo de cartas educativo sobre Serviço Social Brasileiro",
+    "longDescription": "Jogo de categorização e associações sobre o Serviço Social Brasileiro: conceitos, autores/as, marcos históricos e os princípios do Código de Ética de 1993 (CFESS/CRESS).",
+    "linux": {
+      "deb": {
+        "section": "games",
+        "desktopTemplate": "paciencia-ss.desktop.hbs"
+      }
+    },
+    "icon": [
+      "icons/16x16.png",
+      "icons/24x24.png",
+      "icons/32x32.png",
+      "icons/48x48.png",
+      "icons/64x64.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/256x256.png",
+      "icons/512x512.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

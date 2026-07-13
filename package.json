@@ -6,6 +6,12 @@
   "description": "Jogo de paciência educativo sobre Serviço Social Brasileiro",
   "scripts": {
     "test": "node --test tests/",
-    "serve": "python3 -m http.server 8000"
+    "serve": "python3 -m http.server 8000",
+    "tauri": "tauri",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4"
   }
 }
