@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>br.dev.hericmr.paciencia-ss</id>
+  <id>io.github.hericmr.paciencia-ss</id>
   <name>Serviço Social</name>
   <summary>Jogo de cartas educativo sobre Serviço Social Brasileiro</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
-  <developer id="br.dev.hericmr">
+  <developer id="io.github.hericmr">
     <name>hericmr</name>
   </developer>
 
@@ -23,7 +23,7 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">br.dev.hericmr.paciencia-ss.desktop</launchable>
+  <launchable type="desktop-id">io.github.hericmr.paciencia-ss.desktop</launchable>
 
   <screenshots>
     <screenshot type="default">
@@ -39,6 +39,11 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="0.1.1" date="2026-07-13">
+      <description>
+        <p>Corrige o identificador do app para o esquema io.github.*, verificável pelo Flathub.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-07-12">
       <description>
         <p>Primeira versão empacotada como app de desktop Linux.</p>
