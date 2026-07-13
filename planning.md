@@ -53,3 +53,44 @@ Este documento descreve as etapas necessárias para transformar o jogo web atual
     `v*` é empurrada. Desacoplado do GitHub Pages (que só reage a push na
     `main`) — ainda não testado (precisa da primeira tag).
   - Flathub/Snap Store: não iniciado.
+
+## Fase 5: Editor de Baralho (ferramenta do mantenedor)
+- [x] **Spec-kit completo:** `specs/003-editor-de-baralho/` (spec.md,
+  plan.md, research.md, data-model.md, contracts/editor-contract.md,
+  tasks.md) — feature planejada e implementada seguindo o fluxo
+  spec → plan → tasks do projeto.
+- [x] **Editor visual local:** `tools/deck-editor/` (HTML+JS puro, sem
+  build step, fora do bundle Tauri e sem link na tela do jogo). Usa File
+  System Access API (só Chrome/Edge) para ler/gravar
+  `src/data/categories.json` e `src/data/author-photos.json` direto na
+  pasta do projeto.
+- [x] **Gestão de imagens:** seleção/drag-and-drop de imagem por carta,
+  redimensionamento via `<canvas>` (256px no lado maior — ver
+  `research.md`, Decisão 1) e exportação em WebP (`< 50 KB`, com redução
+  progressiva de qualidade se necessário). Novas imagens vão em
+  `assets/cards/<categoryId>__<slug-da-palavra>.webp`.
+- [x] **Proveniência obrigatória:** autor, licença e URL do Wikimedia
+  Commons exigidos quando a imagem é marcada como foto de pessoa real
+  (campos aditivos em `author-photos.json`, retro-compatíveis).
+- [x] **Edição de conteúdo:** formulário por categoria (nome, carta-título,
+  micro-texto com contador de 280 caracteres, palavras, confundeCom,
+  explicações por palavra), validado reaproveitando
+  `validateCategories` de `src/data/loader.js` (re-exportada para esse
+  fim) — nunca duplicando a regra.
+- [x] **Testes:** `tests/tools/deck-editor.test.js` cobre as funções puras
+  (slug/id de carta, redimensionamento, validação de metadados) — 60
+  testes passando no total (`npm test`).
+- [x] **Editor de carta unificado (feedback pós-teste manual):** palavra
+  (renomeável), explicação, imagem e crédito/licença editados juntos num
+  só modal por carta, em vez de imagem e texto em telas separadas.
+- [x] **Dashboard de categorias + criação de categoria nova (2º
+  feedback):** a tela inicial mostra todas as categorias com contagem de
+  palavras e cobertura de imagem; botão "+ Nova categoria" cria uma
+  categoria vazia (só em memória até "Salvar categoria" validar).
+- [x] **Pasta lembrada entre sessões (3º feedback):** o handle da pasta
+  do projeto é salvo no IndexedDB do navegador — reconecta sozinho (ou
+  com 1 clique) nas próximas visitas, sem reabrir o seletor de pastas.
+- [ ] **Migração do acervo legado:** `assets/authors/*.webp` (imagens já
+  existentes) continuam fora do novo diretório `assets/cards/` —
+  consolidação fica para uma tarefa futura, fora do escopo desta feature
+  (ver `research.md`, Decisão 4).

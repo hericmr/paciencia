@@ -37,7 +37,7 @@ export async function loadLevels(levelsUrl, categories) {
 /**
  * @param {CategoryData[]} categories
  */
-function validateCategories(categories) {
+export function validateCategories(categories) {
   if (!Array.isArray(categories) || categories.length === 0) {
     throw new Error("Categorias inválidas: nenhuma categoria encontrada");
   }

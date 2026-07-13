@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editor de Baralho — Paciência SS (ferramenta do mantenedor)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="editor.css" />
+</head>
+<body>
+  <header class="editor-header">
+    <h1>Editor de Baralho</h1>
+    <p class="tool-warning">
+      Ferramenta interna do mantenedor — não faz parte do jogo e não é
+      incluída na versão desktop. Ver <code>specs/003-editor-de-baralho/</code>.
+    </p>
+    <button id="open-folder-btn" type="button">Abrir pasta do projeto</button>
+    <button id="change-folder-btn" type="button" class="change-folder-btn" hidden>Trocar pasta</button>
+    <span id="folder-status" class="folder-status" aria-live="polite"></span>
+  </header>
+
+  <div id="unsupported-warning" class="unsupported-warning" role="alert" hidden>
+    Este editor precisa da File System Access API (<code>showDirectoryPicker</code>),
+    disponível em Chrome, Edge e Opera de desktop. Abra esta página em um
+    desses navegadores para continuar.
+  </div>
+
+  <main id="app-root" hidden>
+    <div class="category-sidebar">
+      <button id="new-category-btn" type="button" class="new-category-btn">+ Nova categoria</button>
+      <nav id="category-grid" class="category-grid" aria-label="Categorias do baralho"></nav>
+    </div>
+
+    <section id="category-detail" class="category-detail" hidden>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="cards" role="tab" aria-selected="true">Cartas</button>
+        <button type="button" class="tab-btn" data-tab="content" role="tab" aria-selected="false">Conteúdo</button>
+      </div>
+
+      <div id="tab-cards" class="tab-panel" role="tabpanel"></div>
+      <div id="tab-content" class="tab-panel" role="tabpanel" hidden></div>
+    </section>
+  </main>
+
+  <div id="card-editor-modal" class="modal-overlay" hidden>
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="card-editor-title">
+      <h2 id="card-editor-title">Editar carta</h2>
+      <p id="card-editor-category" class="image-editor-word"></p>
+
+      <form id="card-editor-form" class="metadata-form">
+        <label for="card-word-input">Palavra</label>
+        <input id="card-word-input" type="text" required />
+
+        <label for="card-explicacao-textarea">Explicação desta palavra</label>
+        <textarea id="card-explicacao-textarea" rows="3"></textarea>
+
+        <div class="image-preview-row">
+          <figure class="image-preview">
+            <figcaption>Atual</figcaption>
+            <img id="current-image-preview" alt="Imagem atual da carta" />
+            <span id="current-image-placeholder" class="image-placeholder">Sem imagem</span>
+          </figure>
+          <figure class="image-preview">
+            <figcaption>Nova (redimensionada, WebP)</figcaption>
+            <canvas id="resize-canvas" width="256" height="256"></canvas>
+            <span id="new-image-size" class="image-size-label"></span>
+          </figure>
+        </div>
+
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button"
+             aria-label="Arraste uma imagem aqui ou clique para selecionar um arquivo">
+          Arraste uma imagem aqui, ou
+          <label class="file-input-label">
+            escolha um arquivo
+            <input id="file-input" type="file" accept="image/*" />
+          </label>
+        </div>
+
+        <label for="photo-credit-input">Crédito (photoCredit) — obrigatório se houver imagem</label>
+        <input id="photo-credit-input" type="text" />
+
+        <label class="checkbox-label">
+          <input id="real-person-checkbox" type="checkbox" />
+          Esta imagem é foto de uma pessoa real
+        </label>
+
+        <div id="provenance-fields" class="provenance-fields">
+          <label for="author-input">Autor da foto</label>
+          <input id="author-input" type="text" />
+
+          <label for="license-input">Licença</label>
+          <input id="license-input" type="text" placeholder="ex.: CC BY-SA 4.0" />
+
+          <label for="commons-url-input">URL do arquivo no Wikimedia Commons</label>
+          <input id="commons-url-input" type="url" placeholder="https://commons.wikimedia.org/wiki/File:..." />
+        </div>
+
+        <div id="card-form-errors" class="form-errors" aria-live="polite"></div>
+
+        <div class="modal-actions">
+          <button id="save-card-btn" type="submit" disabled>Salvar carta</button>
+          <button id="cancel-card-btn" type="button">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="new-category-modal" class="modal-overlay" hidden>
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="new-category-title">
+      <h2 id="new-category-title">Nova categoria</h2>
+      <form id="new-category-form" class="metadata-form">
+        <label for="new-category-id">Id (ex.: CAT-25 ou MRX-09)</label>
+        <input id="new-category-id" type="text" required placeholder="CAT-25" />
+
+        <label for="new-category-nome">Nome</label>
+        <input id="new-category-nome" type="text" required />
+
+        <label for="new-category-eixo">Eixo</label>
+        <input id="new-category-eixo" type="text" placeholder="ex.: etica, tecnica, politica_social, marxismo" />
+
+        <div id="new-category-errors" class="form-errors" aria-live="polite"></div>
+
+        <div class="modal-actions">
+          <button id="create-category-btn" type="submit">Criar e editar</button>
+          <button id="cancel-new-category-btn" type="button">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="global-status" class="global-status" aria-live="polite"></div>
+
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

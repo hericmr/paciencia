@@ -84,6 +84,17 @@ micro-texto deve ser rastreável a uma fonte primária (legislação, resoluçã
 do CFESS, obra original citada). O status de revisão de cada carta está em
 `CONTEUDO_CARTAS.md`.
 
+### Ferramenta de curadoria de conteúdo (mantenedor)
+
+`tools/deck-editor/` é um editor visual local, só para quem mantém o jogo
+(não faz parte do jogo em si nem do bundle desktop): permite trocar a
+imagem de uma carta (redimensiona e converte para WebP no próprio
+navegador) e editar os campos de uma categoria em `categories.json` sem
+mexer no JSON à mão. Requer Chrome/Edge (usa a File System Access API).
+Sirva normalmente com `npm run serve` e acesse
+`http://localhost:8000/tools/deck-editor/`. Ver
+`specs/003-editor-de-baralho/`.
+
 ## Contribuindo
 
 Contribuições de código e de conteúdo (novas categorias, revisão conceitual,
