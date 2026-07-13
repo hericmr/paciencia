@@ -114,5 +114,17 @@
   "Medidas protetivas (art. 101)": {
     "photoUrl": "assets/authors/eca.webp",
     "photoCredit": "ECA"
+  },
+  "Maria Lúcia Silva Barroco": {
+    "photoUrl": "assets/authors/barroco.webp",
+    "photoCredit": "Foto de Maria Lúcia Silva Barroco"
+  },
+  "Maria Lúcia Martinelli": {
+    "photoUrl": "assets/authors/maria_lucia_martinelli.webp",
+    "photoCredit": "Foto de Maria Lúcia Martinelli"
+  },
+  "István Mészáros": {
+    "photoUrl": "assets/authors/meszaros.webp",
+    "photoCredit": "Foto de István Mészáros"
   }
 }
