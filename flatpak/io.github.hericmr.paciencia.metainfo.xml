@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.hericmr.paciencia-ss</id>
+  <id>io.github.hericmr.paciencia</id>
   <name>Serviço Social</name>
   <summary>Jogo de cartas educativo sobre Serviço Social Brasileiro</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -23,7 +23,7 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">io.github.hericmr.paciencia-ss.desktop</launchable>
+  <launchable type="desktop-id">io.github.hericmr.paciencia.desktop</launchable>
 
   <screenshots>
     <screenshot type="default">

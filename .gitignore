@@ -2,3 +2,5 @@
 node_modules/
 dist/
 .flatpak-builder/
+/repo/
+/builddir/
