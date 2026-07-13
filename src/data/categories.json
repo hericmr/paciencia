@@ -868,7 +868,7 @@
     },
     {
       "id": "MRX-07",
-      "nome": "Mészáros e o sistema do capital",
+      "nome": "Mészáros",
       "eixo": "marxismo",
       "palavras": [
         "Crise estrutural do capital",
@@ -881,10 +881,10 @@
       ],
       "microtexto": "Mészáros distingue capital de capitalismo: superar o capitalismo sem erradicar o capital mantém o sociometabolismo da dominação. E a crise aberta nos anos 1970 é estrutural, não cíclica.",
       "confundeCom": [
-        "MRX-06",
-        "MRX-05"
+        "MRX-05",
+        "MRX-06"
       ],
-      "cartaTitulo": "Mészáros e o sistema do capital",
+      "cartaTitulo": "Mészáros",
       "explicacoesPalavras": {
         "Crise estrutural do capital": "Aberta nos anos 1970: contínua, universal e de longo prazo, atinge a totalidade do sistema e não apenas um setor ou país. Difere das crises cíclicas, que eram parciais e passageiras.",
         "Sistema sociometabólico do capital": "Modo de controle da reprodução social fundado no capital, no trabalho alienado e no Estado: um sociometabolismo que subordina todas as esferas da vida à lógica da expansão.",

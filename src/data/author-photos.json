@@ -126,5 +126,29 @@
   "István Mészáros": {
     "photoUrl": "assets/authors/meszaros.webp",
     "photoCredit": "Foto de István Mészáros"
+  },
+  "Estudo social": {
+    "photoUrl": "assets/cards/cat-06__estudo-social.webp",
+    "photoCredit": "Practising Social Work Research - University of Toronto Press"
+  },
+  "Relatório social": {
+    "photoUrl": "assets/cards/cat-06__relatorio-social.webp",
+    "photoCredit": "nãosei"
+  },
+  "Observação": {
+    "photoUrl": "assets/cards/cat-06__observacao.webp",
+    "photoCredit": "?"
+  },
+  "Escuta qualificada": {
+    "photoUrl": "assets/cards/cat-06__escuta-qualificada.webp",
+    "photoCredit": "?"
+  },
+  "Prevenção de riscos": {
+    "photoUrl": "assets/cards/cat-07__prevencao-de-riscos.webp",
+    "photoCredit": "ia"
+  },
+  "Fortalecimento de vínculos": {
+    "photoUrl": "assets/cards/cat-07__fortalecimento-de-vinculos.webp",
+    "photoCredit": "?"
   }
 }
