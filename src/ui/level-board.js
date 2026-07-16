@@ -3,35 +3,13 @@ import { canPlaceInCategory, canMoveToTableauColumn } from "../engine/associatio
 import { showCategoryCompletePopup } from "./category-complete-popup.js";
 
 /**
- * Ícone de formiga (SVG compartilhado entre o slot fechado e a carta-título).
+ * Ícone de formiga (imagem compartilhada entre o slot fechado e a carta-título),
+ * recortado como máscara CSS pra herdar a cor dourada do tema via background-color.
  * @param {string} className
  * @returns {string}
  */
-function antIconSvg(className) {
-  return `
-    <svg xmlns="http://www.w3.org/2000/svg" class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <!-- Corpo (Cabeça, Tórax, Abdômen) -->
-      <circle cx="12" cy="6" r="2" />
-      <circle cx="12" cy="11" r="2.5" />
-      <ellipse cx="12" cy="17" rx="2.2" ry="3" />
-
-      <!-- Antenas -->
-      <path d="M11 4.5 Q9 2 7 3" />
-      <path d="M13 4.5 Q15 2 17 3" />
-
-      <!-- Pernas Dianteiras -->
-      <path d="M10.5 10 C8 9 6 7 6 7" />
-      <path d="M13.5 10 C16 9 18 7 18 7" />
-
-      <!-- Pernas Médias -->
-      <path d="M9.5 11 H5" />
-      <path d="M14.5 11 H19" />
-
-      <!-- Pernas Traseiras -->
-      <path d="M10.5 12 C9 14 7 17 7 17" />
-      <path d="M13.5 12 C15 14 17 17 17 17" />
-    </svg>
-  `;
+function antIconHtml(className) {
+  return `<div class="${className} ant-icon-mask" role="img" aria-hidden="true"></div>`;
 }
 
 /**
@@ -474,7 +452,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
 
     if (!isOpen) {
       slotEl.setAttribute("aria-label", `Categoria ${index + 1}, fechada. Encontre e jogue a carta-título dela no tableau.`);
-      slotEl.innerHTML = antIconSvg("slot-placeholder-icon");
+      slotEl.innerHTML = antIconHtml("category-slot-ant-icon");
     } else {
       slotEl.setAttribute("aria-label", `${category?.nome ?? categoryId}, aberta. ${cardsInSlot.length} de ${level.cardsPerCategory} cartas corretas.`);
       
@@ -638,7 +616,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
    */
   function getCardIconHtml(card, photos) {
     if (card.isTitleCard) {
-      return antIconSvg("card-ant-icon");
+      return antIconHtml("card-ant-icon");
     }
     const photo = photos[card.word];
     return photo ? `<img class="card-photo-thumb" src="${photo.photoUrl}" alt="" />` : "";

@@ -49,11 +49,6 @@ let isFreshDeal = false;
 let isInspectMode = false;
 /** timestamp (Date.now()) de quando a fase atual começou, para o ranking */
 let phaseStartedAt = 0;
-/** timestamp (Date.now()) do último movimento/ação no tabuleiro, usado pelo pulso de destaque do botão "?" */
-let lastBoardActivityAt = Date.now();
-/** true assim que o jogador abre o botão "?" pela primeira vez na sessão — desliga o pulso de destaque pro resto da sessão */
-let hasOpenedInspectHint = false;
-const INSPECT_IDLE_HINT_MS = 15000;
 /** último valor exibido na bandeirola de movimentos, pra saber quando disparar a animação de "bump" */
 let lastDisplayedMoves = null;
 
@@ -82,9 +77,6 @@ async function init() {
     });
 
     inspectBtn?.addEventListener("click", () => {
-      hasOpenedInspectHint = true;
-      inspectBtn.classList.remove("pulse-hint");
-
       isInspectMode = !isInspectMode;
       if (isInspectMode) {
         inspectBtn.setAttribute("aria-pressed", "true");
@@ -96,15 +88,6 @@ async function init() {
         document.body.classList.remove("inspect-mode-active");
       }
     });
-
-    // Pulso de destaque no botão "?": acende após 15s sem movimentos no
-    // tabuleiro, só na primeira vez da sessão (antes do jogador já ter aberto
-    // o botão), pra sinalizar que ali tem conteúdo pra explorar.
-    setInterval(() => {
-      if (!inspectBtn || hasOpenedInspectHint || isInspectMode) return;
-      const idleFor = Date.now() - lastBoardActivityAt;
-      inspectBtn.classList.toggle("pulse-hint", idleFor >= INSPECT_IDLE_HINT_MS);
-    }, 1000);
 
     // Intercepta cliques nas cartas para o modo inspeção antes do level-board processar o movimento
     gameRoot?.addEventListener("click", (e) => {
@@ -254,9 +237,6 @@ function startLevel(levelId) {
 
 function updateUI() {
   if (!gameRoot || !levelState || !currentLevel) return;
-
-  lastBoardActivityAt = Date.now();
-  inspectBtn?.classList.remove("pulse-hint");
 
   if (isFreshDeal) soundManager.play("dealShuffle");
 
