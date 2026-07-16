@@ -166,5 +166,13 @@
   "Saúde": {
     "photoUrl": "assets/cards/cat-09__saude.webp",
     "photoCredit": "a"
+  },
+  "Martinelli": {
+    "photoUrl": "assets/cards/cat-13__martinelli.webp",
+    "photoCredit": "a"
+  },
+  "Barroco": {
+    "photoUrl": "assets/cards/cat-13__barroco.webp",
+    "photoCredit": "a"
   }
 }
