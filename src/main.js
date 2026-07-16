@@ -26,6 +26,8 @@ const newGameBtn = document.getElementById("new-game-btn");
 const reviewModeBtn = document.getElementById("review-mode-btn");
 const inspectBtn = document.getElementById("inspect-btn");
 const muteBtn = document.getElementById("mute-btn");
+const movesRibbon = document.getElementById("moves-ribbon");
+const movesRibbonValue = document.getElementById("moves-ribbon-value");
 
 // Dados e stores globais
 /** @type {import("./data/loader.js").CategoryData[]} */
@@ -52,6 +54,8 @@ let lastBoardActivityAt = Date.now();
 /** true assim que o jogador abre o botão "?" pela primeira vez na sessão — desliga o pulso de destaque pro resto da sessão */
 let hasOpenedInspectHint = false;
 const INSPECT_IDLE_HINT_MS = 15000;
+/** último valor exibido na bandeirola de movimentos, pra saber quando disparar a animação de "bump" */
+let lastDisplayedMoves = null;
 
 async function init() {
   try {
@@ -256,11 +260,18 @@ function updateUI() {
 
   if (isFreshDeal) soundManager.play("dealShuffle");
 
-  const movesCounter = document.getElementById("moves-counter");
-  if (movesCounter) {
-    movesCounter.textContent = `Movimentos: ${levelState.movesRemaining}`;
-    movesCounter.style.display = "inline-block";
-    movesCounter.setAttribute("aria-live", "polite");
+  if (movesRibbon && movesRibbonValue) {
+    movesRibbon.style.display = "flex";
+    if (levelState.movesRemaining !== lastDisplayedMoves) {
+      movesRibbonValue.textContent = String(levelState.movesRemaining);
+      if (lastDisplayedMoves !== null) {
+        movesRibbonValue.classList.remove("bump");
+        // força reflow pra poder re-disparar a animação em cliques seguidos
+        void movesRibbonValue.offsetWidth;
+        movesRibbonValue.classList.add("bump");
+      }
+      lastDisplayedMoves = levelState.movesRemaining;
+    }
   }
 
   renderLevelBoard(
@@ -428,8 +439,7 @@ function switchToReviewMode() {
 
   reviewModeBtn?.classList.add("active");
 
-  const movesCounter = document.getElementById("moves-counter");
-  if (movesCounter) movesCounter.style.display = "none";
+  if (movesRibbon) movesRibbon.style.display = "none";
 
   if (reviewRoot) {
     renderReviewMode(reviewRoot, categoriesData, progressStore, () => {

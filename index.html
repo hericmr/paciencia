@@ -13,7 +13,6 @@
   <header>
     <h1><img src="assets/authors/marx.webp" alt="Logo" class="header-logo">Serviço Social</h1>
     <div id="controls">
-      <span id="moves-counter" class="moves-counter" style="display: none;"></span>
       <select id="level-select" class="level-select" aria-label="Selecionar Fase">
         <option value="1">Fase 1</option>
         <option value="2">Fase 2</option>
@@ -31,6 +30,11 @@
   <div id="review-root" hidden></div>
 
   <button id="inspect-btn" type="button" aria-pressed="false" aria-label="Ver conteúdo teórico das cartas">?</button>
+
+  <div id="moves-ribbon" class="moves-ribbon" style="display: none;" aria-live="polite">
+    <span class="moves-ribbon-label">Movimentos</span>
+    <span class="moves-ribbon-value" id="moves-ribbon-value">0</span>
+  </div>
 
   <script type="module" src="src/main.js"></script>
 </body>

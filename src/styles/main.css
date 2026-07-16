@@ -250,20 +250,52 @@ body.inspect-mode-active .word-card:hover {
   align-items: center;
 }
 
-.moves-counter {
-  display: inline-flex;
+/* Bandeirola de movimentos — pendurada logo abaixo do header, no canto
+   direito, como se estivesse saindo dele. Fica por cima do tabuleiro
+   (não empurra o layout) porque não corre risco de sobrepor as
+   fundações/estoque nessa posição. */
+.moves-ribbon {
+  position: fixed;
+  top: 48px; /* cola no rodapé do header (48px de altura na maioria dos breakpoints) */
+  right: max(16px, env(safe-area-inset-right, 0px));
+  width: 156px;
+  height: 144px;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  padding: 0.35rem 0.8rem;
-  font-weight: 750;
-  font-size: 0.85rem;
+  gap: 2px;
+  background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+  /* corta a base em V invertido — duas pontas embaixo, estilo flâmula */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+   z-index: 150;
+  font-family: var(--font-family);
+}
+
+.moves-ribbon-label {
+  font-size: 0.65rem;
+  font-weight: 700;
   letter-spacing: 0.5px;
-  height: 32px;
-  box-sizing: border-box;
+  text-transform: uppercase;
+  color: #0c2518;
+  opacity: 0.85;
+}
+
+.moves-ribbon-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0c2518;
+}
+
+.moves-ribbon-value.bump {
+  animation: moves-ribbon-bump 0.3s ease;
+}
+
+@keyframes moves-ribbon-bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
 }
 
 #review-mode-btn.active {
@@ -1326,7 +1358,7 @@ body.inspect-mode-active .word-card:hover {
     padding: 1rem;
     text-align: center;
   }
-  
+
   .top-board-row {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1360,6 +1392,21 @@ body.inspect-mode-active .word-card:hover {
     box-sizing: border-box;
   }
 
+  .moves-ribbon {
+    width: 80px;
+    height: 90px;
+    padding-top: 9px;
+    gap: 3px;
+  }
+
+  .moves-ribbon-label {
+    font-size: 0.7rem;
+  }
+
+  .moves-ribbon-value {
+    font-size: 1.6rem;
+  }
+
   #controls {
     position: fixed;
     bottom: 0;
@@ -1378,7 +1425,7 @@ body.inspect-mode-active .word-card:hover {
     gap: 0.4rem;
   }
 
-  #controls button, #controls .moves-counter, #controls select {
+  #controls button, #controls select {
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
     height: 28px;
@@ -1484,12 +1531,16 @@ body.inspect-mode-active .word-card:hover {
     height: 40px !important;
     padding: 0.3rem 1.2rem !important;
   }
-  
+
   header h1 {
     font-size: 1.05rem !important;
   }
-  
-  header button, header .level-select, header .moves-counter {
+
+  .moves-ribbon {
+    top: 40px;
+  }
+
+  header button, header .level-select {
     height: 28px !important;
     font-size: 0.8rem !important;
     padding: 0.25rem 0.6rem !important;
