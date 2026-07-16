@@ -8,6 +8,7 @@
 :root {
   --font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   --bg-gradient: radial-gradient(circle at center, #2e7d32 0%, #154228 100%);
+  --bg-image: linear-gradient(rgba(12, 37, 24, 0.35), rgba(12, 37, 24, 0.55)), url('../../assets/background_tema.jpeg');
   --text-primary: #f5f7f4;
   --text-secondary: #a4beae;
   --card-width: min(13vw, 110px, 16vh);
@@ -56,6 +57,9 @@
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   color: var(--text-primary);
   height: 100vh;

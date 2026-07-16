@@ -330,28 +330,41 @@ function categoryStats(category) {
 
 function renderCategoryGrid() {
   categoryGridEl.innerHTML = "";
+  
+  // Group categories by eixo
+  const groups = {};
   for (const category of categoriesData) {
-    const { total, withImage } = categoryStats(category);
+    const eixo = category.eixo || "sem eixo";
+    if (!groups[eixo]) groups[eixo] = [];
+    groups[eixo].push(category);
+  }
 
-    const btn = document.createElement("button");
-    btn.type = "button";
-    if (activeCategory && activeCategory.id === category.id) btn.classList.add("active");
+  // Render each group
+  for (const eixo of Object.keys(groups).sort()) {
+    const groupHeader = document.createElement("div");
+    groupHeader.className = "category-group-header";
+    groupHeader.textContent = `Eixo: ${eixo}`;
+    categoryGridEl.appendChild(groupHeader);
 
-    const title = document.createElement("span");
-    title.className = "category-tile-title";
-    title.textContent = `${category.id} — ${category.nome || "(sem nome)"}`;
+    for (const category of groups[eixo]) {
+      const { total, withImage } = categoryStats(category);
 
-    const eixo = document.createElement("span");
-    eixo.className = "category-tile-eixo";
-    eixo.textContent = category.eixo || "sem eixo";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      if (activeCategory && activeCategory.id === category.id) btn.classList.add("active");
 
-    const stats = document.createElement("span");
-    stats.className = "category-tile-stats";
-    stats.textContent = total === 0 ? "0 palavras" : `${total} palavras · ${withImage}/${total} com imagem`;
+      const title = document.createElement("span");
+      title.className = "category-tile-title";
+      title.textContent = `${category.id} — ${category.nome || "(sem nome)"}`;
 
-    btn.append(title, eixo, stats);
-    btn.addEventListener("click", () => selectCategory(category));
-    categoryGridEl.appendChild(btn);
+      const stats = document.createElement("span");
+      stats.className = "category-tile-stats";
+      stats.textContent = total === 0 ? "0 palavras" : `${total} palavras · ${withImage}/${total} com imagem`;
+
+      btn.append(title, stats);
+      btn.addEventListener("click", () => selectCategory(category));
+      categoryGridEl.appendChild(btn);
+    }
   }
 }
 

@@ -44,7 +44,7 @@
     "photoCredit": "Ilustração do PAEFI"
   },
   "PAIF": {
-    "photoUrl": "assets/authors/paif.webp",
+    "photoUrl": "assets/cards/cat-07__paif.webp",
     "photoCredit": "Ilustração do PAIF"
   },
   "Cadastro Único": {
@@ -150,5 +150,21 @@
   "Fortalecimento de vínculos": {
     "photoUrl": "assets/cards/cat-07__fortalecimento-de-vinculos.webp",
     "photoCredit": "?"
+  },
+  "Família acolhedora": {
+    "photoUrl": "assets/cards/cat-08__familia-acolhedora.webp",
+    "photoCredit": "a"
+  },
+  "MSE em meio aberto": {
+    "photoUrl": "assets/cards/cat-08__mse-em-meio-aberto.webp",
+    "photoCredit": "a"
+  },
+  "Abordagem social": {
+    "photoUrl": "assets/cards/cat-08__abordagem-social.webp",
+    "photoCredit": "a"
+  },
+  "Saúde": {
+    "photoUrl": "assets/cards/cat-09__saude.webp",
+    "photoCredit": "a"
   }
 }

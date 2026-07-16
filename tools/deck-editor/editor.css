@@ -329,3 +329,19 @@ input:focus-visible {
 
 .global-status.error { border-color: var(--error); color: var(--error); }
 .global-status.ok { border-color: var(--ok); color: var(--ok); }
+
+.category-group-header {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  padding-left: 0.2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.2rem;
+}
+.category-group-header:first-child {
+  margin-top: 0;
+}
