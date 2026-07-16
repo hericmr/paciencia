@@ -295,14 +295,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   const stockWrapper = document.createElement("div");
   stockWrapper.className = "category-slot-wrapper stock-wrapper";
 
-  const stockHeader = document.createElement("div");
-  stockHeader.className = "category-slot-header";
-  stockHeader.innerHTML = `
-    <div class="category-slot-title" style="visibility: hidden;">Monte</div>
-    <div class="category-slot-progress" style="visibility: hidden;">Vazio</div>
-  `;
-  stockWrapper.appendChild(stockHeader);
-
   // Container posicionado para o efeito escadinha do Monte: 0 a 2 cartas
   // "fantasma" (decorativas, aria-hidden) ficam levemente deslocadas atrás
   // da carta interativa do topo, dando a impressão de uma pilha física em
@@ -351,14 +343,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
   // 2. Waste Wrapper (Descarte)
   const wasteWrapper = document.createElement("div");
   wasteWrapper.className = "category-slot-wrapper waste-wrapper";
-
-  const wasteHeader = document.createElement("div");
-  wasteHeader.className = "category-slot-header";
-  wasteHeader.innerHTML = `
-    <div class="category-slot-title" style="visibility: hidden;">Descarte</div>
-    <div class="category-slot-progress" style="visibility: hidden;">Vazio</div>
-  `;
-  wasteWrapper.appendChild(wasteHeader);
 
   const wasteEl = document.createElement("div");
   wasteEl.className = "waste-slot";
@@ -426,22 +410,16 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     const slotWrapper = document.createElement("div");
     slotWrapper.className = "category-slot-wrapper";
 
-    // Header de título e progresso
-    const headerEl = document.createElement("div");
-    headerEl.className = "category-slot-header";
-    if (!isOpen) {
-      headerEl.innerHTML = `
-        <div class="category-slot-title" style="visibility: hidden;">Categoria ${index + 1}</div>
-        <div class="category-slot-progress" style="visibility: hidden;">Fechada</div>
-      `;
-    } else {
-      const progressText = isComplete ? `${cardsInSlot.length}/${level.cardsPerCategory} ✓` : `${cardsInSlot.length}/${level.cardsPerCategory}`;
-      headerEl.innerHTML = `
-        <div class="category-slot-title ${isComplete ? "complete" : ""}">${category?.nome ?? categoryId}</div>
-        <div class="category-slot-progress ${isComplete ? "complete" : ""}">${progressText}</div>
-      `;
+    // Plaquinha da categoria: desponta atrás da pilha, coberta por baixo pela
+    // carta do topo (ver z-index em main.css). Só existe quando a categoria
+    // já foi identificada (carta-título jogada) — spot fechado não tem nome.
+    if (isOpen) {
+      const tabEl = document.createElement("div");
+      tabEl.className = `category-slot-tab ${isComplete ? "complete" : ""}`;
+      tabEl.textContent = category?.nome ?? categoryId;
+      tabEl.title = category?.nome ?? categoryId;
+      slotWrapper.appendChild(tabEl);
     }
-    slotWrapper.appendChild(headerEl);
 
     // Slot em si (área receptora de drop, com formato de carta)
     const slotEl = document.createElement("div");
@@ -455,7 +433,7 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
       slotEl.innerHTML = antIconHtml("category-slot-ant-icon");
     } else {
       slotEl.setAttribute("aria-label", `${category?.nome ?? categoryId}, aberta. ${cardsInSlot.length} de ${level.cardsPerCategory} cartas corretas.`);
-      
+
       // Pilha física de cartas no slot (Título + cartas de palavras encaixadas)
       const allCardsInSlot = [
         { id: `TITLE:${categoryId}`, categoryId, word: category?.cartaTitulo ?? "", isTitleCard: true },
@@ -471,6 +449,12 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         const cardEl = buildStaticCard(card, authorPhotos);
         if (!isTop) {
           cardEl.classList.add("covered-under");
+        } else {
+          // Contador "empilhadas/total" — some do bloco de topo pra dentro da carta do topo da pilha
+          const counterEl = document.createElement("span");
+          counterEl.className = `pile-counter ${isComplete ? "complete" : ""}`;
+          counterEl.textContent = isComplete ? `${cardsInSlot.length}/${level.cardsPerCategory} ✓` : `${cardsInSlot.length}/${level.cardsPerCategory}`;
+          cardEl.appendChild(counterEl);
         }
         wrapper.appendChild(cardEl);
         slotEl.appendChild(wrapper);
