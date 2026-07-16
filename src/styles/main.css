@@ -348,8 +348,9 @@ body.inspect-mode-active .word-card:hover {
      sem nunca encostar no header — independe da margem/padding do #game-root
      em cada breakpoint, que é frágil de calcular. A plaquinha nunca trunca o
      nome (cresce pra cima conforme precisar), então isso reserva o pior caso:
-     o nome de categoria mais longo do jogo, quebrado em ~5 linhas. */
-  padding-top: 76px;
+     o nome de categoria mais longo do jogo (+ contador "X/Y" inline),
+     quebrado em ~5-6 linhas. */
+  padding-top: 90px;
 }
 
 /* Stock & Waste */
@@ -466,27 +467,12 @@ body.inspect-mode-active .word-card:hover {
   z-index: 2; /* fica acima da plaquinha, cobrindo a parte inferior dela */
 }
 
-/* Contador "empilhadas/total": dentro da carta do topo da pilha, canto
-   superior esquerdo, discreto. */
-.pile-counter {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  z-index: 3;
-  font-family: var(--font-family);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.6);
-  padding: 1px 4px;
-  border-radius: 3px;
-  line-height: 1.3;
-  pointer-events: none;
-}
-
-.pile-counter.complete {
-  color: #1a7a34;
-  background: rgba(102, 187, 106, 0.3);
+/* Contador "empilhadas/total": inline junto ao nome da categoria, dentro da
+   própria plaquinha — mantém a carta do topo da pilha limpa, sem poluir. */
+.category-slot-tab-count {
+  font-weight: 600;
+  opacity: 0.75;
+  font-size: 0.9em;
 }
 
 /* Evita interferência de cliques/drops nos elementos internos da pilha */
@@ -662,7 +648,11 @@ body.inspect-mode-active .word-card:hover {
   pointer-events: none;
 }
 
-.word-card.title-card .word-card-text {
+/* z-index só é necessário pra ficar acima da marca d'água (que só existe
+   quando exposta, não-coberta) — em .covered-under isso vazaria por cima da
+   carta empilhada acima dela, que depende só da ordem no DOM pra cobrir a
+   carta de baixo. */
+.word-card.title-card:not(.covered-under) .word-card-text {
   position: relative;
   z-index: 1;
 }
@@ -1407,7 +1397,7 @@ body.inspect-mode-active .word-card:hover {
 
   .top-board-row {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 76px; /* linha 2 pode ter plaquinha de categoria (grid quebra em 2 linhas com 3 colunas) — pior caso de nome longo */
+    row-gap: 90px; /* linha 2 pode ter plaquinha de categoria (grid quebra em 2 linhas com 3 colunas) — pior caso de nome longo */
   }
 
   .review-grid {
@@ -1483,7 +1473,7 @@ body.inspect-mode-active .word-card:hover {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto;
-    row-gap: 56px; /* folga extra pra plaquinha das categorias (linha 2) não encostar no Monte/Descarte (linha 1) — pior caso de nome longo, quebrado em várias linhas */
+    row-gap: 68px; /* folga extra pra plaquinha das categorias (linha 2) não encostar no Monte/Descarte (linha 1) — pior caso de nome longo, quebrado em várias linhas */
     column-gap: 0.5rem;
     margin-bottom: 0.6rem;
     padding-top: 0; /* linha 1 (Monte/Descarte) não tem plaquinha, não precisa de folga do header aqui */
@@ -1500,11 +1490,6 @@ body.inspect-mode-active .word-card:hover {
   .category-slot-tab {
     font-size: 0.56rem;
     padding: 3px 5px 8px;
-  }
-
-  .pile-counter {
-    font-size: 0.52rem;
-    padding: 1px 3px;
   }
 
   .tableau-columns {
@@ -1592,7 +1577,7 @@ body.inspect-mode-active .word-card:hover {
   .top-board-row {
     margin-bottom: 0.6rem !important;
     gap: 0.5rem !important;
-    padding-top: 60px !important; /* espaço reservado pro pior caso: nome de categoria longo quebrado em várias linhas, independe da margem do header */
+    padding-top: 72px !important; /* espaço reservado pro pior caso: nome de categoria longo quebrado em várias linhas, independe da margem do header */
   }
   
   .tableau-columns {

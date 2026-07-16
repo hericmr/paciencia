@@ -413,11 +413,13 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
     // Plaquinha da categoria: desponta atrás da pilha, coberta por baixo pela
     // carta do topo (ver z-index em main.css). Só existe quando a categoria
     // já foi identificada (carta-título jogada) — spot fechado não tem nome.
+    // O contador "empilhadas/total" mora junto do nome, pra não poluir a carta.
     if (isOpen) {
+      const progressText = isComplete ? `${cardsInSlot.length}/${level.cardsPerCategory} ✓` : `${cardsInSlot.length}/${level.cardsPerCategory}`;
       const tabEl = document.createElement("div");
       tabEl.className = `category-slot-tab ${isComplete ? "complete" : ""}`;
-      tabEl.textContent = category?.nome ?? categoryId;
-      tabEl.title = category?.nome ?? categoryId;
+      tabEl.innerHTML = `<span class="category-slot-tab-name">${category?.nome ?? categoryId}</span> <span class="category-slot-tab-count">${progressText}</span>`;
+      tabEl.title = `${category?.nome ?? categoryId} — ${progressText}`;
       slotWrapper.appendChild(tabEl);
     }
 
@@ -449,12 +451,6 @@ export function renderLevelBoard(container, levelState, level, categoriesMap, au
         const cardEl = buildStaticCard(card, authorPhotos);
         if (!isTop) {
           cardEl.classList.add("covered-under");
-        } else {
-          // Contador "empilhadas/total" — some do bloco de topo pra dentro da carta do topo da pilha
-          const counterEl = document.createElement("span");
-          counterEl.className = `pile-counter ${isComplete ? "complete" : ""}`;
-          counterEl.textContent = isComplete ? `${cardsInSlot.length}/${level.cardsPerCategory} ✓` : `${cardsInSlot.length}/${level.cardsPerCategory}`;
-          cardEl.appendChild(counterEl);
         }
         wrapper.appendChild(cardEl);
         slotEl.appendChild(wrapper);
