@@ -22,7 +22,6 @@
       </select>
       <button id="new-game-btn" type="button">Nova partida</button>
       <button id="review-mode-btn" type="button">Modo revisão</button>
-      <button id="inspect-btn" type="button" aria-pressed="false" aria-label="Inspecionar carta">?</button>
       <button id="mute-btn" type="button" aria-pressed="false" aria-label="Desativar som">Som: On</button>
     </div>
   </header>
@@ -30,6 +29,8 @@
   <main id="game-root" aria-label="Tabuleiro de paciência"></main>
 
   <div id="review-root" hidden></div>
+
+  <button id="inspect-btn" type="button" aria-pressed="false" aria-label="Ver conteúdo teórico das cartas">?</button>
 
   <script type="module" src="src/main.js"></script>
 </body>

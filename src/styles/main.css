@@ -142,11 +142,67 @@ button:focus-visible {
   box-shadow: 0 0 10px rgba(243, 198, 79, 0.4);
 }
 
+/* Botão flutuante "?" — selo dourado sobre a mesa de feltro, acesso ao
+   conteúdo teórico das cartas. Fixo em relação à viewport (não ao header)
+   para funcionar igual em mobile e desktop. */
+#inspect-btn {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  bottom: max(110px, calc(env(safe-area-inset-bottom, 0px) + 110px));
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: 'Ames', var(--font-family);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-gold);
+  background: radial-gradient(circle at 32% 28%, #1a4530, #0c2518 72%);
+  border: 3px solid var(--color-gold);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), inset 0 0 0 2px rgba(207, 161, 38, 0.25);
+  z-index: 200;
+  cursor: help;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#inspect-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 14px rgba(207, 161, 38, 0.5);
+}
+
+#inspect-btn:active {
+  transform: scale(0.94);
+}
+
 #inspect-btn.active {
   background: var(--color-gold);
   color: #0c2518;
   border-color: var(--color-gold);
-  box-shadow: 0 0 10px rgba(243, 198, 79, 0.4);
+  box-shadow: 0 0 16px rgba(207, 161, 38, 0.7), inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulso de destaque: dispara após 15s sem movimentos, enquanto o jogador
+   ainda não abriu o botão nesta sessão (ver isInspectHintDismissed no main.js) */
+#inspect-btn.pulse-hint {
+  animation: inspect-btn-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes inspect-btn-pulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(207, 161, 38, 0.55); }
+  50%      { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 0 14px rgba(207, 161, 38, 0); }
+}
+
+@media (max-width: 600px) {
+  #inspect-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    left: 10px;
+    bottom: calc(44px + env(safe-area-inset-bottom, 0px) + 90px); /* acima da barra fixa #controls, junto da coluna de cartas */
+  }
 }
 
 body.inspect-mode-active .word-card {
@@ -1327,33 +1383,6 @@ body.inspect-mode-active .word-card:hover {
     padding: 0.25rem 0.5rem;
     height: 28px;
     border-radius: 4px;
-  }
-
-  /* Botão de interrogação flutuante (FAB) na mesa do jogador */
-  #inspect-btn {
-    position: absolute !important;
-    top: -60px !important;
-    right: 20px !important;
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 50% !important;
-    font-size: 1.5rem !important;
-    font-weight: bold !important;
-    padding: 0 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-    z-index: 9999 !important;
-    background: var(--color-gold) !important;
-    color: #0c2518 !important;
-    border: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  #inspect-btn.active {
-    background: #0c2518 !important;
-    color: var(--color-gold) !important;
-    border: 2px solid var(--color-gold) !important;
   }
 
   .top-board-row {
