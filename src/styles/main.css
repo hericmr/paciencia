@@ -565,7 +565,12 @@ body.inspect-mode-active .word-card:hover {
   justify-items: center;
   gap: 1rem;
   width: 100%;
-  margin-top: 0.5rem;
+  /* A pilha de uma categoria (título + até 7 cartas de palavra, ver
+     cardsPerCategory em levels.json) empilha em escadinha vertical com 8px
+     por carta (.category-slot .stack-card-wrapper), transbordando pra baixo
+     do próprio .category-slot conforme cresce (até 7*8px=56px cheia). Essa
+     margem garante que a fileira do tableau não fique coberta por baixo. */
+  margin-top: 64px;
 }
 
 .tableau-column {
@@ -1494,7 +1499,7 @@ body.inspect-mode-active .word-card:hover {
 
   .tableau-columns {
     gap: 0.5rem;
-    margin-top: 0.4rem;
+    margin-top: 60px; /* mesma folga da escadinha de categoria cheia (ver regra base) */
   }
 
   .tableau-column {
@@ -1581,7 +1586,7 @@ body.inspect-mode-active .word-card:hover {
   }
   
   .tableau-columns {
-    margin-top: 0.5rem !important;
+    margin-top: 60px !important; /* mesma folga da escadinha de categoria cheia (ver regra base) */
     gap: 0.5rem !important;
   }
   
