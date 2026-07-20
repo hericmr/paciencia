@@ -2,95 +2,108 @@
   "categories": [
     {
       "id": "CAT-01",
-      "nome": "Princípios do Código de Ética (1993)",
+      "nome": "Princípios Fundamentais do Código de Ética (1993)",
       "eixo": "etica",
       "palavras": [
         "Liberdade",
-        "Democracia",
-        "Equidade",
-        "Justiça social",
-        "Pluralismo",
-        "Cidadania",
         "Defesa intransigente dos direitos humanos",
-        "Nova ordem societária",
+        "Ampliação da cidadania",
+        "Aprofundamento da democracia",
+        "Equidade e justiça social",
         "Eliminação de preconceitos",
-        "Qualidade dos serviços"
+        "Pluralismo profissional",
+        "Nova ordem societária",
+        "Articulação com outras categorias",
+        "Qualidade dos serviços prestados",
+        "Exercício sem discriminar"
       ],
-      "microtexto": "Os 11 princípios fundamentais (Res. CFESS 273/93) têm a liberdade como valor ético central e apontam para uma sociedade sem dominação-exploração de classe, etnia e gênero.",
+      "microtexto": "Os 11 princípios fundamentais (Res. CFESS 273/93) têm a liberdade como valor ético central e apontam para uma nova ordem societária, sem dominação-exploração de classe, etnia e gênero.",
       "confundeCom": [
-        "CAT-09",
-        "CAT-10",
-        "CAT-17"
+        "CAT-25",
+        "CAT-02"
       ],
-      "cartaTitulo": "Princípios do Código de Ética (1993)",
+      "cartaTitulo": "Princípios Fundamentais do Código de Ética (1993)",
       "explicacoesPalavras": {
-        "Liberdade": "Valor ético central do Código de 1993: a liberdade como possibilidade de escolha entre alternativas concretas, ligada à autonomia, emancipação e plena expansão dos indivíduos sociais.",
-        "Democracia": "Reconhecida como socialização da participação política e da riqueza socialmente produzida — não se restringe ao voto, mas envolve o acesso a bens e decisões.",
-        "Equidade": "O Código se posiciona em favor da equidade e da justiça social, de modo a assegurar universalidade de acesso aos bens e serviços dos programas e políticas sociais, bem como sua gestão democrática.",
-        "Justiça social": "Aparece junto com a equidade no mesmo princípio: garantir que o acesso às políticas sociais seja universal, e não um privilégio de poucos. Nas provas, os dois termos costumam vir em dupla.",
-        "Pluralismo": "Garantia do pluralismo: respeito às correntes profissionais democráticas e suas expressões teóricas, com compromisso pelo constante aprimoramento intelectual. Atenção: pluralismo não é ecletismo.",
-        "Cidadania": "Ampliação e consolidação da cidadania, considerada tarefa primordial de toda a sociedade, com vistas à garantia dos direitos civis, sociais e políticos das classes trabalhadoras.",
-        "Defesa intransigente dos direitos humanos": "Vem acompanhada, no mesmo princípio, da recusa do arbítrio e do autoritarismo. É defesa intransigente: não se relativiza, nem mesmo diante de requisições institucionais ou no campo sociojurídico.",
-        "Nova ordem societária": "Opção por um projeto profissional vinculado ao processo de construção de uma nova ordem societária, sem dominação, exploração de classe, etnia e gênero. É a dimensão estratégica do projeto ético-político.",
-        "Eliminação de preconceitos": "Empenho na eliminação de todas as formas de preconceito, incentivando o respeito à diversidade, a participação de grupos socialmente discriminados e a discussão das diferenças.",
-        "Qualidade dos serviços": "Compromisso com a qualidade dos serviços prestados à população e com o aprimoramento intelectual, na perspectiva da competência profissional. Qualidade aqui é dever ético, não gerencialismo."
+        "Liberdade": "Inciso I: valor ético central do Código — a liberdade como possibilidade concreta de escolha entre alternativas, ligada à autonomia, emancipação e plena expansão dos indivíduos sociais.",
+        "Defesa intransigente dos direitos humanos": "Inciso II: vem acompanhada, no mesmo princípio, da recusa do arbítrio e do autoritarismo. É defesa intransigente: não se relativiza, nem mesmo diante de requisições institucionais.",
+        "Ampliação da cidadania": "Inciso III: tarefa primordial de toda a sociedade, com vistas à garantia dos direitos civis, sociais e políticos das classes trabalhadoras.",
+        "Aprofundamento da democracia": "Inciso IV: democracia como socialização da participação política E da riqueza socialmente produzida — não se restringe ao voto.",
+        "Equidade e justiça social": "Inciso V: posicionamento que assegura universalidade de acesso aos bens e serviços das políticas sociais e sua gestão democrática. Nas provas, os dois termos vêm sempre em dupla.",
+        "Eliminação de preconceitos": "Inciso VI: empenho na eliminação de todas as formas de preconceito, incentivando o respeito à diversidade e a participação de grupos socialmente discriminados.",
+        "Pluralismo profissional": "Inciso VII: respeito às correntes profissionais democráticas existentes e compromisso com o constante aprimoramento intelectual. Atenção: pluralismo não é ecletismo.",
+        "Nova ordem societária": "Inciso VIII: opção por um projeto profissional vinculado à construção de uma nova ordem societária, sem dominação-exploração de classe, etnia e gênero — a dimensão estratégica do projeto ético-político.",
+        "Articulação com outras categorias": "Inciso IX: articulação com movimentos de outras categorias profissionais que partilhem dos princípios do Código, e com a luta geral dos/as trabalhadores/as.",
+        "Qualidade dos serviços prestados": "Inciso X: compromisso com a qualidade dos serviços à população e com o aprimoramento intelectual, na perspectiva da competência profissional — dever ético, não gerencialismo.",
+        "Exercício sem discriminar": "Inciso XI: exercer a profissão sem ser discriminado/a nem discriminar por classe, gênero, etnia, religião, nacionalidade, orientação sexual, identidade de gênero, idade ou condição física."
       }
     },
     {
       "id": "CAT-02",
-      "nome": "Direitos do/a assistente social (Código, art. 2º)",
+      "nome": "Direitos do/a assistente social (art. 2º)",
       "eixo": "etica",
       "palavras": [
-        "Livre exercício",
-        "Autonomia técnica",
+        "Garantia das atribuições e prerrogativas",
+        "Livre exercício profissional",
+        "Participação na elaboração de políticas sociais",
         "Inviolabilidade do local de trabalho",
-        "Sigilo profissional",
-        "Pronunciamento público",
-        "Aprimoramento profissional",
-        "Desagravo público"
+        "Desagravo público",
+        "Aprimoramento profissional contínuo",
+        "Pronunciamento em matéria de especialidade",
+        "Ampla autonomia técnica",
+        "Liberdade de estudos e pesquisas"
       ],
-      "microtexto": "O Código garante condições para o exercício: autonomia, sigilo, inviolabilidade dos arquivos e direito de se pronunciar em matéria de sua especialidade.",
+      "microtexto": "Art. 2º: nove direitos que garantem as condições para o exercício profissional — de autonomia técnica e inviolabilidade a participar da formulação de políticas sociais.",
       "confundeCom": [
         "CAT-03",
-        "CAT-16"
+        "CAT-25"
       ],
-      "cartaTitulo": "Direitos do/a assistente social (Código, art. 2º)",
+      "cartaTitulo": "Direitos do/a assistente social (art. 2º)",
       "explicacoesPalavras": {
-        "Livre exercício": "Garantia e defesa das atribuições e prerrogativas estabelecidas na Lei 8.662/93 e no próprio Código: exercer a profissão sem impedimentos indevidos.",
-        "Autonomia técnica": "Ampla autonomia no exercício da profissão: o/a assistente social não é obrigado/a a prestar serviços incompatíveis com suas atribuições, cargos ou funções.",
-        "Inviolabilidade do local de trabalho": "Inviolabilidade do local de trabalho e dos respectivos arquivos e documentação. É a garantia material do sigilo: prontuários e registros não podem ser devassados.",
-        "Sigilo profissional": "Ao mesmo tempo direito e dever: protege o/a usuário/a. Só pode ser quebrado em situações cuja gravidade exija, para evitar prejuízo maior, revelando o estritamente necessário.",
-        "Pronunciamento público": "Direito de se pronunciar em matéria de sua especialidade, sobretudo quando se tratar de assuntos de interesse da população.",
-        "Aprimoramento profissional": "Direito ao aprimoramento profissional de forma contínua, colocando-o a serviço dos princípios do Código. Conecta-se ao princípio da qualidade dos serviços.",
-        "Desagravo público": "Direito a desagravo público por ofensa que atinja a honra profissional, requerido ao CRESS. É a resposta institucional da categoria a ataques ao exercício profissional."
+        "Garantia das atribuições e prerrogativas": "Alínea a: garantia e defesa das atribuições e prerrogativas estabelecidas na Lei de Regulamentação da Profissão (Lei 8.662/93) e neste Código.",
+        "Livre exercício profissional": "Alínea b: livre exercício das atividades inerentes à profissão, sem impedimentos indevidos.",
+        "Participação na elaboração de políticas sociais": "Alínea c: participação na elaboração e gerenciamento das políticas sociais, e na formulação e implementação de programas sociais.",
+        "Inviolabilidade do local de trabalho": "Alínea d: inviolabilidade do local de trabalho e dos respectivos arquivos e documentação, garantindo o sigilo profissional — é a base material do sigilo.",
+        "Desagravo público": "Alínea e: desagravo público por ofensa que atinja a honra profissional, requerido ao CRESS.",
+        "Aprimoramento profissional contínuo": "Alínea f: aprimoramento profissional de forma contínua, colocado a serviço dos princípios deste Código.",
+        "Pronunciamento em matéria de especialidade": "Alínea g: pronunciamento em matéria de sua especialidade, sobretudo quando se tratar de assuntos de interesse da população.",
+        "Ampla autonomia técnica": "Alínea h: ampla autonomia no exercício da profissão — não é obrigado/a a prestar serviços incompatíveis com suas atribuições, cargos ou funções.",
+        "Liberdade de estudos e pesquisas": "Alínea i: liberdade na realização de estudos e pesquisas, resguardados os direitos de participação de indivíduos ou grupos envolvidos nos trabalhos."
       }
     },
     {
       "id": "CAT-03",
-      "nome": "Vedações ao/à assistente social",
+      "nome": "Vedações gerais (art. 4º)",
       "eixo": "etica",
       "palavras": [
-        "Práticas discriminatórias",
-        "Abuso de autoridade",
-        "Depor como testemunha (situação sigilosa)",
-        "Emprestar o nome a serviço irregular",
-        "Assédio",
-        "Intermediar honorários indevidos",
-        "Acatar ordem que fira a autonomia"
+        "Transgredir o Código ou a Lei de Regulamentação",
+        "Compactuar com condutas antiéticas de terceiros/as",
+        "Acatar determinação institucional que fira o Código",
+        "Compactuar com exercício ilegal da profissão",
+        "Supervisionar estágio sem acompanhamento direto",
+        "Assumir atividade sem capacitação técnica",
+        "Substituir profissional exonerado por razões éticas",
+        "Pleitear emprego ocupado por colega",
+        "Adulterar resultados ou declarações",
+        "Assinar trabalho de terceiros/as"
       ],
-      "microtexto": "O Código não só garante direitos: veda condutas que violem usuários/as ou a profissão. Discriminar, abusar da autoridade e quebrar sigilo em depoimento estão entre as proibições.",
+      "microtexto": "Art. 4º: dez condutas vedadas ao/à assistente social — da subordinação indevida a determinações institucionais até a apropriação de trabalho alheio.",
       "confundeCom": [
-        "CAT-02"
+        "CAT-02",
+        "CAT-26",
+        "CAT-30"
       ],
-      "cartaTitulo": "Vedações ao/à assistente social",
+      "cartaTitulo": "Vedações gerais (art. 4º)",
       "explicacoesPalavras": {
-        "Práticas discriminatórias": "É vedado exercer a profissão com discriminação por questões de inserção de classe, gênero, etnia, religião, nacionalidade, orientação sexual, idade ou condição física.",
-        "Abuso de autoridade": "É vedado abusar da autoridade profissional em detrimento de usuários/as, colegas ou outros/as profissionais. A relação com o/a usuário/a não é relação de tutela.",
-        "Depor como testemunha (situação sigilosa)": "É vedado depor como testemunha sobre situação sigilosa do/a usuário/a conhecida no exercício profissional, mesmo quando autorizado/a. Pegadinha clássica: a autorização do usuário NÃO libera o depoimento.",
-        "Emprestar o nome a serviço irregular": "É vedado permitir ou emprestar o nome a instituições e serviços onde o exercício profissional seja irregular, inclusive para acobertar quem não é assistente social.",
-        "Assédio": "O Código veda a prática e a conivência com condutas de assédio, constrangimento e violação de direitos nas relações de trabalho, seja com usuários/as, seja com colegas.",
-        "Intermediar honorários indevidos": "É vedado receber comissões ou vantagens por encaminhamentos, bem como intermediar pagamentos indevidos. O interesse do/a usuário/a não pode virar mercadoria.",
-        "Acatar ordem que fira a autonomia": "É vedado acatar determinação institucional que fira os princípios e diretrizes do Código. A subordinação administrativa não anula a autonomia técnica e ética."
+        "Transgredir o Código ou a Lei de Regulamentação": "Alínea a: transgredir qualquer preceito deste Código, bem como da Lei de Regulamentação da Profissão.",
+        "Compactuar com condutas antiéticas de terceiros/as": "Alínea b: praticar e ser conivente com condutas antiéticas, crimes ou contravenções penais na prestação de serviços, mesmo que praticados por outros/as profissionais.",
+        "Acatar determinação institucional que fira o Código": "Alínea c: acatar determinação institucional que fira os princípios e diretrizes deste Código — a subordinação administrativa não anula a autonomia técnica e ética.",
+        "Compactuar com exercício ilegal da profissão": "Alínea d: compactuar com o exercício ilegal da profissão, inclusive quando estagiários/as exercem atribuições específicas em substituição a profissionais.",
+        "Supervisionar estágio sem acompanhamento direto": "Alínea e: permitir ou exercer supervisão de estágio em instituições que não tenham, no quadro, assistente social que acompanhe diretamente o/a estagiário/a.",
+        "Assumir atividade sem capacitação técnica": "Alínea f: assumir responsabilidade por atividade para a qual não esteja capacitado/a pessoal e tecnicamente.",
+        "Substituir profissional exonerado por razões éticas": "Alínea g: substituir profissional exonerado/a por defender os princípios da ética profissional, enquanto perdurar o motivo da exoneração, demissão ou transferência.",
+        "Pleitear emprego ocupado por colega": "Alínea h: pleitear para si ou para outrem emprego, cargo ou função que estejam sendo exercidos por colega.",
+        "Adulterar resultados ou declarações": "Alínea i: adulterar resultados e fazer declarações falaciosas sobre situações ou estudos de que tome conhecimento.",
+        "Assinar trabalho de terceiros/as": "Alínea j: assinar ou publicar em seu nome (ou de outrem) trabalhos de terceiros/as, mesmo que executados sob sua orientação."
       }
     },
     {
@@ -690,6 +703,205 @@
         "Identidade de gênero": "Modo como a pessoa se percebe e se apresenta em relação ao gênero: não se confunde com orientação sexual, que diz respeito à atração afetivo-sexual.",
         "Relações intergeracionais": "A geração também estrutura desigualdades e trocas: relações entre crianças, jovens, adultos e pessoas idosas na família e nas políticas.",
         "Etarismo": "Discriminação por idade, sobretudo contra pessoas idosas: naturaliza a exclusão do trabalho, da tecnologia e das decisões."
+      }
+    },
+    {
+      "id": "CAT-25",
+      "nome": "Deveres gerais do/a assistente social (arts. 3º e 21)",
+      "eixo": "etica",
+      "palavras": [
+        "Desempenhar atividades com eficiência e responsabilidade",
+        "Utilizar o registro no Conselho Regional",
+        "Não praticar censura nem policiamento de comportamentos",
+        "Participar de programas de socorro à população",
+        "Cumprir e fazer cumprir o Código",
+        "Denunciar exercício irregular da profissão",
+        "Orientar estudantes sobre a ética profissional"
+      ],
+      "microtexto": "Deveres gerais (art. 3º) e deveres finais de observância (art. 21): da eficiência no exercício cotidiano até a denúncia do exercício irregular da profissão.",
+      "confundeCom": [
+        "CAT-01",
+        "CAT-03",
+        "CAT-30"
+      ],
+      "cartaTitulo": "Deveres gerais do/a assistente social (arts. 3º e 21)",
+      "explicacoesPalavras": {
+        "Desempenhar atividades com eficiência e responsabilidade": "Art. 3º, a: desempenhar as atividades profissionais com eficiência e responsabilidade, observando a legislação em vigor.",
+        "Utilizar o registro no Conselho Regional": "Art. 3º, b: utilizar o número de registro no Conselho Regional no exercício da profissão — é a identificação que legitima o exercício.",
+        "Não praticar censura nem policiamento de comportamentos": "Art. 3º, c: abster-se, no exercício da profissão, de práticas que caracterizem censura, cerceamento da liberdade ou policiamento de comportamentos, denunciando sua ocorrência aos órgãos competentes.",
+        "Participar de programas de socorro à população": "Art. 3º, d: participar de programas de socorro à população em situação de calamidade pública, no atendimento e defesa de seus interesses e necessidades.",
+        "Cumprir e fazer cumprir o Código": "Art. 21, a: cumprir e fazer cumprir este Código — dever que fecha o ciclo entre conhecer e exigir a ética profissional.",
+        "Denunciar exercício irregular da profissão": "Art. 21, b: denunciar ao Conselho Regional, por comunicação fundamentada, qualquer forma de exercício irregular da profissão ou infração a este Código.",
+        "Orientar estudantes sobre a ética profissional": "Art. 21, c: informar, esclarecer e orientar estudantes, na docência ou supervisão, quanto aos princípios e normas deste Código."
+      }
+    },
+    {
+      "id": "CAT-26",
+      "nome": "Relações com usuários/as (arts. 5º-6º)",
+      "eixo": "etica",
+      "palavras": [
+        "Viabilizar a participação dos/as usuários/as",
+        "Garantir informação plena e respeitar decisões",
+        "Democratizar informações e acesso a programas",
+        "Devolver resultados de estudos e pesquisas",
+        "Desburocratizar a relação com usuários/as",
+        "Esclarecer objetivos da atuação profissional",
+        "Limitar a participação e a decisão do/a usuário/a",
+        "Obter vantagens pessoais na relação profissional",
+        "Bloquear o acesso aos serviços oferecidos"
+      ],
+      "microtexto": "Capítulo I: deveres (art. 5º) garantem participação e informação; vedações (art. 6º) protegem o/a usuário/a do abuso de autoridade na relação profissional.",
+      "confundeCom": [
+        "CAT-27",
+        "CAT-03"
+      ],
+      "cartaTitulo": "Relações com usuários/as (arts. 5º-6º)",
+      "explicacoesPalavras": {
+        "Viabilizar a participação dos/as usuários/as": "Art. 5º, a: contribuir para a viabilização da participação efetiva da população usuária nas decisões institucionais.",
+        "Garantir informação plena e respeitar decisões": "Art. 5º, b: garantir a plena informação e discussão sobre as possibilidades e consequências das situações apresentadas, respeitando democraticamente as decisões dos/as usuários/as, mesmo quando contrárias aos valores pessoais do/a profissional.",
+        "Democratizar informações e acesso a programas": "Art. 5º, c: democratizar as informações e o acesso aos programas disponíveis no espaço institucional, mecanismo indispensável à participação dos/as usuários/as.",
+        "Devolver resultados de estudos e pesquisas": "Art. 5º, d: devolver as informações colhidas em estudos e pesquisas aos/às usuários/as, para que possam usá-las no fortalecimento dos seus interesses.",
+        "Desburocratizar a relação com usuários/as": "Art. 5º, g: contribuir para criar mecanismos que desburocratizem a relação com os/as usuários/as, agilizando e melhorando os serviços prestados.",
+        "Esclarecer objetivos da atuação profissional": "Art. 5º, h: esclarecer aos/às usuários/as, ao iniciar o trabalho, os objetivos e a amplitude de sua atuação profissional.",
+        "Limitar a participação e a decisão do/a usuário/a": "Art. 6º, a — VEDAÇÃO: exercer autoridade de maneira a limitar ou cercear o direito do/a usuário/a de participar e decidir livremente sobre seus interesses.",
+        "Obter vantagens pessoais na relação profissional": "Art. 6º, b — VEDAÇÃO: aproveitar-se da relação assistente social–usuário/a para obter vantagens pessoais ou para terceiros/as.",
+        "Bloquear o acesso aos serviços oferecidos": "Art. 6º, c — VEDAÇÃO: bloquear o acesso dos/as usuários/as aos serviços institucionais, com atitudes que coajam ou desrespeitem quem busca o atendimento de seus direitos."
+      }
+    },
+    {
+      "id": "CAT-27",
+      "nome": "Relações com a instituição empregadora (arts. 7º-9º)",
+      "eixo": "etica",
+      "palavras": [
+        "Condições de trabalho condignas",
+        "Acesso a informações institucionais necessárias",
+        "Integrar comissões interdisciplinares de ética",
+        "Denunciar falhas em regulamentos e programas",
+        "Apoiar demandas legítimas da população usuária",
+        "Empregar com transparência as verbas sob responsabilidade",
+        "Emprestar o nome para simular exercício profissional",
+        "Usar tráfico de influência para obter emprego",
+        "Usar recursos institucionais para fins partidários"
+      ],
+      "microtexto": "Capítulo II: direitos (art. 7º), deveres (art. 8º) e vedações (art. 9º) que regulam a relação com a instituição empregadora, pública ou privada.",
+      "confundeCom": [
+        "CAT-26",
+        "CAT-28"
+      ],
+      "cartaTitulo": "Relações com a instituição empregadora (arts. 7º-9º)",
+      "explicacoesPalavras": {
+        "Condições de trabalho condignas": "Art. 7º, a — DIREITO: dispor de condições de trabalho condignas, em entidade pública ou privada, de forma a garantir a qualidade do exercício profissional.",
+        "Acesso a informações institucionais necessárias": "Art. 7º, c — DIREITO: ter acesso a informações institucionais relacionadas aos programas e políticas sociais, necessárias ao pleno exercício das atribuições.",
+        "Integrar comissões interdisciplinares de ética": "Art. 7º, d — DIREITO: integrar comissões interdisciplinares de ética nos locais de trabalho, tanto na avaliação da conduta profissional quanto nas decisões sobre políticas institucionais.",
+        "Denunciar falhas em regulamentos e programas": "Art. 8º, b — DEVER: denunciar falhas nos regulamentos, normas e programas da instituição quando ferirem os princípios deste Código, mobilizando o Conselho Regional se necessário.",
+        "Apoiar demandas legítimas da população usuária": "Art. 8º, c — DEVER: contribuir para alterar a correlação de forças institucionais, apoiando as legítimas demandas de interesse da população usuária.",
+        "Empregar com transparência as verbas sob responsabilidade": "Art. 8º, e — DEVER: empregar com transparência as verbas sob sua responsabilidade, de acordo com os interesses e necessidades coletivas dos/as usuários/as.",
+        "Emprestar o nome para simular exercício profissional": "Art. 9º, a — VEDAÇÃO: emprestar seu nome e registro profissional a firmas, organizações ou empresas para simular o exercício efetivo do Serviço Social.",
+        "Usar tráfico de influência para obter emprego": "Art. 9º, b — VEDAÇÃO: usar ou permitir o tráfico de influência para obtenção de emprego, desrespeitando concurso ou processo seletivo.",
+        "Usar recursos institucionais para fins partidários": "Art. 9º, c — VEDAÇÃO: utilizar recursos institucionais (pessoal e/ou financeiro) para fins partidários, eleitorais e clientelistas."
+      }
+    },
+    {
+      "id": "CAT-28",
+      "nome": "Relações com colegas e entidades da categoria (arts. 10º-14º)",
+      "eixo": "etica",
+      "palavras": [
+        "Ser solidário/a sem eximir-se de denunciar",
+        "Incentivar a prática interdisciplinar",
+        "Criticar colegas de forma objetiva e comprovável",
+        "Intervir em serviço de outro/a profissional sem motivo",
+        "Usar cargo de chefia para discriminar",
+        "Ser conivente com falhas éticas alheias",
+        "Participar de entidades da categoria",
+        "Denunciar instituições com condições indignas de trabalho",
+        "Valer-se de posição na entidade para vantagem pessoal"
+      ],
+      "microtexto": "Capítulos III e IV: relações entre colegas (arts. 10º-11º) e com entidades da categoria e sociedade civil (arts. 12º-14º) — solidariedade profissional sem conivência.",
+      "confundeCom": [
+        "CAT-27",
+        "CAT-30"
+      ],
+      "cartaTitulo": "Relações com colegas e entidades da categoria (arts. 10º-14º)",
+      "explicacoesPalavras": {
+        "Ser solidário/a sem eximir-se de denunciar": "Art. 10, a — DEVER: ser solidário/a com outros/as profissionais, sem, todavia, eximir-se de denunciar atos que contrariem os postulados éticos deste Código.",
+        "Incentivar a prática interdisciplinar": "Art. 10, d — DEVER: incentivar, sempre que possível, a prática profissional interdisciplinar.",
+        "Criticar colegas de forma objetiva e comprovável": "Art. 10, f — DEVER: ao criticar publicamente colega ou outro/a profissional, fazê-lo de maneira objetiva, construtiva e comprovável, assumindo inteira responsabilidade.",
+        "Intervir em serviço de outro/a profissional sem motivo": "Art. 11, a — VEDAÇÃO: intervir na prestação de serviço de outro/a profissional, salvo a pedido, em caso de urgência (com comunicação imediata), ou em trabalho multiprofissional cuja metodologia preveja a intervenção.",
+        "Usar cargo de chefia para discriminar": "Art. 11, b — VEDAÇÃO: prevalecer-se de cargo de chefia para atos discriminatórios e abuso de autoridade.",
+        "Ser conivente com falhas éticas alheias": "Art. 11, c — VEDAÇÃO: ser conivente com falhas éticas, de acordo com os princípios deste Código, e com erros técnicos praticados por assistente social ou qualquer outro/a profissional.",
+        "Participar de entidades da categoria": "Art. 12, a — DIREITO: participar de sociedades científicas e entidades representativas e de organização da categoria, voltadas à produção de conhecimento e à defesa e fiscalização do exercício profissional.",
+        "Denunciar instituições com condições indignas de trabalho": "Art. 13, a — DEVER: denunciar ao Conselho Regional instituições públicas ou privadas onde as condições de trabalho não sejam dignas ou possam prejudicar usuários/as ou profissionais.",
+        "Valer-se de posição na entidade para vantagem pessoal": "Art. 14 — VEDAÇÃO: valer-se de posição ocupada na direção de entidade da categoria para obter vantagens pessoais, diretamente ou por terceiros/as."
+      }
+    },
+    {
+      "id": "CAT-29",
+      "nome": "Sigilo profissional e relações com a justiça (arts. 15º-20º)",
+      "eixo": "etica",
+      "palavras": [
+        "Direito ao sigilo profissional",
+        "Sigilo protege o/a usuário/a",
+        "Limite da informação em equipe multidisciplinar",
+        "Vedação de revelar sigilo",
+        "Quebra excepcional do sigilo",
+        "Extensão estritamente necessária da revelação",
+        "Apresentar conclusões sem extrapolar a competência",
+        "Declarar sigilo perante autoridade",
+        "Vedação de depor sobre situação sigilosa",
+        "Vedação de atuar em perícia fora da competência"
+      ],
+      "microtexto": "Capítulos V e VI: o sigilo (arts. 15º-18º) só se quebra em caso de gravidade e no estritamente necessário; perante a justiça (arts. 19º-20º), o dever de sigilo permanece mesmo sob intimação.",
+      "confundeCom": [
+        "CAT-03",
+        "CAT-30"
+      ],
+      "cartaTitulo": "Sigilo profissional e relações com a justiça (arts. 15º-20º)",
+      "explicacoesPalavras": {
+        "Direito ao sigilo profissional": "Art. 15: constitui direito do/a assistente social manter o sigilo profissional — base da confiança na relação com o/a usuário/a.",
+        "Sigilo protege o/a usuário/a": "Art. 16: o sigilo protege o/a usuário/a em tudo aquilo que o/a assistente social tome conhecimento como decorrência do exercício profissional.",
+        "Limite da informação em equipe multidisciplinar": "Art. 16, parágrafo único: em trabalho multidisciplinar, só podem ser prestadas informações dentro dos limites do estritamente necessário.",
+        "Vedação de revelar sigilo": "Art. 17 — VEDAÇÃO: revelar sigilo profissional. É a regra; a quebra é exceção regulada pelo art. 18.",
+        "Quebra excepcional do sigilo": "Art. 18: a quebra do sigilo só é admissível em situações cuja gravidade possa trazer prejuízo aos interesses do/a usuário/a, de terceiros/as ou da coletividade, envolvendo ou não fato delituoso.",
+        "Extensão estritamente necessária da revelação": "Art. 18, parágrafo único: a revelação será feita dentro do estritamente necessário, tanto quanto ao assunto quanto ao número de pessoas que devam tomar conhecimento.",
+        "Apresentar conclusões sem extrapolar a competência": "Art. 19, a — DEVER: como perito ou testemunha, apresentar à justiça as conclusões do laudo ou depoimento, sem extrapolar a competência profissional nem violar os princípios éticos.",
+        "Declarar sigilo perante autoridade": "Art. 19, b — DEVER: comparecer perante a autoridade competente, quando intimado/a, para declarar que está obrigado/a a guardar sigilo profissional.",
+        "Vedação de depor sobre situação sigilosa": "Art. 20, a — VEDAÇÃO: depor como testemunha sobre situação sigilosa do/a usuário/a conhecida no exercício profissional, mesmo quando autorizado/a. Pegadinha clássica: a autorização do/a usuário/a NÃO libera o depoimento.",
+        "Vedação de atuar em perícia fora da competência": "Art. 20, b — VEDAÇÃO: aceitar nomeação como perito, ou atuar em perícia, fora da área de competência profissional, ou infringindo impedimento ou suspeição."
+      }
+    },
+    {
+      "id": "CAT-30",
+      "nome": "Infrações e penalidades disciplinares (arts. 22º-34º)",
+      "eixo": "etica",
+      "palavras": [
+        "Exercer a profissão quando impedido/a",
+        "Não cumprir prazo de determinação do Conselho",
+        "Multa",
+        "Advertência reservada",
+        "Advertência pública",
+        "Suspensão do exercício (30 dias a 2 anos)",
+        "Cassação do registro profissional",
+        "Gradação das penas conforme antecedentes",
+        "Recurso com efeito suspensivo ao CFESS",
+        "Prescrição em 5 anos"
+      ],
+      "microtexto": "Título IV: infrações (art. 22) e as cinco penalidades em ordem de gravidade (art. 24) — da multa à cassação, com gradação, recurso ao CFESS e prescrição em 5 anos.",
+      "confundeCom": [
+        "CAT-03",
+        "CAT-28"
+      ],
+      "cartaTitulo": "Infrações e penalidades disciplinares (arts. 22º-34º)",
+      "explicacoesPalavras": {
+        "Exercer a profissão quando impedido/a": "Art. 22, a — INFRAÇÃO: exercer a profissão quando impedido/a de fazê-lo, ou facilitar, por qualquer meio, o exercício por não inscritos/as ou impedidos/as.",
+        "Não cumprir prazo de determinação do Conselho": "Art. 22, b — INFRAÇÃO: não cumprir, no prazo estabelecido, determinação emanada de órgão ou autoridade dos Conselhos, depois de regularmente notificado/a.",
+        "Multa": "Art. 24, a: a mais branda das cinco penalidades (art. 24), com valor entre uma anuidade e o seu décuplo (art. 34).",
+        "Advertência reservada": "Art. 24, b: penalidade confidencial (art. 29) — só se torna pública se o/a penalizado/a não comparecer, após duas convocações, para recebê-la (art. 33).",
+        "Advertência pública": "Art. 24, c: penalidade publicada em Diário Oficial e afixada na sede do Conselho Regional e na Delegacia Seccional do domicílio do/a profissional.",
+        "Suspensão do exercício (30 dias a 2 anos)": "Art. 24, d e art. 25: interdita o exercício profissional em todo o território nacional, de 30 dias a 2 anos. Suspensão por dívida só cessa com a quitação.",
+        "Cassação do registro profissional": "Art. 24, e: a penalidade mais grave — acarreta a apreensão da Carteira e da Cédula de Identidade Profissional (art. 33, §2º).",
+        "Gradação das penas conforme antecedentes": "Arts. 26-27: consideram-se os antecedentes profissionais e as circunstâncias da infração; salvo gravidade manifesta, a pena segue a gradação do art. 24.",
+        "Recurso com efeito suspensivo ao CFESS": "Art. 31: da imposição de qualquer penalidade cabe recurso com efeito suspensivo ao CFESS — a pena não se efetiva enquanto o recurso não é julgado.",
+        "Prescrição em 5 anos": "Art. 32: a punibilidade por falta sujeita a processo ético e disciplinar prescreve em 5 anos, contados da data da verificação do fato."
       }
     },
     {

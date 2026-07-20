@@ -82,75 +82,93 @@
         "CAT-01",
         "CAT-02",
         "CAT-03",
-        "CAT-04",
-        "CAT-05",
-        "CAT-09",
-        "CAT-10"
+        "CAT-25",
+        "CAT-26",
+        "CAT-27",
+        "CAT-28",
+        "CAT-29",
+        "CAT-30"
       ],
       "cardsPerCategory": 6,
       "selectedWords": {
         "CAT-01": [
           "Liberdade",
-          "Democracia",
+          "Defesa intransigente dos direitos humanos",
+          "Ampliação da cidadania",
+          "Pluralismo profissional",
           "Nova ordem societária",
-          "Justiça social",
-          "Cidadania",
-          "Defesa intransigente dos direitos humanos"
+          "Exercício sem discriminar"
         ],
         "CAT-02": [
-          "Livre exercício",
-          "Autonomia técnica",
-          "Sigilo profissional",
+          "Livre exercício profissional",
+          "Inviolabilidade do local de trabalho",
           "Desagravo público",
-          "Pronunciamento público",
-          "Inviolabilidade do local de trabalho"
+          "Ampla autonomia técnica",
+          "Pronunciamento em matéria de especialidade",
+          "Participação na elaboração de políticas sociais"
         ],
         "CAT-03": [
-          "Práticas discriminatórias",
-          "Abuso de autoridade",
-          "Assédio",
-          "Intermediar honorários indevidos",
-          "Depor como testemunha (situação sigilosa)",
-          "Acatar ordem que fira a autonomia"
+          "Acatar determinação institucional que fira o Código",
+          "Compactuar com exercício ilegal da profissão",
+          "Assumir atividade sem capacitação técnica",
+          "Pleitear emprego ocupado por colega",
+          "Adulterar resultados ou declarações",
+          "Assinar trabalho de terceiros/as"
         ],
-        "CAT-04": [
-          "Magistério em Serviço Social",
-          "Fiscalização do exercício profissional (CFESS/CRESS)",
-          "Parecer sobre matéria de Serviço Social",
-          "Perícia sobre matéria de SS",
-          "Direção de unidade de ensino de SS",
-          "Coordenação de curso de SS"
+        "CAT-25": [
+          "Desempenhar atividades com eficiência e responsabilidade",
+          "Não praticar censura nem policiamento de comportamentos",
+          "Participar de programas de socorro à população",
+          "Cumprir e fazer cumprir o Código",
+          "Denunciar exercício irregular da profissão",
+          "Orientar estudantes sobre a ética profissional"
         ],
-        "CAT-05": [
-          "Elaborar planos e programas",
-          "Estudos socioeconômicos",
-          "Assessoria a movimentos sociais",
-          "Gestão de políticas sociais",
-          "Orientação social a indivíduos e grupos",
-          "Pesquisa sobre a realidade social"
+        "CAT-26": [
+          "Garantir informação plena e respeitar decisões",
+          "Democratizar informações e acesso a programas",
+          "Esclarecer objetivos da atuação profissional",
+          "Limitar a participação e a decisão do/a usuário/a",
+          "Obter vantagens pessoais na relação profissional",
+          "Bloquear o acesso aos serviços oferecidos"
         ],
-        "CAT-09": [
-          "Saúde",
-          "Previdência",
-          "Assistência social",
-          "Equidade no custeio",
-          "Universalidade da cobertura",
-          "Seletividade e distributividade"
+        "CAT-27": [
+          "Condições de trabalho condignas",
+          "Integrar comissões interdisciplinares de ética",
+          "Denunciar falhas em regulamentos e programas",
+          "Emprestar o nome para simular exercício profissional",
+          "Usar tráfico de influência para obter emprego",
+          "Usar recursos institucionais para fins partidários"
         ],
-        "CAT-10": [
-          "Descentralização político-administrativa",
-          "Matricialidade sociofamiliar",
-          "Territorialização",
-          "Comando único",
-          "Primazia do Estado",
-          "Controle social"
+        "CAT-28": [
+          "Ser solidário/a sem eximir-se de denunciar",
+          "Intervir em serviço de outro/a profissional sem motivo",
+          "Usar cargo de chefia para discriminar",
+          "Ser conivente com falhas éticas alheias",
+          "Denunciar instituições com condições indignas de trabalho",
+          "Valer-se de posição na entidade para vantagem pessoal"
+        ],
+        "CAT-29": [
+          "Direito ao sigilo profissional",
+          "Vedação de revelar sigilo",
+          "Quebra excepcional do sigilo",
+          "Vedação de depor sobre situação sigilosa",
+          "Vedação de atuar em perícia fora da competência",
+          "Declarar sigilo perante autoridade"
+        ],
+        "CAT-30": [
+          "Multa",
+          "Advertência reservada",
+          "Suspensão do exercício (30 dias a 2 anos)",
+          "Cassação do registro profissional",
+          "Recurso com efeito suspensivo ao CFESS",
+          "Prescrição em 5 anos"
         ]
       },
-      "totalCards": 49,
+      "totalCards": 63,
       "columns": 4,
-      "moveLimit": 96,
+      "moveLimit": 120,
       "profundidadeTitulos": "embaralhado",
-      "hint": "Dica: No Código de Ética, direitos são o art. 2º e vedações o art. 4º. Na Lei 8.662/93, competências (art. 4º) são partilháveis; atribuições privativas (art. 5º) são exclusivas."
+      "hint": "Dica: direitos (art. 2º), deveres (art. 3º) e vedações (art. 4º) formam o trio geral, repetido em cada relação específica (usuários, instituição, colegas, entidades). A autorização do/a usuário/a NÃO libera depoimento sigiloso (art. 20). Infração (art. 22) é a conduta; penalidade (art. 24), a consequência."
     },
     {
       "id": 3,
